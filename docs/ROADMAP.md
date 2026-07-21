@@ -59,18 +59,38 @@
 - Next.js App Router
 - TypeScript 严格模式
 - TailwindCSS 基础样式
-- SEO metadata 基础
-- `robots.txt` 与 `sitemap.xml`
-- GEO 基础文件 `llms.txt`
-- CMS 与内容结构轻量规划
-- 组件系统轻量规划
+- `docs/WEBSITE_ARCHITECTURE.md`
+- `docs/WEBSITE_SEO_BLUEPRINT.md`
+- `docs/CONTENT_SYSTEM.md`
+- Website 技术骨架：`app/`、`components/`、`public/`、`styles/`
+- CMS、内容结构与组件系统文档规划
 - Website CI 校验
+- Website Governance CI 校验
 
 边界：
 
 - 不创建产品详情、行业方案、招商合作等业务页面
+- 不提前实现 `robots.txt`、`sitemap.xml`、`llms.txt` 等 SEO/GEO 路由，先在蓝图中定义
 - 不编造产品参数、客户案例、收益结果、授权政策或市场排名
 - 不提前创建 `application`、`domain`、`infrastructure`、`features` 等无业务支撑目录
+
+验收状态：
+
+```text
+Repository
+        |
+        +-- AI Governance ✅
+        |
+        +-- Website Architecture ✅
+        |
+        +-- SEO/GEO Strategy ✅
+        |
+        +-- Website Technical Skeleton ✅
+        |
+        +-- Content System ✅
+```
+
+M1 完成后才进入 M2 Website Development 或 Lead Capture Foundation。
 
 ## M2 Lead Capture Foundation
 

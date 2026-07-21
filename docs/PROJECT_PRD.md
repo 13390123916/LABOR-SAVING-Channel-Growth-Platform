@@ -109,18 +109,34 @@ M1 建立网站技术底座，而不是直接制作完整业务页面。
 - Next.js App Router
 - TypeScript 严格模式
 - TailwindCSS
-- SEO metadata 基础
-- `robots.txt` 与 `sitemap.xml`
-- GEO 基础文件 `llms.txt`
-- CMS 与内容结构轻量规划
-- 组件系统轻量规划
+- 官网信息架构：`docs/WEBSITE_ARCHITECTURE.md`
+- SEO/GEO 网站蓝图：`docs/WEBSITE_SEO_BLUEPRINT.md`
+- 内容系统：`docs/CONTENT_SYSTEM.md`
+- Website 技术骨架：`app/`、`components/`、`public/`、`styles/`
+- CMS、内容结构与组件系统文档规划
 - Website CI 校验
+- Website Governance CI 校验
 
 不纳入：
 
 - 产品详情页
 - 行业方案页
 - 招商合作页
+- SEO/GEO 业务路由实现
 - CRM 表单提交
 - 数据库实现
 - 未经确认的产品参数、客户案例、收益结果、授权政策或市场排名
+
+## 9. 加盟合作定位
+
+加盟合作不作为普通“招商页面”，而定义为 `LABOR-SAVING 渠道增长中心`。
+
+主 URL：`/partner/`
+
+页面目标：
+
+- 3 秒内说明加入价值。
+- 展示工业自动化升级、重载搬运需求、风电装备市场、石油化工维修市场和智能制造趋势。
+- 说明区域代理、行业代理、渠道经销商和项目合作伙伴四类模式。
+- 建立产品赋能、技术赋能、销售赋能、市场赋能、内容赋能、培训赋能、售后赋能、品牌赋能八大渠道赋能。
+- 引导“申请成为区域合作伙伴”，后续进入 CRM 留资。

@@ -61,6 +61,12 @@ M1 Website Foundation 已完成。下一阶段可进入 M2 Lead Capture Foundati
 
 - `website/` 采用独立 Next.js App Router 工程。
 - 使用 TypeScript 严格模式、TailwindCSS 和 ESLint。
-- 建立 `robots.txt`、`sitemap.xml`、`llms.txt` 和基础 metadata。
-- 首页仅作为可抓取的平台入口，不创建产品详情、行业方案、招商合作等业务页面。
-- CMS、内容结构与组件系统先通过 `config/`、`lib/`、`components/` 轻量规划，不提前创建无业务支撑的分层目录。
+- M1.2 只保留 `README.md`、`.gitignore`、`package.json`、`next.config.ts`、`app/`、`components/`、`public/`、`styles/` 技术骨架。
+- 首页仅作为技术骨架入口，不创建产品详情、行业方案、招商合作、SEO/GEO 路由等业务页面。
+- 内容结构与组件系统先通过文档定义，不提前创建无业务支撑的 `config/`、`lib/`、`application`、`domain`、`infrastructure`、`features` 等目录。
+- M1.0 建立 `docs/WEBSITE_ARCHITECTURE.md`，官网导航权重为：加盟合作、产品中心最高，行业应用、解决方案次之，知识中心作为 SEO/GEO 内容沉淀。
+- M1.1 建立 `docs/WEBSITE_SEO_BLUEPRINT.md`，加盟合作主 URL 采用 `/partner/`，`/distributor/` 与 `/join/` 只作为兼容路径或投放路径。
+- M1.3 建立 `docs/CONTENT_SYSTEM.md`，定义产品文章、行业文章、案例文章、技术 FAQ、招商内容和 AI 搜索回答内容规则。
+- M1.4 建立 `scripts/validate-website-governance.mjs`，CI 检查 URL 规范、SEO 字段、图片命名、Markdown 规范和文档同步。
+- 加盟合作页面定位为 `LABOR-SAVING 渠道增长中心`，不是普通招商页面。
+- 加盟合作页后续 CRM 留资字段为：公司名称、所在地区、主营产品、客户行业、销售团队规模、已有渠道资源。

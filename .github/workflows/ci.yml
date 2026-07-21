@@ -12,6 +12,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
       - name: Validate repository files
         run: |
           test -f README.md
@@ -41,6 +46,9 @@ jobs:
           test -f docs/GIT_WORKFLOW.md
           test -f docs/ISSUE_WORKFLOW.md
           test -f docs/REPOSITORY_MAINTENANCE.md
+          test -f docs/WEBSITE_ARCHITECTURE.md
+          test -f docs/WEBSITE_SEO_BLUEPRINT.md
+          test -f docs/CONTENT_SYSTEM.md
 
       - name: Validate governance boundaries
         run: |
@@ -48,6 +56,9 @@ jobs:
           test ! -f ROADMAP.md
           test ! -f TODO.md
           test ! -f docs/CHANGELOG.md
+
+      - name: Validate website governance
+        run: node scripts/validate-website-governance.mjs
 
   website-check:
     runs-on: ubuntu-latest

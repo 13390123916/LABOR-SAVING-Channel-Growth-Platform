@@ -49,17 +49,25 @@
 
 - 初始化 `website/` Next.js App Router 技术底座。
 - 建立 TypeScript 严格模式、TailwindCSS、ESLint 与 npm scripts。
-- 建立基础首页入口，承载平台定位、商业优先级、当前产品范围和 GEO 基础问答。
-- 建立 `robots.txt`、`sitemap.xml`、`llms.txt` 与 SEO metadata 基础。
-- 建立 `config/`、`lib/`、`components/` 轻量规划，用于后续站点配置、SEO 工具和组件系统扩展。
+- 建立基础首页技术骨架入口。
+- 建立 `app/`、`components/`、`public/`、`styles/` 技术骨架。
+- 建立 `docs/WEBSITE_ARCHITECTURE.md`，定义官网信息架构、导航权重和加盟合作页面结构。
+- 建立 `docs/WEBSITE_SEO_BLUEPRINT.md`，定义 URL 规则、页面 SEO 字段标准和 GEO 优化规则。
+- 建立 `docs/CONTENT_SYSTEM.md`，定义产品文章、行业文章、案例文章、技术 FAQ、招商内容和 AI 搜索回答内容规则。
+- 建立 `scripts/validate-website-governance.mjs`，检查 URL 规范、SEO 字段完整性、图片命名、Markdown 规范和文档同步。
 
 ### Changed
 
 - 更新 `website/.gitignore`，允许提交 `.env.example`，并继续忽略 Next.js 生成类型入口。
 - 更新 CI，加入 website 的 install、typecheck、lint 和 build 校验。
+- 更新 CI，加入 M1 website governance 校验。
+- 将加盟合作定义为 `LABOR-SAVING 渠道增长中心`，主 URL 规划为 `/partner/`。
+- 将 website 首页收敛为 M1 技术骨架入口，不制作完整业务页面。
+- 收回 M1 阶段多余的 `config/`、`lib/` 和 SEO/GEO 路由实现，保持 M1.2 仅为技术骨架。
 - 同步更新 README、ROADMAP、TODO、MEMORY 与 PRD 当前阶段。
 
 ### Notes
 
 - 本次为 M1 Website Foundation，不创建产品详情、行业方案、招商合作等业务页面。
+- 本次只在文档中定义 SEO/GEO 蓝图，不提前实现完整 SEO/GEO 路由。
 - 本次不编造产品参数、客户案例、收益结果、授权政策或市场排名。
