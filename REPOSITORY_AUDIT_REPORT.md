@@ -25,7 +25,7 @@
 
 ## 1. 审计结论
 
-当前仓库已完成 M0、M0.1 与 M1 Website Foundation 主体交付，具备进入 M2 Website Development 或 M2 Lead Capture Foundation 的基础。
+当前仓库已完成 M0、M0.1、M1 Website Foundation 与 M1.5 Channel Growth Strategy Layer 主体交付，具备进入 M2 Channel Growth Foundation 的基础。
 
 总体评分：94 / 100
 
@@ -41,8 +41,8 @@
 主要整改项：
 
 - `PROJECT_STRUCTURE.md` 在审计开始时仍残留 `website/config`、`website/lib`，与 M1.2 “只保留骨架”不一致。本次审计已修正。
-- `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 的文档同步清单尚未显式列入 `docs/WEBSITE_ARCHITECTURE.md`、`docs/WEBSITE_SEO_BLUEPRINT.md`、`docs/CONTENT_SYSTEM.md`，建议下一次治理升级到 V1.2 时纳入。
-- M2 下一阶段命名在文档中存在 “Website Development” 与 “Lead Capture Foundation” 两种入口表达，建议启动 M2 前明确优先顺序。
+- `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 已升级到 V1.2，并纳入 Website Architecture、SEO Blueprint、Content System、Partner Funnel 与 Lead Schema 必读规则。
+- M2 下一阶段已统一为 `M2 Channel Growth Foundation`。
 
 ## 2. 当前受版本控制目录树
 
@@ -194,30 +194,32 @@ npm run build
 
 ### P2：`.ai/AI_PROJECT_OPERATING_SYSTEM.md` 文档同步清单可继续增强
 
-状态：记录为后续治理建议。
+状态：已在 M1.5 修复。
 
-当前 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 的必查文档清单仍以 M0/M0.1 核心文档为主，尚未显式列入：
+`.ai/AI_PROJECT_OPERATING_SYSTEM.md` 已升级到 V1.2，并显式列入：
 
 - `docs/WEBSITE_ARCHITECTURE.md`
 - `docs/WEBSITE_SEO_BLUEPRINT.md`
 - `docs/CONTENT_SYSTEM.md`
+- `docs/PARTNER.md`
+- `docs/CRM.md`
+- `docs/M2_STRATEGY.md`
+- `docs/PARTNER_FUNNEL.md`
+- `docs/LEAD_SCHEMA.md`
 
-影响：低。CI 与 TODO/MEMORY/CHANGELOG 已覆盖 M1 文档，但最高 AI 规则可在 V1.2 中进一步同步。
-
-建议：下一次 AI Governance 升级时更新 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 到 V1.2。
+影响：已消除。后续 AI 不得自行设计导航、自行生成 SEO 结构、自行修改招商逻辑，或未读取漏斗与字段标准就开发表单或页面。
 
 ### P2：M2 入口命名需要启动前确认
 
-状态：记录为后续产品决策。
+状态：已在 M1.5 统一。
 
-当前文档中同时出现：
+当前 M2 入口统一为：
 
-- M2 Website Development
-- M2 Lead Capture Foundation
+```text
+M2 Channel Growth Foundation
+```
 
-判断：两者都合理，但优先级不同。若先做官网页面，则 M2 Website Development；若先做表单与 CRM，则 M2 Lead Capture Foundation。
-
-建议：进入 M2 前由用户确认优先执行路径。
+执行顺序：M2.0 Partner Funnel Architecture、M2.1 Lead Capture Schema、M2.2 Website Page Development。
 
 ## 6. SEO/GEO 审计
 
@@ -283,12 +285,13 @@ CI 覆盖：
 
 ## 9. 下一步建议
 
-进入 M2 前建议先确认：
+进入 M2 前建议：
 
-1. 优先做 M2 Website Development 还是 M2 Lead Capture Foundation。
-2. 是否将 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 升级为 V1.2，纳入 M1 三份新增文档。
-3. 是否为 M2 页面开发建立页面级 metadata schema 文件，但仍避免编造产品参数和案例。
-4. 是否将本地未跟踪的空 SEO/GEO/deploy 子目录整理为正式规划或清理为本地残留。
+1. 执行 M2.0 Partner Funnel Architecture。
+2. 执行 M2.1 Lead Capture Schema。
+3. 再执行 M2.2 Website Page Development。
+4. 是否为 M2 页面开发建立页面级 metadata schema 文件，但仍避免编造产品参数和案例。
+5. 是否将本地未跟踪的空 SEO/GEO/deploy 子目录整理为正式规划或清理为本地残留。
 
 ## 10. 最终结论
 
@@ -308,4 +311,4 @@ Repository
         +-- Content System ✅
 ```
 
-建议在用户确认 M2 优先路径后，再进入页面开发或线索系统开发。
+建议下一步进入 M2 Channel Growth Foundation，先做 Partner Funnel 与 Lead Schema，再进入页面开发。

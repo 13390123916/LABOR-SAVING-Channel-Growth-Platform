@@ -4,7 +4,7 @@
 
 文档职责：项目长期需求主文档
 
-当前阶段：M1 Website Foundation 已完成，下一阶段为 M2 Lead Capture Foundation
+当前阶段：M1.5 Channel Growth Strategy Layer 已完成，下一阶段为 M2 Channel Growth Foundation
 
 ## 1. 项目定位
 
@@ -140,3 +140,33 @@ M1 建立网站技术底座，而不是直接制作完整业务页面。
 - 说明区域代理、行业代理、渠道经销商和项目合作伙伴四类模式。
 - 建立产品赋能、技术赋能、销售赋能、市场赋能、内容赋能、培训赋能、售后赋能、品牌赋能八大渠道赋能。
 - 引导“申请成为区域合作伙伴”，后续进入 CRM 留资。
+
+## 10. M1.5 Channel Growth Strategy
+
+网站定义：
+
+```text
+工业智能装备渠道增长入口
+```
+
+Website Traffic Weight：
+
+| 模块 | 权重 |
+| --- | --- |
+| 加盟合作 Partner | 35% |
+| 产品 Product | 25% |
+| 行业应用 Industry | 20% |
+| 知识中心 Content | 10% |
+| 品牌 Trust | 10% |
+
+M2 不直接进入普通页面开发，而进入：
+
+```text
+M2 Channel Growth Foundation
+```
+
+M2 顺序：
+
+1. M2.0 Partner Funnel Architecture
+2. M2.1 Lead Capture Schema
+3. M2.2 Website Page Development

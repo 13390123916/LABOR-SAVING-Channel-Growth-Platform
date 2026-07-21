@@ -6,7 +6,10 @@ const root = process.cwd();
 const requiredDocs = [
   "docs/WEBSITE_ARCHITECTURE.md",
   "docs/WEBSITE_SEO_BLUEPRINT.md",
-  "docs/CONTENT_SYSTEM.md"
+  "docs/CONTENT_SYSTEM.md",
+  "docs/M2_STRATEGY.md",
+  "docs/PARTNER_FUNNEL.md",
+  "docs/LEAD_SCHEMA.md"
 ];
 
 const requiredUrls = [
@@ -34,6 +37,15 @@ const seoFields = [
 const geoFields = ["百度", "360搜索", "搜狗", "Google", "AI Search", "JSON-LD Schema", "FAQ"];
 
 const contentTypes = ["产品文章", "行业文章", "案例文章", "技术FAQ", "招商内容", "AI搜索回答内容"];
+const strategyTerms = [
+  "M2 Channel Growth Foundation",
+  "Partner Funnel",
+  "Lead Capture Schema",
+  "Website Traffic Weight",
+  "加盟合作 Partner",
+  "35%",
+  "有效代理商线索"
+];
 const partnerTerms = [
   "LABOR-SAVING 渠道增长中心",
   "/partner/",
@@ -118,9 +130,24 @@ for (const type of contentTypes) {
   assertIncludes(contentSystem, type, "docs/CONTENT_SYSTEM.md");
 }
 
+const m2Strategy = readRequired("docs/M2_STRATEGY.md");
+for (const token of strategyTerms) {
+  assertIncludes(m2Strategy, token, "docs/M2_STRATEGY.md");
+}
+
+const partnerFunnel = readRequired("docs/PARTNER_FUNNEL.md");
+for (const token of ["访问加盟页面", "了解市场机会", "了解合作模式", "提交资料", "CRM进入", "销售跟进", "区域代理审核"]) {
+  assertIncludes(partnerFunnel, token, "docs/PARTNER_FUNNEL.md");
+}
+
+const leadSchema = readRequired("docs/LEAD_SCHEMA.md");
+for (const token of ["companyName", "contactName", "region", "mainProducts", "customerResources", "sellsIndustrialTools", "sellsHydraulicTools", "hasWindPowerCustomers"]) {
+  assertIncludes(leadSchema, token, "docs/LEAD_SCHEMA.md");
+}
+
 for (const file of syncFiles) {
   const content = readRequired(file);
-  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md"]) {
+  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PARTNER_FUNNEL.md", "LEAD_SCHEMA.md"]) {
     assertIncludes(content, token, file);
   }
 }

@@ -33,6 +33,17 @@
 - [x] 执行 M1 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md`
 - [x] 修正 `PROJECT_STRUCTURE.md` 中 website 骨架目录漂移
 
+## M1.5 Channel Growth Strategy Layer
+
+- [x] 升级 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 到 V1.2
+- [x] 将 `docs/WEBSITE_ARCHITECTURE.md`、`docs/WEBSITE_SEO_BLUEPRINT.md`、`docs/CONTENT_SYSTEM.md` 纳入 AI 必读文档
+- [x] 将 `docs/PARTNER.md`、`docs/CRM.md` 纳入 AI 必读文档
+- [x] 新增 `docs/M2_STRATEGY.md`
+- [x] 新增 `docs/PARTNER_FUNNEL.md`
+- [x] 新增 `docs/LEAD_SCHEMA.md`
+- [x] 确认 Website Traffic Weight：Partner 35%、Product 25%、Industry 20%、Content 10%、Trust 10%
+- [x] 确认 M2 调整为 Channel Growth Foundation，不直接进入普通 Website Development
+
 ## 暂不执行
 
 - [x] 不创建产品详情、行业方案、招商合作等业务页面
@@ -40,10 +51,13 @@
 - [x] 不生成未经确认的产品参数、案例、收益或政策内容
 - [x] 不创建 `application`、`domain`、`infrastructure`、`features` 等提前抽象目录
 
-## M2 Lead Capture Foundation
+## M2 Channel Growth Foundation
 
-- [ ] 启动 M2 前确认优先路径：Website Development 或 Lead Capture Foundation
-- [ ] 评估是否将 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 升级到 V1.2，纳入 M1 新增文档清单
+- [x] 启动 M2 前确认优先路径：Channel Growth Foundation
+- [x] 评估并完成 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` V1.2，纳入 M1/M1.5 新增文档清单
+- [ ] M2.0 Partner Funnel Architecture
+- [ ] M2.1 Lead Capture Schema
+- [ ] M2.2 Website Page Development
 - [ ] 规划线索表单字段
 - [ ] 规划输入校验与风控
 - [ ] 规划 CRM 字段映射

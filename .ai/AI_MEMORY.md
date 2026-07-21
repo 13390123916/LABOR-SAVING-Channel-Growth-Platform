@@ -31,4 +31,4 @@
 
 ## 当前任务
 
-M1 Website Foundation 已完成。后续任务优先从 M2 Lead Capture Foundation、SEO/GEO 内容矩阵或组件系统细化开始。
+M1.5 Channel Growth Strategy Layer 已完成。后续任务优先从 M2 Channel Growth Foundation 开始，顺序为 Partner Funnel、Lead Schema、Website Page Development。

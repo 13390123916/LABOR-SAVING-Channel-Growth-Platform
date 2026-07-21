@@ -90,23 +90,45 @@ Repository
         +-- Content System ✅
 ```
 
-M1 完成后才进入 M2 Website Development 或 Lead Capture Foundation。
+M1 完成后不直接进入页面开发，先进入 M1.5 Channel Growth Strategy Layer，再进入 M2 Channel Growth Foundation。
 
-## M2 Lead Capture Foundation
+## M1.5 Channel Growth Strategy Layer
+
+状态：已完成
+
+目标：
+
+- 在 M2 前固化渠道增长策略，避免过早页面开发导致招商转化逻辑后补
+
+交付：
+
+- `.ai/AI_PROJECT_OPERATING_SYSTEM.md` V1.2
+- `docs/M2_STRATEGY.md`
+- `docs/PARTNER_FUNNEL.md`
+- `docs/LEAD_SCHEMA.md`
+
+战略确认：
+
+- 网站定义为工业智能装备渠道增长入口。
+- Website Traffic Weight：Partner 35%、Product 25%、Industry 20%、Content 10%、Trust 10%。
+- M2 不直接进入普通 Website Development，而进入 Channel Growth Foundation。
+
+## M2 Channel Growth Foundation
 
 状态：待启动
 
 目标：
 
-- 建立询盘和渠道合作线索采集基础
+- 建立渠道增长漏斗、线索采集标准和 CRM 输入基础
 
 范围：
 
-- 表单结构
-- 输入校验
-- MySQL 数据模型
-- 来源追踪
-- CRM 字段预留
+- M2.0 Partner Funnel Architecture
+- M2.1 Lead Capture Schema
+- M2.2 Website Page Development
+- 表单结构与输入校验
+- 来源追踪与 CRM 字段预留
+- 后续 MySQL 数据模型
 
 ## M3 SEO/GEO Foundation
 

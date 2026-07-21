@@ -84,3 +84,24 @@
 
 - 本次不开发业务页面。
 - 本次不新增产品参数、客户案例、收益结果、授权政策或市场排名。
+
+## [0.1.2] - 2026-07-21
+
+### Added
+
+- 新增 `docs/M2_STRATEGY.md`，明确 M2 调整为 Channel Growth Foundation。
+- 新增 `docs/PARTNER_FUNNEL.md`，定义代理商从访问加盟页面到区域代理审核的渠道增长漏斗。
+- 新增 `docs/LEAD_SCHEMA.md`，定义 Partner Lead 与 Customer Lead 表单字段和 CRM 输入标准。
+
+### Changed
+
+- 升级 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 到 V1.2，新增 M1/M1.5 核心文档必读规则。
+- 明确网站为工业智能装备渠道增长入口，不是普通产品展示官网。
+- 明确 Website Traffic Weight：Partner 35%、Product 25%、Industry 20%、Content 10%、Trust 10%。
+- 更新 CI 与 website governance 脚本，检查 M2 Strategy、Partner Funnel 和 Lead Schema 文档。
+- 同步更新 Roadmap、TODO、Memory、PRD 和 AI 上下文。
+
+### Notes
+
+- 本次为 M1.5 Channel Growth Strategy Layer，不开发业务页面。
+- 本次不新增产品参数、客户案例、收益结果、授权政策或市场排名。

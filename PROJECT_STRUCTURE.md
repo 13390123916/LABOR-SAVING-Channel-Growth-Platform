@@ -92,4 +92,4 @@ Version: V1.2
 
 ## 当前策略
 
-M1 Website Foundation 已完成。当前 `website/` 只保留技术骨架；SEO/GEO URL 与页面结构先沉淀在文档中。下一阶段进入 M2 Website Development 或 Lead Capture Foundation 时，再建立业务页面、表单、线索数据结构和 CRM 字段映射。
+M1.5 Channel Growth Strategy Layer 已完成。当前 `website/` 只保留技术骨架；SEO/GEO URL 与页面结构先沉淀在文档中。下一阶段进入 M2 Channel Growth Foundation，先建立 Partner Funnel、Lead Schema 和 CRM 输入标准，再进入业务页面开发。

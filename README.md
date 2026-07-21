@@ -37,6 +37,8 @@
 - M0 Repository Audit 已完成
 - M0.1 Repository Governance Fix 已完成
 - M1 Website Foundation 已完成
+- M1.5 Channel Growth Strategy Layer 已完成
+- 下一阶段：M2 Channel Growth Foundation
 
 ## 文档入口
 
@@ -44,4 +46,7 @@
 - `docs/ROADMAP.md`
 - `docs/TODO.md`
 - `docs/MEMORY.md`
+- `docs/M2_STRATEGY.md`
+- `docs/PARTNER_FUNNEL.md`
+- `docs/LEAD_SCHEMA.md`
 - `.ai/AI_PROJECT_OPERATING_SYSTEM.md`

@@ -49,6 +49,9 @@ jobs:
           test -f docs/WEBSITE_ARCHITECTURE.md
           test -f docs/WEBSITE_SEO_BLUEPRINT.md
           test -f docs/CONTENT_SYSTEM.md
+          test -f docs/M2_STRATEGY.md
+          test -f docs/PARTNER_FUNNEL.md
+          test -f docs/LEAD_SCHEMA.md
 
       - name: Validate governance boundaries
         run: |

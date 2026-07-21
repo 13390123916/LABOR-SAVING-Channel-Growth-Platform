@@ -1,6 +1,6 @@
 # AI_PROJECT_OPERATING_SYSTEM.md
 
-Version: V1.1
+Version: V1.2
 
 项目名称：LABOR-SAVING Channel Growth Platform（雷普赛维渠道增长平台）
 
@@ -34,6 +34,32 @@ Version: V1.1
 3. 品牌建设：中国搜索资产、AI 搜索认知、行业内容资产。
 
 如果一个实现会削弱加盟合作、询盘转化或品牌可信度，必须停止编码并先输出影响分析。
+
+## 2.1 Website Traffic Weight
+
+网站流量和页面开发权重按以下比例判断：
+
+| 模块 | 权重 |
+| --- | --- |
+| 加盟合作 Partner | 35% |
+| 产品 Product | 25% |
+| 行业应用 Industry | 20% |
+| 知识中心 Content | 10% |
+| 品牌 Trust | 10% |
+
+网站不是普通产品展示官网，必须定义为工业智能装备渠道增长入口。
+
+核心增长链路：
+
+```text
+渠道增长平台
+↓
+代理商增长
+↓
+终端市场覆盖
+↓
+品牌资产沉淀
+```
 
 ## 3. 当前产品范围
 
@@ -131,6 +157,37 @@ GEO 面向国内 AI 搜索：
 
 如果任务明确要求“不开发功能”，不得创建业务代码。
 
+## 7.1 必须读取文档
+
+任何页面开发、内容生成、SEO/GEO、招商合作、CRM 或 M2 之后任务，必须优先读取：
+
+- `docs/WEBSITE_ARCHITECTURE.md`
+- `docs/WEBSITE_SEO_BLUEPRINT.md`
+- `docs/CONTENT_SYSTEM.md`
+- `docs/PARTNER.md`
+- `docs/CRM.md`
+- `docs/M2_STRATEGY.md`
+- `docs/PARTNER_FUNNEL.md`
+- `docs/LEAD_SCHEMA.md`
+
+用途：
+
+- `docs/WEBSITE_ARCHITECTURE.md` 是页面结构来源。
+- `docs/WEBSITE_SEO_BLUEPRINT.md` 是 URL、SEO 字段和 GEO 来源。
+- `docs/CONTENT_SYSTEM.md` 是内容生产与合规来源。
+- `docs/PARTNER.md` 是渠道合作策略来源。
+- `docs/CRM.md` 是线索状态、分配和后续沉淀来源。
+- `docs/M2_STRATEGY.md` 是 M2 阶段优先级来源。
+- `docs/PARTNER_FUNNEL.md` 是渠道增长漏斗来源。
+- `docs/LEAD_SCHEMA.md` 是表单字段和 CRM 输入标准来源。
+
+禁止：
+
+- 自行设计导航。
+- 自行生成 SEO 结构。
+- 自行修改招商逻辑。
+- 未读取漏斗与字段标准就开发表单或页面。
+
 ## 8. 必须停止编码的情况
 
 发现以下影响时，必须停止编码，先输出影响分析：
@@ -164,6 +221,12 @@ GEO 面向国内 AI 搜索：
 - `docs/API.md`
 - `docs/DATABASE.md`
 - `docs/CONTENT.md`
+- `docs/CONTENT_SYSTEM.md`
+- `docs/WEBSITE_ARCHITECTURE.md`
+- `docs/WEBSITE_SEO_BLUEPRINT.md`
+- `docs/M2_STRATEGY.md`
+- `docs/PARTNER_FUNNEL.md`
+- `docs/LEAD_SCHEMA.md`
 - `docs/STYLEGUIDE.md`
 - `docs/DEPLOYMENT.md`
 - `docs/GIT_WORKFLOW.md`
@@ -234,6 +297,6 @@ AI 不仅负责开发，还负责长期维护 GitHub Repository。
 
 ## 13. 当前阶段
 
-当前阶段：M1 Website Foundation 已完成，下一阶段为 M2 Lead Capture Foundation。
+当前阶段：M1.5 Channel Growth Strategy Layer。
 
-当前目标：在不编造产品参数、案例、收益和授权政策的前提下，继续建设线索采集、SEO/GEO 内容资产与渠道协作能力。
+当前目标：进入 M2 前先固化渠道增长策略、Partner Funnel 和 Lead Schema，避免过早开发页面导致招商转化逻辑后补。

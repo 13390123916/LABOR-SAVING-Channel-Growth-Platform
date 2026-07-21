@@ -24,4 +24,8 @@ Partner 系统用于支持区域代理商参与线索跟进和成交反馈。
 
 ## 阶段边界
 
-M0 不开发 Partner 功能。M5 CRM 稳定后，再进入 Partner 协作系统建设。
+M1.5 已建立 `docs/PARTNER_FUNNEL.md`，用于定义渠道增长漏斗。
+
+M2 Channel Growth Foundation 先规划 Partner Funnel 与 Lead Schema，不直接开发 Partner 协作系统。
+
+M5 CRM 稳定后，再进入 Partner 协作系统建设。
