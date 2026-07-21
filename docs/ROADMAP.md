@@ -29,6 +29,10 @@ Governance Note：M3 Governance Enhancement 用于持续完善 Platform Governan
 
 M4 统一命名为 Platform Runtime，不拆成 CMS Runtime 或 Website Runtime，因为 M4 运行的是 Website、CMS、Lead、Dealer、Assets、Analytics、SEO Runtime 等完整 Platform。
 
+Platform Evolution Principle：平台采用 Freeze First, Runtime Later 的演进策略。M3 冻结 Platform Capability、Architecture Boundary、Governance 和 Documentation；M4 负责 Runtime Implementation，不重新讨论已经冻结的架构设计。已冻结 Platform Module 如需调整，仅允许通过 ADR 进行重大架构决策，不因 Runtime 实现细节修改 M3 Architecture Freeze。
+
+Roadmap Freeze Rule：已冻结 Milestone 的编号、职责和完成记录不得因后续架构优化而重新排序或重定义。Governance Enhancement 属于持续治理活动，不作为新的 Platform Capability 或新的 Milestone。
+
 M4 Platform Runtime 建议顺序：
 
 ```text

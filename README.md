@@ -84,6 +84,8 @@ Platform 阅读顺序：`README.md` -> `docs/PLATFORM_ARCHITECTURE.md` -> `docs/
 
 `docs/PLATFORM_ARCHITECTURE.md` 是整个仓库唯一的平台结构入口和 Single Source of Truth。后续所有 Platform Module 必须先判断是否属于 Platform Capability、应归属哪个 Platform Module、是否纳入 Platform Architecture 统一管理，再更新专项文档或进入实现。
 
+平台采用 Freeze First, Runtime Later：M3 冻结 Platform Capability、Architecture Boundary、Governance 和 Documentation；M4 统一命名为 Platform Runtime，负责 Runtime Implementation，不因 Runtime 实现细节修改 M3 Architecture Freeze。
+
 - `docs/PROJECT_PRD.md`
 - `docs/ROADMAP.md`
 - `docs/TODO.md`

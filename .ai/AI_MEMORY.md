@@ -36,3 +36,5 @@ M2 Channel Growth Foundation 已冻结为 v1.0，核心 Collection Rendering 机
 后续所有 Platform Module 必须以 `docs/PLATFORM_ARCHITECTURE.md` 为唯一平台结构入口和 Single Source of Truth，先判断是否属于 Platform Capability、归属哪个 Platform Module、是否纳入 Platform Architecture 统一管理，再更新专项文档或进入实现。
 
 M3 最终路线固定为 Website -> Content -> SEO / GEO -> CMS -> Lead -> Platform Assets -> Dealer Center -> Analytics -> Security / Permission -> Platform Freeze Review -> M4 Platform Runtime。后续只允许增加 Governance，不允许重新排列 Milestone。Dealer 是渠道招商核心对象，必须先于 Analytics 冻结；Platform Module Registry 作为 M3.9 收尾增强，不单独开 Milestone。M4 统一命名为 Platform Runtime，不拆为 CMS Runtime 或 Website Runtime。
+
+平台采用 Freeze First, Runtime Later：M3 冻结 Platform Capability、Architecture Boundary、Governance 和 Documentation；M4 负责 Runtime Implementation，不重新讨论已经冻结的架构设计，不因 Runtime 实现细节修改 M3 Architecture Freeze。M4 统一使用 `M4 — Platform Runtime`，不使用 CMS Runtime、Website Runtime、Runtime Development 或 Platform Development 作为阶段名。

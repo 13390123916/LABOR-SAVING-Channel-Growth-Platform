@@ -10,6 +10,7 @@
 - [x] M3.5 Platform Assets Architecture：冻结 Company Profile、Brand Assets、Social Media Hub、Download Center、Friend Links、Contact Center、System Settings，并确认 Platform Assets 属于 Platform Layer，不是 CMS Content、Lead Data、Dealer Data 或 Runtime
 - [x] M3 Governance Enhancement：固化 Platform Module Intake Gate、Platform Architecture Single Source of Truth 和 Platform Module 归属门禁
 - [x] 固化 Governance Note：M3 Governance Enhancement 属于治理演进，不属于新的 Platform Capability，不改变已冻结 Milestone 编号；M3 最终路线固定后不允许重新排列 Milestone
+- [x] 固化 Platform Evolution Principle 与 Platform Stability Rules：Freeze First, Runtime Later；Runtime Follows Architecture；No Runtime-Driven Architecture Changes；M4 统一命名为 Platform Runtime
 - [ ] M3.6 Dealer Center Architecture：冻结 Dealer Entity、Dealer Type、区域关系、招商流程、Lead 分配、CRM 流转、权限边界和生命周期
 - [ ] M3.7 Analytics Architecture：冻结 Lead Attribution、Source、UTM、SEO Attribution、Dealer Attribution、Conversion Event 和 CN First 分析边界
 - [ ] M3.8 Security / Permission Architecture：冻结 RBAC 复核、Resource / Action / Permission、Audit、隐私、导出、高风险动作和运行时安全边界

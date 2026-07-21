@@ -149,6 +149,18 @@ GEO 面向国内 AI 搜索：
 
 如果答案涉及模块关系、模块职责、模块依赖、生命周期、M3 / M4 边界、权限、审计、隐私、SEO/GEO Runtime、备份、部署或分析，必须先更新 `docs/PLATFORM_ARCHITECTURE.md`，再更新专项文档。不得绕过 Platform Architecture 单独新建模块、目录、运行时代码或重复定义边界。
 
+## 6.2 Platform Evolution Principle
+
+平台采用 Freeze First, Runtime Later 的演进策略。
+
+- M3 阶段负责冻结 Platform Capability、Architecture Boundary、Governance 和 Documentation。
+- M4 阶段负责 Runtime Implementation，不重新讨论已经冻结的架构设计。
+- 已冻结的 Platform Module 如需调整，仅允许通过 ADR 进行重大架构决策。
+- 不得因 Runtime 实现细节修改 M3 Architecture Freeze。
+- 已冻结 Milestone 的编号、职责和完成记录不得因后续架构优化而重新排序或重定义。
+- Governance Enhancement 属于持续治理活动，不作为新的 Platform Capability 或新的 Milestone。
+- M4 统一使用 `M4 — Platform Runtime`，不得命名为 CMS Runtime、Website Runtime、Runtime Development 或 Platform Development。
+
 ## 7. 固定工作流
 
 每次任务必须按以下顺序执行：
@@ -373,4 +385,4 @@ AI 不仅负责开发，还负责长期维护 GitHub Repository。
 
 当前阶段：M3 Website Platform Foundation。M2 Channel Growth Foundation 已冻结为 v1.0；除架构缺陷或严重 Bug 外，不再新增治理规则或 Publishing 子阶段。
 
-当前目标：推进 M3 Website Platform Foundation。M3.0 Database Architecture、M3.1 Authentication & Authorization、M3.2 CMS Architecture、M3.3 Media Management Architecture、M3.4 Lead Center Architecture 与 M3.5 Platform Assets Architecture 已完成设计冻结，M3 Governance Enhancement 已完成 Platform Module Intake Gate。`docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的结构入口，阅读顺序为 README -> Platform Architecture -> Roadmap -> ADR。当前 Repository 只服务中国大陆 `.cn`，国际 `.com` 未来独立建设，不在当前 Repository 内实现国际化、多语言或 i18n。M3 最终路线固定为 Website -> Content -> SEO / GEO -> CMS -> Lead -> Platform Assets -> Dealer Center -> Analytics -> Security / Permission -> Platform Freeze Review -> M4 Platform Runtime；后续只允许增加 Governance，不允许重新排列 Milestone。M4 统一命名为 Platform Runtime，不拆成 CMS Runtime 或 Website Runtime；Prisma、Migration、Database、RBAC、CMS、Media、Lead、Platform Assets、Dealer、Analytics、SEO Runtime、API 和 Admin UI 统一进入 M4 Platform Runtime。M2.4.5.3.5 First Published Product Acceptance 作为首个真实产品的跨阶段发布质量门禁保留，但不再扩展 M2 治理或 Publishing 子阶段。
+当前目标：推进 M3 Website Platform Foundation。M3.0 Database Architecture、M3.1 Authentication & Authorization、M3.2 CMS Architecture、M3.3 Media Management Architecture、M3.4 Lead Center Architecture 与 M3.5 Platform Assets Architecture 已完成设计冻结，M3 Governance Enhancement 已完成 Platform Module Intake Gate。`docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的结构入口，阅读顺序为 README -> Platform Architecture -> Roadmap -> ADR。当前 Repository 只服务中国大陆 `.cn`，国际 `.com` 未来独立建设，不在当前 Repository 内实现国际化、多语言或 i18n。M3 最终路线固定为 Website -> Content -> SEO / GEO -> CMS -> Lead -> Platform Assets -> Dealer Center -> Analytics -> Security / Permission -> Platform Freeze Review -> M4 Platform Runtime；后续只允许增加 Governance，不允许重新排列 Milestone。平台采用 Freeze First, Runtime Later；M3 冻结 Platform Capability、Architecture Boundary、Governance 和 Documentation，M4 负责 Runtime Implementation，不因 Runtime 实现细节修改 M3 Architecture Freeze。M4 统一命名为 Platform Runtime，不拆成 CMS Runtime、Website Runtime、Runtime Development 或 Platform Development；Prisma、Migration、Database、RBAC、CMS、Media、Lead、Platform Assets、Dealer、Analytics、SEO Runtime、API 和 Admin UI 统一进入 M4 Platform Runtime。M2.4.5.3.5 First Published Product Acceptance 作为首个真实产品的跨阶段发布质量门禁保留，但不再扩展 M2 治理或 Publishing 子阶段。

@@ -262,6 +262,23 @@ ADR 数量必须克制，避免把 ADR 变成重复的治理文档。
 - 涉及公开内容、媒体、SEO、GEO、Lead 或导出时，必须复用 RBAC 和 Audit。
 - 涉及产品参数、客户案例、收益、授权范围、市场排名或合作政策时，只能使用已确认事实资料。
 
+## 8.1 Platform Evolution Principle
+
+平台采用 Freeze First, Runtime Later 的演进策略。
+
+M3 阶段负责冻结：
+
+```text
+Platform Capability
+Architecture Boundary
+Governance
+Documentation
+```
+
+M4 阶段负责 Runtime Implementation，不重新讨论已经冻结的架构设计。
+
+已冻结的 Platform Module 如需调整，仅允许通过 ADR 进行重大架构决策，不因 Runtime 实现细节修改 M3 Architecture Freeze。Runtime 发现实现约束时，应先判断是否属于实现策略、适配器、字段微调或运行时配置；只有改变平台模块边界、核心数据模型、权限审计、隐私边界、Runtime 技术选型或长期维护成本时，才允许进入 ADR 流程。
+
 ## 9. M4 Platform Runtime
 
 M3 只做 Architecture Freeze。真正运行时代码统一进入 M4 Platform Runtime。
@@ -324,3 +341,20 @@ Platform 阅读顺序：
 - Platform Module Intake Gate 已明确后续模块必须先判断 Platform Capability、Platform Module 归属和是否纳入本文统一管理。
 - 本文档不替代 Database、Auth、CMS、Media、Lead 或 ADR 的详细边界。
 - `README.md`、`docs/PROJECT_PRD.md`、`docs/ROADMAP.md`、`docs/TODO.md`、`docs/MEMORY.md`、`CHANGELOG.md` 和治理校验清单已同步。
+
+## 12. Platform Stability Rules
+
+1. Freeze Architecture
+2. Freeze Governance
+3. Freeze Module Ownership
+4. Runtime Follows Architecture
+5. No Runtime-Driven Architecture Changes
+6. Single Source of Truth
+
+Stability rules:
+
+- Roadmap Freeze Rule：已冻结 Milestone 的编号、职责和完成记录不得因后续架构优化而重新排序或重定义。
+- Governance Enhancement 属于持续治理活动，不作为新的 Platform Capability 或新的 Milestone。
+- M4 统一使用 `M4 — Platform Runtime`，不得把 M4 命名为 CMS Runtime、Website Runtime、Runtime Development 或 Platform Development。
+- Platform Runtime 可包含 Website Runtime、CMS Runtime、Lead Runtime、Dealer Runtime、SEO / GEO Runtime、Analytics Runtime、Assets Runtime 和 Integration Runtime，但这些都是 Platform Runtime 的内部运行能力，不改变 M4 统一命名。
+- Runtime 实现必须跟随已冻结 Architecture。任何运行时代码、API、ORM、Migration、Admin UI 或 Integration 需求，不得反向修改 M3 Architecture Freeze。

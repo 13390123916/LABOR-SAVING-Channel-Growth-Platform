@@ -14,6 +14,7 @@
 - 2026-07-22 固化 Platform Module Intake Gate：`docs/PLATFORM_ARCHITECTURE.md` 是整个仓库唯一的平台结构入口和 Single Source of Truth。后续所有 Platform Module 必须先判断是否属于 Platform Capability、应归属哪个 Platform Module、是否纳入 Platform Architecture 统一管理，再更新专项文档或进入实现，避免模块重复定义和文档漂移。
 - 2026-07-22 优化 M3 后半段路线：保留已冻结的 M3.0-M3.5 历史编号，不返工；M3 Governance Enhancement 视为治理增强而非独立 Milestone。后续正式调整为 M3.6 Dealer Center、M3.7 Analytics、M3.8 Security / Permission、M3.9 Platform Freeze Review。Dealer 是渠道招商核心对象，决定招商流程、Lead 分配、区域管理、一地一代策略、权限边界和 CRM 流转，必须先于 Analytics 冻结；Platform Module Registry 放入 M3.9 收尾复核。
 - 2026-07-22 固定 M3 最终路线并补充 Governance Note：Website -> Content -> SEO / GEO -> CMS -> Lead -> Platform Assets -> Dealer Center -> Analytics -> Security / Permission -> Platform Freeze Review -> M4 Platform Runtime。M3 Governance Enhancement 属于治理演进，不是新的 Platform Capability，不改变已冻结 Milestone 编号；后续只允许增加 Governance，不允许重新排列 Milestone。M4 统一命名为 Platform Runtime，不拆为 CMS Runtime 或 Website Runtime。
+- 2026-07-22 固化 Platform Evolution Principle 与 Platform Stability Rules：平台采用 Freeze First, Runtime Later。M3 冻结 Platform Capability、Architecture Boundary、Governance 和 Documentation；M4 负责 Runtime Implementation，不重新讨论已冻结架构设计。已冻结 Platform Module 如需调整，仅允许通过 ADR 进行重大架构决策，不因 Runtime 实现细节修改 M3 Architecture Freeze。稳定性规则包括 Runtime Follows Architecture 与 No Runtime-Driven Architecture Changes。M4 统一使用 `M4 — Platform Runtime`，不使用 CMS Runtime、Website Runtime、Runtime Development 或 Platform Development 作为阶段名。
 
 ## M2.4.5.3 Product Detail 决策
 

@@ -10,6 +10,8 @@
 - 明确 Platform Module Registry 延后到 M3.9 收尾复核，不在当前阶段新增独立文档或 Root Docs。
 - 补充 Governance Note，固定 M3 最终路线，并明确后续只允许增加 Governance，不允许重新排列 Milestone。
 - 明确 M4 统一命名为 Platform Runtime，不拆成 CMS Runtime 或 Website Runtime。
+- 新增 Platform Evolution Principle：Freeze First, Runtime Later；M3 冻结 Platform Capability、Architecture Boundary、Governance 和 Documentation，M4 负责 Runtime Implementation。
+- 新增 Platform Stability Rules：Runtime Follows Architecture、No Runtime-Driven Architecture Changes、Single Source of Truth；已冻结模块调整只能通过 ADR 进行重大架构决策。
 - 同步更新 `.ai` 规则、Roadmap、TODO、Memory 和治理校验清单，避免模块重复定义和文档漂移。
 
 ## [0.3.7] - 2026-07-21
