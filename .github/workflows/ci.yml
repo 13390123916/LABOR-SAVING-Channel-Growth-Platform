@@ -61,8 +61,20 @@ jobs:
           test -f docs/PRODUCT_PUBLISHING_CHECKLIST.md
           test -f docs/PRODUCT_CONTENT_READINESS.md
           test -f docs/MILESTONE_MAPPING.md
+          test -f docs/PLATFORM_ARCHITECTURE.md
+          test -f docs/AUTH_SYSTEM.md
+          test -f docs/CMS_SYSTEM.md
+          test -f docs/MEDIA_SYSTEM.md
+          test -f docs/LEAD_CENTER.md
+          test -f docs/PLATFORM_ASSETS.md
           test -f docs/adr/README.md
           test -f docs/adr/ADR-0001-m2-freeze-and-m3-platform-foundation.md
+          test -f docs/adr/ADR-0007-cms-architecture.md
+          test -f docs/adr/ADR-0008-database-model.md
+          test -f docs/adr/ADR-0009-authentication-and-authorization.md
+          test -f docs/adr/ADR-0010-media-management.md
+          test -f docs/adr/ADR-0011-lead-center.md
+          test -f docs/adr/ADR-0012-platform-assets.md
           test -f docs/PARTNER_FUNNEL.md
           test -f docs/PARTNER_CONTENT_MODEL.md
           test -f docs/PARTNER_SEO_TEMPLATE.md

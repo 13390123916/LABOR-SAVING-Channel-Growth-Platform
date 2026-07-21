@@ -144,10 +144,10 @@ M3.2 后续平台能力按以下方向拆分：
 
 - M3.3 Media Management
 - M3.4 Lead Center
-- M3.5 SEO Runtime
-- M3.6 GEO Runtime
-- M3.7 Audit Center
-- M3.8 Backup & Restore
+- M3.5 Platform Assets
+- M3.6 SEO Runtime
+- M3.7 GEO Runtime
+- M3.8 Audit Center / Backup & Restore
 - M3.9 Deployment & Analytics
 
 CMS 不吞并这些运行中心，只定义与它们的关系。

@@ -55,7 +55,7 @@ GEO Runtime
 
 - Media 在 M3.2 只作为已审核资产引用，不实现上传、裁剪、图库、授权审核或文件存储运行时；这些进入 M3.3 Media Management。
 - Lead 在 M3.2 只配置 Lead Entry、CTA 和来源映射，不实现 Lead Center；这些进入 M3.4 Lead Center。
-- SEO Metadata 和 Schema Metadata 在 M3.2 只维护字段与审核状态，不实现 sitemap、robots、IndexNow 或站长平台提交；这些进入 M3.5 SEO Runtime。
+- SEO Metadata 和 Schema Metadata 在 M3.2 只维护字段与审核状态，不实现 sitemap、robots、IndexNow 或站长平台提交；这些进入 M3.6 SEO Runtime。
 - GEO 内容结构在 M3.2 只维护可引用问答和摘要字段，不实现 GEO Feed；这些进入 M3.6 GEO Runtime。
 - Audit Log 在 M3.2 只定义写入边界，不实现审计中心；这些进入 M3.7 Audit Center。
 
@@ -400,10 +400,10 @@ M3.1 Authentication & Authorization
 M3.2 CMS Architecture
 M3.3 Media Management Architecture
 M3.4 Lead Center Architecture
-M3.5 SEO Runtime Architecture
-M3.6 GEO Runtime Architecture
-M3.7 Audit Center Architecture
-M3.8 Backup & Restore Architecture
+M3.5 Platform Assets Architecture
+M3.6 SEO Runtime Architecture
+M3.7 GEO Runtime Architecture
+M3.8 Audit Center / Backup & Restore Architecture
 M3.9 Deployment & Analytics Architecture
 M4 Platform Runtime
 ```

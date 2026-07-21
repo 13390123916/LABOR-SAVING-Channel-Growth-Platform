@@ -2,7 +2,7 @@
 
 当前已进入 M2.4.5.3.5 First Published Product Acceptance：详情模板与发布门禁已建立；未满足 `published + schemaEligible + contentValidated + releaseApproved` 的实体不生成详情 URL、Product Schema 或 sitemap，LS70 保持非实体占位。
 
-当前平台阶段：M3 Website Platform Foundation。`docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的结构入口。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M3.2 CMS Architecture 已完成架构冻结，见 ADR-0007 与 `docs/CMS_SYSTEM.md`；M3.3 Media Management Architecture 已完成架构冻结，见 ADR-0010 与 `docs/MEDIA_SYSTEM.md`；M3.4 Lead Center Architecture 已完成架构冻结，见 ADR-0011 与 `docs/LEAD_CENTER.md`。M2 Channel Growth Foundation 已冻结为 v1.0，历史 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3。后续 M3.5-M3.9 继续做架构冻结，真正运行时代码统一进入 M4 Platform Runtime。
+当前平台阶段：M3 Website Platform Foundation。`docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的结构入口。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M3.2 CMS Architecture 已完成架构冻结，见 ADR-0007 与 `docs/CMS_SYSTEM.md`；M3.3 Media Management Architecture 已完成架构冻结，见 ADR-0010 与 `docs/MEDIA_SYSTEM.md`；M3.4 Lead Center Architecture 已完成架构冻结，见 ADR-0011 与 `docs/LEAD_CENTER.md`；M3.5 Platform Assets Architecture 已完成架构冻结，见 ADR-0012 与 `docs/PLATFORM_ASSETS.md`。M2 Channel Growth Foundation 已冻结为 v1.0，历史 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3。后续 M3.6-M3.9 继续做架构冻结，真正运行时代码统一进入 M4 Platform Runtime。
 
 雷普赛维渠道增长平台是面向工业装备渠道合作、终端客户询盘、中国 SEO 与国内 AI 搜索优化的长期增长平台，不是普通企业官网。
 
@@ -54,6 +54,7 @@
 - 已完成 M3.2 CMS Architecture：ADR-0007 与 `docs/CMS_SYSTEM.md` 已冻结内容管理架构
 - 已完成 M3.3 Media Management Architecture：ADR-0010 与 `docs/MEDIA_SYSTEM.md` 已冻结媒体领域架构；本阶段不实现文件上传、图库 UI、ORM、迁移、裁切转码或 CDN 接入
 - 已完成 M3.4 Lead Center Architecture：ADR-0011 与 `docs/LEAD_CENTER.md` 已冻结线索领域架构；本阶段不实现表单提交、CRM 后台、ORM、迁移、通知、导出或 Admin UI
+- 已完成 M3.5 Platform Assets Architecture：ADR-0012 与 `docs/PLATFORM_ASSETS.md` 已冻结平台公共资产架构；Platform Assets 属于 Platform Layer，不是 CMS Content、Lead Data、Dealer Data 或 Runtime；本阶段不新增 API、Database Migration、后台、CMS 或 Runtime
 
 ## 平台成熟度
 
@@ -67,6 +68,7 @@ Authentication Architecture  100%
 CMS Architecture             100%
 Media Management Architecture 100%
 Lead Center Architecture      100%
+Platform Assets Architecture  100%
 SEO Runtime                    0%
 GEO Runtime                    0%
 Audit Center                   0%
@@ -100,12 +102,14 @@ Platform 阅读顺序：`README.md` -> `docs/PLATFORM_ARCHITECTURE.md` -> `docs/
 - `docs/CMS_SYSTEM.md`
 - `docs/MEDIA_SYSTEM.md`
 - `docs/LEAD_CENTER.md`
+- `docs/PLATFORM_ASSETS.md`
 - `docs/adr/README.md`
 - `docs/adr/ADR-0007-cms-architecture.md`
 - `docs/adr/ADR-0008-database-model.md`
 - `docs/adr/ADR-0009-authentication-and-authorization.md`
 - `docs/adr/ADR-0010-media-management.md`
 - `docs/adr/ADR-0011-lead-center.md`
+- `docs/adr/ADR-0012-platform-assets.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/PARTNER_CONTENT_MODEL.md`
 - `docs/PARTNER_SEO_TEMPLATE.md`

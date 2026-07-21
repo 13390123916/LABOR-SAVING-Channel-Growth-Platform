@@ -29,6 +29,8 @@ Media
         |
 Lead Center
         |
+Platform Assets
+        |
 SEO Runtime
         |
 GEO Runtime
@@ -74,6 +76,7 @@ Runtime
 | CMS | 管理 Product、Industry、Article、Partner、FAQ、Download、Navigation、SEO Metadata、Schema Metadata、Redirect 和 Setting | 不吞并 Media、Lead、SEO Runtime、GEO Runtime、Audit Center 或 Backup |
 | Media | 管理媒体实体、元数据、授权、图片版本、缩略图、WebP / AVIF 预留、存储适配、CDN 边界和引用关系 | 不直接编辑页面内容，不承担 Lead、SEO 提交或备份归档 |
 | Lead Center | 管理 Partner Lead、Customer Lead、状态、分配、筛选、导出和 CRM 输入 | 不替代 CMS 内容审核或营销承诺 |
+| Platform Assets | 管理 Company Profile、Brand Assets、Social Media Hub、Download Center、Friend Links、Contact Center 和 System Settings | 不替代 CMS Content、Lead Data、Dealer Data 或 Runtime |
 | SEO Runtime | 管理 sitemap、robots、RSS、canonical、redirect、IndexNow 和站长平台提交 | 不生成未经审核的 Metadata 或 Schema |
 | GEO Runtime | 管理 AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产 | 不编造产品参数、案例、收益或授权政策 |
 | Audit Center | 查询、归档、导出操作日志和高风险动作追踪 | 不允许编辑或软删除 Audit Log |
@@ -100,7 +103,7 @@ Media 为 Product、Industry、Article、Partner、FAQ、Download、SEO Metadata
 
 ### 4.5 Runtime 是公开输出层
 
-SEO Runtime 和 GEO Runtime 只消费已审核内容、Metadata、Schema、Media 和发布状态，不直接生成未经审核的事实内容。
+Platform Assets 为全站公共事实、品牌资产、社媒入口、下载中心、友情链接、联系方式和系统设置提供统一输入。SEO Runtime 和 GEO Runtime 只消费已审核内容、Metadata、Schema、Media、Platform Assets 和发布状态，不直接生成未经审核的事实内容。
 
 ### 4.6 Audit 与 Backup 是治理底座
 
@@ -163,12 +166,12 @@ Configured
 | M3.1 Authentication & Authorization | 已冻结 | Authentication、Authorization、RBAC、Permission、Role、Resource、Audit、Login Flow、Session、Future SSO |
 | M3.2 CMS Architecture | 已冻结 | CMS Resource、Content Type、Field Group、Workflow、Permission Integration、Audit Integration、Import / Export、Future Platform Split |
 | M3.3 Media Management Architecture | 已冻结 | Media Entity、Media Metadata、Asset 生命周期、图片版本、ALT 来源、WebP / AVIF 预留、Thumbnail Strategy、Storage Adapter、CDN Boundary、Watermark Strategy、引用关系 |
-| M3.4 Lead Center Architecture | 本轮冻结 | Lead Entity、Lead Type、字段分层、来源归因、生命周期、分配、去重、隐私、导出边界、CRM 输入、权限、审计 |
-| M3.5 SEO Runtime | 待启动 | sitemap、robots、RSS、canonical、redirect、IndexNow、站长平台接入 |
-| M3.6 GEO Runtime | 待启动 | AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产 |
-| M3.7 Audit Center | 待启动 | 操作日志、审计查询、归档、合规导出和高风险动作追踪 |
-| M3.8 Backup & Restore | 待启动 | 数据备份、恢复、版本回滚、灾备和批量归档 |
-| M3.9 Deployment & Analytics | 待启动 | 部署运行、监控、流量、转化、渠道、活动来源和 CRM 集成 |
+| M3.4 Lead Center Architecture | 已冻结 | Lead Entity、Lead Type、字段分层、来源归因、生命周期、分配、去重、隐私、导出边界、CRM 输入、权限、审计 |
+| M3.5 Platform Assets Architecture | 本轮冻结 | Company Profile、Brand Assets、Social Media Hub、Download Center、Friend Links、Contact Center、System Settings |
+| M3.6 SEO Runtime Architecture | 待启动 | sitemap、robots、RSS、canonical、redirect、IndexNow、站长平台接入 |
+| M3.7 GEO Runtime Architecture | 待启动 | AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产 |
+| M3.8 Audit Center / Backup & Restore Architecture | 待启动 | 操作日志、审计查询、归档、合规导出、数据备份、恢复、版本回滚、灾备和批量归档 |
+| M3.9 Deployment & Analytics Architecture | 待启动 | 部署运行、监控、流量、转化、渠道、活动来源和 CRM 集成 |
 
 ## 7. ADR 治理规则
 
@@ -248,6 +251,7 @@ Platform 阅读顺序：
 6. `docs/CMS_SYSTEM.md`
 7. `docs/MEDIA_SYSTEM.md`
 8. `docs/LEAD_CENTER.md`
+9. `docs/PLATFORM_ASSETS.md`
 
 ## 11. 验收标准
 

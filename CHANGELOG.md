@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.7] - 2026-07-21
+
+### Added
+
+- 新增 `docs/PLATFORM_ASSETS.md`，冻结 M3.5 Platform Assets Architecture 的 Company Profile、Brand Assets、Social Media Hub、Download Center、Friend Links、Contact Center 和 System Settings。
+- 新增 ADR-0012 Platform Assets Architecture，确认 Platform Assets 属于 Platform Layer，不是 CMS Content、Lead Data、Dealer Data 或 Runtime。
+
+### Changed
+
+- 明确当前 Repository 只服务中国大陆 `.cn`；国际 `.com` 未来独立建设，不在当前 Repository 内实现国际化、多语言或 i18n。
+- 将 M3.5 从 SEO Runtime 调整为 Platform Assets Architecture Freeze，SEO Runtime 顺延至 M3.6，继续保持 M4 前不进入 Runtime。
+- 同步更新 Platform Architecture、Roadmap、TODO、Memory、PRD、README、Project Structure、ADR Index 与治理校验清单。
+
 ## [0.3.6] - 2026-07-21
 
 ### Added
@@ -11,7 +24,7 @@
 
 - 将 `docs/PLATFORM_ARCHITECTURE.md` 提升为 Platform 结构入口，明确 README -> Platform Architecture -> Roadmap -> ADR 的阅读顺序。
 - 明确 ADR 只记录重大平台方向决策，不为字段微调、上传策略、导出格式或列表筛选单独创建 ADR。
-- 将 M3.5-M3.9 继续定位为架构冻结阶段，真正运行时代码统一进入 M4 Platform Runtime。
+- 将后续 M3 阶段继续定位为架构冻结阶段，真正运行时代码统一进入 M4 Platform Runtime。
 - 同步更新 Roadmap、TODO、Memory、PRD、README、Project Structure、AI Context、ADR Index 与治理校验清单。
 
 ## [0.3.5] - 2026-07-21

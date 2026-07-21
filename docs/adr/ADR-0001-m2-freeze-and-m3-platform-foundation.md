@@ -14,7 +14,7 @@ M2 已完成 Entity、Product、Metadata、SEO Schema、Product Rendering 与 Pu
 
 未执行的 M2.6 Lead Capture、M2.7 Admin Maintainability、M2.8 Batch Export 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3，不删除或重编号历史里程碑。
 
-启动 `M3 Website Platform Foundation`，依次冻结 Database Architecture、Authentication & Authorization、CMS Architecture、Media Management Architecture、Lead Center Architecture、SEO Runtime Architecture、GEO Runtime Architecture、Audit Center Architecture、Backup & Restore Architecture、Deployment & Analytics Architecture。真正运行时代码统一进入 M4 Platform Runtime。
+启动 `M3 Website Platform Foundation`，依次冻结 Database Architecture、Authentication & Authorization、CMS Architecture、Media Management Architecture、Lead Center Architecture、Platform Assets Architecture、SEO Runtime Architecture、GEO Runtime Architecture、Audit Center / Backup & Restore Architecture、Deployment & Analytics Architecture。真正运行时代码统一进入 M4 Platform Runtime。
 
 ## 后果
 

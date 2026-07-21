@@ -26,7 +26,7 @@
 
 本轮继续完成 M3.4 Lead Center Architecture 架构冻结：新增 `docs/LEAD_CENTER.md` 与 ADR-0011。确认 `docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的结构入口，阅读顺序为 README -> Platform Architecture -> Roadmap -> ADR；ADR 只记录重大平台方向决策。Lead Domain 覆盖 Lead Entity、Lead Type、字段分层、来源归因、生命周期、分配、去重、隐私、导出边界、CRM 输入、权限和审计。未创建表单提交、CRM 后台、ORM、迁移、通知、导出运行时、API 或 Admin UI。
 
-本轮同步确认 M3.5-M3.9 继续保持架构冻结，真正运行时代码统一进入 M4 Platform Runtime。
+本轮同步确认 M3.5 Platform Assets Architecture 已完成架构冻结，M3.6-M3.9 继续保持架构冻结，真正运行时代码统一进入 M4 Platform Runtime。
 
 ## 2. 审计范围
 
@@ -51,7 +51,7 @@
 | M3.2 CMS Architecture | 通过 | ADR-0007、CMS System、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
 | M3.3 Media Management Architecture | 通过 | ADR-0010、Platform Architecture、Media System、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
 | M3.4 Lead Center Architecture | 通过 | ADR-0011、Lead Center、Platform Architecture、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
-| M4 Runtime 边界 | 通过 | M3.5-M3.9 继续 Architecture Freeze，Prisma、Migration、Database、RBAC、CMS、Media、Lead、SEO Runtime、API、Admin UI 统一进入 M4 |
+| M4 Runtime 边界 | 通过 | M3.5 Platform Assets 已冻结；M3.6-M3.9 继续 Architecture Freeze，Prisma、Migration、Database、RBAC、CMS、Media、Lead、Platform Assets、SEO Runtime、API、Admin UI 统一进入 M4 |
 | 产品实体与分类渲染 | 通过 | Entity 4、Listing 4、Category Total 4、Category Routes 2 |
 | 未发布详情保护 | 通过 | Published Detail Routes 0，LS70 不在 Entity 数据源 |
 | 发布门禁 | 通过 | `published + schemaEligible + contentValidated + releaseApproved` |
@@ -78,4 +78,4 @@ cd website && npm run build
 - L60 仍缺公开范围、真实图片与授权、市场上线批准、sitemap/robots 和外部收录证据，不能改变发布状态。
 - M3.0、M3.1、M3.2、M3.3 与 M3.4 均为架构冻结，尚未实现数据库迁移、ORM、认证、CMS、媒体上传、线索提交或 Search Runtime；这些统一进入 M4 Platform Runtime。
 - Lead Runtime 尚未开始；后续实现必须沿用 `docs/LEAD_CENTER.md` 与 ADR-0011，不得直接把 M3.4 简化为表单提交功能。
-- 下一步应进入 M3.5 SEO Runtime Architecture，继续冻结 sitemap、robots、RSS、canonical、redirect、IndexNow 与站长平台接入边界，不提前编写搜索运行时代码。
+- 下一步应进入 M3.6 SEO Runtime Architecture，继续冻结 sitemap、robots、RSS、canonical、redirect、IndexNow 与站长平台接入边界，不提前编写搜索运行时代码。
