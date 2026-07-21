@@ -1,0 +1,25 @@
+name: Feature Request
+description: 提交新的平台能力、结构优化或基础设施需求
+labels: [enhancement]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: 目标
+      description: 说明想解决什么业务或架构问题。
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 建议范围
+      description: 说明建议变更涉及哪些模块。
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: 约束与风险
+      description: 说明 SEO、GEO、合规或维护性约束。
+    validations:
+      required: true

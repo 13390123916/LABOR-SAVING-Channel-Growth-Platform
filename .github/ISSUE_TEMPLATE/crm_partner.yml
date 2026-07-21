@@ -1,0 +1,25 @@
+name: CRM / Partner Task
+description: 适用于线索、分配、代理商、跟进和后台相关任务
+labels: [crm]
+body:
+  - type: textarea
+    id: process
+    attributes:
+      label: 流程说明
+      description: 描述线索从进入到分配、跟进的流程。
+    validations:
+      required: true
+  - type: textarea
+    id: roles
+    attributes:
+      label: 角色与权限
+      description: 说明涉及哪些角色或区域。
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: 数据字段
+      description: 说明需要哪些字段、状态或记录。
+    validations:
+      required: true

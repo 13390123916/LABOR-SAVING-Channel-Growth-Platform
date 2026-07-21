@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  repository-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate repository files
+        run: |
+          test -f README.md
+          test -f PROJECT_PRD.md
+          test -f ROADMAP.md
+          test -f TODO.md
+          test -f CHANGELOG.md
+          test -f CONTRIBUTING.md
+          test -f LICENSE
+          test -f .github/CODEOWNERS
+          test -f .ai/AI_PROJECT_OPERATING_SYSTEM.md
+
+      - name: Validate docs folders
+        run: |
+          test -f docs/ARCHITECTURE.md
+          test -f docs/DATABASE.md
+          test -f docs/API.md
+          test -f docs/SEO.md
+          test -f docs/GEO.md
+          test -f docs/CRM.md
+          test -f docs/PARTNER.md
+          test -f docs/CONTENT.md
+          test -f docs/STYLEGUIDE.md
+          test -f docs/DEPLOYMENT.md

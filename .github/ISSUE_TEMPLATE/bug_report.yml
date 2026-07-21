@@ -1,0 +1,25 @@
+name: Bug Report
+description: 记录仓库、构建、文档或部署问题
+labels: [bug]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题概述
+      description: 清晰说明问题是什么。
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: 影响范围
+      description: 说明影响哪些模块或流程。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果
+      description: 说明你期望系统如何表现。
+    validations:
+      required: true

@@ -1,0 +1,25 @@
+name: Content / SEO / GEO Task
+description: 适用于内容、关键词、知识库、FAQ、AI 搜索优化任务
+labels: [content]
+body:
+  - type: textarea
+    id: page_or_topic
+    attributes:
+      label: 页面或主题
+      description: 说明要优化的页面、主题或实体。
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: 优化目标
+      description: 说明要提升什么结果。
+    validations:
+      required: true
+  - type: textarea
+    id: facts
+    attributes:
+      label: 真实资料
+      description: 请提供可以直接使用的真实事实、参数或政策。
+    validations:
+      required: true
