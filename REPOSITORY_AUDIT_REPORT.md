@@ -1,8 +1,8 @@
 # Repository Audit Report
 
-项目：LABOR-SAVING-Channel-Growth-Platform（雷普赛维渠道增长平台）
+项目：LABOR-SAVING Channel Growth Platform（雷普赛维渠道增长平台）
 
-审计阶段：M0 Repository Audit
+审计阶段：M1 Repository Audit
 
 审计日期：2026-07-21
 
@@ -11,22 +11,40 @@
 - `PROJECT_STRUCTURE.md`
 - `.ai/AI_PROJECT_OPERATING_SYSTEM.md`
 - `CODEX_SYSTEM_PROMPT.md`
+- `docs/ROADMAP.md`
+- `docs/TODO.md`
+- `docs/WEBSITE_ARCHITECTURE.md`
+- `docs/WEBSITE_SEO_BLUEPRINT.md`
+- `docs/CONTENT_SYSTEM.md`
+- `.github/workflows/ci.yml`
 
-审计范围：
+审计口径：
 
-- `.ai/`
-- `docs/`
-- `.github/`
-- `README.md`
-- `LICENSE`
-- `CONTRIBUTING.md`
-- GitHub Actions
-- Issue Templates
-- Pull Request Template
+- 以 `git ls-files` 中受版本控制文件为准。
+- 不将 `.next/`、`node_modules/`、`next-env.d.ts`、`tsconfig.tsbuildinfo` 等本地生成物纳入仓库结构判断。
 
-## 1. 当前仓库目录树
+## 1. 审计结论
 
-以下目录树基于 Git 当前受版本控制文件生成，不包含 `.git/`、`node_modules/`、`.next/` 等 ignored 本地缓存。
+当前仓库已完成 M0、M0.1 与 M1 Website Foundation 主体交付，具备进入 M2 Website Development 或 M2 Lead Capture Foundation 的基础。
+
+总体评分：94 / 100
+
+结论：
+
+- AI Governance：通过。
+- Website Architecture：通过。
+- SEO/GEO Strategy：通过。
+- Website Technical Skeleton：通过。
+- Content System：通过。
+- CI Governance：通过。
+
+主要整改项：
+
+- `PROJECT_STRUCTURE.md` 在审计开始时仍残留 `website/config`、`website/lib`，与 M1.2 “只保留骨架”不一致。本次审计已修正。
+- `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 的文档同步清单尚未显式列入 `docs/WEBSITE_ARCHITECTURE.md`、`docs/WEBSITE_SEO_BLUEPRINT.md`、`docs/CONTENT_SYSTEM.md`，建议下一次治理升级到 V1.2 时纳入。
+- M2 下一阶段命名在文档中存在 “Website Development” 与 “Lead Capture Foundation” 两种入口表达，建议启动 M2 前明确优先顺序。
+
+## 2. 当前受版本控制目录树
 
 ```text
 /
@@ -46,6 +64,7 @@
 │  │  ├─ content_seo_geo.yml
 │  │  ├─ crm_partner.yml
 │  │  └─ feature_request.yml
+│  ├─ pull_request_template.md
 │  └─ workflows/
 │     └─ ci.yml
 ├─ archive/
@@ -59,19 +78,24 @@
 ├─ docs/
 │  ├─ API.md
 │  ├─ ARCHITECTURE.md
-│  ├─ CHANGELOG.md
 │  ├─ CONTENT.md
+│  ├─ CONTENT_SYSTEM.md
 │  ├─ CRM.md
 │  ├─ DATABASE.md
 │  ├─ DEPLOYMENT.md
 │  ├─ GEO.md
+│  ├─ GIT_WORKFLOW.md
+│  ├─ ISSUE_WORKFLOW.md
 │  ├─ MEMORY.md
 │  ├─ PARTNER.md
 │  ├─ PROJECT_PRD.md
+│  ├─ REPOSITORY_MAINTENANCE.md
 │  ├─ ROADMAP.md
 │  ├─ SEO.md
 │  ├─ STYLEGUIDE.md
-│  └─ TODO.md
+│  ├─ TODO.md
+│  ├─ WEBSITE_ARCHITECTURE.md
+│  └─ WEBSITE_SEO_BLUEPRINT.md
 ├─ geo/
 │  └─ .gitkeep
 ├─ marketing/
@@ -79,326 +103,209 @@
 ├─ partner/
 │  └─ .gitkeep
 ├─ scripts/
-│  └─ .gitkeep
+│  ├─ .gitkeep
+│  └─ validate-website-governance.mjs
 ├─ seo/
 │  └─ .gitkeep
 ├─ website/
+│  ├─ .env.example
 │  ├─ .gitignore
-│  └─ README.md
+│  ├─ README.md
+│  ├─ app/
+│  │  ├─ layout.tsx
+│  │  └─ page.tsx
+│  ├─ components/
+│  │  └─ layout/
+│  │     └─ site-shell.tsx
+│  ├─ public/
+│  │  └─ .gitkeep
+│  ├─ styles/
+│  │  └─ globals.css
+│  ├─ eslint.config.mjs
+│  ├─ next.config.ts
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ postcss.config.mjs
+│  └─ tsconfig.json
 ├─ .gitignore
 ├─ CHANGELOG.md
 ├─ CODEX_SYSTEM_PROMPT.md
 ├─ CONTRIBUTING.md
 ├─ LICENSE
-├─ PROJECT_PRD.md
 ├─ PROJECT_STRUCTURE.md
 ├─ README.md
-├─ ROADMAP.md
-└─ TODO.md
+└─ REPOSITORY_AUDIT_REPORT.md
 ```
 
-## 2. 已存在文件列表
-
-### 根目录文件
-
-- `.gitignore`
-- `CHANGELOG.md`
-- `CODEX_SYSTEM_PROMPT.md`
-- `CONTRIBUTING.md`
-- `LICENSE`
-- `PROJECT_PRD.md`
-- `PROJECT_STRUCTURE.md`
-- `README.md`
-- `ROADMAP.md`
-- `TODO.md`
-
-### `.ai/`
-
-- `.ai/AI_CONTEXT.md`
-- `.ai/AI_MEMORY.md`
-- `.ai/AI_OUTPUT_STANDARD.md`
-- `.ai/AI_PROJECT_OPERATING_SYSTEM.md`
-- `.ai/AI_RULES.md`
-- `.ai/AI_WORKFLOW.md`
-- `.ai/PROMPTS.md`
-
-### `.github/`
-
-- `.github/CODEOWNERS`
-- `.github/ISSUE_TEMPLATE/bug_report.yml`
-- `.github/ISSUE_TEMPLATE/config.yml`
-- `.github/ISSUE_TEMPLATE/content_seo_geo.yml`
-- `.github/ISSUE_TEMPLATE/crm_partner.yml`
-- `.github/ISSUE_TEMPLATE/feature_request.yml`
-- `.github/workflows/ci.yml`
-
-### `docs/`
-
-- `docs/API.md`
-- `docs/ARCHITECTURE.md`
-- `docs/CHANGELOG.md`
-- `docs/CONTENT.md`
-- `docs/CRM.md`
-- `docs/DATABASE.md`
-- `docs/DEPLOYMENT.md`
-- `docs/GEO.md`
-- `docs/MEMORY.md`
-- `docs/PARTNER.md`
-- `docs/PROJECT_PRD.md`
-- `docs/ROADMAP.md`
-- `docs/SEO.md`
-- `docs/STYLEGUIDE.md`
-- `docs/TODO.md`
-
-### 长期模块目录
-
-- `archive/.gitkeep`
-- `assets/.gitkeep`
-- `crm/.gitkeep`
-- `deploy/.gitkeep`
-- `geo/.gitkeep`
-- `marketing/.gitkeep`
-- `partner/.gitkeep`
-- `scripts/.gitkeep`
-- `seo/.gitkeep`
-- `website/.gitignore`
-- `website/README.md`
-
-## 3. 缺失文件列表
-
-### 高优先级缺失
-
-1. `.github/pull_request_template.md`
-   - 影响：用户要求检查范围包含 Pull Request Template，但当前 Git 跟踪文件中不存在 PR Template。
-   - 风险：后续 PR 缺少统一审查结构，影响团队协作和 AI 协作质量。
-
-2. `website/app/`
-   - 影响：`PROJECT_STRUCTURE.md` 规划了 `website/app/`，当前 GitHub 仓库未跟踪该目录。
-   - 风险：M0 阶段不开发业务页面是正确的，但从目录规范角度看，website 子目录结构尚未完整入库。
-
-3. `website/application/`
-4. `website/components/`
-5. `website/config/`
-6. `website/domain/`
-7. `website/features/`
-8. `website/infrastructure/`
-9. `website/lib/`
-10. `website/public/`
-   - 影响：上述目录均在 `PROJECT_STRUCTURE.md` 中出现，但当前仅有 `website/README.md` 和 `website/.gitignore`。
-   - 风险：后续 M1 初始化 Next.js 时需要一次性补齐，避免目录临时扩张。
-
-### 中优先级缺失
-
-1. `docs/ISSUE_WORKFLOW.md`
-   - 影响：当前已有 Issue Template，但缺少 Issue 与 TODO 同步规则文档。
-   - 风险：Repository Maintenance 要求 Issue 与 TODO 同步，当前规范未单独固化。
-
-2. `docs/GIT_WORKFLOW.md`
-   - 影响：Commit 规范分散在 `CODEX_SYSTEM_PROMPT.md` 和 `CONTRIBUTING.md`。
-   - 风险：团队成员或后续 AI 可能无法快速定位 Git 工作流。
-
-3. `docs/REPOSITORY_MAINTENANCE.md`
-   - 影响：长期维护要求已由用户提出，但尚未沉淀为专门文档。
-   - 风险：后续审计、重构、目录治理、文档同步缺少独立执行标准。
-
-## 4. 不符合规范的问题
-
-### P1：缺少 Pull Request Template
-
-用户明确要求检查 PR Template，当前 `.github/` 下没有受版本控制的 `pull_request_template.md`。
-
-影响：
-
-- PR 审查缺少固定字段。
-- 架构影响、SEO/GEO 影响、文档更新、测试结果可能遗漏。
-
-建议：
-
-- 在下一次整改中新增 `.github/pull_request_template.md`。
-
-### P1：`PROJECT_STRUCTURE.md` 与当前 `website/` 目录不一致
-
-`PROJECT_STRUCTURE.md` 规定 `website/` 下应包含 `app/`、`application/`、`components/`、`config/`、`domain/`、`features/`、`infrastructure/`、`lib/`、`public/`。
-
-当前 GitHub 仓库中只跟踪：
-
-- `website/.gitignore`
-- `website/README.md`
-
-判断：
-
-- 因 M0 明确“不开发业务页面”，不生成 Next.js 业务代码是合理的。
-- 但从目录结构合规性看，M0 可以通过 `.gitkeep` 补齐空目录，避免 M1 再临时建结构。
-
-### P2：根目录文档与 docs 文档存在轻度重复
-
-根目录存在：
-
-- `PROJECT_PRD.md`
-- `ROADMAP.md`
-- `TODO.md`
-- `CHANGELOG.md`
-
-docs 中也存在：
-
-- `docs/PROJECT_PRD.md`
-- `docs/ROADMAP.md`
-- `docs/TODO.md`
-- `docs/CHANGELOG.md`
-
-当前 docs 版本主要作为指向根目录版本的简化入口。
-
-风险：
-
-- 长期维护中容易出现根目录版本与 docs 版本内容不同步。
-
-建议：
-
-- 明确根目录文件为“项目入口文档”。
-- `docs/` 中对应文件作为“详细文档”或删除重复入口，二选一。
-
-### P2：`.ai/AI_PROJECT_OPERATING_SYSTEM.md` 内容过短
-
-当前 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 已覆盖身份和统一约束，但相比 `CODEX_SYSTEM_PROMPT.md`，缺少以下细节：
-
-- 中国 SEO 平台清单
-- GEO 平台清单
-- Git Commit 禁止词
-- 每次开发必须更新的文档列表
-- 遇到 SEO/GEO/商业模式/长期维护影响时停止编码的明确流程
-
-风险：
-
-- 后续 AI 若只读取 `.ai/AI_PROJECT_OPERATING_SYSTEM.md`，可能无法完整继承最高工作流。
-
-建议：
-
-- 将 `CODEX_SYSTEM_PROMPT.md` 的关键规则同步压缩进 `.ai/AI_PROJECT_OPERATING_SYSTEM.md`。
-
-### P2：`docs/CHANGELOG.md`、`docs/TODO.md` 信息密度偏低
-
-当前 `docs/CHANGELOG.md` 与 `docs/TODO.md` 主要指向根目录对应文件，不能独立承担 docs 体系中的长期追踪职责。
-
-建议：
-
-- 明确根目录版本为操作入口，docs 版本为长期归档。
-- 或者将 docs 中重复文档移除，避免重复维护。
-
-### P3：本地工作区存在 ignored 历史残留
-
-本地 `website/` 中存在 ignored 文件：
-
-- `website/.env.example`
-- `website/.next/`
-- `website/app/`
-- `website/next-env.d.ts`
-- `website/node_modules/`
-
-这些文件未进入 GitHub 仓库，不影响当前远端仓库内容。
-
-风险：
-
-- 后续本地审计如果不区分 Git 跟踪文件和 ignored 文件，容易误判仓库状态。
-
-建议：
-
-- 在 M1 正式初始化 `website/` 前清理本地 ignored 残留，或重新生成干净的 Next.js 工程。
-
-## 5. 文档完整度评分
-
-评分：82 / 100
-
-评分依据：
-
-- 已具备 README、PRD、ROADMAP、TODO、CHANGELOG、CONTRIBUTING、LICENSE。
-- docs 覆盖 Architecture、Database、API、SEO、GEO、CRM、Partner、Content、Styleguide、Deployment。
-- 文档已经覆盖项目定位、商业目标、技术方向和阶段规划。
-- 扣分点主要来自重复文档边界不清、部分 docs 文档较薄、Repository Maintenance 规范尚未独立文档化、PR Template 缺失。
-
-## 6. AI 上下文完整度评分
-
-评分：78 / 100
-
-评分依据：
-
-- `.ai/` 已具备 Context、Memory、Rules、Workflow、Output Standard、Prompts 和 Operating System。
-- `CODEX_SYSTEM_PROMPT.md` 对项目商业模式、SEO/GEO、Git、文档闭环描述较完整。
-- 扣分点主要是 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 本身较短，未完整吸收 `CODEX_SYSTEM_PROMPT.md` 和用户最新 Repository Maintenance 要求。
-
-## 7. Git 规范检查
-
-### 当前分支
-
-- `main`
-
-### 远程仓库
-
-- `origin git@github.com:13390123916/LABOR-SAVING-Channel-Growth-Platform.git`
-
-### 最近提交
+## 3. 检查项结果
+
+| 检查项 | 结果 | 说明 |
+| --- | --- | --- |
+| 根目录职责 | 通过 | 根目录保留 `README.md`、`CHANGELOG.md`、入口规范和审计报告，无重复 `PROJECT_PRD.md`、`ROADMAP.md`、`TODO.md` |
+| `.ai/` 上下文 | 通过 | AI 操作系统、上下文、规则、工作流、记忆和输出标准齐全 |
+| GitHub 协作文件 | 通过 | CODEOWNERS、Issue Templates、PR Template、CI 均存在 |
+| `docs/` 文档体系 | 通过 | PRD、Roadmap、TODO、Memory、Architecture、SEO、GEO、CRM、Partner、Content、Deployment、Website M1 文档齐全 |
+| M1 Website Architecture | 通过 | `docs/WEBSITE_ARCHITECTURE.md` 已定义导航权重、完整 IA、加盟合作结构 |
+| M1 SEO/GEO Blueprint | 通过 | `docs/WEBSITE_SEO_BLUEPRINT.md` 已定义 URL、SEO 字段、GEO、Schema 和合规边界 |
+| M1 Content System | 通过 | `docs/CONTENT_SYSTEM.md` 已定义产品文章、行业文章、案例文章、FAQ、招商内容和 AI Search 回答内容 |
+| Website Skeleton | 通过 | `website/` 只保留 Next.js、TypeScript、TailwindCSS、app/components/public/styles 骨架 |
+| 目录边界 | 通过 | 未创建 `application`、`domain`、`infrastructure`、`features` 等提前抽象目录 |
+| 合规表达 | 通过 | 文档多处明确不编造参数、案例、收益、授权政策和市场排名 |
+
+## 4. 验证命令结果
+
+已执行并通过：
 
 ```text
+node scripts\validate-website-governance.mjs
+npm run typecheck
+npm run lint
+npm run build
+```
+
+`next build` 当前只生成：
+
+```text
+/
+/_not-found
+```
+
+判断：符合 M1.2 “只搭建骨架，不制作完整页面，不提前实现 SEO/GEO 路由”的边界。
+
+## 5. 发现与处理
+
+### P1：`PROJECT_STRUCTURE.md` 与 M1.2 骨架存在漂移
+
+状态：已修复。
+
+审计开始时，`PROJECT_STRUCTURE.md` 仍列出：
+
+- `website/config/`
+- `website/lib/`
+
+但 M1.2 已明确只保留：
+
+- `website/app/`
+- `website/components/`
+- `website/public/`
+- `website/styles/`
+
+本次审计已将 `PROJECT_STRUCTURE.md` 更新为当前真实骨架。
+
+### P2：`.ai/AI_PROJECT_OPERATING_SYSTEM.md` 文档同步清单可继续增强
+
+状态：记录为后续治理建议。
+
+当前 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 的必查文档清单仍以 M0/M0.1 核心文档为主，尚未显式列入：
+
+- `docs/WEBSITE_ARCHITECTURE.md`
+- `docs/WEBSITE_SEO_BLUEPRINT.md`
+- `docs/CONTENT_SYSTEM.md`
+
+影响：低。CI 与 TODO/MEMORY/CHANGELOG 已覆盖 M1 文档，但最高 AI 规则可在 V1.2 中进一步同步。
+
+建议：下一次 AI Governance 升级时更新 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 到 V1.2。
+
+### P2：M2 入口命名需要启动前确认
+
+状态：记录为后续产品决策。
+
+当前文档中同时出现：
+
+- M2 Website Development
+- M2 Lead Capture Foundation
+
+判断：两者都合理，但优先级不同。若先做官网页面，则 M2 Website Development；若先做表单与 CRM，则 M2 Lead Capture Foundation。
+
+建议：进入 M2 前由用户确认优先执行路径。
+
+## 6. SEO/GEO 审计
+
+通过项：
+
+- 加盟合作主 URL 已明确为 `/partner/`。
+- `/distributor/`、`/join/` 已定义为兼容或投放路径。
+- 产品、行业、解决方案、知识中心、关于页面 URL 规则明确。
+- 每类页面 SEO 字段标准包括 Title、Meta Description、H1、H2、关键词、图片 ALT、Schema、内部链接。
+- GEO 面向百度、360、搜狗、Google、AI Search。
+- FAQ 与 JSON-LD Schema 已纳入蓝图。
+
+风险控制：
+
+- 当前只定义 URL 与字段，不提前生成页面，符合 M1 边界。
+- 合规边界明确禁止编造产品参数、客户案例、收益、授权政策和市场排名。
+
+## 7. 商业定位审计
+
+通过项：
+
+- 商业优先级保持为加盟合作第一、终端询盘第二、品牌建设第三。
+- 加盟合作页面已定义为 `LABOR-SAVING 渠道增长中心`，不是普通招商页面。
+- 加盟合作页结构覆盖首屏价值、市场机会、合作模式、八大渠道赋能和留资转化。
+- CRM 入口字段已规划：公司名称、所在地区、主营产品、客户行业、销售团队规模、已有渠道资源。
+
+风险控制：
+
+- 合作政策、区域保护、价格体系只作为栏目规划，不承诺具体商务条件。
+- 未出现保本、稳赚、零风险、回本周期等高风险话术。
+
+## 8. Git 与 CI 审计
+
+当前分支：
+
+```text
+main
+```
+
+最近提交：
+
+```text
+cff85f9 [M1] Website Architecture Definition
+cc5f58c [M1] Website Foundation
+3600397 [M0.1] Repository Governance Fix
+c8770d8 [M0] Repository Audit Report
 e1452b3 [M0] Repository Bootstrap
 3a73028 Initial commit
 ```
 
-### Commit 语义检查
+语义检查：
 
-- `[M0] Repository Bootstrap` 符合语义化提交规范。
-- `Initial commit` 为 GitHub 初始提交，非本项目开发提交，可接受。
+- Milestone commit 均符合 `[M#] ...` 规范。
+- `Initial commit` 为仓库初始提交，可接受。
 
-### 当前工作区
+CI 覆盖：
 
-- 审计开始前工作区干净。
-- 本次仅新增 `REPOSITORY_AUDIT_REPORT.md`。
+- 关键仓库文件存在性检查。
+- docs 文件存在性检查。
+- governance 边界检查。
+- website governance 脚本。
+- website npm ci、typecheck、lint、build。
 
-### GitHub Actions
+## 9. 下一步建议
 
-- 已存在 `.github/workflows/ci.yml`。
-- 当前 CI 只检查关键文件存在性。
-- 尚未覆盖 Markdown lint、链接检查、目录结构一致性检查。
+进入 M2 前建议先确认：
 
-## 8. 下一阶段整改计划
+1. 优先做 M2 Website Development 还是 M2 Lead Capture Foundation。
+2. 是否将 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 升级为 V1.2，纳入 M1 三份新增文档。
+3. 是否为 M2 页面开发建立页面级 metadata schema 文件，但仍避免编造产品参数和案例。
+4. 是否将本地未跟踪的空 SEO/GEO/deploy 子目录整理为正式规划或清理为本地残留。
 
-### M0.1 Repository Governance Fix
+## 10. 最终结论
 
-目标：修复本次审计发现的仓库治理问题，不开发业务功能。
+仓库当前已经达到 M1 完成验收标准：
 
-建议任务：
+```text
+Repository
+        |
+        +-- AI Governance ✅
+        |
+        +-- Website Architecture ✅
+        |
+        +-- SEO/GEO Strategy ✅
+        |
+        +-- Website Technical Skeleton ✅
+        |
+        +-- Content System ✅
+```
 
-1. 新增 `.github/pull_request_template.md`。
-2. 按 `PROJECT_STRUCTURE.md` 为 `website/` 补齐空目录和 `.gitkeep`。
-3. 新增 `docs/REPOSITORY_MAINTENANCE.md`。
-4. 新增 `docs/GIT_WORKFLOW.md`。
-5. 新增 `docs/ISSUE_WORKFLOW.md`。
-6. 同步增强 `.ai/AI_PROJECT_OPERATING_SYSTEM.md`，纳入最新工作流和维护规则。
-7. 明确根目录文档与 `docs/` 文档的职责边界。
-8. 升级 GitHub Actions，增加目录结构检查和关键文档存在性检查。
-
-### M1 Website Foundation
-
-启动条件：
-
-- M0.1 整改完成。
-- 用户确认进入网站技术底座建设。
-
-建议任务：
-
-1. 初始化干净的 Next.js + TypeScript + TailwindCSS 工程。
-2. 建立 Clean Architecture 前端目录边界。
-3. 建立 SEO metadata 基础工具。
-4. 建立 GEO 文件规划，包括 `llms.txt`。
-5. 不提前编写产品营销内容，不编造参数、案例和招商政策。
-
-## 审计结论
-
-当前仓库已经完成企业级 Repository Bootstrap 的主体工作，具备长期演进基础。
-
-主要短板不在业务方向，而在仓库治理细节：
-
-- PR Template 缺失。
-- `website/` 结构未与 `PROJECT_STRUCTURE.md` 完全对齐。
-- `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 需要吸收更完整的工作流。
-- 重复文档边界需要进一步明确。
-
-建议先执行 M0.1 Repository Governance Fix，再进入 M1 Website Foundation。
+建议在用户确认 M2 优先路径后，再进入页面开发或线索系统开发。

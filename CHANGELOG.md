@@ -71,3 +71,16 @@
 - 本次为 M1 Website Foundation，不创建产品详情、行业方案、招商合作等业务页面。
 - 本次只在文档中定义 SEO/GEO 蓝图，不提前实现完整 SEO/GEO 路由。
 - 本次不编造产品参数、客户案例、收益结果、授权政策或市场排名。
+
+## [0.1.1] - 2026-07-21
+
+### Changed
+
+- 执行 M1 Repository Audit，重写 `REPOSITORY_AUDIT_REPORT.md` 为当前 M1 状态审计报告。
+- 修正 `PROJECT_STRUCTURE.md` 中 website 骨架目录，与 M1.2 实际结构保持一致。
+- 更新 `docs/TODO.md` 与 `docs/MEMORY.md`，记录审计结论、已修复问题和 M2 前置建议。
+
+### Notes
+
+- 本次不开发业务页面。
+- 本次不新增产品参数、客户案例、收益结果、授权政策或市场排名。

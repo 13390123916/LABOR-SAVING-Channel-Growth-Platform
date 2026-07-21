@@ -29,9 +29,8 @@ Version: V1.2
 ├── website/
 │   ├── app/
 │   ├── components/
-│   ├── config/
-│   ├── lib/
 │   ├── public/
+│   ├── styles/
 │   ├── package.json
 │   └── README.md
 ├── seo/
@@ -51,7 +50,7 @@ Version: V1.2
 2. 不重复建目录。
 3. 不重复建模块。
 4. 不把临时代码塞进页面组件。
-5. M1 只建立 `website/` 技术底座，不提前创建 `application`、`domain`、`infrastructure`、`features` 等无业务支撑目录。
+5. M1.2 只建立 `website/` 技术骨架，不提前创建 `config`、`lib`、`application`、`domain`、`infrastructure`、`features` 等无业务支撑目录。
 
 ## 文档职责
 
@@ -93,4 +92,4 @@ Version: V1.2
 
 ## 当前策略
 
-M1 Website Foundation 已完成。下一阶段进入 M2 Lead Capture Foundation 时，再建立表单、线索数据结构和 CRM 字段映射。
+M1 Website Foundation 已完成。当前 `website/` 只保留技术骨架；SEO/GEO URL 与页面结构先沉淀在文档中。下一阶段进入 M2 Website Development 或 Lead Capture Foundation 时，再建立业务页面、表单、线索数据结构和 CRM 字段映射。

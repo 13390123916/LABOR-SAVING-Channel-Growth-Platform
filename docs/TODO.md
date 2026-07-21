@@ -30,6 +30,8 @@
 - [x] 明确加盟合作为 `LABOR-SAVING 渠道增长中心`，主 URL 为 `/partner/`
 - [x] 明确 M2 前不制作完整业务页面
 - [x] M1.2 技术骨架仅保留 `app/`、`components/`、`public/`、`styles/` 等基础目录
+- [x] 执行 M1 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md`
+- [x] 修正 `PROJECT_STRUCTURE.md` 中 website 骨架目录漂移
 
 ## 暂不执行
 
@@ -40,6 +42,8 @@
 
 ## M2 Lead Capture Foundation
 
+- [ ] 启动 M2 前确认优先路径：Website Development 或 Lead Capture Foundation
+- [ ] 评估是否将 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 升级到 V1.2，纳入 M1 新增文档清单
 - [ ] 规划线索表单字段
 - [ ] 规划输入校验与风控
 - [ ] 规划 CRM 字段映射

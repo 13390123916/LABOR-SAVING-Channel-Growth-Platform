@@ -70,3 +70,11 @@ M1 Website Foundation 已完成。下一阶段可进入 M2 Lead Capture Foundati
 - M1.4 建立 `scripts/validate-website-governance.mjs`，CI 检查 URL 规范、SEO 字段、图片命名、Markdown 规范和文档同步。
 - 加盟合作页面定位为 `LABOR-SAVING 渠道增长中心`，不是普通招商页面。
 - 加盟合作页后续 CRM 留资字段为：公司名称、所在地区、主营产品、客户行业、销售团队规模、已有渠道资源。
+
+## M1 Repository Audit 决策
+
+- 2026-07-21 执行 M1 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md`。
+- 审计结论：AI Governance、Website Architecture、SEO/GEO Strategy、Website Technical Skeleton、Content System 均通过。
+- 审计修复：`PROJECT_STRUCTURE.md` 移除过期的 `website/config/` 与 `website/lib/`，改为 M1.2 真实骨架。
+- 后续建议：启动 M2 前确认优先做 Website Development 还是 Lead Capture Foundation。
+- 后续建议：将 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 升级到 V1.2 时，纳入 `docs/WEBSITE_ARCHITECTURE.md`、`docs/WEBSITE_SEO_BLUEPRINT.md`、`docs/CONTENT_SYSTEM.md`。
