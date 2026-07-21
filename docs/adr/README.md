@@ -14,8 +14,9 @@
 | ADR-0008 | Accepted | Database Model |
 | ADR-0009 | Accepted | Authentication & Authorization |
 | ADR-0010 | Accepted | Media Management Architecture |
+| ADR-0011 | Accepted | Lead Center Architecture |
 
-只有在相应 M3 实现需要做出具体技术选择时，才创建后续 ADR，避免把 ADR 变成重复的治理文档。
+ADR 只记录重大平台方向决策。只有改变平台模块边界、核心数据模型、认证授权、审计隐私、Runtime 技术选型或长期维护成本时，才创建后续 ADR，避免把 ADR 变成重复的治理文档。字段微调、上传策略细节、导出格式、列表筛选和不改变模块边界的局部实现策略不单独创建 ADR。
 
 ## Accepted ADR
 
@@ -24,3 +25,4 @@
 - `ADR-0008-database-model.md`
 - `ADR-0009-authentication-and-authorization.md`
 - `ADR-0010-media-management.md`
+- `ADR-0011-lead-center.md`

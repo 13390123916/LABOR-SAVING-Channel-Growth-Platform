@@ -411,23 +411,26 @@ M3.3 不设计具体 UI，也不创建页面代码。
 - 页面必须显示 `source_status`、`license_status`、`usage_scope` 和 active usage。
 - 存储失败、派生失败和 CDN 失败不得静默吞掉。
 
-## 17. 后续实现顺序
+## 17. M4 Platform Runtime 边界
 
-M3.3 之后的运行时代码建议顺序：
+M3.3 之后不进入 Media Runtime。M3.4、M3.5、M3.6、M3.7、M3.8、M3.9 继续保持 Architecture Freeze。
+
+真正运行时代码统一进入 M4 Platform Runtime：
 
 ```text
-Media Entity / Metadata Schema
--> Storage Adapter Interface
--> Local Storage Adapter
--> Media Upload Candidate
--> License Review Workflow
--> Media Reference API
--> Thumbnail / WebP Derivative Worker
--> Open Graph Asset Integration
--> CDN Adapter
+Prisma
+-> Migration
+-> Database
+-> RBAC
+-> CMS
+-> Media
+-> Lead
+-> SEO Runtime
+-> API
+-> Admin UI
 ```
 
-任何实现必须先通过本 Media Domain 冻结文档与 ADR-0010。
+M4 前不得创建文件上传接口、图库 UI、ORM、迁移、裁切转码、CDN 接入、存储 SDK、API 或后台页面。
 
 ## 18. M3.3 验收标准
 

@@ -699,13 +699,24 @@ M3.0 不实现多语言，但所有公开内容表预留 `locale`。
 - 唯一约束必须包含 `locale`。
 - hreflang、翻译工作流和多语言 URL 另行通过 ADR 决策。
 
-## 12. M3 实现顺序
+## 12. M3 / M4 边界
 
-1. 数据库模型：先定义结构、关系、索引、生命周期和审计字段。
-2. 后台认证与权限：确定 Admin、Editor、SEO、Sales、Partner Manager、Super Admin 与 RBAC。
-3. CMS 内容管理：实现产品、行业、案例、FAQ、媒体、导航、SEO 和 Schema 管理。
-4. 线索管理：实现 Partner Lead、Customer Lead 的筛选、分配、状态和导出。
-5. Search Runtime：接入 sitemap、robots、canonical、redirect、RSS、IndexNow、SEO/GEO Feed 与站长平台。
+M3 只冻结平台架构边界，不创建数据库迁移、ORM、API、后台 UI 或运行时代码。
+
+M4 Platform Runtime 再统一进入：
+
+```text
+Prisma
+-> Migration
+-> Database
+-> RBAC
+-> CMS
+-> Media
+-> Lead
+-> SEO Runtime
+-> API
+-> Admin UI
+```
 
 ## 13. M3.0 验收标准
 

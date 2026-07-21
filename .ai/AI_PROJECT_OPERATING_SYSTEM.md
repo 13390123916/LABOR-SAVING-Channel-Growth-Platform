@@ -181,11 +181,13 @@ GEO 面向国内 AI 搜索：
 - `docs/PLATFORM_ARCHITECTURE.md`
 - `docs/CMS_SYSTEM.md`
 - `docs/MEDIA_SYSTEM.md`
+- `docs/LEAD_CENTER.md`
 - `docs/adr/README.md`
 - `docs/adr/ADR-0007-cms-architecture.md`
 - `docs/adr/ADR-0008-database-model.md`
 - `docs/adr/ADR-0009-authentication-and-authorization.md`
 - `docs/adr/ADR-0010-media-management.md`
+- `docs/adr/ADR-0011-lead-center.md`
 - `docs/DATABASE.md`
 - `docs/AUTH_SYSTEM.md`
 - `docs/PARTNER_FUNNEL.md`
@@ -215,11 +217,13 @@ GEO 面向国内 AI 搜索：
 - `docs/PLATFORM_ARCHITECTURE.md` 是 M3 平台模块关系、职责、依赖、生命周期和阶段边界总览来源。
 - `docs/CMS_SYSTEM.md` 是 M3.2 CMS Architecture 的内容管理资源、字段分层、工作流、权限接入、审计接入和导入导出边界来源。
 - `docs/MEDIA_SYSTEM.md` 是 M3.3 Media Management Architecture 的媒体实体、元数据、生命周期、版本、ALT、缩略图、存储、CDN、水印和引用关系来源。
+- `docs/LEAD_CENTER.md` 是 M3.4 Lead Center Architecture 的线索实体、类型、字段分层、来源归因、生命周期、分配、去重、隐私、导出、CRM 输入、权限和审计来源。
 - `docs/adr/README.md` 是长期架构决策记录入口。
 - `docs/adr/ADR-0007-cms-architecture.md` 是 M3.2 CMS Architecture 的已接受架构决策来源。
 - `docs/adr/ADR-0008-database-model.md` 是 M3.0 Database Model 的已接受架构决策来源。
 - `docs/adr/ADR-0009-authentication-and-authorization.md` 是 M3.1 Authentication & Authorization 的已接受架构决策来源。
 - `docs/adr/ADR-0010-media-management.md` 是 M3.3 Media Management Architecture 的已接受架构决策来源。
+- `docs/adr/ADR-0011-lead-center.md` 是 M3.4 Lead Center Architecture 的已接受架构决策来源。
 - `docs/DATABASE.md` 是 M3.0 Database Architecture 的数据模型、ER 图、约束、生命周期、版本、软删除、多语言和审计字段来源。
 - `docs/AUTH_SYSTEM.md` 是 M3.1 Authentication & Authorization 的角色、权限、资源、RBAC、审计、登录流程、Session 和 Future SSO 来源。
 - `docs/PARTNER_FUNNEL.md` 是渠道增长漏斗来源。
@@ -271,6 +275,7 @@ GEO 面向国内 AI 搜索：
 - `docs/AUTH_SYSTEM.md`
 - `docs/CMS_SYSTEM.md`
 - `docs/MEDIA_SYSTEM.md`
+- `docs/LEAD_CENTER.md`
 - `docs/PLATFORM_ARCHITECTURE.md`
 - `docs/CONTENT.md`
 - `docs/CONTENT_SYSTEM.md`
@@ -351,4 +356,4 @@ AI 不仅负责开发，还负责长期维护 GitHub Repository。
 
 当前阶段：M3 Website Platform Foundation。M2 Channel Growth Foundation 已冻结为 v1.0；除架构缺陷或严重 Bug 外，不再新增治理规则或 Publishing 子阶段。
 
-当前目标：推进 M3 Website Platform Foundation。M3.0 Database Architecture、M3.1 Authentication & Authorization、M3.2 CMS Architecture 与 M3.3 Media Management Architecture 已完成设计冻结，后续进入 Media Runtime 前必须沿用 `docs/MEDIA_SYSTEM.md` 与 ADR-0010 的 Media Domain 边界。M2.4.5.3.5 First Published Product Acceptance 作为首个真实产品的跨阶段发布质量门禁保留，但不再扩展 M2 治理或 Publishing 子阶段。M3 实现继续沿用 Entity -> Metadata -> Schema -> CMS -> Frontend -> SEO -> GEO 的统一模型。
+当前目标：推进 M3 Website Platform Foundation。M3.0 Database Architecture、M3.1 Authentication & Authorization、M3.2 CMS Architecture、M3.3 Media Management Architecture 与 M3.4 Lead Center Architecture 已完成设计冻结。`docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的结构入口，阅读顺序为 README -> Platform Architecture -> Roadmap -> ADR。M3.5-M3.9 继续保持架构冻结，不提前写运行时代码；Prisma、Migration、Database、RBAC、CMS、Media、Lead、SEO Runtime、API 和 Admin UI 统一进入 M4 Platform Runtime。M2.4.5.3.5 First Published Product Acceptance 作为首个真实产品的跨阶段发布质量门禁保留，但不再扩展 M2 治理或 Publishing 子阶段。

@@ -6,18 +6,19 @@
 - [x] M3.1 Authentication & Authorization Architecture：冻结 Admin、Editor、SEO、Sales、Partner Manager、Super Admin、RBAC、Resource、Permission、Audit、Login Flow、Session 和 Future SSO
 - [x] M3.2 CMS Architecture：冻结 CMS Resource、Content Type、Field Group、Workflow、Permission Integration、Audit Integration、Import / Export 和 Future Platform Split
 - [x] M3.3 Media Management Architecture：冻结 Media Entity、Media Metadata、Asset 生命周期、图片版本、ALT 来源、WebP / AVIF 预留、Thumbnail Strategy、Storage Adapter、CDN Boundary、Watermark Strategy 和引用关系
-- [ ] M3.3 Media Runtime：实现媒体上传候选、授权审核、资产引用、缩略图派生、Open Graph 资产和存储适配
-- [ ] M3.4 Lead Center：冻结并实现 Partner Lead、Customer Lead、状态、分配、筛选、导出和 CRM 输入
-- [ ] M3.5 SEO Runtime：冻结并实现 sitemap、robots、RSS、canonical、redirect、IndexNow 与站长平台接入
-- [ ] M3.6 GEO Runtime：冻结并实现 AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产
-- [ ] M3.7 Audit Center：冻结并实现操作日志、审计查询、归档、合规导出和高风险动作追踪
-- [ ] M3.8 Backup & Restore：冻结并实现数据备份、恢复、版本回滚、灾备和批量归档
-- [ ] M3.9 Deployment & Analytics：冻结并实现部署运行、监控、流量、转化、渠道、活动来源和 CRM 集成
+- [x] M3.4 Lead Center Architecture：冻结 Lead Entity、Lead Type、字段分层、来源归因、生命周期、分配、去重、隐私、导出边界、CRM 输入、权限和审计
+- [ ] M3.5 SEO Runtime Architecture：冻结 sitemap、robots、RSS、canonical、redirect、IndexNow 与站长平台接入边界
+- [ ] M3.6 GEO Runtime Architecture：冻结 AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产边界
+- [ ] M3.7 Audit Center Architecture：冻结操作日志、审计查询、归档、合规导出和高风险动作追踪边界
+- [ ] M3.8 Backup & Restore Architecture：冻结数据备份、恢复、版本回滚、灾备和批量归档边界
+- [ ] M3.9 Deployment & Analytics Architecture：冻结部署运行、监控、流量、转化、渠道、活动来源和 CRM 集成边界
+- [ ] M4 Platform Runtime：统一实现 Prisma、Migration、Database、RBAC、CMS、Media、Lead、SEO Runtime、API 和 Admin UI
 - [x] 建立 `docs/adr/README.md` 与 ADR-0001：记录 M2 冻结和 M3 平台迁移决定
 - [x] 建立 ADR-0008 与 `docs/DATABASE.md`：冻结 M3.0 Database Model，不直接写数据库代码
 - [x] 建立 ADR-0009 与 `docs/AUTH_SYSTEM.md`：冻结 M3.1 Authentication & Authorization，不直接写登录或后台代码
 - [x] 建立 ADR-0007 与 `docs/CMS_SYSTEM.md`：冻结 M3.2 CMS Architecture，不直接写 CMS 页面或 CRUD
 - [x] 建立 ADR-0010、`docs/MEDIA_SYSTEM.md` 与 `docs/PLATFORM_ARCHITECTURE.md`：冻结 M3.3 Media Domain，并补齐平台能力总览
+- [x] 建立 ADR-0011 与 `docs/LEAD_CENTER.md`：冻结 M3.4 Lead Center Architecture，不直接写表单提交、CRM 后台、ORM、迁移、通知、导出或 Admin UI
 - [x] 建立 `docs/MILESTONE_MAPPING.md`：保留 M2.6-M2.8 历史编号并映射至 M3
 
 ## M2.4.5.3 Product Detail

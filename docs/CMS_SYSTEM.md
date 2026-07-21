@@ -398,13 +398,14 @@ M3 后续平台阶段建议：
 M3.0 Database Architecture
 M3.1 Authentication & Authorization
 M3.2 CMS Architecture
-M3.3 Media Management
-M3.4 Lead Center
-M3.5 SEO Runtime
-M3.6 GEO Runtime
-M3.7 Audit Center
-M3.8 Backup & Restore
-M3.9 Deployment
+M3.3 Media Management Architecture
+M3.4 Lead Center Architecture
+M3.5 SEO Runtime Architecture
+M3.6 GEO Runtime Architecture
+M3.7 Audit Center Architecture
+M3.8 Backup & Restore Architecture
+M3.9 Deployment & Analytics Architecture
+M4 Platform Runtime
 ```
 
 拆分原则：
@@ -416,6 +417,7 @@ M3.9 Deployment
 - GEO Runtime 负责 AI Search Feed、问答摘要和结构化内容包。
 - Audit Center 负责审计查询、归档和合规导出。
 - Backup & Restore 负责备份、恢复、回滚和灾备。
+- M4 Platform Runtime 统一实现 Prisma、Migration、Database、RBAC、CMS、Media、Lead、SEO Runtime、API 和 Admin UI。
 
 ## 13. M3.2 验收标准
 

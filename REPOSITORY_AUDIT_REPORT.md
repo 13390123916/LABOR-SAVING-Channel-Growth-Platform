@@ -2,11 +2,11 @@
 
 项目：LABOR-SAVING Channel Growth Platform（雷普赛维渠道增长平台）
 
-审计阶段：M3.3 Media Management Architecture Freeze Audit
+审计阶段：M3.4 Lead Center Architecture Freeze Audit
 
 审计日期：2026-07-21
 
-审计基线：进入 M3.3 前工作区重新校验，分支 `main`。
+审计基线：进入 M3.4 前工作区重新校验，分支 `main`。
 
 ## 1. 结论
 
@@ -24,6 +24,10 @@
 
 本轮继续完成 M3.3 Media Management Architecture 架构冻结：新增 `docs/PLATFORM_ARCHITECTURE.md`、`docs/MEDIA_SYSTEM.md` 与 ADR-0010。平台能力总览覆盖 Database、Authentication、CMS、Media、Lead Center、SEO Runtime、GEO Runtime、Audit、Backup 与 Deployment & Analytics 的关系；Media Domain 覆盖 Media Entity、Media Metadata、Asset 生命周期、图片版本、ALT 来源、WebP / AVIF 预留、Thumbnail Strategy、Storage Adapter、CDN Boundary、Watermark Strategy 和引用关系。未创建文件上传、图库 UI、ORM、迁移、裁切转码、CDN 接入或后台页面。
 
+本轮继续完成 M3.4 Lead Center Architecture 架构冻结：新增 `docs/LEAD_CENTER.md` 与 ADR-0011。确认 `docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的结构入口，阅读顺序为 README -> Platform Architecture -> Roadmap -> ADR；ADR 只记录重大平台方向决策。Lead Domain 覆盖 Lead Entity、Lead Type、字段分层、来源归因、生命周期、分配、去重、隐私、导出边界、CRM 输入、权限和审计。未创建表单提交、CRM 后台、ORM、迁移、通知、导出运行时、API 或 Admin UI。
+
+本轮同步确认 M3.5-M3.9 继续保持架构冻结，真正运行时代码统一进入 M4 Platform Runtime。
+
 ## 2. 审计范围
 
 - AI 治理与必读入口：`.ai/`、`README.md`、`PROJECT_STRUCTURE.md`
@@ -32,6 +36,7 @@
 - 认证授权架构：`docs/adr/ADR-0009-authentication-and-authorization.md`、`docs/AUTH_SYSTEM.md`
 - CMS 架构：`docs/adr/ADR-0007-cms-architecture.md`、`docs/CMS_SYSTEM.md`
 - 平台总览与媒体架构：`docs/PLATFORM_ARCHITECTURE.md`、`docs/adr/ADR-0010-media-management.md`、`docs/MEDIA_SYSTEM.md`
+- 线索中心架构：`docs/adr/ADR-0011-lead-center.md`、`docs/LEAD_CENTER.md`
 - 产品发布边界：Product Entity、Detail Renderer、Metadata、Schema、Publishing Checklist、Content Readiness
 - CI 与治理校验：`.github/workflows/ci.yml`、`scripts/validate-website-governance.mjs`、`scripts/validate-product-rendering.mjs`
 - Git 基线、工作区和生产构建
@@ -45,11 +50,13 @@
 | M3.1 Authentication & Authorization | 通过 | ADR-0009、Auth System、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
 | M3.2 CMS Architecture | 通过 | ADR-0007、CMS System、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
 | M3.3 Media Management Architecture | 通过 | ADR-0010、Platform Architecture、Media System、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
+| M3.4 Lead Center Architecture | 通过 | ADR-0011、Lead Center、Platform Architecture、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
+| M4 Runtime 边界 | 通过 | M3.5-M3.9 继续 Architecture Freeze，Prisma、Migration、Database、RBAC、CMS、Media、Lead、SEO Runtime、API、Admin UI 统一进入 M4 |
 | 产品实体与分类渲染 | 通过 | Entity 4、Listing 4、Category Total 4、Category Routes 2 |
 | 未发布详情保护 | 通过 | Published Detail Routes 0，LS70 不在 Entity 数据源 |
 | 发布门禁 | 通过 | `published + schemaEligible + contentValidated + releaseApproved` |
 | CI 覆盖 | 通过 | Governance、Product Rendering、TypeScript、ESLint、Build |
-| Git 基线 | 通过 | 进入 M3.3 前工作区重新校验，本轮只做架构冻结与文档治理同步 |
+| Git 基线 | 通过 | 进入 M3.4 前工作区重新校验，本轮只做架构冻结与文档治理同步 |
 
 ## 4. 验证结果
 
@@ -69,6 +76,6 @@ cd website && npm run build
 ## 5. 风险与下一步
 
 - L60 仍缺公开范围、真实图片与授权、市场上线批准、sitemap/robots 和外部收录证据，不能改变发布状态。
-- M3.0、M3.1、M3.2 与 M3.3 均为架构冻结，尚未实现数据库迁移、ORM、认证、CMS、媒体上传、线索或 Search Runtime；这些仍是后续真实运行能力缺口。
-- Media Runtime 尚未开始；后续实现必须沿用 `docs/MEDIA_SYSTEM.md` 与 ADR-0010，不得直接把 M3.3 简化为上传功能。
-- 下一步可进入 M3.3 Media Runtime 的技术方案确认，建议先实现 Media Entity / Metadata Schema、Storage Adapter Interface 和 Local Storage Adapter，再进入上传候选与授权审核流程。
+- M3.0、M3.1、M3.2、M3.3 与 M3.4 均为架构冻结，尚未实现数据库迁移、ORM、认证、CMS、媒体上传、线索提交或 Search Runtime；这些统一进入 M4 Platform Runtime。
+- Lead Runtime 尚未开始；后续实现必须沿用 `docs/LEAD_CENTER.md` 与 ADR-0011，不得直接把 M3.4 简化为表单提交功能。
+- 下一步应进入 M3.5 SEO Runtime Architecture，继续冻结 sitemap、robots、RSS、canonical、redirect、IndexNow 与站长平台接入边界，不提前编写搜索运行时代码。

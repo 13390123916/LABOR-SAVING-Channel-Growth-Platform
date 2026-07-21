@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.6] - 2026-07-21
+
+### Added
+
+- 新增 `docs/LEAD_CENTER.md`，冻结 M3.4 Lead Center Architecture 的 Lead Entity、Lead Type、字段分层、来源归因、生命周期、分配、去重、隐私、导出边界、CRM 输入、权限和审计。
+- 新增 ADR-0011 Lead Center Architecture，确认 Lead 是业务数据入口，不是普通表单记录。
+
+### Changed
+
+- 将 `docs/PLATFORM_ARCHITECTURE.md` 提升为 Platform 结构入口，明确 README -> Platform Architecture -> Roadmap -> ADR 的阅读顺序。
+- 明确 ADR 只记录重大平台方向决策，不为字段微调、上传策略、导出格式或列表筛选单独创建 ADR。
+- 将 M3.5-M3.9 继续定位为架构冻结阶段，真正运行时代码统一进入 M4 Platform Runtime。
+- 同步更新 Roadmap、TODO、Memory、PRD、README、Project Structure、AI Context、ADR Index 与治理校验清单。
+
 ## [0.3.5] - 2026-07-21
 
 ### Added

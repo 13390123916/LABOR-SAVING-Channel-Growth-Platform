@@ -4,20 +4,38 @@
 
 状态：已启动。M2 Channel Growth Foundation 已冻结为 v1.0；迁移规则见 `docs/MILESTONE_MAPPING.md`，架构决策见 `docs/adr/README.md`。
 
-目标：从治理与渲染前置设计转向数据库、认证授权、CMS、运行平台、Search Runtime 与 Analytics/CRM 的真实运行能力。
+目标：完成 Database、Authentication、CMS、Media、Lead、SEO Runtime、GEO Runtime、Audit、Backup、Deployment & Analytics 的架构冻结，为 M4 Platform Runtime 的集中实现做准备。
 
 - M3.0 Database Architecture（已完成设计冻结：ADR-0008 与 `docs/DATABASE.md`）
 - M3.1 Authentication & Authorization（已完成架构冻结：ADR-0009 与 `docs/AUTH_SYSTEM.md`）
 - M3.2 CMS Architecture（已完成架构冻结：ADR-0007 与 `docs/CMS_SYSTEM.md`）
 - M3.3 Media Management Architecture（已完成架构冻结：ADR-0010 与 `docs/MEDIA_SYSTEM.md`）
-- M3.4 Lead Center
-- M3.5 SEO Runtime
-- M3.6 GEO Runtime
-- M3.7 Audit Center
-- M3.8 Backup & Restore
-- M3.9 Deployment & Analytics
+- M3.4 Lead Center Architecture（已完成架构冻结：ADR-0011 与 `docs/LEAD_CENTER.md`）
+- M3.5 SEO Runtime Architecture
+- M3.6 GEO Runtime Architecture
+- M3.7 Audit Center Architecture
+- M3.8 Backup & Restore Architecture
+- M3.9 Deployment & Analytics Architecture
+- M4 Platform Runtime
 
-当前推进：M3.3 Media Management Architecture 已完成架构冻结，不直接写文件上传、图库 UI、ORM、迁移、裁切转码、CDN 接入或后台页面；下一步进入 M3.3 运行时代码前，必须继续沿用 `docs/MEDIA_SYSTEM.md` 与 ADR-0010 的 Media Domain 边界。
+当前推进：M3.4 Lead Center Architecture 已完成架构冻结，不直接写表单提交、CRM 后台、ORM、迁移、通知、导出运行时、API 或 Admin UI；下一步进入 M3.5 SEO Runtime Architecture，继续保持架构与实现隔离。
+
+Platform 阅读顺序：`README.md` -> `docs/PLATFORM_ARCHITECTURE.md` -> `docs/ROADMAP.md` -> `docs/adr/README.md`。
+
+M4 Platform Runtime 建议顺序：
+
+```text
+Prisma
+-> Migration
+-> Database
+-> RBAC
+-> CMS
+-> Media
+-> Lead
+-> SEO Runtime
+-> API
+-> Admin UI
+```
 
 当前平台成熟度：
 
@@ -30,13 +48,13 @@ Database Architecture        100%
 Authentication Architecture  100%
 CMS Architecture             100%
 Media Management Architecture 100%
-Media Runtime                  0%
-Lead Center                    0%
+Lead Center Architecture      100%
 SEO Runtime                    0%
 GEO Runtime                    0%
 Audit Center                   0%
 Backup & Restore               0%
 Deployment & Analytics         0%
+M4 Platform Runtime            0%
 ```
 
 产品发布质量门禁：M2.4.5.3 Product Detail 已进入首次发布验收阶段。只有 `published + schemaEligible + contentValidated + releaseApproved` 的真实 Product Entity 才生成详情 URL、Product Schema、sitemap 和 Related Product；LS70 继续保持非实体占位。

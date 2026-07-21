@@ -6,7 +6,7 @@
 
 ## 背景
 
-M2 Channel Growth Foundation 已冻结 Entity、Product、Metadata、SEO Schema、Product Rendering 与 Publishing Workflow v1.0。M3 Website Platform Foundation 将进入数据库、认证授权、CMS、运行平台、Search Runtime 与 Analytics/CRM。
+M2 Channel Growth Foundation 已冻结 Entity、Product、Metadata、SEO Schema、Product Rendering 与 Publishing Workflow v1.0。M3 Website Platform Foundation 将冻结数据库、认证授权、CMS、媒体、线索、SEO Runtime、GEO Runtime、审计、备份、部署与分析架构；真正运行时代码统一进入 M4 Platform Runtime。
 
 如果 M3.0 直接写数据库代码，Product、Partner、Lead、Media、FAQ、SEO Metadata 和 Schema Metadata 很容易在实现过程中反复迁移。进入数据库实现前，必须先冻结数据库模型、ID 策略、生命周期、索引和扩展边界。
 
@@ -52,7 +52,7 @@ M3.0 冻结以下核心模型：
 - Redirect
 - Audit Log
 
-首批数据库实现不得超出以上模型创建业务表；认证授权、CMS 和运行平台可以在后续 M3.1-M3.3 通过单独 ADR 或实现文档细化。
+首批 M4 数据库实现不得超出以上模型创建业务表；认证授权、CMS、Media、Lead 和 SEO Runtime 的运行实现必须复用 M3 已冻结架构，不得在实现阶段反向改变 M3.0 数据库语义。
 
 ## ID 策略
 
@@ -183,8 +183,8 @@ schema_id
 
 ## 后果
 
-- M3.0 可以先冻结数据库蓝图，再进入数据库实现，避免边开发边改模型。
-- M3.1-M3.5 可围绕同一 Entity、Metadata、Schema、Lead 和 Audit 语义递进。
+- M3.0 可以先冻结数据库蓝图，M4 再进入数据库实现，避免边开发边改模型。
+- M3.1-M3.9 可围绕同一 Entity、Metadata、Schema、Lead 和 Audit 语义递进冻结架构。
 - MySQL 作为主业务数据库不会阻止后续引入搜索、分析或 AI 检索专用组件。
 - 软删除、版本字段和审计字段会增加表结构复杂度，但能保护 SEO/GEO、CRM 和合规追溯。
 

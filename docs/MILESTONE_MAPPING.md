@@ -35,11 +35,12 @@ Publishing Workflow
 | M3.1 Authentication & Authorization | Admin、Editor、SEO、Sales、Partner Manager、Super Admin 与 RBAC |
 | M3.2 CMS Architecture | 内容管理边界、字段分层、工作流、权限接入、审计接入与导入导出边界 |
 | M3.3 Media Management Architecture | Media Entity、Media Metadata、Asset 生命周期、图片版本、ALT 来源、WebP / AVIF 预留、Thumbnail Strategy、Storage Adapter、CDN Boundary、Watermark Strategy 和引用关系 |
-| M3.4 Lead Center | Partner Lead、Customer Lead、状态、分配、筛选、导出和 CRM 输入 |
-| M3.5 SEO Runtime | sitemap、robots、canonical、redirect、RSS、IndexNow 与站长平台接入 |
-| M3.6 GEO Runtime | AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产 |
-| M3.7 Audit Center | 操作日志、审计查询、审计归档、合规导出和高风险动作追踪 |
-| M3.8 Backup & Restore | 数据备份、恢复、版本回滚、灾备和批量归档 |
-| M3.9 Deployment & Analytics | 部署运行、监控、流量、转化、渠道、活动来源和 CRM 集成 |
+| M3.4 Lead Center Architecture | Lead Entity、Lead Type、字段分层、来源归因、生命周期、分配、去重、隐私、导出边界、CRM 输入、权限和审计 |
+| M3.5 SEO Runtime Architecture | sitemap、robots、canonical、redirect、RSS、IndexNow 与站长平台接入边界 |
+| M3.6 GEO Runtime Architecture | AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产边界 |
+| M3.7 Audit Center Architecture | 操作日志、审计查询、审计归档、合规导出和高风险动作追踪边界 |
+| M3.8 Backup & Restore Architecture | 数据备份、恢复、版本回滚、灾备和批量归档边界 |
+| M3.9 Deployment & Analytics Architecture | 部署运行、监控、流量、转化、渠道、活动来源和 CRM 集成边界 |
+| M4 Platform Runtime | Prisma、Migration、Database、RBAC、CMS、Media、Lead、SEO Runtime、API 和 Admin UI |
 
-M3 的成功标准是运行能力和可维护性，而不是新增页面数量。
+M3 的成功标准是架构边界清晰和可维护性，而不是新增页面数量或半成品运行时代码。真正运行能力统一进入 M4 Platform Runtime。

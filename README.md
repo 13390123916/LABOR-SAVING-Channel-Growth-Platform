@@ -2,7 +2,7 @@
 
 当前已进入 M2.4.5.3.5 First Published Product Acceptance：详情模板与发布门禁已建立；未满足 `published + schemaEligible + contentValidated + releaseApproved` 的实体不生成详情 URL、Product Schema 或 sitemap，LS70 保持非实体占位。
 
-当前平台阶段：M3 Website Platform Foundation。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M3.2 CMS Architecture 已完成架构冻结，见 ADR-0007 与 `docs/CMS_SYSTEM.md`；M3.3 Media Management Architecture 已完成架构冻结，见 ADR-0010 与 `docs/MEDIA_SYSTEM.md`；平台能力总览见 `docs/PLATFORM_ARCHITECTURE.md`。M2 Channel Growth Foundation 已冻结为 v1.0，历史 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3，后续重点转向 Media Runtime、线索、SEO/GEO Runtime、审计、备份、部署与分析。
+当前平台阶段：M3 Website Platform Foundation。`docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的结构入口。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M3.2 CMS Architecture 已完成架构冻结，见 ADR-0007 与 `docs/CMS_SYSTEM.md`；M3.3 Media Management Architecture 已完成架构冻结，见 ADR-0010 与 `docs/MEDIA_SYSTEM.md`；M3.4 Lead Center Architecture 已完成架构冻结，见 ADR-0011 与 `docs/LEAD_CENTER.md`。M2 Channel Growth Foundation 已冻结为 v1.0，历史 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3。后续 M3.5-M3.9 继续做架构冻结，真正运行时代码统一进入 M4 Platform Runtime。
 
 雷普赛维渠道增长平台是面向工业装备渠道合作、终端客户询盘、中国 SEO 与国内 AI 搜索优化的长期增长平台，不是普通企业官网。
 
@@ -53,6 +53,7 @@
 - 已完成 M3.1 Authentication & Authorization Architecture：ADR-0009 与 `docs/AUTH_SYSTEM.md` 已冻结认证授权架构
 - 已完成 M3.2 CMS Architecture：ADR-0007 与 `docs/CMS_SYSTEM.md` 已冻结内容管理架构
 - 已完成 M3.3 Media Management Architecture：ADR-0010 与 `docs/MEDIA_SYSTEM.md` 已冻结媒体领域架构；本阶段不实现文件上传、图库 UI、ORM、迁移、裁切转码或 CDN 接入
+- 已完成 M3.4 Lead Center Architecture：ADR-0011 与 `docs/LEAD_CENTER.md` 已冻结线索领域架构；本阶段不实现表单提交、CRM 后台、ORM、迁移、通知、导出或 Admin UI
 
 ## 平台成熟度
 
@@ -65,16 +66,18 @@ Database Architecture        100%
 Authentication Architecture  100%
 CMS Architecture             100%
 Media Management Architecture 100%
-Media Runtime                  0%
-Lead Center                    0%
+Lead Center Architecture      100%
 SEO Runtime                    0%
 GEO Runtime                    0%
 Audit Center                   0%
 Backup & Restore               0%
 Deployment & Analytics         0%
+M4 Platform Runtime            0%
 ```
 
 ## 文档入口
+
+Platform 阅读顺序：`README.md` -> `docs/PLATFORM_ARCHITECTURE.md` -> `docs/ROADMAP.md` -> `docs/adr/README.md`。
 
 - `docs/PROJECT_PRD.md`
 - `docs/ROADMAP.md`
@@ -96,11 +99,13 @@ Deployment & Analytics         0%
 - `docs/AUTH_SYSTEM.md`
 - `docs/CMS_SYSTEM.md`
 - `docs/MEDIA_SYSTEM.md`
+- `docs/LEAD_CENTER.md`
 - `docs/adr/README.md`
 - `docs/adr/ADR-0007-cms-architecture.md`
 - `docs/adr/ADR-0008-database-model.md`
 - `docs/adr/ADR-0009-authentication-and-authorization.md`
 - `docs/adr/ADR-0010-media-management.md`
+- `docs/adr/ADR-0011-lead-center.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/PARTNER_CONTENT_MODEL.md`
 - `docs/PARTNER_SEO_TEMPLATE.md`
