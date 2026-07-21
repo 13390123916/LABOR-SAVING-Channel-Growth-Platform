@@ -13,6 +13,7 @@
 | ADR-0007 | Accepted | CMS Architecture |
 | ADR-0008 | Accepted | Database Model |
 | ADR-0009 | Accepted | Authentication & Authorization |
+| ADR-0010 | Accepted | Media Management Architecture |
 
 只有在相应 M3 实现需要做出具体技术选择时，才创建后续 ADR，避免把 ADR 变成重复的治理文档。
 
@@ -22,3 +23,4 @@
 - `ADR-0007-cms-architecture.md`
 - `ADR-0008-database-model.md`
 - `ADR-0009-authentication-and-authorization.md`
+- `ADR-0010-media-management.md`

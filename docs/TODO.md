@@ -5,7 +5,8 @@
 - [x] M3.0 Database Architecture：确定 Entity、Category、Industry、Partner、Lead、Media、FAQ、Article、Download、Tag、Navigation、SEO Metadata、Schema Metadata 的数据模型、ER 图、索引、约束、生命周期、软删除、版本、slug、多语言和审计字段
 - [x] M3.1 Authentication & Authorization Architecture：冻结 Admin、Editor、SEO、Sales、Partner Manager、Super Admin、RBAC、Resource、Permission、Audit、Login Flow、Session 和 Future SSO
 - [x] M3.2 CMS Architecture：冻结 CMS Resource、Content Type、Field Group、Workflow、Permission Integration、Audit Integration、Import / Export 和 Future Platform Split
-- [ ] M3.3 Media Management：冻结并实现媒体上传、授权、裁切、版本、公开资产和 Open Graph 资产管理
+- [x] M3.3 Media Management Architecture：冻结 Media Entity、Media Metadata、Asset 生命周期、图片版本、ALT 来源、WebP / AVIF 预留、Thumbnail Strategy、Storage Adapter、CDN Boundary、Watermark Strategy 和引用关系
+- [ ] M3.3 Media Runtime：实现媒体上传候选、授权审核、资产引用、缩略图派生、Open Graph 资产和存储适配
 - [ ] M3.4 Lead Center：冻结并实现 Partner Lead、Customer Lead、状态、分配、筛选、导出和 CRM 输入
 - [ ] M3.5 SEO Runtime：冻结并实现 sitemap、robots、RSS、canonical、redirect、IndexNow 与站长平台接入
 - [ ] M3.6 GEO Runtime：冻结并实现 AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产
@@ -16,6 +17,7 @@
 - [x] 建立 ADR-0008 与 `docs/DATABASE.md`：冻结 M3.0 Database Model，不直接写数据库代码
 - [x] 建立 ADR-0009 与 `docs/AUTH_SYSTEM.md`：冻结 M3.1 Authentication & Authorization，不直接写登录或后台代码
 - [x] 建立 ADR-0007 与 `docs/CMS_SYSTEM.md`：冻结 M3.2 CMS Architecture，不直接写 CMS 页面或 CRUD
+- [x] 建立 ADR-0010、`docs/MEDIA_SYSTEM.md` 与 `docs/PLATFORM_ARCHITECTURE.md`：冻结 M3.3 Media Domain，并补齐平台能力总览
 - [x] 建立 `docs/MILESTONE_MAPPING.md`：保留 M2.6-M2.8 历史编号并映射至 M3
 
 ## M2.4.5.3 Product Detail
@@ -105,9 +107,9 @@
 - [ ] M2.4.5.3 Product Detail：待完成首个已发布实体与 SEO/GEO 验证；LS70 不得正式收录
 - [ ] M2.4.5.4 Related Product：通过 Entity ID 建立产品关联与 Topic Cluster 渲染
 - [ ] M2.5 Industry Page Development：开发 `/applications/`
-- [ ] M2.6 Lead Capture Integration：历史规划，已映射至 M3.3 Runtime Platform 与 M3.5 Analytics & CRM
+- [ ] M2.6 Lead Capture Integration：历史规划，已映射至 M3.4 Lead Center 与 M3.9 Deployment & Analytics
 - [ ] M2.7 Admin Maintainability：历史规划，已映射至 M3.1、M3.2 与 M3.3
-- [ ] M2.8 Batch Export：历史规划，已映射至 M3.3 Runtime Platform
+- [ ] M2.8 Batch Export：历史规划，已映射至 M3.7 Audit Center 与 M3.8 Backup & Restore
 - [ ] M2 Website Page Development 后续页面扩展
 - [ ] 规划线索表单字段
 - [ ] 规划输入校验与风控

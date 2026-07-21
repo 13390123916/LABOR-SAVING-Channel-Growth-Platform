@@ -34,7 +34,7 @@ Publishing Workflow
 | M3.0 Database Architecture | 数据模型、ER 图、索引、唯一约束、外键、生命周期与版本管理 |
 | M3.1 Authentication & Authorization | Admin、Editor、SEO、Sales、Partner Manager、Super Admin 与 RBAC |
 | M3.2 CMS Architecture | 内容管理边界、字段分层、工作流、权限接入、审计接入与导入导出边界 |
-| M3.3 Media Management | 媒体上传、授权、裁切、版本、公开资产和 Open Graph 资产管理 |
+| M3.3 Media Management Architecture | Media Entity、Media Metadata、Asset 生命周期、图片版本、ALT 来源、WebP / AVIF 预留、Thumbnail Strategy、Storage Adapter、CDN Boundary、Watermark Strategy 和引用关系 |
 | M3.4 Lead Center | Partner Lead、Customer Lead、状态、分配、筛选、导出和 CRM 输入 |
 | M3.5 SEO Runtime | sitemap、robots、canonical、redirect、RSS、IndexNow 与站长平台接入 |
 | M3.6 GEO Runtime | AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产 |

@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.5] - 2026-07-21
+
+### Added
+
+- 新增 `docs/PLATFORM_ARCHITECTURE.md`，提供 M3 平台模块关系、模块职责、模块依赖、生命周期和阶段边界总览。
+- 新增 `docs/MEDIA_SYSTEM.md`，冻结 M3.3 Media Management Architecture 的 Media Entity、Media Metadata、Asset 生命周期、图片版本、ALT 来源、WebP / AVIF 预留、Thumbnail Strategy、Storage Adapter、CDN Boundary、Watermark Strategy 和引用关系。
+- 新增 ADR-0010 Media Management Architecture，确认 M3.3 先冻结 Media Domain，不直接写文件上传。
+
+### Changed
+
+- 将 M3.3 拆分为 Media Management Architecture 与后续 Media Runtime，避免把媒体管理简化为上传功能。
+- 同步更新 Roadmap、TODO、Memory、PRD、README、Project Structure、ADR Index 与治理校验清单。
+
 ## [0.3.4] - 2026-07-21
 
 ### Added

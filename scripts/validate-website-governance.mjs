@@ -19,13 +19,16 @@ const requiredDocs = [
   "docs/PRODUCT_PUBLISHING_CHECKLIST.md",
   "docs/PRODUCT_CONTENT_READINESS.md",
   "docs/MILESTONE_MAPPING.md",
+  "docs/PLATFORM_ARCHITECTURE.md",
   "docs/AUTH_SYSTEM.md",
   "docs/CMS_SYSTEM.md",
+  "docs/MEDIA_SYSTEM.md",
   "docs/adr/README.md",
   "docs/adr/ADR-0001-m2-freeze-and-m3-platform-foundation.md",
   "docs/adr/ADR-0007-cms-architecture.md",
   "docs/adr/ADR-0008-database-model.md",
   "docs/adr/ADR-0009-authentication-and-authorization.md",
+  "docs/adr/ADR-0010-media-management.md",
   "docs/PARTNER_FUNNEL.md",
   "docs/PARTNER_CONTENT_MODEL.md",
   "docs/PARTNER_SEO_TEMPLATE.md",
@@ -255,13 +258,23 @@ for (const token of ["M2 Channel Growth Foundation", "Frozen v1.0", "M2.6", "M2.
 }
 
 const adrIndex = readRequired("docs/adr/README.md");
-for (const token of ["ADR-0001", "ADR-0007", "ADR-0008", "ADR-0009", "M3 Website Platform Foundation"]) {
+for (const token of ["ADR-0001", "ADR-0007", "ADR-0008", "ADR-0009", "ADR-0010", "M3 Website Platform Foundation", "Media Management Architecture"]) {
   assertIncludes(adrIndex, token, "docs/adr/README.md");
+}
+
+const platformArchitecture = readRequired("docs/PLATFORM_ARCHITECTURE.md");
+for (const token of ["Platform Architecture", "Database", "Authentication", "CMS", "Media", "Lead Center", "SEO Runtime", "GEO Runtime", "Audit", "Backup", "Deployment & Analytics", "模块职责", "模块依赖", "平台生命周期", "M3 阶段边界", "Media Management Architecture"]) {
+  assertIncludes(platformArchitecture, token, "docs/PLATFORM_ARCHITECTURE.md");
 }
 
 const cmsSystem = readRequired("docs/CMS_SYSTEM.md");
 for (const token of ["CMS System", "CMS Resource", "Content Type", "Field Group", "Workflow", "Permission Integration", "Audit Integration", "Import / Export", "Future Platform Split", "Product", "Industry", "Article", "Partner", "FAQ", "Download", "Navigation", "SEO Metadata", "Schema Metadata", "Redirect", "Setting", "Draft", "Internal Review", "Content Approved", "SEO Approved", "Release Approved", "Published", "Indexed", "Archived", "Media Management", "Lead Center", "SEO Runtime", "GEO Runtime", "Audit Center", "Backup & Restore"]) {
   assertIncludes(cmsSystem, token, "docs/CMS_SYSTEM.md");
+}
+
+const mediaSystem = readRequired("docs/MEDIA_SYSTEM.md");
+for (const token of ["Media System", "Media Entity", "Media Metadata", "Asset 生命周期", "图片版本", "ALT 来源", "WebP", "AVIF", "Thumbnail Strategy", "Storage Adapter", "CDN Boundary", "Watermark Strategy", "引用关系", "Product", "Industry", "Article", "Partner", "Case", "Download", "FAQ", "SEO Metadata", "Schema Metadata", "GEO Runtime", "Uploaded", "Reviewing", "Approved", "Published", "Archived"]) {
+  assertIncludes(mediaSystem, token, "docs/MEDIA_SYSTEM.md");
 }
 
 const authSystem = readRequired("docs/AUTH_SYSTEM.md");
@@ -291,7 +304,7 @@ for (const token of ["Organization", "Product", "Article", "FAQPage", "Breadcrum
 
 for (const file of syncFiles) {
   const content = readRequired(file);
-  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "AUTH_SYSTEM.md", "CMS_SYSTEM.md", "adr/README.md", "ADR-0007", "ADR-0009", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
+  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "PLATFORM_ARCHITECTURE.md", "AUTH_SYSTEM.md", "CMS_SYSTEM.md", "MEDIA_SYSTEM.md", "adr/README.md", "ADR-0007", "ADR-0009", "ADR-0010", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
     assertIncludes(content, token, file);
   }
 }

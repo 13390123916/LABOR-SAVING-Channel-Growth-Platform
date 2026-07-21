@@ -315,7 +315,7 @@ created_at
 - Search Runtime submit。
 - Setting update。
 
-Audit Log 不允许后台编辑或软删除。保留周期、归档和导出策略进入 M3.3 Runtime Platform。
+Audit Log 不允许后台编辑或软删除。保留周期、归档和导出策略进入 M3.7 Audit Center 与 M3.8 Backup & Restore。
 
 ## 11. Login Flow
 

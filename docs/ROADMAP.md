@@ -9,7 +9,7 @@
 - M3.0 Database Architecture（已完成设计冻结：ADR-0008 与 `docs/DATABASE.md`）
 - M3.1 Authentication & Authorization（已完成架构冻结：ADR-0009 与 `docs/AUTH_SYSTEM.md`）
 - M3.2 CMS Architecture（已完成架构冻结：ADR-0007 与 `docs/CMS_SYSTEM.md`）
-- M3.3 Media Management
+- M3.3 Media Management Architecture（已完成架构冻结：ADR-0010 与 `docs/MEDIA_SYSTEM.md`）
 - M3.4 Lead Center
 - M3.5 SEO Runtime
 - M3.6 GEO Runtime
@@ -17,7 +17,7 @@
 - M3.8 Backup & Restore
 - M3.9 Deployment & Analytics
 
-当前推进：M3.2 CMS Architecture 已完成架构冻结，不直接写 CMS 页面、CRUD、富文本、ORM、迁移或后台 UI；下一步进入 M3.3 Media Management，先冻结媒体上传、授权、裁切、版本和公开资产管理边界。
+当前推进：M3.3 Media Management Architecture 已完成架构冻结，不直接写文件上传、图库 UI、ORM、迁移、裁切转码、CDN 接入或后台页面；下一步进入 M3.3 运行时代码前，必须继续沿用 `docs/MEDIA_SYSTEM.md` 与 ADR-0010 的 Media Domain 边界。
 
 当前平台成熟度：
 
@@ -29,7 +29,8 @@ Product Foundation           100%
 Database Architecture        100%
 Authentication Architecture  100%
 CMS Architecture             100%
-Media Management               0%
+Media Management Architecture 100%
+Media Runtime                  0%
 Lead Center                    0%
 SEO Runtime                    0%
 GEO Runtime                    0%
