@@ -1,0 +1,58 @@
+[
+  {
+    "entityId": "PRD-0001",
+    "name": "LS40 助力机械臂",
+    "slug": "ls40",
+    "category": {
+      "name": "气动助力机械臂",
+      "slug": "pneumatic-manipulator-arm"
+    },
+    "summary": "当前已确认的助力机械臂基础实体。具体参数、适用工况和可公开资料仍需进一步确认。",
+    "sourceStatus": "source_pending",
+    "detailStatus": "planned",
+    "schemaEligible": false,
+    "relatedEntityIds": []
+  },
+  {
+    "entityId": "PRD-0002",
+    "name": "L60 助力机械臂",
+    "slug": "l60",
+    "category": {
+      "name": "气动助力机械臂",
+      "slug": "pneumatic-manipulator-arm"
+    },
+    "summary": "当前已确认的助力机械臂基础实体。具体参数、适用工况和可公开资料仍需进一步确认。",
+    "sourceStatus": "source_pending",
+    "detailStatus": "planned",
+    "schemaEligible": false,
+    "relatedEntityIds": []
+  },
+  {
+    "entityId": "PRD-0003",
+    "name": "SQ35 气动平衡器",
+    "slug": "sq35",
+    "category": {
+      "name": "气动平衡器",
+      "slug": "pneumatic-balancer"
+    },
+    "summary": "当前已确认的气动平衡器基础实体。具体参数、适用工况和可公开资料仍需进一步确认。",
+    "sourceStatus": "source_pending",
+    "detailStatus": "planned",
+    "schemaEligible": false,
+    "relatedEntityIds": []
+  },
+  {
+    "entityId": "PRD-0004",
+    "name": "SQ50 气动平衡器",
+    "slug": "sq50",
+    "category": {
+      "name": "气动平衡器",
+      "slug": "pneumatic-balancer"
+    },
+    "summary": "当前已确认的气动平衡器基础实体。具体参数、适用工况和可公开资料仍需进一步确认。",
+    "sourceStatus": "source_pending",
+    "detailStatus": "planned",
+    "schemaEligible": false,
+    "relatedEntityIds": []
+  }
+]

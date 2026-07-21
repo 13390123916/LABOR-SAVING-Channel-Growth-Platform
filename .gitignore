@@ -32,5 +32,9 @@ Thumbs.db
 *.seed
 *.log
 
+# Local browser validation artifacts
+.playwright-cli/
+output/playwright/
+
 # Temporary scaffold residue
 website/app/favicon.ico

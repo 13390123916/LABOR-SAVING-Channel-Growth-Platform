@@ -31,4 +31,4 @@
 
 ## 当前任务
 
-M2 Channel Growth Foundation 已启动。M2.4 Product System Foundation 已通过验收，当前正式进入 M2.4.5 Product Rendering Layer。以模板验证而非页面数量为目标，逐层执行 Listing、Category、首个真实 Detail、Related Product；所有系统关系使用稳定 Entity ID，LS70 未确认前不得正式收录。
+M2 Channel Growth Foundation 已启动。M2.4.5.1 Product Listing 已完成，当前进入 M2.4.5.2 Product Category 前置审查。继续复用 Product Entity JSON、URL Builder、Metadata Builder、Schema Builder 与 ProductCard，不按页面数量扩展；LS70 未确认前不得正式收录。

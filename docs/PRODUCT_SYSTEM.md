@@ -208,3 +208,28 @@ M2.4.5 Product Rendering Layer
 LS70 继续作为路由验证占位，不分配正式 Product Entity ID，不进入 sitemap、正式 Product Schema、可索引页面或 Related Product 关系。首个正式 Product Detail 必须使用已确认且具备可公开发布资料的 Product Entity。
 
 CMS 仍放在 M2.7。Database 继续保持规划，等待 Product、Industry、Case、Knowledge 等 Entity 关系稳定后再一次冻结。
+
+## 10. M2.4.5.1 Product Listing 验收
+
+状态：已完成。
+
+实现：
+
+- `/products/` 从 `website/app/products/product-entities.json` 读取 Product Entity。
+- 分类由 Product Entity 自动聚合，页面模板不维护型号或分类副本。
+- 产品卡片由统一 `ProductCard` 渲染；新增 Entity 不需要修改页面模板。
+- 产品详情 URL 由 Category Slug 与 Product Slug 统一生成。
+- 未发布 Product Entity 不生成可点击详情链接，也不进入 Product Schema。
+- Metadata、Canonical、Open Graph、Breadcrumb、CollectionPage、FAQPage 由统一层生成。
+- 页面级代码不硬编码 LS40、L60、SQ35、SQ50。
+
+验证：
+
+```text
+Product Entity JSON
+-> Category Grouping
+-> ProductCard Template
+-> Product Listing
+```
+
+通过以上链路后，M2.4.5.2 Product Category 可以复用同一 Entity 数据源、URL 构建函数、Metadata Builder、Schema Builder 和产品卡片组件。

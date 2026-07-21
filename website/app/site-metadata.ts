@@ -19,10 +19,34 @@ type PageMetadataDefinition = {
   breadcrumb: BreadcrumbItem[];
 };
 
-export const siteBaseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+export const siteBaseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.labor-saving.cn";
 export const siteName = "雷普赛维渠道增长平台";
 
 export const pageMetadata = {
+  products: {
+    title: "工业助力机械臂与气动平衡器产品中心",
+    description:
+      "查看 LABOR-SAVING 当前已确认的助力机械臂与气动平衡器产品实体，按产品分类了解基础信息、资料状态和选型咨询入口。",
+    keywords: [
+      "工业助力机械臂",
+      "气动助力机械臂",
+      "气动平衡器",
+      "工业搬运设备",
+      "重载装配辅助",
+      "LABOR-SAVING 产品中心"
+    ],
+    canonical: "/products/",
+    openGraph: {
+      title: "LABOR-SAVING 产品中心",
+      description: "按产品分类查看当前已确认的工业助力机械臂与气动平衡器实体。",
+      url: "/products/",
+      type: "website"
+    },
+    breadcrumb: [
+      { name: "首页", url: "/" },
+      { name: "产品中心", url: "/products/" }
+    ]
+  },
   partner: {
     title: "LABOR-SAVING 渠道增长中心 | 工业装备合作伙伴招募",
     description:

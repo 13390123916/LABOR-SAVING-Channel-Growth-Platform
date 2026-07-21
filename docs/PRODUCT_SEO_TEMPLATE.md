@@ -13,6 +13,8 @@ Product Rendering Layer 分四层：
 | M2.4.5.3 Product Detail | 首个资料已确认的真实 Product Entity | 承接具体型号理解、选型咨询和资料确认 |
 | M2.4.5.4 Related Product | 产品详情页内关联产品 | 自动形成 Product Topic Cluster |
 
+当前状态：M2.4.5.1 Product Listing 已完成模板验证，M2.4.5.2 Product Category 待开始。
+
 四层必须按顺序逐层验收。前一层未通过，不进入下一层；模板成熟后才允许批量扩展。
 
 ## 2. URL 规则

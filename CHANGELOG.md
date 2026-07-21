@@ -229,3 +229,23 @@
 ### Notes
 
 - 本次只固化阶段入口与 Entity ID 治理规则，不开发产品页面、CMS、CRM 或数据库。
+
+## [0.2.6] - 2026-07-21
+
+### Added
+
+- 新增 `/products/` Product Listing 静态路由。
+- 新增 `website/app/products/product-entities.json`，作为 Product Listing 唯一 Product Entity 数据源。
+- 新增自动分类、Product URL Builder、ProductCard 模板和 Product Listing Schema Builder。
+- 新增 `scripts/validate-product-listing.mjs`，验证 Entity ID、URL 唯一性、页面无型号硬编码以及统一 Metadata/Schema 接入。
+
+### Changed
+
+- 将 `siteBaseUrl` 安全默认值从 `example.com` 修正为已确认的 `https://www.labor-saving.cn`。
+- 扩展 website test，使 Product Listing 模板验证与 TypeScript 检查共同执行。
+- 更新 M2.4.5 状态：Product Listing 已完成，下一步为 Product Category。
+
+### Notes
+
+- 当前 Product Entity 均未生成详情链接或 Product Schema，避免未确认资料进入正式收录体系。
+- 本次未开发 CMS、CRM、数据库、Product Category 或 Product Detail。

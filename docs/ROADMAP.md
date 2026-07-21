@@ -130,6 +130,7 @@ M1 完成后不直接进入页面开发，先进入 M1.5 Channel Growth Strategy
 - M2.4 Product System Foundation：`docs/ENTITY_SYSTEM.md`、`docs/PRODUCT_SYSTEM.md`、`docs/PRODUCT_CONTENT_MODEL.md`、`docs/PRODUCT_SCHEMA.md`、`docs/PRODUCT_SEO_TEMPLATE.md`
 - M2.4 Repository Audit：已通过，治理入口、CI 文档清单与产品 URL 规范已同步
 - M2.4.5 Product Rendering Layer：已批准进入，按 Listing、Category、首个真实 Detail、Related Product 逐层验证模板，不按页面数量推进
+- M2.4.5.1 Product Listing：已完成，`/products/` 由 Product Entity 数据源自动分组和渲染，统一 Metadata、Schema、Breadcrumb 与 FAQ 已验证
 - M2.5 Industry Page Development：`/applications/`
 - M2.6 Lead Capture Integration
 - M2.7 Admin Maintainability

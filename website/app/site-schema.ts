@@ -1,4 +1,9 @@
 import { pageMetadata, siteBaseUrl } from "./site-metadata";
+import {
+  buildProductUrl,
+  getSchemaEligibleProducts,
+  type ProductEntity
+} from "./products/product-entities";
 
 type QuestionAnswer = {
   question: string;
@@ -80,12 +85,57 @@ export function buildFaqSchema(items: QuestionAnswer[]) {
   };
 }
 
+export function buildProductListingSchema(products: ProductEntity[]) {
+  const eligibleProducts = getSchemaEligibleProducts(products);
+  const categories = Array.from(new Set(products.map((product) => product.category.name)));
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": absoluteUrl("/products/#collection"),
+    name: "LABOR-SAVING 产品中心",
+    url: absoluteUrl("/products/"),
+    description: pageMetadata.products.description,
+    isPartOf: {
+      "@id": absoluteUrl("/#organization")
+    },
+    about: categories,
+    ...(eligibleProducts.length > 0
+      ? {
+          mainEntity: eligibleProducts.map((product) => ({
+            "@type": "Product",
+            name: product.name,
+            category: product.category.name,
+            description: product.summary,
+            url: absoluteUrl(buildProductUrl(product)),
+            brand: {
+              "@type": "Brand",
+              name: "LABOR-SAVING"
+            }
+          }))
+        }
+      : {})
+  };
+}
+
 export function buildPartnerPageSchemas(faqs: QuestionAnswer[]): SchemaNode[] {
   return [
     buildOrganizationSchema(),
     buildPartnerWebPageSchema(),
     buildPartnerContactPointSchema(),
     buildBreadcrumbSchema(pageMetadata.partner.breadcrumb),
+    buildFaqSchema(faqs)
+  ];
+}
+
+export function buildProductListingSchemas(
+  products: ProductEntity[],
+  faqs: QuestionAnswer[]
+): SchemaNode[] {
+  return [
+    buildOrganizationSchema(),
+    buildProductListingSchema(products),
+    buildBreadcrumbSchema(pageMetadata.products.breadcrumb),
     buildFaqSchema(faqs)
   ];
 }
