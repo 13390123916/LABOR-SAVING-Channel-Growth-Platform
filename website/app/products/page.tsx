@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { buildPageMetadata, pageMetadata } from "../site-metadata";
 import { buildProductListingSchemas } from "../site-schema";
@@ -40,8 +41,13 @@ export default function ProductsPage() {
 
       <header className="products-header">
         <Link className="products-brand" href="/">
-          <strong>LABOR-SAVING</strong>
-          <span>渠道增长平台</span>
+          <Image
+            alt="LABOR-SAVING 渠道增长平台"
+            height={31}
+            priority
+            src="/assets/labor-saving-logo.jpg"
+            width={154}
+          />
         </Link>
         <nav aria-label="主导航" className="products-nav">
           <Link aria-current="page" href="/products/">

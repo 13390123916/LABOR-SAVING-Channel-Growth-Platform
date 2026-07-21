@@ -249,3 +249,14 @@
 
 - 当前 Product Entity 均未生成详情链接或 Product Schema，避免未确认资料进入正式收录体系。
 - 本次未开发 CMS、CRM、数据库、Product Category 或 Product Detail。
+
+## [0.2.7] - 2026-07-21
+
+### Added
+
+- 接入 LABOR-SAVING 品牌 Logo 网页资产 `website/public/assets/labor-saving-logo.jpg`。
+
+### Changed
+
+- 更新 Product Listing 顶部品牌导航，使用 Logo 图片并保留无障碍替代文本。
+- 对原始 Logo 做透明边界裁切，仅优化网页显示留白，不修改外部原始素材。
