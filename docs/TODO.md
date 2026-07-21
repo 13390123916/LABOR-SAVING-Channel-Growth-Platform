@@ -43,6 +43,7 @@
 - [x] 新增 `docs/LEAD_SCHEMA.md`
 - [x] 确认 Website Traffic Weight：Partner 35%、Product 25%、Industry 20%、Content 10%、Trust 10%
 - [x] 确认 M2 调整为 Channel Growth Foundation，不直接进入普通 Website Development
+- [x] 执行 M1.5 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md`
 
 ## 暂不执行
 
@@ -55,8 +56,8 @@
 
 - [x] 启动 M2 前确认优先路径：Channel Growth Foundation
 - [x] 评估并完成 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` V1.2，纳入 M1/M1.5 新增文档清单
-- [ ] M2.0 Partner Funnel Architecture
-- [ ] M2.1 Lead Capture Schema
+- [x] M2.0 Partner Funnel Architecture
+- [x] M2.1 Lead Capture Schema
 - [ ] M2.2 Website Page Development
 - [ ] 规划线索表单字段
 - [ ] 规划输入校验与风控

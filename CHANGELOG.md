@@ -105,3 +105,16 @@
 
 - 本次为 M1.5 Channel Growth Strategy Layer，不开发业务页面。
 - 本次不新增产品参数、客户案例、收益结果、授权政策或市场排名。
+
+## [0.1.3] - 2026-07-21
+
+### Changed
+
+- 执行 M1.5 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md` 为 M1.5 当前状态。
+- 将 `docs/M2_STRATEGY.md`、`docs/PARTNER_FUNNEL.md`、`docs/LEAD_SCHEMA.md` 纳入审计报告目录树和检查项。
+- 更新 `docs/TODO.md` 与 `docs/MEMORY.md`，记录 M1.5 Audit 结果。
+
+### Notes
+
+- 本次不开发业务页面。
+- 本次不新增产品参数、客户案例、收益结果、授权政策或市场排名。

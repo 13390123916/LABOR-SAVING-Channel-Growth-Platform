@@ -2,7 +2,7 @@
 
 项目：LABOR-SAVING Channel Growth Platform（雷普赛维渠道增长平台）
 
-审计阶段：M1 Repository Audit
+审计阶段：M1.5 Repository Audit
 
 审计日期：2026-07-21
 
@@ -16,6 +16,9 @@
 - `docs/WEBSITE_ARCHITECTURE.md`
 - `docs/WEBSITE_SEO_BLUEPRINT.md`
 - `docs/CONTENT_SYSTEM.md`
+- `docs/M2_STRATEGY.md`
+- `docs/PARTNER_FUNNEL.md`
+- `docs/LEAD_SCHEMA.md`
 - `.github/workflows/ci.yml`
 
 审计口径：
@@ -27,7 +30,7 @@
 
 当前仓库已完成 M0、M0.1、M1 Website Foundation 与 M1.5 Channel Growth Strategy Layer 主体交付，具备进入 M2 Channel Growth Foundation 的基础。
 
-总体评分：94 / 100
+总体评分：97 / 100
 
 结论：
 
@@ -36,13 +39,16 @@
 - SEO/GEO Strategy：通过。
 - Website Technical Skeleton：通过。
 - Content System：通过。
+- Channel Growth Strategy：通过。
+- Partner Funnel：通过。
+- Lead Schema：通过。
 - CI Governance：通过。
 
 主要整改项：
 
-- `PROJECT_STRUCTURE.md` 在审计开始时仍残留 `website/config`、`website/lib`，与 M1.2 “只保留骨架”不一致。本次审计已修正。
 - `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 已升级到 V1.2，并纳入 Website Architecture、SEO Blueprint、Content System、Partner Funnel 与 Lead Schema 必读规则。
 - M2 下一阶段已统一为 `M2 Channel Growth Foundation`。
+- CI 与 website governance 脚本已覆盖 `docs/M2_STRATEGY.md`、`docs/PARTNER_FUNNEL.md`、`docs/LEAD_SCHEMA.md`。
 
 ## 2. 当前受版本控制目录树
 
@@ -86,8 +92,11 @@
 │  ├─ GEO.md
 │  ├─ GIT_WORKFLOW.md
 │  ├─ ISSUE_WORKFLOW.md
+│  ├─ LEAD_SCHEMA.md
+│  ├─ M2_STRATEGY.md
 │  ├─ MEMORY.md
 │  ├─ PARTNER.md
+│  ├─ PARTNER_FUNNEL.md
 │  ├─ PROJECT_PRD.md
 │  ├─ REPOSITORY_MAINTENANCE.md
 │  ├─ ROADMAP.md
@@ -148,6 +157,9 @@
 | M1 Website Architecture | 通过 | `docs/WEBSITE_ARCHITECTURE.md` 已定义导航权重、完整 IA、加盟合作结构 |
 | M1 SEO/GEO Blueprint | 通过 | `docs/WEBSITE_SEO_BLUEPRINT.md` 已定义 URL、SEO 字段、GEO、Schema 和合规边界 |
 | M1 Content System | 通过 | `docs/CONTENT_SYSTEM.md` 已定义产品文章、行业文章、案例文章、FAQ、招商内容和 AI Search 回答内容 |
+| M1.5 Channel Growth Strategy | 通过 | `docs/M2_STRATEGY.md` 已将网站定义为工业智能装备渠道增长入口，并确认 M2 为 Channel Growth Foundation |
+| Partner Funnel | 通过 | `docs/PARTNER_FUNNEL.md` 已定义访问加盟页面到区域代理审核的完整漏斗 |
+| Lead Schema | 通过 | `docs/LEAD_SCHEMA.md` 已定义 Partner Lead、Customer Lead、渠道判断字段、CRM 状态和来源渠道 |
 | Website Skeleton | 通过 | `website/` 只保留 Next.js、TypeScript、TailwindCSS、app/components/public/styles 骨架 |
 | 目录边界 | 通过 | 未创建 `application`、`domain`、`infrastructure`、`features` 等提前抽象目录 |
 | 合规表达 | 通过 | 文档多处明确不编造参数、案例、收益、授权政策和市场排名 |
@@ -161,6 +173,7 @@ node scripts\validate-website-governance.mjs
 npm run typecheck
 npm run lint
 npm run build
+仓库关键文件与边界检查
 ```
 
 `next build` 当前只生成：
@@ -192,6 +205,8 @@ npm run build
 
 本次审计已将 `PROJECT_STRUCTURE.md` 更新为当前真实骨架。
 
+复查状态：本轮 M1.5 Audit 确认已保持一致。
+
 ### P2：`.ai/AI_PROJECT_OPERATING_SYSTEM.md` 文档同步清单可继续增强
 
 状态：已在 M1.5 修复。
@@ -221,6 +236,18 @@ M2 Channel Growth Foundation
 
 执行顺序：M2.0 Partner Funnel Architecture、M2.1 Lead Capture Schema、M2.2 Website Page Development。
 
+### P3：审计报告目录树未包含 M1.5 新文档
+
+状态：已修复。
+
+M1.5 新增：
+
+- `docs/M2_STRATEGY.md`
+- `docs/PARTNER_FUNNEL.md`
+- `docs/LEAD_SCHEMA.md`
+
+本轮审计已将上述文件加入审计依据、目录树和检查项结果。
+
 ## 6. SEO/GEO 审计
 
 通过项：
@@ -245,6 +272,8 @@ M2 Channel Growth Foundation
 - 加盟合作页面已定义为 `LABOR-SAVING 渠道增长中心`，不是普通招商页面。
 - 加盟合作页结构覆盖首屏价值、市场机会、合作模式、八大渠道赋能和留资转化。
 - CRM 入口字段已规划：公司名称、所在地区、主营产品、客户行业、销售团队规模、已有渠道资源。
+- Website Traffic Weight 已固化：Partner 35%、Product 25%、Industry 20%、Content 10%、Trust 10%。
+- M2 已确认先进入 Channel Growth Foundation，不直接进入普通页面开发。
 
 风险控制：
 
@@ -262,6 +291,8 @@ main
 最近提交：
 
 ```text
+69ac705 [M1.5] Channel Growth Strategy Layer
+3d17416 [M1] Repository Audit
 cff85f9 [M1] Website Architecture Definition
 cc5f58c [M1] Website Foundation
 3600397 [M0.1] Repository Governance Fix
@@ -282,20 +313,20 @@ CI 覆盖：
 - governance 边界检查。
 - website governance 脚本。
 - website npm ci、typecheck、lint、build。
+- M2 Strategy、Partner Funnel、Lead Schema 存在性与关键字段检查。
 
 ## 9. 下一步建议
 
-进入 M2 前建议：
+进入 M2 建议：
 
-1. 执行 M2.0 Partner Funnel Architecture。
-2. 执行 M2.1 Lead Capture Schema。
-3. 再执行 M2.2 Website Page Development。
-4. 是否为 M2 页面开发建立页面级 metadata schema 文件，但仍避免编造产品参数和案例。
-5. 是否将本地未跟踪的空 SEO/GEO/deploy 子目录整理为正式规划或清理为本地残留。
+1. 复核 M2.0 Partner Funnel Architecture 与 M2.1 Lead Capture Schema 是否满足页面开发输入。
+2. 进入 M2.2 Website Page Development 前，建立页面级 metadata schema 文件。
+3. 页面开发仍必须避免编造产品参数、客户案例、收益结果、授权政策和市场排名。
+4. 是否将本地未跟踪的空 SEO/GEO/deploy 子目录整理为正式规划或清理为本地残留。
 
 ## 10. 最终结论
 
-仓库当前已经达到 M1 完成验收标准：
+仓库当前已经达到 M1.5 完成验收标准：
 
 ```text
 Repository
@@ -309,6 +340,12 @@ Repository
         +-- Website Technical Skeleton ✅
         |
         +-- Content System ✅
+        |
+        +-- Channel Growth Strategy ✅
+        |
+        +-- Partner Funnel ✅
+        |
+        +-- Lead Schema ✅
 ```
 
-建议下一步进入 M2 Channel Growth Foundation，先做 Partner Funnel 与 Lead Schema，再进入页面开发。
+建议下一步进入 M2.2 Website Page Development 准备阶段，以 Partner Funnel 与 Lead Schema 作为页面和表单输入来源。

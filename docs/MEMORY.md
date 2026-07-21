@@ -87,3 +87,10 @@ M1.5 Channel Growth Strategy Layer 已完成。下一阶段可进入 M2 Channel 
 - Website Traffic Weight：加盟合作 Partner 35%、产品 Product 25%、行业应用 Industry 20%、知识中心 Content 10%、品牌 Trust 10%。
 - M2 调整为 `M2 Channel Growth Foundation`。
 - M2 顺序：M2.0 Partner Funnel Architecture、M2.1 Lead Capture Schema、M2.2 Website Page Development。
+
+## M1.5 Repository Audit 决策
+
+- 2026-07-21 执行 M1.5 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md`。
+- 审计结论：M1.5 已完成 Channel Growth Strategy、Partner Funnel、Lead Schema 与 CI Governance。
+- 当前总体评分：97 / 100。
+- M2.0 Partner Funnel Architecture 与 M2.1 Lead Capture Schema 已通过文档层完成；下一步可进入 M2.2 Website Page Development。
