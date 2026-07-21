@@ -58,7 +58,17 @@
 - [x] 评估并完成 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` V1.2，纳入 M1/M1.5 新增文档清单
 - [x] M2.0 Partner Funnel Architecture
 - [x] M2.1 Lead Capture Schema
-- [ ] M2.2 Website Page Development
+- [x] M2.0 Page Strategy Definition：新增 `docs/PAGE_SYSTEM.md`
+- [x] M2.1 Metadata System：新增 `docs/METADATA_SCHEMA.md`
+- [x] M2.2 SEO Schema Layer：新增 `docs/SEO_SCHEMA_LAYER.md`
+- [x] M2.3 Partner Page Development：新增 `/partner/`
+- [x] M2.3.1 Partner System Hardening：更新 `docs/PARTNER.md`，新增 `docs/PARTNER_CONTENT_MODEL.md` 与 `docs/PARTNER_SEO_TEMPLATE.md`
+- [ ] M2.4 Product Page Development：开发 `/products/`
+- [ ] M2.5 Industry Page Development：开发 `/applications/`
+- [ ] M2.6 Lead Capture Integration
+- [ ] M2.7 Admin Maintainability
+- [ ] M2.8 Batch Export
+- [ ] M2 Website Page Development 后续页面扩展
 - [ ] 规划线索表单字段
 - [ ] 规划输入校验与风控
 - [ ] 规划 CRM 字段映射

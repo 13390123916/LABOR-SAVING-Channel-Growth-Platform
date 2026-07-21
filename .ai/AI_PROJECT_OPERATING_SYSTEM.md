@@ -167,7 +167,12 @@ GEO 面向国内 AI 搜索：
 - `docs/PARTNER.md`
 - `docs/CRM.md`
 - `docs/M2_STRATEGY.md`
+- `docs/PAGE_SYSTEM.md`
+- `docs/METADATA_SCHEMA.md`
+- `docs/SEO_SCHEMA_LAYER.md`
 - `docs/PARTNER_FUNNEL.md`
+- `docs/PARTNER_CONTENT_MODEL.md`
+- `docs/PARTNER_SEO_TEMPLATE.md`
 - `docs/LEAD_SCHEMA.md`
 
 用途：
@@ -178,13 +183,20 @@ GEO 面向国内 AI 搜索：
 - `docs/PARTNER.md` 是渠道合作策略来源。
 - `docs/CRM.md` 是线索状态、分配和后续沉淀来源。
 - `docs/M2_STRATEGY.md` 是 M2 阶段优先级来源。
+- `docs/PAGE_SYSTEM.md` 是页面级目标、CTA、内链、Schema 和 Lead 入口来源。
+- `docs/METADATA_SCHEMA.md` 是 title、description、keywords、canonical、og、schema 和 breadcrumb 来源。
+- `docs/SEO_SCHEMA_LAYER.md` 是 Organization、Product、Article、FAQPage、BreadcrumbList、WebPage、ContactPoint 与后台维护字段来源。
 - `docs/PARTNER_FUNNEL.md` 是渠道增长漏斗来源。
+- `docs/PARTNER_CONTENT_MODEL.md` 是 Partner 页面内容模块、FAQ、CTA 与内链模型来源。
+- `docs/PARTNER_SEO_TEMPLATE.md` 是 Partner 页面 SEO/GEO、Schema 和 Topic Cluster 模板来源。
 - `docs/LEAD_SCHEMA.md` 是表单字段和 CRM 输入标准来源。
 
 禁止：
 
 - 自行设计导航。
 - 自行生成 SEO 结构。
+- 每个页面自行编写 Metadata。
+- 每个页面自行散落手写 JSON-LD。
 - 自行修改招商逻辑。
 - 未读取漏斗与字段标准就开发表单或页面。
 

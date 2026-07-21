@@ -47,6 +47,11 @@
 - `docs/TODO.md`
 - `docs/MEMORY.md`
 - `docs/M2_STRATEGY.md`
+- `docs/PAGE_SYSTEM.md`
+- `docs/METADATA_SCHEMA.md`
+- `docs/SEO_SCHEMA_LAYER.md`
 - `docs/PARTNER_FUNNEL.md`
+- `docs/PARTNER_CONTENT_MODEL.md`
+- `docs/PARTNER_SEO_TEMPLATE.md`
 - `docs/LEAD_SCHEMA.md`
 - `.ai/AI_PROJECT_OPERATING_SYSTEM.md`

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
+import { siteBaseUrl, siteName } from "./site-metadata";
 
-const siteName = "雷普赛维渠道增长平台";
 const siteDescription = "雷普赛维官网技术骨架，后续承接渠道合作、产品中心、行业应用、解决方案和知识中心。";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   applicationName: siteName,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com"),
+  metadataBase: new URL(siteBaseUrl),
   alternates: {
     canonical: "/"
   },

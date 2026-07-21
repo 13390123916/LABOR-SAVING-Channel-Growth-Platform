@@ -100,11 +100,91 @@ M2 Channel Growth Foundation
 
 包含：
 
-- M2.0 Partner Funnel Architecture
-- M2.1 Lead Capture Schema
-- M2.2 Website Page Development
+- M2.0 Page Strategy Definition
+- M2.1 Metadata System
+- M2.2 SEO Schema Layer
+- M2.3 Partner Page Development & Partner System Hardening
+- M2.4 Product Page Development
+- M2.5 Industry Page Development
+- M2.6 Lead Capture Integration
+- M2.7 Admin Maintainability
+- M2.8 Batch Export
 
-## 5. M2.0 Partner Funnel Architecture
+当前执行口径：
+
+```text
+M2.0 Page Strategy Definition
+↓
+M2.1 Metadata System
+↓
+M2.2 SEO Schema Layer
+↓
+M2.3 Partner Page Development & Partner System Hardening
+↓
+M2.4 Product Page Development
+↓
+M2.5 Industry Page Development
+↓
+M2.6 Lead Capture Integration
+↓
+M2.7 Admin Maintainability
+↓
+M2.8 Batch Export
+```
+
+其中 `docs/PARTNER_FUNNEL.md` 与 `docs/LEAD_SCHEMA.md` 是 M1.5 已完成的渠道漏斗和线索字段输入，M2 页面开发必须继续沿用。
+
+## 4.1 M2.0 Page Strategy Definition
+
+交付文档：
+
+```text
+docs/PAGE_SYSTEM.md
+```
+
+目标：建立页面级开发输入，统一定义每个页面的页面目标、用户角色、SEO关键词、转化目标、CTA、内部链接、Schema 和 Lead入口。
+
+## 4.2 M2.1 Metadata System
+
+交付文档：
+
+```text
+docs/METADATA_SCHEMA.md
+```
+
+目标：统一 title、description、keywords、canonical、og、schema 和 breadcrumb，避免每个页面自行编写 SEO。
+
+## 4.3 M2.2 SEO Schema Layer
+
+交付文档：
+
+```text
+docs/SEO_SCHEMA_LAYER.md
+```
+
+目标：定义 Organization、Product、Article、FAQPage、BreadcrumbList、WebPage、ContactPoint 等结构化数据的字段来源、页面输出、后台维护、数据库预留和批量导出边界。
+
+## 4.4 M2.3 Partner Page Development & Partner System Hardening
+
+开发 URL：
+
+```text
+/partner/
+```
+
+目标：优先开发当前最高商业价值入口，用于招募 LABOR-SAVING 全国工业渠道合作伙伴，并承接 Partner Lead。
+
+配套内容说明文档：
+
+```text
+docs/PARTNER.md
+docs/PARTNER_CONTENT_MODEL.md
+docs/PARTNER_SEO_TEMPLATE.md
+```
+
+目的：将 `/partner/` 从单页开发结果升级为 Partner Program Entity、Partner Content Model、Partner SEO Template 与 Partner Lead / CRM / CMS / Export 的可维护入口。
+
+## 5. M1.5 Partner Funnel Architecture
 
 交付文档：
 
@@ -114,7 +194,7 @@ docs/PARTNER_FUNNEL.md
 
 目标：定义代理商从访问加盟页面到区域代理审核的完整路径。
 
-## 6. M2.1 Lead Capture Schema
+## 6. M1.5 Lead Capture Schema
 
 交付文档：
 
@@ -124,7 +204,7 @@ docs/LEAD_SCHEMA.md
 
 目标：定义表单字段、CRM 输入标准和线索分层基础。
 
-## 7. M2.2 Website Page Development
+## 7. M2 Website Page Development
 
 在 M2.0 与 M2.1 完成后，再开发：
 

@@ -115,17 +115,24 @@ M1 完成后不直接进入页面开发，先进入 M1.5 Channel Growth Strategy
 
 ## M2 Channel Growth Foundation
 
-状态：待启动
+状态：进行中
 
 目标：
 
-- 建立渠道增长漏斗、线索采集标准和 CRM 输入基础
+- 建立页面级开发输入、统一 Metadata、Partner 商业入口和后续 Lead Capture 集成基础
 
 范围：
 
-- M2.0 Partner Funnel Architecture
-- M2.1 Lead Capture Schema
-- M2.2 Website Page Development
+- M2.0 Page Strategy Definition：`docs/PAGE_SYSTEM.md`
+- M2.1 Metadata System：`docs/METADATA_SCHEMA.md`
+- M2.2 SEO Schema Layer：`docs/SEO_SCHEMA_LAYER.md`
+- M2.3 Partner Page Development & Partner System Hardening：`/partner/`、`docs/PARTNER_CONTENT_MODEL.md`、`docs/PARTNER_SEO_TEMPLATE.md`
+- M2.4 Product Page Development：`/products/`
+- M2.5 Industry Page Development：`/applications/`
+- M2.6 Lead Capture Integration
+- M2.7 Admin Maintainability
+- M2.8 Batch Export
+- 继续沿用 M1.5 已完成的 `docs/PARTNER_FUNNEL.md` 与 `docs/LEAD_SCHEMA.md`
 - 表单结构与输入校验
 - 来源追踪与 CRM 字段预留
 - 后续 MySQL 数据模型

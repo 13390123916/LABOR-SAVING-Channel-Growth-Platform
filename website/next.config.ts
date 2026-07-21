@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  poweredByHeader: false
+  poweredByHeader: false,
+  trailingSlash: true
 };
 
 export default nextConfig;

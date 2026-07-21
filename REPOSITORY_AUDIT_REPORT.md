@@ -2,7 +2,7 @@
 
 项目：LABOR-SAVING Channel Growth Platform（雷普赛维渠道增长平台）
 
-审计阶段：M1.5 Repository Audit
+审计阶段：M2 SEO Schema Layer Audit
 
 审计日期：2026-07-21
 
@@ -17,7 +17,12 @@
 - `docs/WEBSITE_SEO_BLUEPRINT.md`
 - `docs/CONTENT_SYSTEM.md`
 - `docs/M2_STRATEGY.md`
+- `docs/PAGE_SYSTEM.md`
+- `docs/METADATA_SCHEMA.md`
+- `docs/SEO_SCHEMA_LAYER.md`
 - `docs/PARTNER_FUNNEL.md`
+- `docs/PARTNER_CONTENT_MODEL.md`
+- `docs/PARTNER_SEO_TEMPLATE.md`
 - `docs/LEAD_SCHEMA.md`
 - `.github/workflows/ci.yml`
 
@@ -28,9 +33,9 @@
 
 ## 1. 审计结论
 
-当前仓库已完成 M0、M0.1、M1 Website Foundation 与 M1.5 Channel Growth Strategy Layer 主体交付，具备进入 M2 Channel Growth Foundation 的基础。
+当前仓库已完成 M0、M0.1、M1 Website Foundation、M1.5 Channel Growth Strategy Layer，并在 M2 Channel Growth Foundation 中补齐 Page System、Metadata System、SEO Schema Layer 与 `/partner/` 页面开发基础。
 
-总体评分：97 / 100
+总体评分：98 / 100
 
 结论：
 
@@ -42,13 +47,18 @@
 - Channel Growth Strategy：通过。
 - Partner Funnel：通过。
 - Lead Schema：通过。
+- Page System：通过。
+- Metadata System：通过。
+- SEO Schema Layer：通过。
+- Partner Page：通过。
+- Partner System Hardening：通过。
 - CI Governance：通过。
 
 主要整改项：
 
 - `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 已升级到 V1.2，并纳入 Website Architecture、SEO Blueprint、Content System、Partner Funnel 与 Lead Schema 必读规则。
 - M2 下一阶段已统一为 `M2 Channel Growth Foundation`。
-- CI 与 website governance 脚本已覆盖 `docs/M2_STRATEGY.md`、`docs/PARTNER_FUNNEL.md`、`docs/LEAD_SCHEMA.md`。
+- CI 与 website governance 脚本已覆盖 `docs/M2_STRATEGY.md`、`docs/PAGE_SYSTEM.md`、`docs/METADATA_SCHEMA.md`、`docs/SEO_SCHEMA_LAYER.md`、`docs/PARTNER_FUNNEL.md`、`docs/PARTNER_CONTENT_MODEL.md`、`docs/PARTNER_SEO_TEMPLATE.md`、`docs/LEAD_SCHEMA.md`。
 
 ## 2. 当前受版本控制目录树
 
@@ -94,13 +104,16 @@
 │  ├─ ISSUE_WORKFLOW.md
 │  ├─ LEAD_SCHEMA.md
 │  ├─ M2_STRATEGY.md
+│  ├─ METADATA_SCHEMA.md
 │  ├─ MEMORY.md
+│  ├─ PAGE_SYSTEM.md
 │  ├─ PARTNER.md
 │  ├─ PARTNER_FUNNEL.md
 │  ├─ PROJECT_PRD.md
 │  ├─ REPOSITORY_MAINTENANCE.md
 │  ├─ ROADMAP.md
 │  ├─ SEO.md
+│  ├─ SEO_SCHEMA_LAYER.md
 │  ├─ STYLEGUIDE.md
 │  ├─ TODO.md
 │  ├─ WEBSITE_ARCHITECTURE.md
@@ -121,8 +134,12 @@
 │  ├─ .gitignore
 │  ├─ README.md
 │  ├─ app/
+│  │  ├─ partner/
+│  │  │  └─ page.tsx
 │  │  ├─ layout.tsx
-│  │  └─ page.tsx
+│  │  ├─ page.tsx
+│  │  ├─ site-metadata.ts
+│  │  └─ site-schema.ts
 │  ├─ components/
 │  │  └─ layout/
 │  │     └─ site-shell.tsx
@@ -158,9 +175,13 @@
 | M1 SEO/GEO Blueprint | 通过 | `docs/WEBSITE_SEO_BLUEPRINT.md` 已定义 URL、SEO 字段、GEO、Schema 和合规边界 |
 | M1 Content System | 通过 | `docs/CONTENT_SYSTEM.md` 已定义产品文章、行业文章、案例文章、FAQ、招商内容和 AI Search 回答内容 |
 | M1.5 Channel Growth Strategy | 通过 | `docs/M2_STRATEGY.md` 已将网站定义为工业智能装备渠道增长入口，并确认 M2 为 Channel Growth Foundation |
+| Page System | 通过 | `docs/PAGE_SYSTEM.md` 已定义页面目标、用户角色、SEO关键词、转化目标、CTA、内部链接、Schema 和 Lead入口 |
+| Metadata System | 通过 | `docs/METADATA_SCHEMA.md` 已统一 title、description、keywords、canonical、og、schema 和 breadcrumb |
+| SEO Schema Layer | 通过 | `docs/SEO_SCHEMA_LAYER.md` 已定义 Organization、Product、Article、FAQPage、BreadcrumbList、WebPage、ContactPoint、后台维护、数据库预留和批量导出边界 |
 | Partner Funnel | 通过 | `docs/PARTNER_FUNNEL.md` 已定义访问加盟页面到区域代理审核的完整漏斗 |
 | Lead Schema | 通过 | `docs/LEAD_SCHEMA.md` 已定义 Partner Lead、Customer Lead、渠道判断字段、CRM 状态和来源渠道 |
-| Website Skeleton | 通过 | `website/` 只保留 Next.js、TypeScript、TailwindCSS、app/components/public/styles 骨架 |
+| Partner Page | 通过 | `/partner/` 已作为 LABOR-SAVING 渠道增长中心落地，承接 Partner Lead |
+| Website Skeleton | 通过 | `website/` 保持 Next.js、TypeScript、TailwindCSS、app/components/public/styles 边界，并新增 M2 所需 partner 页面与 metadata/schema 工具 |
 | 目录边界 | 通过 | 未创建 `application`、`domain`、`infrastructure`、`features` 等提前抽象目录 |
 | 合规表达 | 通过 | 文档多处明确不编造参数、案例、收益、授权政策和市场排名 |
 
@@ -181,9 +202,10 @@ npm run build
 ```text
 /
 /_not-found
+/partner
 ```
 
-判断：符合 M1.2 “只搭建骨架，不制作完整页面，不提前实现 SEO/GEO 路由”的边界。
+判断：符合 M2 “先补 Page System、Metadata System、SEO Schema Layer，再优先开发 `/partner/` 商业入口”的边界。
 
 ## 5. 发现与处理
 
@@ -219,12 +241,15 @@ npm run build
 - `docs/PARTNER.md`
 - `docs/CRM.md`
 - `docs/M2_STRATEGY.md`
+- `docs/PAGE_SYSTEM.md`
+- `docs/METADATA_SCHEMA.md`
+- `docs/SEO_SCHEMA_LAYER.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/LEAD_SCHEMA.md`
 
-影响：已消除。后续 AI 不得自行设计导航、自行生成 SEO 结构、自行修改招商逻辑，或未读取漏斗与字段标准就开发表单或页面。
+影响：已消除。后续 AI 不得自行设计导航、自行生成 SEO 结构、每页自行编写 Metadata、散落手写 JSON-LD、自行修改招商逻辑，或未读取漏斗与字段标准就开发表单或页面。
 
-### P2：M2 入口命名需要启动前确认
+### P3：M2 入口命名需要启动前确认
 
 状态：已在 M1.5 统一。
 
@@ -234,19 +259,33 @@ npm run build
 M2 Channel Growth Foundation
 ```
 
-执行顺序：M2.0 Partner Funnel Architecture、M2.1 Lead Capture Schema、M2.2 Website Page Development。
+执行顺序：M2.0 Page Strategy Definition、M2.1 Metadata System、M2.2 SEO Schema Layer、M2.3 Partner Page Development & Partner System Hardening、M2.4 Product Page Development、M2.5 Industry Page Development、M2.6 Lead Capture Integration、M2.7 Admin Maintainability、M2.8 Batch Export。
 
-### P3：审计报告目录树未包含 M1.5 新文档
+### P4：审计报告目录树未包含 M2 新文档与页面文件
 
 状态：已修复。
 
-M1.5 新增：
+M2 新增：
 
+- `docs/PAGE_SYSTEM.md`
+- `docs/METADATA_SCHEMA.md`
+- `docs/SEO_SCHEMA_LAYER.md`
 - `docs/M2_STRATEGY.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/LEAD_SCHEMA.md`
+- `website/app/partner/page.tsx`
+- `website/app/site-metadata.ts`
+- `website/app/site-schema.ts`
 
 本轮审计已将上述文件加入审计依据、目录树和检查项结果。
+
+### P5：Partner 页面 JSON-LD 曾散落在页面内
+
+状态：已修复。
+
+本轮已新增 `website/app/site-schema.ts`，集中构建 Organization、WebPage、ContactPoint、BreadcrumbList 和 FAQPage。
+
+影响：后续产品、行业、知识中心页面可复用同一 Schema Layer，不需要在页面组件中各自拼装 JSON-LD。
 
 ## 6. SEO/GEO 审计
 
@@ -258,10 +297,14 @@ M1.5 新增：
 - 每类页面 SEO 字段标准包括 Title、Meta Description、H1、H2、关键词、图片 ALT、Schema、内部链接。
 - GEO 面向百度、360、搜狗、Google、AI Search。
 - FAQ 与 JSON-LD Schema 已纳入蓝图。
+- `docs/PAGE_SYSTEM.md` 已定义页面目标、用户角色、CTA、内部链接、Schema 和 Lead入口。
+- `docs/METADATA_SCHEMA.md` 已定义页面级 title、description、keywords、canonical、og 和 breadcrumb。
+- `docs/SEO_SCHEMA_LAYER.md` 已定义 Organization、Product、Article、FAQPage、BreadcrumbList、WebPage、ContactPoint 及其后台维护、数据库预留和批量导出边界。
+- `/partner/` 已输出集中构建的 JSON-LD Schema。
 
 风险控制：
 
-- 当前只定义 URL 与字段，不提前生成页面，符合 M1 边界。
+- 当前只开发 `/partner/`，未提前生成产品、行业、知识中心页面，符合 M2 商业优先级。
 - 合规边界明确禁止编造产品参数、客户案例、收益、授权政策和市场排名。
 
 ## 7. 商业定位审计
@@ -273,7 +316,7 @@ M1.5 新增：
 - 加盟合作页结构覆盖首屏价值、市场机会、合作模式、八大渠道赋能和留资转化。
 - CRM 入口字段已规划：公司名称、所在地区、主营产品、客户行业、销售团队规模、已有渠道资源。
 - Website Traffic Weight 已固化：Partner 35%、Product 25%、Industry 20%、Content 10%、Trust 10%。
-- M2 已确认先进入 Channel Growth Foundation，不直接进入普通页面开发。
+- M2 已确认按 Page System、Metadata System、SEO Schema Layer、页面开发、Lead Capture、后台维护和批量导出推进。
 
 风险控制：
 
@@ -313,20 +356,20 @@ CI 覆盖：
 - governance 边界检查。
 - website governance 脚本。
 - website npm ci、typecheck、lint、build。
-- M2 Strategy、Partner Funnel、Lead Schema 存在性与关键字段检查。
+- M2 Strategy、Page System、Metadata Schema、SEO Schema Layer、Partner Funnel、Lead Schema 存在性与关键字段检查。
 
 ## 9. 下一步建议
 
-进入 M2 建议：
+进入下一步建议：
 
-1. 复核 M2.0 Partner Funnel Architecture 与 M2.1 Lead Capture Schema 是否满足页面开发输入。
-2. 进入 M2.2 Website Page Development 前，建立页面级 metadata schema 文件。
-3. 页面开发仍必须避免编造产品参数、客户案例、收益结果、授权政策和市场排名。
-4. 是否将本地未跟踪的空 SEO/GEO/deploy 子目录整理为正式规划或清理为本地残留。
+1. 进入 M2.4 Product Page Development，优先开发 `/products/` 产品中心。
+2. 产品页面必须继续沿用 `docs/PAGE_SYSTEM.md`、`docs/METADATA_SCHEMA.md` 与 `docs/SEO_SCHEMA_LAYER.md`。
+3. 产品实体 Schema 只允许表达当前已确认产品范围，不得补写价格、参数、评分、评价、库存或认证。
+4. M2.6 前不要接入真实 CRM 后端，避免表单字段、来源追踪和风控规则未完成前进入数据库实现。
 
 ## 10. 最终结论
 
-仓库当前已经达到 M1.5 完成验收标准：
+仓库当前已经达到 M2 SEO Schema Layer 与 Partner Page 阶段验收标准：
 
 ```text
 Repository
@@ -346,6 +389,14 @@ Repository
         +-- Partner Funnel ✅
         |
         +-- Lead Schema ✅
+        |
+        +-- Page System ✅
+        |
+        +-- Metadata System ✅
+        |
+        +-- SEO Schema Layer ✅
+        |
+        +-- Partner Page ✅
 ```
 
-建议下一步进入 M2.2 Website Page Development 准备阶段，以 Partner Funnel 与 Lead Schema 作为页面和表单输入来源。
+建议下一步进入 M2.4 Product Page Development，以 Page System、Metadata System 与 SEO Schema Layer 作为页面开发输入来源。

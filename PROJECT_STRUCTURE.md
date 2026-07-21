@@ -28,6 +28,9 @@ Version: V1.2
 ├── docs/
 ├── website/
 │   ├── app/
+│   │   ├── partner/
+│   │   ├── site-metadata.ts
+│   │   └── site-schema.ts
 │   ├── components/
 │   ├── public/
 │   ├── styles/
@@ -78,6 +81,17 @@ Version: V1.2
 - `docs/GIT_WORKFLOW.md`
 - `docs/ISSUE_WORKFLOW.md`
 - `docs/REPOSITORY_MAINTENANCE.md`
+- `docs/WEBSITE_ARCHITECTURE.md`
+- `docs/WEBSITE_SEO_BLUEPRINT.md`
+- `docs/CONTENT_SYSTEM.md`
+- `docs/M2_STRATEGY.md`
+- `docs/PAGE_SYSTEM.md`
+- `docs/METADATA_SCHEMA.md`
+- `docs/SEO_SCHEMA_LAYER.md`
+- `docs/PARTNER_FUNNEL.md`
+- `docs/PARTNER_CONTENT_MODEL.md`
+- `docs/PARTNER_SEO_TEMPLATE.md`
+- `docs/LEAD_SCHEMA.md`
 
 ## 文档维护原则
 
@@ -92,4 +106,20 @@ Version: V1.2
 
 ## 当前策略
 
-M1.5 Channel Growth Strategy Layer 已完成。当前 `website/` 只保留技术骨架；SEO/GEO URL 与页面结构先沉淀在文档中。下一阶段进入 M2 Channel Growth Foundation，先建立 Partner Funnel、Lead Schema 和 CRM 输入标准，再进入业务页面开发。
+M2 Channel Growth Foundation 已启动。当前已建立页面级输入标准、Metadata System、SEO Schema Layer 和 `/partner/` 商业入口。
+
+当前执行顺序：
+
+```text
+PAGE_SYSTEM.md
+↓
+METADATA_SCHEMA.md
+↓
+SEO_SCHEMA_LAYER.md
+↓
+Next.js 页面开发
+↓
+Lead Capture / CRM / 后台维护 / 批量导出
+```
+
+下一步进入 `/products/` 产品实体页面开发，仍不得编造产品参数、客户案例、收益结果、授权政策或市场排名。

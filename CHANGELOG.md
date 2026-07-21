@@ -118,3 +118,29 @@
 
 - 本次不开发业务页面。
 - 本次不新增产品参数、客户案例、收益结果、授权政策或市场排名。
+
+## [0.2.0] - 2026-07-21
+
+### Added
+
+- 新增 `docs/PAGE_SYSTEM.md`，定义页面目标、用户角色、SEO关键词、转化目标、CTA、内部链接、Schema 和 Lead入口。
+- 新增 `docs/METADATA_SCHEMA.md`，统一 title、description、keywords、canonical、og、schema 和 breadcrumb。
+- 新增 `docs/SEO_SCHEMA_LAYER.md`，补齐 Metadata 与页面开发之间的结构化数据层。
+- 重写 `docs/PARTNER.md`，明确 Partner Program Entity、Partner Program Database、Partner Content Model、Partner SEO Template、Partner Schema、Partner Template、Partner Page、Partner Lead / CRM / CMS / Export 的长期架构。
+- 新增 `docs/PARTNER_CONTENT_MODEL.md`，定义 PartnerTemplate、Hero、Market Opportunity、Cooperation Models、Channel Enablement、Lead Entry、FAQ、内链与合规边界。
+- 新增 `docs/PARTNER_SEO_TEMPLATE.md`，定义 Partner 页面 SEO/GEO、Schema、FAQPage、Topic Cluster、后台维护与批量审核字段。
+- 新增 `/partner/` 页面，作为 LABOR-SAVING 渠道增长中心和 Partner Lead 入口。
+- 新增 `website/app/site-metadata.ts`，集中维护页面 metadata。
+- 新增 `website/app/site-schema.ts`，集中维护 Organization、WebPage、ContactPoint、BreadcrumbList 和 FAQPage JSON-LD 构建。
+
+### Changed
+
+- 更新 `docs/M2_STRATEGY.md`，明确 M2 执行顺序为 Page Strategy、Metadata System、SEO Schema Layer、Partner Page、Product Page、Industry Page、Lead Capture Integration、Admin Maintainability、Batch Export。
+- 更新 website governance 校验，将 `docs/PAGE_SYSTEM.md`、`docs/METADATA_SCHEMA.md`、`docs/SEO_SCHEMA_LAYER.md`、`docs/PARTNER_CONTENT_MODEL.md` 与 `docs/PARTNER_SEO_TEMPLATE.md` 纳入必检文档。
+- 同步更新 README、Roadmap、TODO、Memory 与 website README。
+
+### Notes
+
+- 本次优先完成 `/partner/` 商业入口，不开发 `/products/`、`/applications/` 和 `/knowledge/`。
+- 本次不接入 CRM 后端；Lead Capture Integration 留到 M2.5。
+- 本次不新增产品参数、客户案例、收益结果、授权政策、区域独家或市场排名。
