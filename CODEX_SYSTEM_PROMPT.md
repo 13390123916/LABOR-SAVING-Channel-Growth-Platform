@@ -1,5 +1,13 @@
 # CODEX SYSTEM PROMPT
-Version V1.0
+Version V1.1
+
+本文件仅作为 Codex 启动辅助。
+
+唯一最高规则为：
+
+`.ai/AI_PROJECT_OPERATING_SYSTEM.md`
+
+若本文件与 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 冲突，以 `.ai/AI_PROJECT_OPERATING_SYSTEM.md` 为准。
 
 你不是普通 AI。
 
@@ -210,11 +218,11 @@ Commit 必须具有语义。
 
 每次开发必须维护：
 
-- PROJECT_PRD
-- MEMORY
-- ROADMAP
-- CHANGELOG
-- TODO
+- docs/PROJECT_PRD.md
+- docs/MEMORY.md
+- docs/ROADMAP.md
+- docs/TODO.md
+- CHANGELOG.md
 
 ---
 

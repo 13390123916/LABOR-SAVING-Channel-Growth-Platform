@@ -12,8 +12,8 @@
 
 ## 当前工程结构
 
-- `website/`：Next.js 前台与基础接口
-- `docs/`：PRD、路线图、记忆、变更、待办
+- `website/`：未来官网与平台前台工作区，M0.1 阶段仅保留 README 与 gitignore
+- `docs/`：PRD、路线图、记忆、SEO/GEO、CRM、架构、Git 工作流与仓库维护文档
 - `seo/`：SEO 关键词、站点地图、结构化数据
 - `geo/`：AI 搜索知识与问答资产
 - `crm/`：线索与后续分配预留
@@ -35,7 +35,15 @@
 
 ## 本阶段状态
 
-- 项目脚手架已完成
-- 官网 MVP 骨架已启动
-- 线索接口已预留
-- MySQL / Redis / CRM 后续接入
+- M0 Repository Bootstrap 已完成
+- M0 Repository Audit 已完成
+- 当前进入 M0.1 Repository Governance Fix
+- 暂不开发网站功能，不创建业务代码
+
+## 文档入口
+
+- `docs/PROJECT_PRD.md`
+- `docs/ROADMAP.md`
+- `docs/TODO.md`
+- `docs/MEMORY.md`
+- `.ai/AI_PROJECT_OPERATING_SYSTEM.md`

@@ -15,17 +15,19 @@ jobs:
       - name: Validate repository files
         run: |
           test -f README.md
-          test -f PROJECT_PRD.md
-          test -f ROADMAP.md
-          test -f TODO.md
           test -f CHANGELOG.md
           test -f CONTRIBUTING.md
           test -f LICENSE
           test -f .github/CODEOWNERS
+          test -f .github/pull_request_template.md
           test -f .ai/AI_PROJECT_OPERATING_SYSTEM.md
 
       - name: Validate docs folders
         run: |
+          test -f docs/PROJECT_PRD.md
+          test -f docs/ROADMAP.md
+          test -f docs/TODO.md
+          test -f docs/MEMORY.md
           test -f docs/ARCHITECTURE.md
           test -f docs/DATABASE.md
           test -f docs/API.md
@@ -36,3 +38,13 @@ jobs:
           test -f docs/CONTENT.md
           test -f docs/STYLEGUIDE.md
           test -f docs/DEPLOYMENT.md
+          test -f docs/GIT_WORKFLOW.md
+          test -f docs/ISSUE_WORKFLOW.md
+          test -f docs/REPOSITORY_MAINTENANCE.md
+
+      - name: Validate governance boundaries
+        run: |
+          test ! -f PROJECT_PRD.md
+          test ! -f ROADMAP.md
+          test ! -f TODO.md
+          test ! -f docs/CHANGELOG.md

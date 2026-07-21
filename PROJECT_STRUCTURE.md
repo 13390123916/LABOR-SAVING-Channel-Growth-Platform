@@ -27,15 +27,8 @@ Version: V1.1
 ├─ .github/
 ├─ docs/
 ├─ website/
-│  ├─ app/
-│  ├─ application/
-│  ├─ components/
-│  ├─ config/
-│  ├─ domain/
-│  ├─ features/
-│  ├─ infrastructure/
-│  ├─ lib/
-│  └─ public/
+│  ├─ README.md
+│  └─ .gitignore
 ├─ seo/
 ├─ geo/
 ├─ crm/
@@ -53,6 +46,34 @@ Version: V1.1
 2. 不重复建目录
 3. 不重复建模块
 4. 不把临时代码塞进页面组件
+5. M0.1 不提前创建 `application`、`domain`、`infrastructure`、`features` 等无业务支撑目录
+
+## 文档职责
+
+根目录只保留入口和发布记录：
+
+- `README.md`
+- `CHANGELOG.md`
+
+项目详细文档统一维护在 `docs/`：
+
+- `docs/PROJECT_PRD.md`
+- `docs/ROADMAP.md`
+- `docs/TODO.md`
+- `docs/MEMORY.md`
+- `docs/ARCHITECTURE.md`
+- `docs/SEO.md`
+- `docs/GEO.md`
+- `docs/CRM.md`
+- `docs/PARTNER.md`
+- `docs/API.md`
+- `docs/DATABASE.md`
+- `docs/CONTENT.md`
+- `docs/STYLEGUIDE.md`
+- `docs/DEPLOYMENT.md`
+- `docs/GIT_WORKFLOW.md`
+- `docs/ISSUE_WORKFLOW.md`
+- `docs/REPOSITORY_MAINTENANCE.md`
 
 ## 文档维护原则
 
@@ -60,9 +81,9 @@ Version: V1.1
 
 - `docs/MEMORY.md`
 - `docs/ROADMAP.md`
-- `docs/CHANGELOG.md`
 - `docs/TODO.md`
+- `CHANGELOG.md`
 
 ## 当前策略
 
-第一阶段先完成可上线的官网获客 MVP，再逐步接入 CRM、代理协作和数据分析。
+M0.1 先完成仓库治理。M1 再建立网站技术底座，且 M1 不是直接制作页面。
