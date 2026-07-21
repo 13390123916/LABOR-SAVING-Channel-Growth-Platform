@@ -13,7 +13,7 @@ Product Rendering Layer 分四层：
 | M2.4.5.3 Product Detail | 首个资料已确认的真实 Product Entity | 承接具体型号理解、选型咨询和资料确认 |
 | M2.4.5.4 Related Product | 产品详情页内关联产品 | 自动形成 Product Topic Cluster |
 
-当前状态：M2.4.5.1 Product Listing 已完成模板验证，M2.4.5.2 Product Category 待开始。
+当前状态：M2.4.5.1 Product Listing 与 M2.4.5.2 Product Category 已完成模板验证。进入 M2.4.5.3 前，必须确认首个可公开发布资料的真实 Product Entity。
 
 四层必须按顺序逐层验收。前一层未通过，不进入下一层；模板成熟后才允许批量扩展。
 
@@ -208,15 +208,19 @@ docs/PRODUCT_SCHEMA.md
 docs/SEO_SCHEMA_LAYER.md
 ```
 
-必须输出：
+Product Detail 必须输出：
 
 - Product
 - BreadcrumbList
 - FAQPage
 
-产品集合页可同时输出：
+Product Listing 与 Product Category 必须输出：
 
 - CollectionPage
+- BreadcrumbList
+- FAQPage
+
+集合页仅在 Product Entity 同时满足 reviewed、published 和 schema eligible 门禁时输出 Product 节点；当前实体均不输出 Product Schema。
 
 ## 9. Product Rendering Layer 验收标准
 

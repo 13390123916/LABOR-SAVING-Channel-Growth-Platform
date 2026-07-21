@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { buildProductCategoryUrl, type ProductCategoryGroup } from "./products/product-entities";
 
-type BreadcrumbItem = {
+export type BreadcrumbItem = {
   name: string;
   url: string;
 };
 
-type PageMetadataDefinition = {
+export type PageMetadataDefinition = {
   title: string;
   description: string;
   keywords: string[];
@@ -89,5 +90,30 @@ export function buildPageMetadata(definition: PageMetadataDefinition): Metadata 
       type: definition.openGraph.type,
       siteName
     }
+  };
+}
+
+export function buildProductCategoryMetadata(
+  category: ProductCategoryGroup
+): PageMetadataDefinition {
+  const canonical = buildProductCategoryUrl(category);
+  const description = `查看 LABOR-SAVING ${category.name}分类下当前已确认的 ${category.entities.length} 个 Product Entity，了解基础资料状态、型号范围和选型咨询边界。`;
+
+  return {
+    title: `${category.name} | LABOR-SAVING 产品分类`,
+    description,
+    keywords: [category.name, `${category.name}产品`, "工业搬运设备", "LABOR-SAVING 产品中心"],
+    canonical,
+    openGraph: {
+      title: `${category.name} | LABOR-SAVING`,
+      description,
+      url: canonical,
+      type: "website"
+    },
+    breadcrumb: [
+      { name: "首页", url: "/" },
+      { name: "产品中心", url: "/products/" },
+      { name: category.name, url: canonical }
+    ]
   };
 }

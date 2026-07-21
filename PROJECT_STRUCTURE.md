@@ -125,6 +125,6 @@ Entity
 -> CMS / CRM / Database / Batch Export
 ```
 
-M2.4.5.1 Product Listing 已完成，`/products/` 由 Product Entity 数据源自动渲染。下一步为 M2.4.5.2 Product Category，继续复用同一 URL、Metadata、Schema、Breadcrumb、FAQ、Internal Link、Canonical、Open Graph、SEO 与 GEO 机制。
+M2.4.5.1 Product Listing 与 M2.4.5.2 Product Category 已完成，Collection Rendering 机制已验证。下一步进入 Product Detail 前置资料确认，继续复用同一 Entity、URL、Metadata、Schema、Breadcrumb、FAQ、Internal Link、Canonical、Open Graph、SEO 与 GEO 机制。
 
 CMS 继续后置到 M2.7，Database 在 Product、Industry、Case、Knowledge 等 Entity 关系稳定后再冻结。任何阶段仍不得编造产品参数、客户案例、收益结果、授权政策或市场排名。

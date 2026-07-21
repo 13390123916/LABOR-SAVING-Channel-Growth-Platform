@@ -1,7 +1,13 @@
-import { pageMetadata, siteBaseUrl } from "./site-metadata";
 import {
+  buildProductCategoryMetadata,
+  pageMetadata,
+  siteBaseUrl
+} from "./site-metadata";
+import {
+  buildProductCategoryUrl,
   buildProductUrl,
   getSchemaEligibleProducts,
+  type ProductCategoryGroup,
   type ProductEntity
 } from "./products/product-entities";
 
@@ -118,6 +124,39 @@ export function buildProductListingSchema(products: ProductEntity[]) {
   };
 }
 
+export function buildProductCategorySchema(category: ProductCategoryGroup) {
+  const eligibleProducts = getSchemaEligibleProducts(category.entities);
+  const metadata = buildProductCategoryMetadata(category);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": absoluteUrl(`${buildProductCategoryUrl(category)}#collection`),
+    name: category.name,
+    url: absoluteUrl(buildProductCategoryUrl(category)),
+    description: metadata.description,
+    isPartOf: {
+      "@id": absoluteUrl("/products/#collection")
+    },
+    about: category.name,
+    ...(eligibleProducts.length > 0
+      ? {
+          mainEntity: eligibleProducts.map((product) => ({
+            "@type": "Product",
+            name: product.name,
+            category: product.category.name,
+            description: product.summary,
+            url: absoluteUrl(buildProductUrl(product)),
+            brand: {
+              "@type": "Brand",
+              name: "LABOR-SAVING"
+            }
+          }))
+        }
+      : {})
+  };
+}
+
 export function buildPartnerPageSchemas(faqs: QuestionAnswer[]): SchemaNode[] {
   return [
     buildOrganizationSchema(),
@@ -136,6 +175,20 @@ export function buildProductListingSchemas(
     buildOrganizationSchema(),
     buildProductListingSchema(products),
     buildBreadcrumbSchema(pageMetadata.products.breadcrumb),
+    buildFaqSchema(faqs)
+  ];
+}
+
+export function buildProductCategorySchemas(
+  category: ProductCategoryGroup,
+  faqs: QuestionAnswer[]
+): SchemaNode[] {
+  const metadata = buildProductCategoryMetadata(category);
+
+  return [
+    buildOrganizationSchema(),
+    buildProductCategorySchema(category),
+    buildBreadcrumbSchema(metadata.breadcrumb),
     buildFaqSchema(faqs)
   ];
 }

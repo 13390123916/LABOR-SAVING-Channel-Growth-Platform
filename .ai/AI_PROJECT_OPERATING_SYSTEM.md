@@ -321,4 +321,4 @@ AI 不仅负责开发，还负责长期维护 GitHub Repository。
 
 当前阶段：M2 Channel Growth Foundation。
 
-当前目标：M2.4.5.1 Product Listing 已完成，下一步进入 M2.4.5.2 Product Category 前置审查。继续以模板验证而非页面数量为目标；进入 Product Detail 前必须确认真实、可公开发布的 Product Entity 资料。所有实现沿用 Entity -> Metadata -> Schema -> CMS -> Frontend -> SEO -> GEO 的统一模型，并以 `docs/ENTITY_SYSTEM.md`、`docs/PRODUCT_SYSTEM.md`、`docs/PRODUCT_CONTENT_MODEL.md`、`docs/PRODUCT_SCHEMA.md`、`docs/PRODUCT_SEO_TEMPLATE.md` 为产品系统输入。
+当前目标：M2.4.5.1 Product Listing 与 M2.4.5.2 Product Category 已完成，Collection Rendering 核心机制已验证。进入 M2.4.5.3 Product Detail 前必须确认真实、可公开发布的 Product Entity 资料；Detail 阶段重点验证单个 Entity 渲染，不重新设计整体架构。所有实现沿用 Entity -> Metadata -> Schema -> CMS -> Frontend -> SEO -> GEO 的统一模型。

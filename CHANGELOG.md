@@ -260,3 +260,22 @@
 
 - 更新 Product Listing 顶部品牌导航，使用 Logo 图片并保留无障碍替代文本。
 - 对原始 Logo 做透明边界裁切，仅优化网页显示留白，不修改外部原始素材。
+
+## [0.2.8] - 2026-07-21
+
+### Added
+
+- 新增 `/products/[categorySlug]/` Product Category 静态生成模板。
+- 新增共享 ProductHeader、ProductBreadcrumbs 与 Product Category FAQ Builder。
+- 冻结 Entity Version 字段语义：`version`、`status`、`published_at`、`updated_at`。
+
+### Changed
+
+- Listing 分类链接改为由 Product Entity Category Slug 自动生成。
+- Category Metadata、Canonical、Open Graph、Breadcrumb、CollectionPage 和 FAQ 改为统一 Builder 输出。
+- 将产品验证脚本升级为 `validate-product-rendering.mjs`，自动核对 Entity、Listing、Category 总数与分类路由数。
+
+### Notes
+
+- 当前计数：Entity 4、Listing 4、Category Total 4、Category Routes 2。
+- 未生成 Product Detail、未确认 Product Schema、CMS、CRM 或数据库结构。

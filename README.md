@@ -43,7 +43,8 @@
 - 已完成 Product System Foundation：先冻结 Product Entity、Content Model、Metadata、Schema 与 SEO/GEO 模板，再进入 M2.4.5 Product Rendering Layer
 - 已完成 M2.4 Repository Audit：Entity 门禁、产品 URL、CI 与 AI 治理入口已同步
 - 已进入 M2.4.5 Product Rendering Layer：以模板验证为目标，按 Listing、Category、首个真实 Detail、Related Product 逐层推进
-- 已完成 M2.4.5.1 Product Listing：`/products/` 由 Product Entity 自动分组渲染，下一步为 Product Category
+- 已完成 M2.4.5.1 Product Listing：`/products/` 由 Product Entity 自动分组渲染
+- 已完成 M2.4.5.2 Product Category：分类路由和 SEO/Schema 层由 Entity 自动生成，下一步为首个真实 Product Detail 资料确认
 
 ## 文档入口
 

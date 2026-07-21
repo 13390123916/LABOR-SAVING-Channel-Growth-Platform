@@ -1,6 +1,6 @@
 # Product Content Model
 
-文档职责：定义 `/products/`、产品分类页和产品型号页的统一内容结构，避免产品内容散落在页面组件中。当前阶段只定义内容模型，不批量开发产品页面。
+文档职责：定义 `/products/`、产品分类页和产品型号页的统一内容结构，避免产品内容散落在页面组件中。Listing 与 Category 已使用该模型，当前仍不批量开发 Product Detail。
 
 ## 1. 内容目标
 
@@ -106,7 +106,7 @@ limitations
 | Category Page | `/products/pneumatic-manipulator-arm/` | 展示产品类别、适用方向和型号入口 |
 | Model Page | `/products/pneumatic-manipulator-arm/ls40/` | 展示单个型号基础信息，资料不足时不写参数 |
 
-当前阶段不开发这些页面，只冻结内容结构。
+当前 Product Center 与 Category Page 已按该结构落地；Model Page 仍等待首个真实、可公开发布资料的 Product Entity。
 
 ## 6. Features
 

@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "node ../scripts/validate-product-listing.mjs && npm run typecheck"
+    "test": "node ../scripts/validate-product-rendering.mjs && npm run typecheck"
   },
   "dependencies": {
     "next": "16.2.10",

@@ -1,30 +1,18 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { buildPageMetadata, pageMetadata } from "../site-metadata";
 import { buildProductListingSchemas } from "../site-schema";
+import { ProductBreadcrumbs } from "./product-breadcrumbs";
 import { ProductCard } from "./product-card";
-import { groupProductsByCategory, productEntities } from "./product-entities";
+import { productListingFaqs } from "./product-content";
+import {
+  buildProductCategoryUrl,
+  groupProductsByCategory,
+  productEntities
+} from "./product-entities";
+import { ProductHeader } from "./product-header";
 
 const metadataDefinition = pageMetadata.products;
-
-const productListingFaqs = [
-  {
-    question: "LABOR-SAVING 产品中心目前包含哪些产品类别？",
-    answer:
-      "当前产品实体分为气动助力机械臂和气动平衡器两类。页面只展示已确认的基础实体，不补写尚未确认的参数、认证、价格或交期。"
-  },
-  {
-    question: "产品卡片为什么暂时没有完整参数？",
-    answer:
-      "当前部分产品仍处于资料确认阶段。具体载荷、行程、配置和适用工况需要依据真实产品资料与项目条件进一步核验。"
-  },
-  {
-    question: "如何获得产品选型或渠道合作建议？",
-    answer:
-      "终端客户可准备工件、载荷、空间、节拍和能源条件后发起咨询；经销商、MRO 和集成商可通过渠道合作入口沟通产品线与项目需求。"
-  }
-];
 
 export const metadata: Metadata = buildPageMetadata(metadataDefinition);
 
@@ -39,38 +27,11 @@ export default function ProductsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
 
-      <header className="products-header">
-        <Link className="products-brand" href="/">
-          <Image
-            alt="LABOR-SAVING 渠道增长平台"
-            height={31}
-            priority
-            src="/assets/labor-saving-logo.jpg"
-            width={154}
-          />
-        </Link>
-        <nav aria-label="主导航" className="products-nav">
-          <Link aria-current="page" href="/products/">
-            产品中心
-          </Link>
-          <Link href="/partner/">渠道合作</Link>
-        </nav>
-      </header>
+      <ProductHeader />
 
       <section className="products-intro">
         <div className="products-intro-inner">
-          <nav aria-label="面包屑" className="products-breadcrumb">
-            {metadataDefinition.breadcrumb.map((item, index) => (
-              <span key={item.url}>
-                {index > 0 ? <span aria-hidden="true">/</span> : null}
-                {index === metadataDefinition.breadcrumb.length - 1 ? (
-                  <span aria-current="page">{item.name}</span>
-                ) : (
-                  <Link href={item.url}>{item.name}</Link>
-                )}
-              </span>
-            ))}
-          </nav>
+          <ProductBreadcrumbs items={metadataDefinition.breadcrumb} />
 
           <div className="products-intro-copy">
             <p className="products-kicker">Product Entity Directory</p>
@@ -112,7 +73,9 @@ export default function ProductsPage() {
             <div className="product-category-heading">
               <div>
                 <p>{group.slug}</p>
-                <h2>{group.name}</h2>
+                <h2>
+                  <Link href={buildProductCategoryUrl(group)}>{group.name}</Link>
+                </h2>
               </div>
               <span>{group.entities.length} 个产品实体</span>
             </div>

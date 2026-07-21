@@ -459,6 +459,18 @@ textarea {
   font-size: 0.82rem;
 }
 
+.product-category-heading h2 a:hover,
+.products-text-link:hover {
+  color: var(--industrial-green);
+  text-decoration: underline;
+}
+
+.products-text-link {
+  color: var(--industrial-green);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
 .product-category-section + .product-category-section {
   margin-top: 68px;
 }
@@ -708,6 +720,15 @@ textarea {
 .products-faq-list h3,
 .products-faq-list p {
   margin: 0;
+}
+
+.product-category-page .products-intro-copy > p:last-child strong {
+  color: #fff;
+  font-weight: 800;
+}
+
+.category-directory {
+  min-height: 520px;
 }
 
 .products-faq-list h3 {

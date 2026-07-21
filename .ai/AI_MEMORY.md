@@ -31,4 +31,4 @@
 
 ## 当前任务
 
-M2 Channel Growth Foundation 已启动。M2.4.5.1 Product Listing 已完成，当前进入 M2.4.5.2 Product Category 前置审查。继续复用 Product Entity JSON、URL Builder、Metadata Builder、Schema Builder 与 ProductCard，不按页面数量扩展；LS70 未确认前不得正式收录。
+M2 Channel Growth Foundation 已启动。M2.4.5.1 Product Listing 与 M2.4.5.2 Product Category 已完成，核心 Collection Rendering 机制已验证。下一步是 M2.4.5.3 Product Detail 前置资料确认，不再调整整体架构；继续复用 Product Entity JSON、URL、Metadata、Schema、Breadcrumb、FAQ 与 ProductCard Builder。

@@ -26,11 +26,11 @@ Product Schema 只表达真实、已确认、页面可见的产品事实。
 
 | 页面类型 | URL 示例 | Schema |
 | --- | --- | --- |
-| Product Center | `/products/` | CollectionPage, Product, BreadcrumbList, FAQPage |
-| Product Category | `/products/pneumatic-manipulator-arm/` | CollectionPage, Product, BreadcrumbList, FAQPage |
+| Product Center | `/products/` | CollectionPage, BreadcrumbList, FAQPage；Product 仅对 Schema Eligible Entity 输出 |
+| Product Category | `/products/pneumatic-manipulator-arm/` | CollectionPage, BreadcrumbList, FAQPage；Product 仅对 Schema Eligible Entity 输出 |
 | Product Model | `/products/pneumatic-manipulator-arm/ls40/` | Product, BreadcrumbList, FAQPage |
 
-当前阶段只定义标准，不开发页面。
+Product Center 与 Product Category 已按该标准输出 CollectionPage、BreadcrumbList 与 FAQPage；Product Model 仍等待真实可发布资料。
 
 ## 3. Product Entity 到 Schema 映射
 
@@ -60,7 +60,7 @@ Product Schema 只表达真实、已确认、页面可见的产品事实。
 
 ## 4. 当前产品 Schema 输出边界
 
-当前允许进入 Product Schema 的实体：
+当前 Product Entity 已进入 Listing 与 Category，但尚未满足 Product Schema 输出门禁：
 
 ```text
 PRD-0001  LS40 助力机械臂
@@ -69,7 +69,16 @@ PRD-0003  SQ35 气动平衡器
 PRD-0004  SQ50 气动平衡器
 ```
 
-每个 Product Schema 只允许包含：
+Product Schema 输出条件必须同时满足：
+
+```text
+source_status = reviewed
+detail_status = published
+schema_eligible = true
+页面存在且字段与可见内容一致
+```
+
+当前四个 Product Entity 均不输出 Product Schema。后续满足门禁的 Product Schema 只允许包含：
 
 ```text
 @context

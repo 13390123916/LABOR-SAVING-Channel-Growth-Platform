@@ -6,13 +6,15 @@ const root = process.cwd().endsWith(`${path.sep}website`)
   : process.cwd();
 
 const entityFile = "website/app/products/product-entities.json";
-const pageFile = "website/app/products/page.tsx";
+const listingPageFile = "website/app/products/page.tsx";
+const categoryPageFile = "website/app/products/[categorySlug]/page.tsx";
 const cardFile = "website/app/products/product-card.tsx";
+const contentFile = "website/app/products/product-content.ts";
 const metadataFile = "website/app/site-metadata.ts";
 const schemaFile = "website/app/site-schema.ts";
 
 function fail(message) {
-  console.error(`Product listing validation failed: ${message}`);
+  console.error(`Product rendering validation failed: ${message}`);
   process.exitCode = 1;
 }
 
@@ -36,6 +38,7 @@ function assertIncludes(content, token, file) {
 const entities = JSON.parse(readRequired(entityFile));
 const entityIds = new Set();
 const productPaths = new Set();
+const categoryCounts = new Map();
 
 if (!Array.isArray(entities) || entities.length === 0) {
   fail(`${entityFile} must contain at least one Product Entity`);
@@ -65,6 +68,11 @@ for (const entity of entities) {
   }
   productPaths.add(productPath);
 
+  categoryCounts.set(
+    entity.category.slug,
+    (categoryCounts.get(entity.category.slug) ?? 0) + 1
+  );
+
   if (entity.schemaEligible && entity.detailStatus !== "published") {
     fail(`${entity.entityId} cannot be schema eligible before its detail page is published`);
   }
@@ -74,8 +82,23 @@ for (const entity of entities) {
   }
 }
 
-const page = readRequired(pageFile);
+const entityCount = entities.length;
+const listingCount = entities.length;
+const categoryTotal = Array.from(categoryCounts.values()).reduce(
+  (total, count) => total + count,
+  0
+);
+
+if (entityCount !== listingCount || entityCount !== categoryTotal) {
+  fail(
+    `count mismatch: Entity=${entityCount}, Listing=${listingCount}, CategoryTotal=${categoryTotal}`
+  );
+}
+
+const listingPage = readRequired(listingPageFile);
+const categoryPage = readRequired(categoryPageFile);
 const card = readRequired(cardFile);
+const content = readRequired(contentFile);
 const metadata = readRequired(metadataFile);
 const schema = readRequired(schemaFile);
 
@@ -83,15 +106,31 @@ for (const token of [
   "productEntities",
   "groupProductsByCategory(productEntities)",
   "group.entities.map",
+  "buildProductCategoryUrl(group)",
   "buildProductListingSchemas",
   "metadataDefinition.breadcrumb"
 ]) {
-  assertIncludes(page, token, pageFile);
+  assertIncludes(listingPage, token, listingPageFile);
+}
+
+for (const token of [
+  "generateStaticParams",
+  "groupProductsByCategory(productEntities)",
+  "getProductCategoryBySlug(categorySlug)",
+  "category.entities.map",
+  "buildProductCategoryMetadata(category)",
+  "buildProductCategorySchemas(category, faqs)",
+  "ProductBreadcrumbs"
+]) {
+  assertIncludes(categoryPage, token, categoryPageFile);
 }
 
 for (const forbiddenProductName of entities.map((entity) => entity.name)) {
-  if (page.includes(forbiddenProductName)) {
-    fail(`${pageFile} hardcodes Product Entity "${forbiddenProductName}"`);
+  if (listingPage.includes(forbiddenProductName)) {
+    fail(`${listingPageFile} hardcodes Product Entity "${forbiddenProductName}"`);
+  }
+  if (categoryPage.includes(forbiddenProductName)) {
+    fail(`${categoryPageFile} hardcodes Product Entity "${forbiddenProductName}"`);
   }
 }
 
@@ -99,7 +138,17 @@ for (const token of ["buildProductUrl(entity)", "data-entity-id", "detailStatus"
   assertIncludes(card, token, cardFile);
 }
 
-for (const token of ["products:", "canonical: \"/products/\"", "openGraph:"]) {
+for (const token of ["productListingFaqs", "buildProductCategoryFaqs"]) {
+  assertIncludes(content, token, contentFile);
+}
+
+for (const token of [
+  "products:",
+  "canonical: \"/products/\"",
+  "openGraph:",
+  "buildProductCategoryMetadata",
+  "buildProductCategoryUrl(category)"
+]) {
   assertIncludes(metadata, token, metadataFile);
 }
 if (metadata.includes("https://example.com")) {
@@ -109,8 +158,10 @@ if (metadata.includes("https://example.com")) {
 for (const token of [
   "buildProductListingSchemas",
   "buildProductListingSchema",
+  "buildProductCategorySchemas",
+  "buildProductCategorySchema",
   "getSchemaEligibleProducts",
-  "buildBreadcrumbSchema(pageMetadata.products.breadcrumb)",
+  "buildBreadcrumbSchema(metadata.breadcrumb)",
   "buildFaqSchema(faqs)"
 ]) {
   assertIncludes(schema, token, schemaFile);
@@ -120,4 +171,6 @@ if (process.exitCode) {
   process.exit(process.exitCode);
 }
 
-console.log(`Product listing validation passed for ${entities.length} Product Entities.`);
+console.log(
+  `Product rendering validation passed: Entity Count=${entityCount}, Listing Count=${listingCount}, Category Total=${categoryTotal}, Category Routes=${categoryCounts.size}.`
+);

@@ -27,6 +27,10 @@ export function buildProductUrl(entity: ProductEntity) {
   return `/products/${entity.category.slug}/${entity.slug}/`;
 }
 
+export function buildProductCategoryUrl(category: Pick<ProductCategoryGroup, "slug">) {
+  return `/products/${category.slug}/`;
+}
+
 export function groupProductsByCategory(entities: ProductEntity[]): ProductCategoryGroup[] {
   return Array.from(
     entities.reduce((groups, entity) => {
@@ -49,4 +53,8 @@ export function groupProductsByCategory(entities: ProductEntity[]): ProductCateg
 
 export function getSchemaEligibleProducts(entities: ProductEntity[]) {
   return entities.filter((entity) => entity.schemaEligible && entity.detailStatus === "published");
+}
+
+export function getProductCategoryBySlug(categorySlug: string) {
+  return groupProductsByCategory(productEntities).find((category) => category.slug === categorySlug);
 }

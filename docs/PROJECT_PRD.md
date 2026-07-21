@@ -174,6 +174,7 @@ M2 顺序：
 5. M2.4 Product System Foundation：先完成 Product Entity、Content Model、Metadata、Schema、CMS Model 和 SEO/GEO 模板，不直接开发 `/products/`
 6. M2.4.5 Product Rendering Layer：已批准进入；按 Product Listing、Category、首个真实 Detail、Related Product 逐层验证模板，并检查 Metadata、JSON-LD、Breadcrumb、FAQ、Internal Link、Canonical、Open Graph 和 SEO/GEO
    - M2.4.5.1 Product Listing 已完成：`/products/` 基于 Product Entity 数据源渲染，未确认 Entity 不生成详情链接或 Product Schema
+   - M2.4.5.2 Product Category 已完成：`/products/[categorySlug]/` 由 Product Entity 分类自动生成，并通过统一 Metadata、Canonical、Breadcrumb、CollectionPage 与 FAQ 验证
 7. M2.5 Industry Page Development：开发 `/applications/`
 8. M2.6 Lead Capture Integration：接入线索提交、来源追踪和 CRM 字段映射
 9. M2.7 Admin Maintainability：后台维护页面、Metadata、Schema、FAQ 与 Lead 配置

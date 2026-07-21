@@ -27,7 +27,7 @@ Entity
 | Entity Type | 说明 | 当前阶段 |
 | --- | --- | --- |
 | Partner | 渠道合作计划、合作模式、渠道赋能内容 | 已完成 Partner System Hardening |
-| Product | 产品型号、产品分类、产品资料、应用关联 | M2.4 Product System Foundation |
+| Product | 产品型号、产品分类、产品资料、应用关联 | M2.4.5.2 Product Category 已完成 |
 | Industry | 行业应用场景、工况问题、适用产品 | 后续 M2.5 |
 | Case | 真实或授权案例内容 | 后续 Knowledge / Trust |
 | Article | 技术文章、选型文章、行业文章 | 后续 Knowledge |
@@ -76,6 +76,7 @@ entity_type
 slug
 name
 summary
+version
 status
 source_status
 related_entities
@@ -90,11 +91,31 @@ published_at
 
 - `entity_id` 是跨 CMS、CRM、Analytics、Database 和 Frontend 的稳定业务标识。
 - `entity_type` 用于区分 Partner、Product、Industry、Case、Article、Video、Download、FAQ。
+- `version` 用于标识已审核 Entity 内容版本，不表达产品型号版本或数据库迁移版本。
 - `source_status` 用于标记资料是否已确认，不允许资料不足时补写参数、案例、认证、收益或政策。
 - `related_entities` 用于维护产品、行业、案例、文章、视频、下载和 FAQ 之间的内链关系。
 - `metadata_id` 与 `schema_id` 连接统一 Metadata 和 Schema 层。
 
-## 5. 分层边界
+## 5. Entity Version 字段
+
+当前只冻结字段语义，不实现 CMS 版本后台、数据库表或自动发布流程。
+
+| Field | 语义 | 规则 |
+| --- | --- | --- |
+| `version` | Entity 已审核内容版本 | 正整数，从 `1` 开始；已审核内容发生有效变更后递增 |
+| `status` | Entity 生命周期状态 | 使用各 Entity 定义的 draft、reviewed、published、archived 等状态 |
+| `published_at` | 首次正式发布时间 | 未发布时为空；首次发布后保留原始时间 |
+| `updated_at` | 最近一次已审核内容更新时间 | 草稿编辑不直接覆盖正式更新时间，审核通过后更新 |
+
+未来使用规则：
+
+- CMS 以 `entity_id + version` 识别内容版本，不以名称识别。
+- CRM 与 Analytics 默认关联稳定 `entity_id`，必要时附带当时的 `version`。
+- SEO 更新时间来自 `updated_at`，不得使用构建时间伪造内容更新时间。
+- WebPage、CollectionPage、Article 等支持 `dateModified` 的 Schema 可由 `updated_at` 自动映射。
+- Product JSON-LD 不应为了统一字段而输出 Schema.org 未定义或当前类型不支持的属性。
+
+## 6. 分层边界
 
 | 层级 | 解决的问题 | 禁止事项 |
 | --- | --- | --- |
@@ -106,7 +127,7 @@ published_at
 | SEO | URL、标题、描述、内链和 Topic Cluster | 不为抢流量创建低质量页面 |
 | GEO | 面向 AI Search 的问答与事实摘要 | 不写不可核验或夸大承诺 |
 
-## 6. 新模块进入条件
+## 7. 新模块进入条件
 
 新增任何模块前，必须先完成：
 
@@ -141,7 +162,7 @@ CMS Model
 -> Batch Export
 ```
 
-## 7. 数据库后置原则
+## 8. 数据库后置原则
 
 当前阶段不冻结数据库表结构。
 
@@ -162,7 +183,7 @@ Entity
 - 先统一实体、内容和 Schema，后续数据库可一次冻结。
 - Product、Industry、Case、Article、Video、Download、FAQ 可共用 Entity Layer。
 
-## 8. 合规边界
+## 9. 合规边界
 
 Entity Layer 不得记录或衍生以下内容，除非已有真实可核验资料：
 

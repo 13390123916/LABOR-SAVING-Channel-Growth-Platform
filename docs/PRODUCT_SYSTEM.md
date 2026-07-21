@@ -65,6 +65,7 @@ category
 brand
 summary
 description
+version
 target_users
 application_scenarios
 related_industries
@@ -79,6 +80,7 @@ metadata_id
 schema_id
 source_status
 status
+published_at
 updated_at
 ```
 
@@ -119,6 +121,8 @@ Product Entity 生命周期：
 | archived | 停用或下线 | 否，保留重定向策略 |
 
 当前四个产品处于 `source_pending` 到 `reviewed` 之间，只允许做基础实体与内容框架，不补写参数。
+
+Product Entity 同时冻结 `version`、`status`、`published_at`、`updated_at` 字段语义，沿用 `docs/ENTITY_SYSTEM.md` 的统一版本规则。当前 Product JSON 数据源不实现版本发布逻辑。
 
 ## 6. 关联关系
 
@@ -233,3 +237,28 @@ Product Entity JSON
 ```
 
 通过以上链路后，M2.4.5.2 Product Category 可以复用同一 Entity 数据源、URL 构建函数、Metadata Builder、Schema Builder 和产品卡片组件。
+
+## 11. M2.4.5.2 Product Category 验收
+
+状态：已完成。
+
+实现：
+
+- `/products/[categorySlug]/` 的静态参数由 Product Entity 分类集合自动生成。
+- Category 页面通过 `categorySlug` 过滤统一 Product Entity 数据源，不维护独立型号清单。
+- Category Metadata、Canonical、Open Graph 和 Breadcrumb 由 `buildProductCategoryMetadata` 自动生成。
+- CollectionPage、BreadcrumbList 与 FAQPage 由 `buildProductCategorySchemas` 自动生成。
+- Category FAQ 从过滤后的 Entity Group 生成，产品名称不在页面模板中硬编码。
+- Listing 的分类内链由 Entity Category Slug 生成。
+- 未发布 Product Entity 不生成详情链接或 Product Schema。
+
+自动计数验证：
+
+```text
+Entity Count = 4
+Listing Count = 4
+Category Total = 4
+Category Routes = 2
+```
+
+新增 Product Entity 后，Listing Count 与对应 Category Count 自动增加；新增 Category Slug 后，`generateStaticParams` 自动增加 Category 路由，无需修改模板。
