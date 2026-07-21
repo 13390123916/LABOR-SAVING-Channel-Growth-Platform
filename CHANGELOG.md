@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.3] - 2026-07-21
+
+### Added
+
+- 新增 `docs/AUTH_SYSTEM.md`，冻结 M3.1 Authentication & Authorization 的 Authentication、Authorization、RBAC、Permission、Role、Resource、Audit、Login Flow、Session 和 Future SSO。
+- 新增 ADR-0009 Authentication & Authorization，确定首期 Admin 后台采用服务端 Session，权限采用 RBAC，所有后台资源统一登记为 Resource。
+
+### Changed
+
+- 将 M3.1 定位为认证授权架构冻结阶段，不直接创建登录页、JWT、Session 代码、ORM、迁移或后台 UI。
+- 同步更新 Roadmap、TODO、Memory、PRD、README、Repository Audit 与治理校验清单，下一步转向 M3.2 CMS Foundation。
+
 ## [0.3.2] - 2026-07-21
 
 ### Added

@@ -7,13 +7,27 @@
 目标：从治理与渲染前置设计转向数据库、认证授权、CMS、运行平台、Search Runtime 与 Analytics/CRM 的真实运行能力。
 
 - M3.0 Database Architecture（已完成设计冻结：ADR-0008 与 `docs/DATABASE.md`）
-- M3.1 Authentication & Authorization
+- M3.1 Authentication & Authorization（已完成架构冻结：ADR-0009 与 `docs/AUTH_SYSTEM.md`）
 - M3.2 CMS Foundation
 - M3.3 Runtime Platform
 - M3.4 Search Runtime
 - M3.5 Analytics & CRM
 
-当前推进：M3.0 Database Architecture 已完成设计冻结，不直接写数据库代码；下一步进入 M3.1 Authentication & Authorization，先确定 Admin、Editor、SEO、Sales、Partner Manager、Super Admin 与 RBAC。
+当前推进：M3.1 Authentication & Authorization 已完成架构冻结，不直接写登录、JWT、Session 或后台代码；下一步进入 M3.2 CMS Foundation，先围绕 Auth、Database、Entity、Metadata、Schema 和 Audit 定义 CMS 内容管理边界。
+
+当前平台成熟度：
+
+```text
+Repository Governance        100%
+SEO/GEO Foundation           100%
+Entity Layer                 100%
+Product Foundation           100%
+Database Architecture        100%
+Authentication Architecture  100%
+CMS Foundation                 0%
+Runtime Platform               0%
+Analytics                      0%
+```
 
 产品发布质量门禁：M2.4.5.3 Product Detail 已进入首次发布验收阶段。只有 `published + schemaEligible + contentValidated + releaseApproved` 的真实 Product Entity 才生成详情 URL、Product Schema、sitemap 和 Related Product；LS70 继续保持非实体占位。
 

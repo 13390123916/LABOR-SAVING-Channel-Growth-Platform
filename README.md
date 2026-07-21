@@ -2,7 +2,7 @@
 
 当前已进入 M2.4.5.3.5 First Published Product Acceptance：详情模板与发布门禁已建立；未满足 `published + schemaEligible + contentValidated + releaseApproved` 的实体不生成详情 URL、Product Schema 或 sitemap，LS70 保持非实体占位。
 
-当前平台阶段：M3 Website Platform Foundation。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M2 Channel Growth Foundation 已冻结为 v1.0，历史 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3，后续重点转向认证、CMS、运行平台、Search Runtime 与 Analytics/CRM。
+当前平台阶段：M3 Website Platform Foundation。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M2 Channel Growth Foundation 已冻结为 v1.0，历史 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3，后续重点转向 CMS、运行平台、Search Runtime 与 Analytics/CRM。
 
 雷普赛维渠道增长平台是面向工业装备渠道合作、终端客户询盘、中国 SEO 与国内 AI 搜索优化的长期增长平台，不是普通企业官网。
 
@@ -49,6 +49,22 @@
 - 已进入 M2.4.5 Product Rendering Layer：以模板验证为目标，按 Listing、Category、首个真实 Detail、Related Product 逐层推进
 - 已完成 M2.4.5.1 Product Listing：`/products/` 由 Product Entity 自动分组渲染
 - 已完成 M2.4.5.2 Product Category：分类路由和 SEO/Schema 层由 Entity 自动生成；M2.4.5.3.5 作为首个真实产品发布验收质量门禁保留
+- 已完成 M3.0 Database Architecture：ADR-0008 与 `docs/DATABASE.md` 已冻结数据库架构
+- 已完成 M3.1 Authentication & Authorization Architecture：ADR-0009 与 `docs/AUTH_SYSTEM.md` 已冻结认证授权架构
+
+## 平台成熟度
+
+```text
+Repository Governance        100%
+SEO/GEO Foundation           100%
+Entity Layer                 100%
+Product Foundation           100%
+Database Architecture        100%
+Authentication Architecture  100%
+CMS Foundation                 0%
+Runtime Platform               0%
+Analytics                      0%
+```
 
 ## 文档入口
 
@@ -68,8 +84,10 @@
 - `docs/PRODUCT_PUBLISHING_CHECKLIST.md`
 - `docs/PRODUCT_CONTENT_READINESS.md`
 - `docs/MILESTONE_MAPPING.md`
+- `docs/AUTH_SYSTEM.md`
 - `docs/adr/README.md`
 - `docs/adr/ADR-0008-database-model.md`
+- `docs/adr/ADR-0009-authentication-and-authorization.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/PARTNER_CONTENT_MODEL.md`
 - `docs/PARTNER_SEO_TEMPLATE.md`

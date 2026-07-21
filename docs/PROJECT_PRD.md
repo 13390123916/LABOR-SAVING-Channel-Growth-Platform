@@ -6,7 +6,7 @@
 
 文档职责：项目长期需求主文档
 
-当前阶段：M3 Website Platform Foundation 进行中；M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`。M2 Channel Growth Foundation 已冻结为 v1.0，未执行的 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射至 M3。
+当前阶段：M3 Website Platform Foundation 进行中；M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`。M2 Channel Growth Foundation 已冻结为 v1.0，未执行的 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射至 M3。
 
 ## 1. 项目定位
 
@@ -115,6 +115,19 @@ M3.0 不直接写数据库代码，先冻结数据库设计。
 - 公开内容默认软删除，使用 `deleted_at`，已发布页面下线必须同步 Redirect、sitemap、robots 和 Search Runtime。
 - 所有可公开内容保留 `version`、`locale`、`created_at`、`updated_at`、`published_at`、`created_by`、`updated_by`、`published_by` 等字段。
 - Slug 不作为业务主键，唯一约束必须按 Entity Type、Category、Locale 或父级作用域限定。
+
+## 7.2 M3.1 Authentication & Authorization
+
+M3.1 不直接写登录或后台代码，先冻结认证授权设计。
+
+已确认：
+
+- 首期 Admin 后台采用服务端 Session，不采用纯 JWT 作为默认登录态。
+- 权限模型采用 RBAC：User -> UserRole -> Role -> RolePermission -> Permission -> Resource + Action。
+- 首期角色为 Super Admin、Admin、Editor、SEO、Sales、Partner Manager。
+- 所有后台资源统一登记为 Resource，不允许把权限写死在页面或接口中。
+- Publish、Approve、Export、Import、Assign、Manage 属于高风险动作，必须单独授权并审计。
+- M3.1 不实现 SSO、OAuth2、OIDC、SAML、企业微信或飞书登录，但保留扩展边界。
 
 ## 8. M1 阶段范围
 

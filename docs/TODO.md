@@ -3,13 +3,15 @@
 ## M3 Website Platform Foundation
 
 - [x] M3.0 Database Architecture：确定 Entity、Category、Industry、Partner、Lead、Media、FAQ、Article、Download、Tag、Navigation、SEO Metadata、Schema Metadata 的数据模型、ER 图、索引、约束、生命周期、软删除、版本、slug、多语言和审计字段
-- [ ] M3.1 Authentication & Authorization：实现 Admin、Editor、SEO、Sales、Partner Manager、Super Admin 与 RBAC
+- [x] M3.1 Authentication & Authorization Architecture：冻结 Admin、Editor、SEO、Sales、Partner Manager、Super Admin、RBAC、Resource、Permission、Audit、Login Flow、Session 和 Future SSO
+- [ ] M3.1 Authentication & Authorization Implementation：实现登录、Session、权限校验、审计写入和后台权限守卫
 - [ ] M3.2 CMS Foundation：实现内容、媒体、导航、SEO、Schema、FAQ 与设置后台
 - [ ] M3.3 Runtime Platform：实现线索、媒体、任务队列、通知、导入导出、操作日志与审计日志
 - [ ] M3.4 Search Runtime：实现 sitemap、robots、RSS、IndexNow、SEO/GEO Feed 与站长平台接入
 - [ ] M3.5 Analytics & CRM：实现线索、合作伙伴、流量、转化、渠道、活动、来源与 CRM 集成
 - [x] 建立 `docs/adr/README.md` 与 ADR-0001：记录 M2 冻结和 M3 平台迁移决定
 - [x] 建立 ADR-0008 与 `docs/DATABASE.md`：冻结 M3.0 Database Model，不直接写数据库代码
+- [x] 建立 ADR-0009 与 `docs/AUTH_SYSTEM.md`：冻结 M3.1 Authentication & Authorization，不直接写登录或后台代码
 - [x] 建立 `docs/MILESTONE_MAPPING.md`：保留 M2.6-M2.8 历史编号并映射至 M3
 
 ## M2.4.5.3 Product Detail

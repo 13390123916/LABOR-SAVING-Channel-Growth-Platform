@@ -19,9 +19,11 @@ const requiredDocs = [
   "docs/PRODUCT_PUBLISHING_CHECKLIST.md",
   "docs/PRODUCT_CONTENT_READINESS.md",
   "docs/MILESTONE_MAPPING.md",
+  "docs/AUTH_SYSTEM.md",
   "docs/adr/README.md",
   "docs/adr/ADR-0001-m2-freeze-and-m3-platform-foundation.md",
   "docs/adr/ADR-0008-database-model.md",
+  "docs/adr/ADR-0009-authentication-and-authorization.md",
   "docs/PARTNER_FUNNEL.md",
   "docs/PARTNER_CONTENT_MODEL.md",
   "docs/PARTNER_SEO_TEMPLATE.md",
@@ -251,8 +253,13 @@ for (const token of ["M2 Channel Growth Foundation", "Frozen v1.0", "M2.6", "M2.
 }
 
 const adrIndex = readRequired("docs/adr/README.md");
-for (const token of ["ADR-0001", "ADR-0008", "M3 Website Platform Foundation"]) {
+for (const token of ["ADR-0001", "ADR-0008", "ADR-0009", "M3 Website Platform Foundation"]) {
   assertIncludes(adrIndex, token, "docs/adr/README.md");
+}
+
+const authSystem = readRequired("docs/AUTH_SYSTEM.md");
+for (const token of ["Authentication", "Authorization", "RBAC", "Permission", "Role", "Resource", "Audit", "Login Flow", "Session", "Future SSO", "Super Admin", "Admin", "Editor", "SEO", "Sales", "Partner Manager", "Product", "Industry", "Article", "Partner", "Lead", "Media", "Download", "FAQ", "Navigation", "Setting", "User", "RolePermission", "UserRole", "created_by", "updated_by", "deleted_by", "published_by", "approved_by"]) {
+  assertIncludes(authSystem, token, "docs/AUTH_SYSTEM.md");
 }
 
 const leadSchema = readRequired("docs/LEAD_SCHEMA.md");
@@ -277,7 +284,7 @@ for (const token of ["Organization", "Product", "Article", "FAQPage", "Breadcrum
 
 for (const file of syncFiles) {
   const content = readRequired(file);
-  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "adr/README.md", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
+  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "AUTH_SYSTEM.md", "adr/README.md", "ADR-0009", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
     assertIncludes(content, token, file);
   }
 }
