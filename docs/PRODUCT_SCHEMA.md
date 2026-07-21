@@ -1,5 +1,7 @@
 # Product Schema
 
+Product Detail 的 Product、BreadcrumbList 和 FAQPage 只能在 `detailStatus = published`、`schemaEligible = true`、`contentValidated = true`、`releaseApproved = true` 同时满足时输出。未满足任一条件的实体只能保留在 Listing 或 Category 的基础实体表达中。
+
 文档职责：定义 Product JSON-LD、Metadata 字段来源和 Schema 输出边界，确保产品页面后续从统一 Product Entity 生成结构化数据，而不是在页面中手写 JSON-LD。
 
 ## 1. Schema 原则

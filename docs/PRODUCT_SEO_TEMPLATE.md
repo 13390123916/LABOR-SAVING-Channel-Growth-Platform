@@ -1,5 +1,7 @@
 # Product SEO Template
 
+Detail URL、Canonical、Open Graph、Product Schema、sitemap 与 Related Product 只对同时满足 `published`、`schemaEligible`、`contentValidated`、`releaseApproved` 的 Product Entity 输出。LS70 仅为验证占位，不得通过该门禁。
+
 文档职责：定义 Product URL、Title、Description、内链策略、Topic Cluster 和 GEO 问答模板。当前进入 M2.4.5，以模板和渲染能力验证为目标，不以页面数量为目标。
 
 ## 1. 页面类型

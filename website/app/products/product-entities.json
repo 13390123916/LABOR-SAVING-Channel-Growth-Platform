@@ -11,6 +11,8 @@
     "sourceStatus": "source_pending",
     "detailStatus": "planned",
     "schemaEligible": false,
+    "contentValidated": false,
+    "releaseApproved": false,
     "relatedEntityIds": []
   },
   {
@@ -25,6 +27,8 @@
     "sourceStatus": "source_pending",
     "detailStatus": "planned",
     "schemaEligible": false,
+    "contentValidated": false,
+    "releaseApproved": false,
     "relatedEntityIds": []
   },
   {
@@ -39,6 +43,8 @@
     "sourceStatus": "source_pending",
     "detailStatus": "planned",
     "schemaEligible": false,
+    "contentValidated": false,
+    "releaseApproved": false,
     "relatedEntityIds": []
   },
   {
@@ -53,6 +59,8 @@
     "sourceStatus": "source_pending",
     "detailStatus": "planned",
     "schemaEligible": false,
+    "contentValidated": false,
+    "releaseApproved": false,
     "relatedEntityIds": []
   }
 ]

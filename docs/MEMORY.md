@@ -1,5 +1,18 @@
 # Memory
 
+## M3 Website Platform Foundation 决策
+
+- 2026-07-21 冻结 M2 Channel Growth Foundation v1.0：Entity、Product、Metadata、SEO Schema、Product Rendering 与 Publishing Workflow 后续复用，不再新增治理规则或 Publishing 子阶段，除非发现架构缺陷或严重 Bug。
+- 通过 `docs/MILESTONE_MAPPING.md` 保留 M2.6 Lead Capture、M2.7 Admin、M2.8 Batch Export 历史编号，并映射到 M3 Website Platform Foundation。
+- 建立 `docs/adr/README.md`，ADR-0001 记录 M2 冻结与 M3 迁移决定。后续 ADR 仅在 M3 技术选型需要具体决策时创建。
+
+## M2.4.5.3 Product Detail 决策
+
+- 2026-07-21 进入 M2.4.5.3 Product Detail：先建立 `ProductDetailRenderer` 与统一 Detail Metadata/Schema 链路，不创建 LS70 页面。发布门禁现为 `detailStatus = published`、`schemaEligible = true`、`contentValidated = true`、`releaseApproved = true`；只有同时满足时才生成详情 URL、Product Schema、sitemap 和 Related Product。当前四个实体均未通过门禁，因此静态详情路由数为 0；首个正式产品只可从 LS40、L60、SQ35、SQ50 的资料完整实体中选择。
+- 2026-07-21 进入 M2.4.5.3.3 First Published Product Validation：新增 `docs/PRODUCT_PUBLISHING_CHECKLIST.md`。首个产品发布需完成 Entity、内容、图片、Metadata、Schema、FAQ、内部链接、sitemap、robots 与上线后 Search Console 验收；不将“修改 published 状态”视为发布完成。后续 CMS 状态机规划为 Draft -> Internal Review -> Content Approved -> SEO Approved -> Published -> Indexed -> Archived。
+- 2026-07-21 通过 M2.4.5.3.3 Product Publishing Validation Framework，进入 `docs/PRODUCT_CONTENT_READINESS.md` 定义的 M2.4.5.3.4 Product Content Readiness。首个候选为 `PRD-0002` L60 气动助力机械臂；技术参数仅作为 Internal Review 资料，不改变 `planned` 状态，不生成页面、Schema、sitemap 或索引。阻塞项为公开范围确认、产品图片授权、ALT、Open Graph 资产和内部内容审核。
+- 2026-07-21 通过 M2.4.5.3.4 Product Content Readiness 阶段框架，进入 M2.4.5.3.5 First Published Product Acceptance。新增 `releaseApproved`，使发布链路为 `contentValidated -> releaseApproved -> published`，同时保留 `schemaEligible` 的 SEO 审核职责。L60 仍未获得真实图片、公开范围、市场上线批准、sitemap/robots 和外部收录证据，所有发布字段保持关闭。
+
 ## 已确认定位
 
 LABOR-SAVING Channel Growth Platform 是工业装备渠道增长平台，不是普通企业官网。
@@ -112,3 +125,4 @@ M2 Channel Growth Foundation 已启动。已完成 Page System、Metadata System
 - 2026-07-21 正式批准进入 M2.4.5 Product Rendering Layer：不以页面数量为目标，按 Product Listing、Product Category、首个真实 Product Detail、Related Product 逐层验证。建立 Entity ID 规范，当前产品编号为 `PRD-0001` LS40、`PRD-0002` L60、`PRD-0003` SQ35、`PRD-0004` SQ50；CMS、CRM、Analytics、Database 和实体关系后续均关联 Entity ID。LS70 未确认前继续保持非收录占位。
 - 2026-07-21 完成 M2.4.5.1 Product Listing：新增 `/products/`、Product Entity JSON 数据源、自动分类、统一 ProductCard、Product Listing Metadata 与 Schema Builder。页面模板不硬编码产品，未发布 Entity 不生成详情链接或 Product Schema；下一阶段为 M2.4.5.2 Product Category。
 - 2026-07-21 完成 M2.4.5.2 Product Category：新增 `/products/[categorySlug]/` 动态静态生成模板，分类参数、Entity 过滤、Metadata、Canonical、Open Graph、Breadcrumb、CollectionPage 和 FAQ 均来自统一数据与 Builder。CI 自动验证 Entity Count 4、Listing Count 4、Category Total 4、Category Routes 2。Entity Version 字段 `version`、`status`、`published_at`、`updated_at` 已冻结语义，暂不实现 CMS 或数据库版本逻辑。
+- 2026-07-21 执行 M2.4.5.2 Repository Audit：治理、产品渲染、TypeScript、ESLint 和生产构建均通过。审计发现 CI 未直接执行产品渲染校验，现已补入 `.github/workflows/ci.yml`；产品实体计数与分类路由约束将随每次 CI 运行验证。下一步仍为首个资料已确认的真实 Product Detail。

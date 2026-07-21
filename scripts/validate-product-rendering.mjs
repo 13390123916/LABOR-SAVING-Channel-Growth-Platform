@@ -8,7 +8,9 @@ const root = process.cwd().endsWith(`${path.sep}website`)
 const entityFile = "website/app/products/product-entities.json";
 const listingPageFile = "website/app/products/page.tsx";
 const categoryPageFile = "website/app/products/[categorySlug]/page.tsx";
+const detailPageFile = "website/app/products/[categorySlug]/[productSlug]/page.tsx";
 const cardFile = "website/app/products/product-card.tsx";
+const detailRendererFile = "website/app/products/product-detail-renderer.tsx";
 const contentFile = "website/app/products/product-content.ts";
 const metadataFile = "website/app/site-metadata.ts";
 const schemaFile = "website/app/site-schema.ts";
@@ -77,6 +79,14 @@ for (const entity of entities) {
     fail(`${entity.entityId} cannot be schema eligible before its detail page is published`);
   }
 
+  if (typeof entity.contentValidated !== "boolean") {
+    fail(`${entity.entityId} contentValidated must be a boolean`);
+  }
+
+  if (typeof entity.releaseApproved !== "boolean") {
+    fail(`${entity.entityId} releaseApproved must be a boolean`);
+  }
+
   if (!Array.isArray(entity.relatedEntityIds)) {
     fail(`${entity.entityId} relatedEntityIds must be an array`);
   }
@@ -88,6 +98,13 @@ const categoryTotal = Array.from(categoryCounts.values()).reduce(
   (total, count) => total + count,
   0
 );
+const publishedDetailCount = entities.filter(
+  (entity) =>
+    entity.detailStatus === "published" &&
+    entity.schemaEligible &&
+    entity.contentValidated &&
+    entity.releaseApproved
+).length;
 
 if (entityCount !== listingCount || entityCount !== categoryTotal) {
   fail(
@@ -97,7 +114,9 @@ if (entityCount !== listingCount || entityCount !== categoryTotal) {
 
 const listingPage = readRequired(listingPageFile);
 const categoryPage = readRequired(categoryPageFile);
+const detailPage = readRequired(detailPageFile);
 const card = readRequired(cardFile);
+const detailRenderer = readRequired(detailRendererFile);
 const content = readRequired(contentFile);
 const metadata = readRequired(metadataFile);
 const schema = readRequired(schemaFile);
@@ -125,6 +144,17 @@ for (const token of [
   assertIncludes(categoryPage, token, categoryPageFile);
 }
 
+for (const token of [
+  "dynamicParams = false",
+  "getPublishedProductDetailStaticParams",
+  "getPublishedProductDetailBySlugs(categorySlug, productSlug)",
+  "buildProductDetailMetadata(entity)",
+  "buildProductDetailSchemas(entity, faqs)",
+  "ProductDetailRenderer"
+]) {
+  assertIncludes(detailPage, token, detailPageFile);
+}
+
 for (const forbiddenProductName of entities.map((entity) => entity.name)) {
   if (listingPage.includes(forbiddenProductName)) {
     fail(`${listingPageFile} hardcodes Product Entity "${forbiddenProductName}"`);
@@ -138,8 +168,24 @@ for (const token of ["buildProductUrl(entity)", "data-entity-id", "detailStatus"
   assertIncludes(card, token, cardFile);
 }
 
-for (const token of ["productListingFaqs", "buildProductCategoryFaqs"]) {
+for (const token of [
+  "productListingFaqs",
+  "buildProductCategoryFaqs",
+  "buildProductDetailContent",
+  "buildProductDetailFaqs"
+]) {
   assertIncludes(content, token, contentFile);
+}
+
+for (const token of [
+  "ProductDetailRenderer",
+  "buildProductDetailContent(entity)",
+  "buildProductDetailFaqs(entity)",
+  "ProductBreadcrumbs",
+  "buildProductCategoryUrl(entity.category)",
+  "href=\"/partner/\""
+]) {
+  assertIncludes(detailRenderer, token, detailRendererFile);
 }
 
 for (const token of [
@@ -147,7 +193,9 @@ for (const token of [
   "canonical: \"/products/\"",
   "openGraph:",
   "buildProductCategoryMetadata",
-  "buildProductCategoryUrl(category)"
+  "buildProductCategoryUrl(category)",
+  "buildProductDetailMetadata",
+  "buildProductUrl(entity)"
 ]) {
   assertIncludes(metadata, token, metadataFile);
 }
@@ -160,6 +208,8 @@ for (const token of [
   "buildProductListingSchema",
   "buildProductCategorySchemas",
   "buildProductCategorySchema",
+  "buildProductDetailSchemas",
+  "buildProductDetailSchema",
   "getSchemaEligibleProducts",
   "buildBreadcrumbSchema(metadata.breadcrumb)",
   "buildFaqSchema(faqs)"
@@ -172,5 +222,5 @@ if (process.exitCode) {
 }
 
 console.log(
-  `Product rendering validation passed: Entity Count=${entityCount}, Listing Count=${listingCount}, Category Total=${categoryTotal}, Category Routes=${categoryCounts.size}.`
+  `Product rendering validation passed: Entity Count=${entityCount}, Listing Count=${listingCount}, Category Total=${categoryTotal}, Category Routes=${categoryCounts.size}, Published Detail Routes=${publishedDetailCount}.`
 );

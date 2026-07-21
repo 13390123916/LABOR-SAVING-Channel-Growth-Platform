@@ -1,5 +1,74 @@
 # Changelog
 
+## [0.3.0] - 2026-07-21
+
+### Added
+
+- 新增 `docs/MILESTONE_MAPPING.md`，冻结 M2 并映射未执行的 M2.6-M2.8 规划到 M3。
+- 新增 `docs/adr/README.md` 与 ADR-0001，记录 M2 冻结和 M3 Website Platform Foundation 启动决定。
+
+### Changed
+
+- 正式启动 M3 Website Platform Foundation，后续开发重心转向数据库、认证授权、CMS、运行平台、Search Runtime 与 Analytics/CRM。
+- Entity、Product、Metadata、SEO Schema、Product Rendering 与 Publishing Workflow 冻结为 v1.0；除严重问题外不再扩展治理层。
+
+## [0.2.10] - 2026-07-21
+
+### Added
+
+- 新增 `ProductDetailRenderer` 与受控的 `/products/[categorySlug]/[productSlug]/` 详情模板。
+- 新增 `contentValidated` 发布门禁字段，并将 Detail URL、Product Schema、sitemap 和后续 Related Product 统一限定为 `published + schemaEligible + contentValidated`。
+
+### Changed
+
+- 扩展 Product Rendering 校验，覆盖详情模板、静态参数、发布门禁、Detail Metadata/Schema、FAQ 与内部链接。
+- 同步更新 Product System、Product Schema、Product SEO、Roadmap、TODO、Memory 和 README 的 M2.4.5.3 执行策略。
+
+### Notes
+
+- 当前没有满足发布门禁的实体，因此不生成任何 Product Detail 静态路由。
+- LS70 继续作为非实体验证占位，不生成详情 URL、Product Schema、sitemap 或 Related Product。
+
+## [0.2.11] - 2026-07-21
+
+### Added
+
+- 新增 `docs/PRODUCT_PUBLISHING_CHECKLIST.md`，定义 M2.4.5.3.3 First Published Product Validation 的产品发布验收清单。
+
+### Changed
+
+- 将首个 Product Detail 的完成标准提升为真实公开发布与 SEO/GEO 验收闭环，纳入图片、sitemap、robots 与上线后 Search Console 检查。
+- 记录后续 CMS 可复用的状态机：Draft -> Internal Review -> Content Approved -> SEO Approved -> Published -> Indexed -> Archived。
+
+## [0.2.12] - 2026-07-21
+
+### Added
+
+- 新增 `docs/PRODUCT_CONTENT_READINESS.md`，建立 M2.4.5.3.4 Product Content Readiness 资料包标准，并录入 `PRD-0002` L60 的 Internal Review 内容草案。
+
+### Changed
+
+- M2.4.5.3.3 Product Publishing Validation Framework 通过后，阶段重点从代码渲染转向真实内容资产、公开范围、图片授权、ALT、Open Graph 和内部审核。
+
+### Notes
+
+- L60 当前仍为 `planned`，不生成公开详情页面、Product Schema、sitemap 或索引提交。
+
+## [0.2.13] - 2026-07-21
+
+### Added
+
+- 新增 `releaseApproved` 发布门禁，形成 `contentValidated -> releaseApproved -> published` 的独立市场上线批准步骤。
+
+### Changed
+
+- 进入 M2.4.5.3.5 First Published Product Acceptance，以 L60 验证首个真实产品从 Entity、内容、Metadata、Schema、SEO/GEO 到收录的发布闭环。
+- 后续 CMS 状态机扩展为 Draft -> Internal Review -> Content Approved -> SEO Approved -> Release Approved -> Published -> Indexed -> Archived。
+
+### Notes
+
+- L60 尚无真实图片、公开范围、市场上线批准、sitemap/robots 与外部收录证据；所有发布字段保持关闭。
+
 本项目遵循 Semantic Versioning，并按 Milestone 记录关键变更。
 
 ## [0.0.1] - 2026-07-21
@@ -279,3 +348,16 @@
 
 - 当前计数：Entity 4、Listing 4、Category Total 4、Category Routes 2。
 - 未生成 Product Detail、未确认 Product Schema、CMS、CRM 或数据库结构。
+
+## [0.2.9] - 2026-07-21
+
+### Changed
+
+- 执行 M2.4.5.2 Repository Audit，并将 `REPOSITORY_AUDIT_REPORT.md` 更新为当前实现状态。
+- 将 `scripts/validate-product-rendering.mjs` 加入 GitHub Actions，避免 Product Entity、Listing、Category 和静态分类路由约束只在本地验证。
+- 同步更新 Roadmap、TODO 和 Memory 的审计结论。
+
+### Notes
+
+- 审计通过时的生产构建路由为 `/`、`/partner/`、`/products/`、`/products/pneumatic-manipulator-arm/` 与 `/products/pneumatic-balancer/`。
+- 首个 Product Detail 仍必须等待真实 Product Entity 的可公开资料确认；LS70 继续保持非收录占位。

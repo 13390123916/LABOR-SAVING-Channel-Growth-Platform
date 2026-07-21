@@ -1,5 +1,9 @@
 # LABOR-SAVING Channel Growth Platform
 
+当前已进入 M2.4.5.3.5 First Published Product Acceptance：详情模板与发布门禁已建立；未满足 `published + schemaEligible + contentValidated + releaseApproved` 的实体不生成详情 URL、Product Schema 或 sitemap，LS70 保持非实体占位。
+
+当前平台阶段：M3 Website Platform Foundation。M2 Channel Growth Foundation 已冻结为 v1.0，历史 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3，后续重点转向数据库、认证、CMS、运行平台、Search Runtime 与 Analytics/CRM。
+
 雷普赛维渠道增长平台是面向工业装备渠道合作、终端客户询盘、中国 SEO 与国内 AI 搜索优化的长期增长平台，不是普通企业官网。
 
 ## 当前定位
@@ -61,6 +65,10 @@
 - `docs/PRODUCT_CONTENT_MODEL.md`
 - `docs/PRODUCT_SCHEMA.md`
 - `docs/PRODUCT_SEO_TEMPLATE.md`
+- `docs/PRODUCT_PUBLISHING_CHECKLIST.md`
+- `docs/PRODUCT_CONTENT_READINESS.md`
+- `docs/MILESTONE_MAPPING.md`
+- `docs/adr/README.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/PARTNER_CONTENT_MODEL.md`
 - `docs/PARTNER_SEO_TEMPLATE.md`

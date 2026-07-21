@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { buildProductCategoryUrl, type ProductCategoryGroup } from "./products/product-entities";
+import {
+  buildProductCategoryUrl,
+  buildProductUrl,
+  type ProductCategoryGroup,
+  type ProductEntity
+} from "./products/product-entities";
 
 export type BreadcrumbItem = {
   name: string;
@@ -114,6 +119,30 @@ export function buildProductCategoryMetadata(
       { name: "首页", url: "/" },
       { name: "产品中心", url: "/products/" },
       { name: category.name, url: canonical }
+    ]
+  };
+}
+
+export function buildProductDetailMetadata(entity: ProductEntity): PageMetadataDefinition {
+  const canonical = buildProductUrl(entity);
+  const description = entity.summary;
+
+  return {
+    title: `${entity.name} | LABOR-SAVING`,
+    description,
+    keywords: [entity.name, entity.category.name, "工业搬运设备", "LABOR-SAVING 产品中心"],
+    canonical,
+    openGraph: {
+      title: `${entity.name} | LABOR-SAVING`,
+      description,
+      url: canonical,
+      type: "website"
+    },
+    breadcrumb: [
+      { name: "首页", url: "/" },
+      { name: "产品中心", url: "/products/" },
+      { name: entity.category.name, url: buildProductCategoryUrl(entity.category) },
+      { name: entity.name, url: canonical }
     ]
   };
 }

@@ -93,6 +93,10 @@ Version: V1.2
 - `docs/PRODUCT_CONTENT_MODEL.md`
 - `docs/PRODUCT_SCHEMA.md`
 - `docs/PRODUCT_SEO_TEMPLATE.md`
+- `docs/PRODUCT_PUBLISHING_CHECKLIST.md`
+- `docs/PRODUCT_CONTENT_READINESS.md`
+- `docs/MILESTONE_MAPPING.md`
+- `docs/adr/`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/PARTNER_CONTENT_MODEL.md`
 - `docs/PARTNER_SEO_TEMPLATE.md`

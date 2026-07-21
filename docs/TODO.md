@@ -1,5 +1,25 @@
 # TODO
 
+## M3 Website Platform Foundation
+
+- [ ] M3.0 Database Architecture：确定 Entity、Category、Industry、Partner、Lead、Media、FAQ、Article、Download、Video、Tag、Menu、Navigation、SEO Metadata、Schema Metadata 的数据模型、ER 图、索引、约束与生命周期
+- [ ] M3.1 Authentication & Authorization：实现 Admin、Editor、SEO、Sales、Partner Manager、Super Admin 与 RBAC
+- [ ] M3.2 CMS Foundation：实现内容、媒体、导航、SEO、Schema、FAQ 与设置后台
+- [ ] M3.3 Runtime Platform：实现线索、媒体、任务队列、通知、导入导出、操作日志与审计日志
+- [ ] M3.4 Search Runtime：实现 sitemap、robots、RSS、IndexNow、SEO/GEO Feed 与站长平台接入
+- [ ] M3.5 Analytics & CRM：实现线索、合作伙伴、流量、转化、渠道、活动、来源与 CRM 集成
+- [x] 建立 `docs/adr/README.md` 与 ADR-0001：记录 M2 冻结和 M3 平台迁移决定
+- [x] 建立 `docs/MILESTONE_MAPPING.md`：保留 M2.6-M2.8 历史编号并映射至 M3
+
+## M2.4.5.3 Product Detail
+
+- [x] M2.4.5.3.1 Product Detail Template：建立 `ProductDetailRenderer`，统一接收 Product Entity 并输出内容区块、FAQ 与内部链接
+- [x] M2.4.5.3.2 Metadata / Schema Integration：统一 Detail URL、Metadata、Breadcrumb、Product Schema 与 FAQ Schema Builder，并加入发布门禁
+- [x] M2.4.5.3.3 Product Publishing Validation Framework：建立发布检查清单和后续 CMS 状态机，不将状态字段变更视为发布完成
+- [x] M2.4.5.3.4 Product Content Readiness：建立 `docs/PRODUCT_CONTENT_READINESS.md` 资料包标准，并完成首个候选资料包的审核框架
+- [ ] M2.4.5.3.5 First Published Product Acceptance：以 L60 完成 Entity、内容、Metadata、Schema、Canonical、Open Graph、FAQ、Breadcrumb、Internal Link、sitemap、robots、Search Console 与 Index Check 的正式发布验收
+- [x] 建立 `docs/PRODUCT_PUBLISHING_CHECKLIST.md`：发布前完成 Entity、内容、图片、SEO/GEO、sitemap、robots 与上线后 Search Console 验收
+
 ## M0.1 Repository Governance Fix
 
 - [x] 新增 `.github/pull_request_template.md`
@@ -71,15 +91,16 @@
 - [x] M2.4.3 Product Schema：新增 `docs/PRODUCT_SCHEMA.md`
 - [x] M2.4.4 Product CMS Model：完成文档边界定义，后台开发后置
 - [x] 执行 M2.4 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md` 并修复治理入口漂移
+- [x] 执行 M2.4.5.2 Repository Audit：同步审计报告，并将 Product Rendering 校验加入 CI
 - [ ] M2.4.5 Product Rendering Layer：已批准进入；以模板验证为目标，逐层验收 Metadata、JSON-LD、Breadcrumb、FAQ、Internal Link、Canonical、Open Graph 与 SEO/GEO
 - [x] M2.4.5.1 Product Listing：完成 `/products/` Entity-driven 模板、Metadata、Canonical、Open Graph、Breadcrumb、CollectionPage、FAQPage 与内链验证
 - [x] M2.4.5.2 Product Category：完成 `/products/[categorySlug]/` Entity 自动过滤、Metadata、Canonical、Open Graph、Breadcrumb、CollectionPage、FAQ 与计数验证
-- [ ] M2.4.5.3 Product Detail：使用资料已确认的真实 Product Entity；LS70 未确认前不得正式收录
+- [ ] M2.4.5.3 Product Detail：待完成首个已发布实体与 SEO/GEO 验证；LS70 不得正式收录
 - [ ] M2.4.5.4 Related Product：通过 Entity ID 建立产品关联与 Topic Cluster 渲染
 - [ ] M2.5 Industry Page Development：开发 `/applications/`
-- [ ] M2.6 Lead Capture Integration
-- [ ] M2.7 Admin Maintainability
-- [ ] M2.8 Batch Export
+- [ ] M2.6 Lead Capture Integration：历史规划，已映射至 M3.3 Runtime Platform 与 M3.5 Analytics & CRM
+- [ ] M2.7 Admin Maintainability：历史规划，已映射至 M3.1、M3.2 与 M3.3
+- [ ] M2.8 Batch Export：历史规划，已映射至 M3.3 Runtime Platform
 - [ ] M2 Website Page Development 后续页面扩展
 - [ ] 规划线索表单字段
 - [ ] 规划输入校验与风控

@@ -12,6 +12,8 @@ export type ProductEntity = {
   sourceStatus: "source_pending" | "reviewed";
   detailStatus: "planned" | "published";
   schemaEligible: boolean;
+  contentValidated: boolean;
+  releaseApproved: boolean;
   relatedEntityIds: `PRD-${string}`[];
 };
 
@@ -52,9 +54,34 @@ export function groupProductsByCategory(entities: ProductEntity[]): ProductCateg
 }
 
 export function getSchemaEligibleProducts(entities: ProductEntity[]) {
-  return entities.filter((entity) => entity.schemaEligible && entity.detailStatus === "published");
+  return entities.filter(isProductDetailPublishable);
+}
+
+export function isProductDetailPublishable(entity: ProductEntity) {
+  return (
+    entity.detailStatus === "published" &&
+    entity.schemaEligible &&
+    entity.contentValidated &&
+    entity.releaseApproved
+  );
 }
 
 export function getProductCategoryBySlug(categorySlug: string) {
   return groupProductsByCategory(productEntities).find((category) => category.slug === categorySlug);
+}
+
+export function getPublishedProductDetailBySlugs(categorySlug: string, productSlug: string) {
+  return productEntities.find(
+    (entity) =>
+      entity.category.slug === categorySlug &&
+      entity.slug === productSlug &&
+      isProductDetailPublishable(entity)
+  );
+}
+
+export function getPublishedProductDetailStaticParams() {
+  return productEntities.filter(isProductDetailPublishable).map((entity) => ({
+    categorySlug: entity.category.slug,
+    productSlug: entity.slug
+  }));
 }

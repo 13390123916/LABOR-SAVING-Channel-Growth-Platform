@@ -1,5 +1,7 @@
 # Project PRD
 
+当前阶段补充：M2.4.5.3.5 First Published Product Acceptance 以首个真实 Product Entity 的完整发布验收闭环为目标，而非为 LS70 创建测试页面。只有 `published + schemaEligible + contentValidated + releaseApproved` 同时满足时，才允许输出 Detail URL、Product Schema、sitemap 和 Related Product。
+
 项目名称：LABOR-SAVING Channel Growth Platform（雷普赛维渠道增长平台）
 
 文档职责：项目长期需求主文档

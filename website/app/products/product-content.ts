@@ -1,4 +1,12 @@
-import type { ProductCategoryGroup } from "./product-entities";
+import type { ProductCategoryGroup, ProductEntity } from "./product-entities";
+
+export type ProductDetailContent = {
+  overview: string;
+  sections: {
+    title: string;
+    body: string;
+  }[];
+};
 
 export const productListingFaqs = [
   {
@@ -35,6 +43,35 @@ export function buildProductCategoryFaqs(category: ProductCategoryGroup) {
       question: `${category.name}页面是否提供价格、库存或交期？`,
       answer:
         "不直接提供或承诺价格、库存与交期。相关信息需要结合真实型号、配置和项目条件进一步确认。"
+    }
+  ];
+}
+
+export function buildProductDetailContent(entity: ProductEntity): ProductDetailContent {
+  return {
+    overview: entity.summary,
+    sections: [
+      {
+        title: "产品定位",
+        body: `${entity.name} 属于 ${entity.category.name}。公开页面仅呈现已完成内容确认的实体信息。`
+      },
+      {
+        title: "选型边界",
+        body: "实际选型仍需结合工件、载荷、作业空间、节拍、能源条件和安全要求进行确认。"
+      }
+    ]
+  };
+}
+
+export function buildProductDetailFaqs(entity: ProductEntity) {
+  return [
+    {
+      question: `${entity.name} 适合哪些场景？`,
+      answer: `需结合实际工件、载荷、作业空间、节拍和安全要求评估 ${entity.name} 是否适用。`
+    },
+    {
+      question: `${entity.name} 是否可直接根据型号完成选型？`,
+      answer: "不能。型号页面用于确认实体范围，最终选型需要依据真实项目条件进行人工确认。"
     }
   ];
 }

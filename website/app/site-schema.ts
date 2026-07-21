@@ -1,4 +1,5 @@
 import {
+  buildProductDetailMetadata,
   buildProductCategoryMetadata,
   pageMetadata,
   siteBaseUrl
@@ -188,6 +189,38 @@ export function buildProductCategorySchemas(
   return [
     buildOrganizationSchema(),
     buildProductCategorySchema(category),
+    buildBreadcrumbSchema(metadata.breadcrumb),
+    buildFaqSchema(faqs)
+  ];
+}
+
+export function buildProductDetailSchema(entity: ProductEntity) {
+  const metadata = buildProductDetailMetadata(entity);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": absoluteUrl(`${metadata.canonical}#product`),
+    name: entity.name,
+    category: entity.category.name,
+    description: entity.summary,
+    url: absoluteUrl(metadata.canonical),
+    brand: {
+      "@type": "Brand",
+      name: "LABOR-SAVING"
+    }
+  };
+}
+
+export function buildProductDetailSchemas(
+  entity: ProductEntity,
+  faqs: QuestionAnswer[]
+): SchemaNode[] {
+  const metadata = buildProductDetailMetadata(entity);
+
+  return [
+    buildOrganizationSchema(),
+    buildProductDetailSchema(entity),
     buildBreadcrumbSchema(metadata.breadcrumb),
     buildFaqSchema(faqs)
   ];

@@ -1,5 +1,7 @@
 # M2 Strategy
 
+当前 Product Detail 执行顺序：Detail Renderer Template -> Metadata / Schema Integration -> First Published Product Entity -> SEO/GEO Validation -> Related Product。LS70 不属于 Product Entity，不能用于详情页面验证。
+
 文档职责：定义 M2 阶段方向，避免直接进入普通网站页面开发。
 
 ## 1. 战略判断

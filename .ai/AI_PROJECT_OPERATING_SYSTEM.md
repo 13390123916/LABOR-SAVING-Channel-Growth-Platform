@@ -175,6 +175,10 @@ GEO 面向国内 AI 搜索：
 - `docs/PRODUCT_CONTENT_MODEL.md`
 - `docs/PRODUCT_SCHEMA.md`
 - `docs/PRODUCT_SEO_TEMPLATE.md`
+- `docs/PRODUCT_PUBLISHING_CHECKLIST.md`
+- `docs/PRODUCT_CONTENT_READINESS.md`
+- `docs/MILESTONE_MAPPING.md`
+- `docs/adr/README.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/PARTNER_CONTENT_MODEL.md`
 - `docs/PARTNER_SEO_TEMPLATE.md`
@@ -196,6 +200,10 @@ GEO 面向国内 AI 搜索：
 - `docs/PRODUCT_CONTENT_MODEL.md` 是 Product 内容模块、FAQ、资料和入口结构来源。
 - `docs/PRODUCT_SCHEMA.md` 是 Product JSON-LD 类型、字段来源和合规边界来源。
 - `docs/PRODUCT_SEO_TEMPLATE.md` 是 Product URL、Metadata、内链、Topic Cluster 和 GEO 模板来源。
+- `docs/PRODUCT_PUBLISHING_CHECKLIST.md` 是首个 Product Detail 公开发布、SEO/GEO 验收和后续索引状态机来源。
+- `docs/PRODUCT_CONTENT_READINESS.md` 是首个真实 Product Entity 的内容资产准备、资料确认与图片授权来源。
+- `docs/MILESTONE_MAPPING.md` 是冻结 M2 历史与 M3 运行能力迁移边界来源。
+- `docs/adr/README.md` 是长期架构决策记录入口。
 - `docs/PARTNER_FUNNEL.md` 是渠道增长漏斗来源。
 - `docs/PARTNER_CONTENT_MODEL.md` 是 Partner 页面内容模块、FAQ、CTA 与内链模型来源。
 - `docs/PARTNER_SEO_TEMPLATE.md` 是 Partner 页面 SEO/GEO、Schema 和 Topic Cluster 模板来源。
@@ -319,6 +327,6 @@ AI 不仅负责开发，还负责长期维护 GitHub Repository。
 
 ## 13. 当前阶段
 
-当前阶段：M2 Channel Growth Foundation。
+当前阶段：M3 Website Platform Foundation。M2 Channel Growth Foundation 已冻结为 v1.0；除架构缺陷或严重 Bug 外，不再新增治理规则或 Publishing 子阶段。
 
 当前目标：M2.4.5.1 Product Listing 与 M2.4.5.2 Product Category 已完成，Collection Rendering 核心机制已验证。进入 M2.4.5.3 Product Detail 前必须确认真实、可公开发布的 Product Entity 资料；Detail 阶段重点验证单个 Entity 渲染，不重新设计整体架构。所有实现沿用 Entity -> Metadata -> Schema -> CMS -> Frontend -> SEO -> GEO 的统一模型。

@@ -16,6 +16,11 @@ const requiredDocs = [
   "docs/PRODUCT_CONTENT_MODEL.md",
   "docs/PRODUCT_SCHEMA.md",
   "docs/PRODUCT_SEO_TEMPLATE.md",
+  "docs/PRODUCT_PUBLISHING_CHECKLIST.md",
+  "docs/PRODUCT_CONTENT_READINESS.md",
+  "docs/MILESTONE_MAPPING.md",
+  "docs/adr/README.md",
+  "docs/adr/ADR-0001-m2-freeze-and-m3-platform-foundation.md",
   "docs/PARTNER_FUNNEL.md",
   "docs/PARTNER_CONTENT_MODEL.md",
   "docs/PARTNER_SEO_TEMPLATE.md",
@@ -88,7 +93,9 @@ const productFoundationDocs = [
   "docs/PRODUCT_SYSTEM.md",
   "docs/PRODUCT_CONTENT_MODEL.md",
   "docs/PRODUCT_SCHEMA.md",
-  "docs/PRODUCT_SEO_TEMPLATE.md"
+  "docs/PRODUCT_SEO_TEMPLATE.md",
+  "docs/PRODUCT_PUBLISHING_CHECKLIST.md",
+  "docs/PRODUCT_CONTENT_READINESS.md"
 ];
 const governanceEntryFiles = [
   ".ai/AI_PROJECT_OPERATING_SYSTEM.md",
@@ -227,6 +234,26 @@ for (const token of ["Product SEO Template", "/products/", "Product Rendering La
   assertIncludes(productSeoTemplate, token, "docs/PRODUCT_SEO_TEMPLATE.md");
 }
 
+const productPublishingChecklist = readRequired("docs/PRODUCT_PUBLISHING_CHECKLIST.md");
+for (const token of ["First Published Product Validation", "Product Schema", "Images", "Sitemap", "Robots", "Search Console", "Draft", "Internal Review", "Content Approved", "SEO Approved", "Published", "Indexed", "Archived"]) {
+  assertIncludes(productPublishingChecklist, token, "docs/PRODUCT_PUBLISHING_CHECKLIST.md");
+}
+
+const productContentReadiness = readRequired("docs/PRODUCT_CONTENT_READINESS.md");
+for (const token of ["Product Content Readiness", "PRD-0002", "L60", "Internal Review", "Content Approved", "Product Publishing Checklist", "图片", "Open Graph", "JSON-LD", "Search Console"]) {
+  assertIncludes(productContentReadiness, token, "docs/PRODUCT_CONTENT_READINESS.md");
+}
+
+const milestoneMapping = readRequired("docs/MILESTONE_MAPPING.md");
+for (const token of ["M2 Channel Growth Foundation", "Frozen v1.0", "M2.6", "M2.7", "M2.8", "M3 Website Platform Foundation", "M3.0 Database Architecture", "M3.4 Search Runtime"]) {
+  assertIncludes(milestoneMapping, token, "docs/MILESTONE_MAPPING.md");
+}
+
+const adrIndex = readRequired("docs/adr/README.md");
+for (const token of ["ADR-0001", "ADR-0008", "M3 Website Platform Foundation"]) {
+  assertIncludes(adrIndex, token, "docs/adr/README.md");
+}
+
 const leadSchema = readRequired("docs/LEAD_SCHEMA.md");
 for (const token of ["companyName", "contactName", "region", "mainProducts", "customerResources", "sellsIndustrialTools", "sellsHydraulicTools", "hasWindPowerCustomers"]) {
   assertIncludes(leadSchema, token, "docs/LEAD_SCHEMA.md");
@@ -249,7 +276,7 @@ for (const token of ["Organization", "Product", "Article", "FAQPage", "Breadcrum
 
 for (const file of syncFiles) {
   const content = readRequired(file);
-  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
+  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "adr/README.md", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
     assertIncludes(content, token, file);
   }
 }

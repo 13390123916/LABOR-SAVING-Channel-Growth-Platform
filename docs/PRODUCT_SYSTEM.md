@@ -1,5 +1,21 @@
 # Product System
 
+## M2.4.5.3 Product Detail 发布门禁
+
+状态：进行中。已完成 Detail Renderer Template 与 Metadata/Schema Integration；首个正式产品仍待资料确认。
+
+M2.4.5.3.3 Product Publishing Validation Framework 与 M2.4.5.3.4 Product Content Readiness 阶段框架已通过。当前进入 M2.4.5.3.5 First Published Product Acceptance，首个候选资料包见 `docs/PRODUCT_CONTENT_READINESS.md`；在资料、授权、市场上线批准和外部索引验收完成前，任何实体均不改变发布状态。
+
+统一模板为 `ProductDetailRenderer`，输入为单个 Product Entity，输出为 Detail URL、Metadata、Breadcrumb、Product Schema、FAQ Schema、Content Sections 和 Internal Links。
+
+Detail URL、Product Schema、sitemap 和 Related Product 的共同发布门禁为：`detailStatus = published`、`schemaEligible = true`、`contentValidated = true`、`releaseApproved = true`。
+
+字段门禁之外，首个正式产品必须完成 `docs/PRODUCT_PUBLISHING_CHECKLIST.md` 的 First Published Product Validation，才可视为 SEO/GEO 发布闭环完成。
+
+详情静态参数只从满足上述门禁的 Entity 生成，并以 `dynamicParams = false` 阻止未发布路径被动态渲染。LS70 不是 Product Entity，不进入数据源、详情 URL、Product Schema、sitemap 或 Related Product。
+
+首个正式 Product Detail 必须从 LS40、L60、SQ35、SQ50 中选择资料完整且经确认可公开发布的实体。本阶段不为测试目的创建 LS70 页面，也不手写产品关联。
+
 文档职责：定义 LABOR-SAVING Product Entity 的基础层，明确产品实体、生命周期、与行业、案例、文章、视频、下载和 FAQ 的关联关系。M2.4 Product System Foundation 已通过验收，当前进入 M2.4.5 Product Rendering Layer；仍不批量开发页面、不开发后台 CMS、不开发 CRM、不冻结数据库。
 
 ## 1. 定位

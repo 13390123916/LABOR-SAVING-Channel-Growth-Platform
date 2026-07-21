@@ -1,5 +1,24 @@
 # Roadmap
 
+## M3 Website Platform Foundation
+
+状态：已启动。M2 Channel Growth Foundation 已冻结为 v1.0；迁移规则见 `docs/MILESTONE_MAPPING.md`，架构决策见 `docs/adr/README.md`。
+
+目标：从治理与渲染前置设计转向数据库、认证授权、CMS、运行平台、Search Runtime 与 Analytics/CRM 的真实运行能力。
+
+- M3.0 Database Architecture
+- M3.1 Authentication & Authorization
+- M3.2 CMS Foundation
+- M3.3 Runtime Platform
+- M3.4 Search Runtime
+- M3.5 Analytics & CRM
+
+当前推进：M2.4.5.3 Product Detail 已进入首次发布验收阶段。只有 `published + schemaEligible + contentValidated + releaseApproved` 的真实 Product Entity 才生成详情 URL、Product Schema、sitemap 和 Related Product；LS70 继续保持非实体占位。
+
+当前发布验收：M2.4.5.3.3 First Published Product Validation 已建立检查清单，等待选定资料完整实体后完成真实内容、图片、SEO/GEO、sitemap、robots 与上线后 Search Console 闭环。
+
+当前验收：M2.4.5.3.5 First Published Product Acceptance 以 `PRD-0002` L60 为首个候选，验证从 Entity 到收录的完整发布闭环；不继续扩展产品页面数量或批量产品开发。
+
 项目周期预计 12 到 24 个月，采用“Repository 治理先行、网站技术底座、SEO/GEO 基础、CRM 渐进增强、代理协作与运营分析”的路线。
 
 ## M0 Repository Bootstrap
@@ -132,6 +151,7 @@ M1 完成后不直接进入页面开发，先进入 M1.5 Channel Growth Strategy
 - M2.4.5 Product Rendering Layer：已批准进入，按 Listing、Category、首个真实 Detail、Related Product 逐层验证模板，不按页面数量推进
 - M2.4.5.1 Product Listing：已完成，`/products/` 由 Product Entity 数据源自动分组和渲染，统一 Metadata、Schema、Breadcrumb 与 FAQ 已验证
 - M2.4.5.2 Product Category：已完成，分类路由、Entity 过滤、Metadata、Canonical、Breadcrumb、CollectionPage 与 FAQ 均自动生成
+- M2.4.5.2 Repository Audit：已通过，CI 现同时验证仓库治理与 Product Rendering 约束
 - M2.5 Industry Page Development：`/applications/`
 - M2.6 Lead Capture Integration
 - M2.7 Admin Maintainability
