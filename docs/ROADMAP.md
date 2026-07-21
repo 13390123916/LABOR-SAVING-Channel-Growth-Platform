@@ -6,14 +6,16 @@
 
 目标：从治理与渲染前置设计转向数据库、认证授权、CMS、运行平台、Search Runtime 与 Analytics/CRM 的真实运行能力。
 
-- M3.0 Database Architecture
+- M3.0 Database Architecture（已完成设计冻结：ADR-0008 与 `docs/DATABASE.md`）
 - M3.1 Authentication & Authorization
 - M3.2 CMS Foundation
 - M3.3 Runtime Platform
 - M3.4 Search Runtime
 - M3.5 Analytics & CRM
 
-当前推进：M2.4.5.3 Product Detail 已进入首次发布验收阶段。只有 `published + schemaEligible + contentValidated + releaseApproved` 的真实 Product Entity 才生成详情 URL、Product Schema、sitemap 和 Related Product；LS70 继续保持非实体占位。
+当前推进：M3.0 Database Architecture 已完成设计冻结，不直接写数据库代码；下一步进入 M3.1 Authentication & Authorization，先确定 Admin、Editor、SEO、Sales、Partner Manager、Super Admin 与 RBAC。
+
+产品发布质量门禁：M2.4.5.3 Product Detail 已进入首次发布验收阶段。只有 `published + schemaEligible + contentValidated + releaseApproved` 的真实 Product Entity 才生成详情 URL、Product Schema、sitemap 和 Related Product；LS70 继续保持非实体占位。
 
 当前发布验收：M2.4.5.3.3 First Published Product Validation 已建立检查清单，等待选定资料完整实体后完成真实内容、图片、SEO/GEO、sitemap、robots 与上线后 Search Console 闭环。
 
@@ -134,7 +136,7 @@ M1 完成后不直接进入页面开发，先进入 M1.5 Channel Growth Strategy
 
 ## M2 Channel Growth Foundation
 
-状态：进行中
+状态：已冻结为 v1.0。M2.6-M2.8 为历史规划，映射至 M3；M2.4.5.3.5 仅保留为首个产品跨阶段发布验收质量门禁。
 
 目标：
 

@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.3.2] - 2026-07-21
+
+### Added
+
+- 新增 ADR-0008 Database Model，冻结 M3.0 Database Architecture 的数据库选择、Entity 与业务表关系、ID、slug、软删除、版本、多语言和审计字段策略。
+- 重写 `docs/DATABASE.md` 为 M3.0 数据库架构蓝图，覆盖 Entity、Category、Product、Industry、Partner、Lead、Media、Article、FAQ、Download、Navigation、SEO Metadata、Schema Metadata、Tag、Redirect 和 Audit Log。
+
+### Changed
+
+- 将 M3.0 定位为数据库设计冻结阶段，不直接创建迁移、ORM、CMS CRUD 或运行时代码。
+- 同步更新 Roadmap、TODO、Memory、PRD、README、Repository Audit 与治理校验清单，下一步转向 M3.1 Authentication & Authorization。
+
+## [0.3.1] - 2026-07-21
+
+### Changed
+
+- 执行 M3 Repository Audit，修正 AI Context、README、PRD、Project Structure、Product System、Roadmap 和 Memory 中遗留的 M2 当前阶段、CMS M2.7 与 M2.6-M2.8 直连表述。
+- 明确 M2.4.5.3.5 是跨阶段的首个产品发布验收质量门禁，而不是继续扩展 M2 治理。
+
 ## [0.3.0] - 2026-07-21
 
 ### Added

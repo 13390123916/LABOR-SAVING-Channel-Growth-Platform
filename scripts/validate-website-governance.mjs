@@ -21,6 +21,7 @@ const requiredDocs = [
   "docs/MILESTONE_MAPPING.md",
   "docs/adr/README.md",
   "docs/adr/ADR-0001-m2-freeze-and-m3-platform-foundation.md",
+  "docs/adr/ADR-0008-database-model.md",
   "docs/PARTNER_FUNNEL.md",
   "docs/PARTNER_CONTENT_MODEL.md",
   "docs/PARTNER_SEO_TEMPLATE.md",

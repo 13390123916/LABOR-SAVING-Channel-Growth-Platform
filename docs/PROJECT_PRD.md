@@ -6,7 +6,7 @@
 
 文档职责：项目长期需求主文档
 
-当前阶段：M2 Channel Growth Foundation 进行中
+当前阶段：M3 Website Platform Foundation 进行中；M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`。M2 Channel Growth Foundation 已冻结为 v1.0，未执行的 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射至 M3。
 
 ## 1. 项目定位
 
@@ -101,6 +101,20 @@
 - MySQL
 - Docker
 - GitHub Actions
+
+## 7.1 M3.0 Database Architecture
+
+M3.0 不直接写数据库代码，先冻结数据库设计。
+
+已确认：
+
+- 主业务数据库优先采用 MySQL。
+- Entity 与业务表采用统一 Entity Layer + 类型表关系。
+- 内部数据库主键可使用自增 `id`，跨 CMS、CRM、Analytics、Search Runtime 和 Frontend 的稳定业务键使用 `entity_id`。
+- 当前不默认采用 UUID；如未来出现跨系统离线写入、多地域合并或公开 API 暴露 ID 需求，再通过 ADR 评估。
+- 公开内容默认软删除，使用 `deleted_at`，已发布页面下线必须同步 Redirect、sitemap、robots 和 Search Runtime。
+- 所有可公开内容保留 `version`、`locale`、`created_at`、`updated_at`、`published_at`、`created_by`、`updated_by`、`published_by` 等字段。
+- Slug 不作为业务主键，唯一约束必须按 Entity Type、Category、Locale 或父级作用域限定。
 
 ## 8. M1 阶段范围
 

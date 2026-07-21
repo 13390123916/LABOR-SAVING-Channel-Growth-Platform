@@ -31,4 +31,4 @@
 
 ## 当前任务
 
-M2 Channel Growth Foundation 已启动。M2.4.5.1 Product Listing 与 M2.4.5.2 Product Category 已完成，核心 Collection Rendering 机制已验证。下一步是 M2.4.5.3 Product Detail 前置资料确认，不再调整整体架构；继续复用 Product Entity JSON、URL、Metadata、Schema、Breadcrumb、FAQ 与 ProductCard Builder。
+M2 Channel Growth Foundation 已冻结为 v1.0，核心 Collection Rendering 机制已验证。M3.0 Database Architecture 已完成设计冻结，数据库优先采用 MySQL，采用内部自增 ID + 稳定 `entity_id`，公开内容默认软删除并保留版本、审计和 `locale` 扩展字段。M2.4.5.3.5 的首个产品发布验收作为跨阶段质量门禁保留；后续平台实现进入 M3.1 Authentication & Authorization，并继续复用 Product Entity JSON、URL、Metadata、Schema、Breadcrumb、FAQ 与 ProductCard Builder。
