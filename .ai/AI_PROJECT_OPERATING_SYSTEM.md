@@ -311,4 +311,4 @@ AI 不仅负责开发，还负责长期维护 GitHub Repository。
 
 当前阶段：M2 Channel Growth Foundation。
 
-当前目标：在已完成 Page System、Metadata System、SEO Schema Layer、Partner Page v1 和 Partner System Hardening 后，先确认 Product System Foundation，再进入产品实体、产品 SEO、产品 Schema、产品 CMS 结构和产品页面开发。
+当前目标：已完成 Page System、Metadata System、SEO Schema Layer、Partner Page v1、Partner System Hardening 和 Product System Foundation。后续进入 Product Rendering Layer 前，必须沿用 Entity -> Metadata -> Schema -> CMS -> Frontend -> SEO -> GEO 的统一模型，并以 `docs/ENTITY_SYSTEM.md`、`docs/PRODUCT_SYSTEM.md`、`docs/PRODUCT_CONTENT_MODEL.md`、`docs/PRODUCT_SCHEMA.md`、`docs/PRODUCT_SEO_TEMPLATE.md` 为产品系统输入。

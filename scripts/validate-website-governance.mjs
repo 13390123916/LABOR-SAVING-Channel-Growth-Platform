@@ -11,6 +11,11 @@ const requiredDocs = [
   "docs/PAGE_SYSTEM.md",
   "docs/METADATA_SCHEMA.md",
   "docs/SEO_SCHEMA_LAYER.md",
+  "docs/ENTITY_SYSTEM.md",
+  "docs/PRODUCT_SYSTEM.md",
+  "docs/PRODUCT_CONTENT_MODEL.md",
+  "docs/PRODUCT_SCHEMA.md",
+  "docs/PRODUCT_SEO_TEMPLATE.md",
   "docs/PARTNER_FUNNEL.md",
   "docs/PARTNER_CONTENT_MODEL.md",
   "docs/PARTNER_SEO_TEMPLATE.md",
@@ -163,6 +168,31 @@ for (const token of ["/partner/", "Organization", "WebPage", "ContactPoint", "FA
   assertIncludes(partnerSeoTemplate, token, "docs/PARTNER_SEO_TEMPLATE.md");
 }
 
+const entitySystem = readRequired("docs/ENTITY_SYSTEM.md");
+for (const token of ["Entity System", "Entity", "Content Model", "Metadata", "Schema", "SEO Template", "CMS", "Frontend", "Rendering Layer", "SEO", "GEO", "Partner", "Product", "Industry", "Case", "Article", "Video", "Download", "FAQ"]) {
+  assertIncludes(entitySystem, token, "docs/ENTITY_SYSTEM.md");
+}
+
+const productSystem = readRequired("docs/PRODUCT_SYSTEM.md");
+for (const token of ["Product System", "Product System Foundation", "Product Entity", "Product Content Model", "Product Metadata", "Product Schema", "Product CMS Model", "Product Rendering Layer", "Product Listing", "Product Category", "Product Detail", "Related Product", "LS40", "L60", "SQ35", "SQ50"]) {
+  assertIncludes(productSystem, token, "docs/PRODUCT_SYSTEM.md");
+}
+
+const productContentModel = readRequired("docs/PRODUCT_CONTENT_MODEL.md");
+for (const token of ["Product Content Model", "ProductTemplate", "Hero", "Product Overview", "Features", "Applications", "Related Resources", "FAQ", "Lead Entry", "Partner Entry"]) {
+  assertIncludes(productContentModel, token, "docs/PRODUCT_CONTENT_MODEL.md");
+}
+
+const productSchema = readRequired("docs/PRODUCT_SCHEMA.md");
+for (const token of ["Product Schema", "Product", "CollectionPage", "BreadcrumbList", "FAQPage", "LS40", "L60", "SQ35", "SQ50"]) {
+  assertIncludes(productSchema, token, "docs/PRODUCT_SCHEMA.md");
+}
+
+const productSeoTemplate = readRequired("docs/PRODUCT_SEO_TEMPLATE.md");
+for (const token of ["Product SEO Template", "/products/", "Product Rendering Layer", "Product Listing", "Product Category", "Product Detail", "Related Product", "Topic Cluster", "GEO", "Product", "FAQPage", "/partner/"]) {
+  assertIncludes(productSeoTemplate, token, "docs/PRODUCT_SEO_TEMPLATE.md");
+}
+
 const leadSchema = readRequired("docs/LEAD_SCHEMA.md");
 for (const token of ["companyName", "contactName", "region", "mainProducts", "customerResources", "sellsIndustrialTools", "sellsHydraulicTools", "hasWindPowerCustomers"]) {
   assertIncludes(leadSchema, token, "docs/LEAD_SCHEMA.md");
@@ -185,7 +215,7 @@ for (const token of ["Organization", "Product", "Article", "FAQPage", "Breadcrum
 
 for (const file of syncFiles) {
   const content = readRequired(file);
-  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
+  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
     assertIncludes(content, token, file);
   }
 }

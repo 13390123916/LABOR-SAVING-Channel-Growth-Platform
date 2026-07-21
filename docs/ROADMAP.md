@@ -127,7 +127,7 @@ M1 完成后不直接进入页面开发，先进入 M1.5 Channel Growth Strategy
 - M2.1 Metadata System：`docs/METADATA_SCHEMA.md`
 - M2.2 SEO Schema Layer：`docs/SEO_SCHEMA_LAYER.md`
 - M2.3 Partner Page Development & Partner System Hardening：`/partner/`、`docs/PARTNER_CONTENT_MODEL.md`、`docs/PARTNER_SEO_TEMPLATE.md`
-- M2.4 Product Page Development：`/products/`
+- M2.4 Product System Foundation：`docs/ENTITY_SYSTEM.md`、`docs/PRODUCT_SYSTEM.md`、`docs/PRODUCT_CONTENT_MODEL.md`、`docs/PRODUCT_SCHEMA.md`、`docs/PRODUCT_SEO_TEMPLATE.md`
 - M2.5 Industry Page Development：`/applications/`
 - M2.6 Lead Capture Integration
 - M2.7 Admin Maintainability
@@ -136,6 +136,28 @@ M1 完成后不直接进入页面开发，先进入 M1.5 Channel Growth Strategy
 - 表单结构与输入校验
 - 来源追踪与 CRM 字段预留
 - 后续 MySQL 数据模型
+
+M2.4 调整说明：
+
+```text
+M2.4 Product System Foundation
+-> M2.4.0 Product Entity
+-> M2.4.1 Product Content Model
+-> M2.4.2 Product Metadata
+-> M2.4.3 Product Schema
+-> M2.4.4 Product CMS Model
+-> M2.4.5 Product Rendering Layer
+```
+
+当前阶段先冻结 Entity、Content Model、Metadata、Schema 和 SEO/GEO 模板，不开发 `/products/` 页面、不开发后台 CMS、不开发 CRM、不冻结数据库。
+
+下一阶段命名为：
+
+```text
+M2.4.5 Product Rendering Layer
+```
+
+范围包括 Product Listing、Product Category、Product Detail、FAQ、Schema、Metadata、Breadcrumb、Related Product、Internal Link 和 SEO/GEO 落地。
 
 ## M3 SEO/GEO Foundation
 

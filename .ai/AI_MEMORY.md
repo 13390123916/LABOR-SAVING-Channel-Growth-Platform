@@ -31,4 +31,4 @@
 
 ## 当前任务
 
-M2 Channel Growth Foundation 已启动。已完成 Page System、Metadata System、SEO Schema Layer、Partner Page v1 和 Partner System Hardening。后续任务优先确认 Product System Foundation，再进入 `/products/`、产品分类页和产品型号页开发。
+M2 Channel Growth Foundation 已启动。已完成 Page System、Metadata System、SEO Schema Layer、Partner Page v1、Partner System Hardening 和 Product System Foundation。后续任务先沿用 `docs/ENTITY_SYSTEM.md`、`docs/PRODUCT_SYSTEM.md`、`docs/PRODUCT_CONTENT_MODEL.md`、`docs/PRODUCT_SCHEMA.md`、`docs/PRODUCT_SEO_TEMPLATE.md`，再进入 M2.4.5 Product Rendering Layer。

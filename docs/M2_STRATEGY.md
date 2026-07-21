@@ -104,7 +104,7 @@ M2 Channel Growth Foundation
 - M2.1 Metadata System
 - M2.2 SEO Schema Layer
 - M2.3 Partner Page Development & Partner System Hardening
-- M2.4 Product Page Development
+- M2.4 Product System Foundation
 - M2.5 Industry Page Development
 - M2.6 Lead Capture Integration
 - M2.7 Admin Maintainability
@@ -121,9 +121,15 @@ M2.2 SEO Schema Layer
 ↓
 M2.3 Partner Page Development & Partner System Hardening
 ↓
-M2.4 Product Page Development
+M2.4 Product System Foundation
 ↓
-M2.5 Industry Page Development
+M2.4.0 Product Entity
+-> M2.4.1 Product Content Model
+-> M2.4.2 Product Metadata
+-> M2.4.3 Product Schema
+-> M2.4.4 Product CMS Model
+-> M2.4.5 Product Rendering Layer
+-> M2.5 Industry Page Development
 ↓
 M2.6 Lead Capture Integration
 ↓
@@ -183,6 +189,82 @@ docs/PARTNER_SEO_TEMPLATE.md
 ```
 
 目的：将 `/partner/` 从单页开发结果升级为 Partner Program Entity、Partner Content Model、Partner SEO Template 与 Partner Lead / CRM / CMS / Export 的可维护入口。
+
+## 4.5 M2.4 Product System Foundation
+
+交付文档：
+
+```text
+docs/ENTITY_SYSTEM.md
+docs/PRODUCT_SYSTEM.md
+docs/PRODUCT_CONTENT_MODEL.md
+docs/PRODUCT_SCHEMA.md
+docs/PRODUCT_SEO_TEMPLATE.md
+```
+
+目标：先建立 Product Entity、Content Model、Metadata、Schema、CMS Model 和 Product Rendering Layer 的统一基础层，再进入产品列表、分类、详情、FAQ、Schema、Metadata、Breadcrumb、内链与 SEO/GEO 落地。
+
+本阶段不执行：
+
+- 不批量开发产品页面
+- 不开发后台 CMS
+- 不开发 CRM
+- 不冻结数据库设计
+- 不编造产品参数、价格、交期、认证、案例或市场排名
+
+标准顺序：
+
+```text
+Entity
+-> Content Model
+-> Metadata
+-> Schema
+-> CMS Model
+-> Rendering Layer / Frontend Page
+-> SEO
+-> GEO
+```
+
+M2.4 拆分：
+
+```text
+M2.4.0 Product Entity
+-> M2.4.1 Product Content Model
+-> M2.4.2 Product Metadata
+-> M2.4.3 Product Schema
+-> M2.4.4 Product CMS Model
+-> M2.4.5 Product Rendering Layer
+```
+
+说明：数据库设计在 Product Entity、Content Model、Metadata 和 Schema 完成后再冻结，避免后续产品数量增加时反复迁移。
+
+M2.4.5 Product Rendering Layer 拆分：
+
+```text
+M2.4.5.1 Product Listing
+-> /products/
+
+M2.4.5.2 Product Category
+-> /products/pneumatic-manipulator-arm/
+
+M2.4.5.3 Product Detail
+-> /products/pneumatic-manipulator-arm/ls70/
+
+M2.4.5.4 Related Product
+-> LS70 关联 LS50、LS40、SQ 系列
+```
+
+每个渲染层交付必须验证：
+
+- Metadata
+- Schema
+- Breadcrumb
+- FAQ
+- Internal Link
+- SEO
+- GEO
+
+CMS 仍放在 M2.7。Database 继续保持规划，等待 Product、Industry、Case、Knowledge 等 Entity 关系稳定后再一次冻结。
 
 ## 5. M1.5 Partner Funnel Architecture
 

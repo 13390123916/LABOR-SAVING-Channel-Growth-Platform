@@ -157,4 +157,41 @@
 ### Notes
 
 - 本次审计不新增业务页面。
-- 本次确认 M2.4 是否调整为 Product System Foundation 仍需用户确认。
+- 本次审计后，下一步已明确为先完成 Product System Foundation，再进入 Product Rendering Layer。
+
+## [0.2.2] - 2026-07-21
+
+### Added
+
+- 新增 `docs/ENTITY_SYSTEM.md`，定义全站 Entity Layer，统一 Partner、Product、Industry、Case、Article、Video、Download、FAQ 的长期模型。
+- 新增 `docs/PRODUCT_SYSTEM.md`，定义 Product Entity、生命周期、关联关系和 CMS Model 边界。
+- 新增 `docs/PRODUCT_CONTENT_MODEL.md`，定义 ProductTemplate、产品概述、特点、应用、资料、FAQ、Lead Entry 和 Partner Entry。
+- 新增 `docs/PRODUCT_SCHEMA.md`，定义 Product JSON-LD、CollectionPage、FAQPage、BreadcrumbList 和字段来源。
+- 新增 `docs/PRODUCT_SEO_TEMPLATE.md`，定义 Product URL、Title、Description、内链策略、Topic Cluster 和 GEO 问答模板。
+
+### Changed
+
+- 将 M2.4 从 Product Page Development 调整为 Product System Foundation。
+- 将 Product Page 后置为 M2.4.5，确认当前阶段不批量开发产品页面、不开发后台 CMS、不开发 CRM、不冻结数据库。
+- 更新 Roadmap、TODO、Memory、PRD、README 和 AI 当前阶段口径。
+- 更新 website governance 校验，将 Entity 与 Product Foundation 文档纳入必检范围。
+
+### Notes
+
+- 本次只完成产品系统基础层，不新增 `/products/` 页面。
+- 本次不新增产品参数、价格、交期、认证、客户案例、收益承诺、授权范围或市场排名。
+
+## [0.2.3] - 2026-07-21
+
+### Changed
+
+- 将下一阶段正式命名为 `M2.4.5 Product Rendering Layer`。
+- 拆分 Product Rendering Layer 为 Product Listing、Product Category、Product Detail 和 Related Product。
+- 明确每个产品渲染阶段必须验证 Metadata、Schema、Breadcrumb、FAQ、Internal Link、SEO 和 GEO。
+- 在 `docs/ENTITY_SYSTEM.md` 中固化 Entity、Content Model、Metadata、Schema、SEO Template 五层齐备后才允许进入 Rendering Layer / Page Development。
+- 继续确认 CMS 留到 M2.7，Database 继续保持规划，等待 Industry、Case、Knowledge 等 Entity 关系稳定后再冻结。
+
+### Notes
+
+- 本次仍不开发 CMS、CRM 或数据库。
+- 本次仍不批量开发产品页面。

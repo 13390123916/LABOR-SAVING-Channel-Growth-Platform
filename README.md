@@ -40,7 +40,7 @@
 - M1.5 Channel Growth Strategy Layer 已完成
 - M2 Channel Growth Foundation 进行中
 - 已完成 Page System、Metadata System、SEO Schema Layer、Partner Page v1 和 Partner System Hardening
-- 下一步：确认 Product System Foundation 后再进入产品页面开发
+- 已完成 Product System Foundation：先冻结 Product Entity、Content Model、Metadata、Schema 与 SEO/GEO 模板，再进入 M2.4.5 Product Rendering Layer
 
 ## 文档入口
 
@@ -52,6 +52,11 @@
 - `docs/PAGE_SYSTEM.md`
 - `docs/METADATA_SCHEMA.md`
 - `docs/SEO_SCHEMA_LAYER.md`
+- `docs/ENTITY_SYSTEM.md`
+- `docs/PRODUCT_SYSTEM.md`
+- `docs/PRODUCT_CONTENT_MODEL.md`
+- `docs/PRODUCT_SCHEMA.md`
+- `docs/PRODUCT_SEO_TEMPLATE.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/PARTNER_CONTENT_MODEL.md`
 - `docs/PARTNER_SEO_TEMPLATE.md`
