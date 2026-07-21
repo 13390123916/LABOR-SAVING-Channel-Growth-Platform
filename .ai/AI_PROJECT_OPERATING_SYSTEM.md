@@ -234,6 +234,6 @@ AI 不仅负责开发，还负责长期维护 GitHub Repository。
 
 ## 13. 当前阶段
 
-当前阶段：M0.1 Repository Governance Fix。
+当前阶段：M1 Website Foundation 已完成，下一阶段为 M2 Lead Capture Foundation。
 
-当前目标：将仓库从“AI 能理解”提升到“任何 AI、任何开发人员接手都不会迷失”。
+当前目标：在不编造产品参数、案例、收益和授权政策的前提下，继续建设线索采集、SEO/GEO 内容资产与渠道协作能力。

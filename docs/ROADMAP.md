@@ -34,7 +34,7 @@
 
 目标：
 
-- 将 Repository 从“AI 能理解”提升为“任何 AI、任何开发人员接手都不会迷失”
+- 将仓库从“AI 能理解”提升为“任何 AI、任何开发人员接手都不会迷失”
 
 交付：
 
@@ -48,27 +48,29 @@
 
 ## M1 Website Foundation
 
-状态：待启动
+状态：已完成
 
 目标：
 
-- 建立网站技术底座，而不是直接制作页面
+- 建立网站技术底座，而不是直接制作完整业务页面
 
-范围：
+交付：
 
-- Next.js
-- TypeScript
-- TailwindCSS
-- SEO 基础
-- GEO 基础
-- CMS 规划
-- 数据结构规划
-- 组件系统规划
+- Next.js App Router
+- TypeScript 严格模式
+- TailwindCSS 基础样式
+- SEO metadata 基础
+- `robots.txt` 与 `sitemap.xml`
+- GEO 基础文件 `llms.txt`
+- CMS 与内容结构轻量规划
+- 组件系统轻量规划
+- Website CI 校验
 
-启动条件：
+边界：
 
-- M0.1 完成并推送
-- 用户确认进入 M1
+- 不创建产品详情、行业方案、招商合作等业务页面
+- 不编造产品参数、客户案例、收益结果、授权政策或市场排名
+- 不提前创建 `application`、`domain`、`infrastructure`、`features` 等无业务支撑目录
 
 ## M2 Lead Capture Foundation
 
@@ -76,7 +78,7 @@
 
 目标：
 
-- 建立询盘和加盟合作线索采集基础
+- 建立询盘和渠道合作线索采集基础
 
 范围：
 
@@ -99,6 +101,5 @@
 - 关键词库
 - 产品实体库
 - FAQ 矩阵
-- llms.txt
-- sitemap / robots
+- sitemap / robots 扩展
 - 内容规范

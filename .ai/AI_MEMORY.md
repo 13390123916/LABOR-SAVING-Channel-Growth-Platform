@@ -31,4 +31,4 @@
 
 ## 当前任务
 
-初始化仓库级基础设施，并保持文档上下文长期稳定。
+M1 Website Foundation 已完成。后续任务优先从 M2 Lead Capture Foundation、SEO/GEO 内容矩阵或组件系统细化开始。

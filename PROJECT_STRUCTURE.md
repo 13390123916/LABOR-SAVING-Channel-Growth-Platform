@@ -2,11 +2,11 @@
 
 GitHub Repository Structure
 
-Version: V1.1
+Version: V1.2
 
 ## 项目定位
 
-雷普赛维渠道增长平台是工业渠道增长平台，不是普通企业官网。
+雷普赛维渠道增长平台是工业装备渠道增长平台，不是普通企业官网。
 
 完整系统长期覆盖：
 
@@ -23,30 +23,35 @@ Version: V1.1
 
 ```text
 /
-├─ .ai/
-├─ .github/
-├─ docs/
-├─ website/
-│  ├─ README.md
-│  └─ .gitignore
-├─ seo/
-├─ geo/
-├─ crm/
-├─ partner/
-├─ marketing/
-├─ assets/
-├─ scripts/
-├─ deploy/
-└─ archive/
+├── .ai/
+├── .github/
+├── docs/
+├── website/
+│   ├── app/
+│   ├── components/
+│   ├── config/
+│   ├── lib/
+│   ├── public/
+│   ├── package.json
+│   └── README.md
+├── seo/
+├── geo/
+├── crm/
+├── partner/
+├── marketing/
+├── assets/
+├── scripts/
+├── deploy/
+└── archive/
 ```
 
 ## 目录原则
 
-1. 新增目录必须先说明用途
-2. 不重复建目录
-3. 不重复建模块
-4. 不把临时代码塞进页面组件
-5. M0.1 不提前创建 `application`、`domain`、`infrastructure`、`features` 等无业务支撑目录
+1. 新增目录必须先说明用途。
+2. 不重复建目录。
+3. 不重复建模块。
+4. 不把临时代码塞进页面组件。
+5. M1 只建立 `website/` 技术底座，不提前创建 `application`、`domain`、`infrastructure`、`features` 等无业务支撑目录。
 
 ## 文档职责
 
@@ -77,13 +82,15 @@ Version: V1.1
 
 ## 文档维护原则
 
-任何新增功能都必须同步检查：
+任何新增功能都必须检查并按需更新：
 
-- `docs/MEMORY.md`
+- `README.md`
+- `CHANGELOG.md`
+- `docs/PROJECT_PRD.md`
 - `docs/ROADMAP.md`
 - `docs/TODO.md`
-- `CHANGELOG.md`
+- `docs/MEMORY.md`
 
 ## 当前策略
 
-M0.1 先完成仓库治理。M1 再建立网站技术底座，且 M1 不是直接制作页面。
+M1 Website Foundation 已完成。下一阶段进入 M2 Lead Capture Foundation 时，再建立表单、线索数据结构和 CRM 字段映射。

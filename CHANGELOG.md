@@ -42,3 +42,24 @@
 ### Notes
 
 - 本次为 M0.1 Repository Governance Fix，不开发网站功能，不创建业务代码。
+
+## [0.1.0] - 2026-07-21
+
+### Added
+
+- 初始化 `website/` Next.js App Router 技术底座。
+- 建立 TypeScript 严格模式、TailwindCSS、ESLint 与 npm scripts。
+- 建立基础首页入口，承载平台定位、商业优先级、当前产品范围和 GEO 基础问答。
+- 建立 `robots.txt`、`sitemap.xml`、`llms.txt` 与 SEO metadata 基础。
+- 建立 `config/`、`lib/`、`components/` 轻量规划，用于后续站点配置、SEO 工具和组件系统扩展。
+
+### Changed
+
+- 更新 `website/.gitignore`，允许提交 `.env.example`，并继续忽略 Next.js 生成类型入口。
+- 更新 CI，加入 website 的 install、typecheck、lint 和 build 校验。
+- 同步更新 README、ROADMAP、TODO、MEMORY 与 PRD 当前阶段。
+
+### Notes
+
+- 本次为 M1 Website Foundation，不创建产品详情、行业方案、招商合作等业务页面。
+- 本次不编造产品参数、客户案例、收益结果、授权政策或市场排名。

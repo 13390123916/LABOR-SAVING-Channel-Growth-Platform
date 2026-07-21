@@ -4,7 +4,7 @@
 
 文档职责：项目长期需求主文档
 
-当前阶段：M0.1 Repository Governance Fix
+当前阶段：M1 Website Foundation 已完成，下一阶段为 M2 Lead Capture Foundation
 
 ## 1. 项目定位
 
@@ -100,25 +100,27 @@
 - Docker
 - GitHub Actions
 
-## 8. 当前阶段范围
+## 8. M1 阶段范围
 
-M0.1 只处理 Repository 工程治理。
+M1 建立网站技术底座，而不是直接制作完整业务页面。
 
 纳入：
 
-- PR Template
-- AI 最高规则升级
-- Git 工作流文档
-- Repository Maintenance 文档
-- Issue 工作流文档
-- 根目录与 docs 文档职责整理
-- CHANGELOG / ROADMAP / TODO 更新
-- CI 文档检查更新
+- Next.js App Router
+- TypeScript 严格模式
+- TailwindCSS
+- SEO metadata 基础
+- `robots.txt` 与 `sitemap.xml`
+- GEO 基础文件 `llms.txt`
+- CMS 与内容结构轻量规划
+- 组件系统轻量规划
+- Website CI 校验
 
 不纳入：
 
-- 官网页面
-- 产品内容
-- CRM 功能
+- 产品详情页
+- 行业方案页
+- 招商合作页
+- CRM 表单提交
 - 数据库实现
-- 业务代码
+- 未经确认的产品参数、客户案例、收益结果、授权政策或市场排名
