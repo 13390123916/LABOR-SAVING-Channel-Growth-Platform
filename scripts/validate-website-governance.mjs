@@ -27,7 +27,12 @@ const requiredUrls = [
   "/distributor/",
   "/join/",
   "/products/pneumatic-manipulator-arm/",
-  "/products/ls70-pneumatic-arm/",
+  "/products/pneumatic-manipulator-arm/ls40/",
+  "/products/pneumatic-manipulator-arm/l60/",
+  "/products/pneumatic-manipulator-arm/ls70/",
+  "/products/pneumatic-balancer/",
+  "/products/pneumatic-balancer/sq35/",
+  "/products/pneumatic-balancer/sq50/",
   "/applications/wind-power/",
   "/solutions/hydraulic-torque-wrench/",
   "/partner/distributor/"
@@ -78,6 +83,19 @@ const partnerTerms = [
 ];
 
 const syncFiles = ["docs/TODO.md", "docs/MEMORY.md", "CHANGELOG.md"];
+const productFoundationDocs = [
+  "docs/ENTITY_SYSTEM.md",
+  "docs/PRODUCT_SYSTEM.md",
+  "docs/PRODUCT_CONTENT_MODEL.md",
+  "docs/PRODUCT_SCHEMA.md",
+  "docs/PRODUCT_SEO_TEMPLATE.md"
+];
+const governanceEntryFiles = [
+  ".ai/AI_PROJECT_OPERATING_SYSTEM.md",
+  "PROJECT_STRUCTURE.md",
+  "README.md",
+  ".github/workflows/ci.yml"
+];
 
 function fail(message) {
   console.error(`Website governance check failed: ${message}`);
@@ -136,6 +154,22 @@ for (const field of geoFields) {
 }
 for (const token of partnerTerms) {
   assertIncludes(seoBlueprint, token, "docs/WEBSITE_SEO_BLUEPRINT.md");
+}
+for (const legacyUrl of [
+  "/products/ls40-pneumatic-arm/",
+  "/products/ls60-pneumatic-arm/",
+  "/products/ls70-pneumatic-arm/"
+]) {
+  if (seoBlueprint.includes(legacyUrl)) {
+    fail(`docs/WEBSITE_SEO_BLUEPRINT.md contains legacy product URL "${legacyUrl}"`);
+  }
+}
+
+for (const file of governanceEntryFiles) {
+  const content = readRequired(file);
+  for (const doc of productFoundationDocs) {
+    assertIncludes(content, doc, file);
+  }
 }
 
 const contentSystem = readRequired("docs/CONTENT_SYSTEM.md");

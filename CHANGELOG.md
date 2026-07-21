@@ -195,3 +195,19 @@
 
 - 本次仍不开发 CMS、CRM 或数据库。
 - 本次仍不批量开发产品页面。
+
+## [0.2.4] - 2026-07-21
+
+### Changed
+
+- 执行 M2.4 Repository Audit，重写 `REPOSITORY_AUDIT_REPORT.md` 为 Product System Foundation 当前验收状态。
+- 将 `PROJECT_STRUCTURE.md` 的旧页面开发顺序更新为 Entity 五层门禁与 Product Rendering Layer 顺序。
+- 将 Entity 与 Product Foundation 五份文档补入 AI 必读清单和 GitHub Actions 显式文档检查。
+- 将产品 URL 统一为 `/products/{category-slug}/{product-slug}/`，并修正旧版扁平型号路径。
+- 扩展 website governance 校验，防止治理入口漏列 Foundation 文档或旧版扁平产品 URL 回归。
+- 明确 LS70 仅作为 M2.4.5 产品详情验证占位，实体与资料确认前不得发布。
+
+### Notes
+
+- 本次审计未开发产品页面、CMS、CRM 或数据库。
+- Website governance、TypeScript、ESLint 与 Next.js production build 均通过。

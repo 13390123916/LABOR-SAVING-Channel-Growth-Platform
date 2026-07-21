@@ -128,6 +128,7 @@ M1 完成后不直接进入页面开发，先进入 M1.5 Channel Growth Strategy
 - M2.2 SEO Schema Layer：`docs/SEO_SCHEMA_LAYER.md`
 - M2.3 Partner Page Development & Partner System Hardening：`/partner/`、`docs/PARTNER_CONTENT_MODEL.md`、`docs/PARTNER_SEO_TEMPLATE.md`
 - M2.4 Product System Foundation：`docs/ENTITY_SYSTEM.md`、`docs/PRODUCT_SYSTEM.md`、`docs/PRODUCT_CONTENT_MODEL.md`、`docs/PRODUCT_SCHEMA.md`、`docs/PRODUCT_SEO_TEMPLATE.md`
+- M2.4 Repository Audit：已通过，治理入口、CI 文档清单与产品 URL 规范已同步
 - M2.5 Industry Page Development：`/applications/`
 - M2.6 Lead Capture Integration
 - M2.7 Admin Maintainability

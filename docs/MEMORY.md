@@ -108,3 +108,4 @@ M2 Channel Growth Foundation 已启动。已完成 Page System、Metadata System
 - 已完成 Partner System Hardening：`docs/PARTNER.md` 定义 Partner Program Entity 到 CRM/CMS/Export 的长期架构，`docs/PARTNER_CONTENT_MODEL.md` 定义 PartnerTemplate，`docs/PARTNER_SEO_TEMPLATE.md` 定义 Partner SEO/GEO、Schema 与 Topic Cluster。
 - 2026-07-21 执行 M2 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md`，审计结论为 M2 Channel Growth Foundation 当前通过；该建议已被后续决策细化为先完成 Product System Foundation，再进入 M2.4.5 Product Rendering Layer。
 - 2026-07-21 完成 M2.4 Product System Foundation：新增 `docs/ENTITY_SYSTEM.md`、`docs/PRODUCT_SYSTEM.md`、`docs/PRODUCT_CONTENT_MODEL.md`、`docs/PRODUCT_SCHEMA.md`、`docs/PRODUCT_SEO_TEMPLATE.md`。确认所有长期模块按 Entity -> Metadata -> Schema -> CMS -> Frontend -> SEO -> GEO 统一建模，数据库设计后置，下一阶段命名为 M2.4.5 Product Rendering Layer。
+- 2026-07-21 执行 M2.4 Repository Audit：确认远程分支与 `9a551d8` 同步，修复 `PROJECT_STRUCTURE.md` 的旧页面开发顺序、AI 必读文档清单、CI 显式文档清单和产品 URL 规范漂移。LS70 仅作为 M2.4.5 产品详情验证占位，实体与资料确认前不得发布。

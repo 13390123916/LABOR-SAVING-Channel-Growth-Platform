@@ -70,6 +70,7 @@
 - [x] M2.4.2 Product Metadata：补齐 `docs/PRODUCT_SEO_TEMPLATE.md` 与 Metadata 来源
 - [x] M2.4.3 Product Schema：新增 `docs/PRODUCT_SCHEMA.md`
 - [x] M2.4.4 Product CMS Model：完成文档边界定义，后台开发后置
+- [x] 执行 M2.4 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md` 并修复治理入口漂移
 - [ ] M2.4.5 Product Rendering Layer：产品列表、分类、详情、FAQ、Schema、Metadata、Breadcrumb、Related Product、Internal Link 与 SEO/GEO 落地
 - [ ] M2.4.5.1 Product Listing：开发 `/products/`
 - [ ] M2.4.5.2 Product Category：开发 `/products/pneumatic-manipulator-arm/`

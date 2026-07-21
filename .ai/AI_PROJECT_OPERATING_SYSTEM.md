@@ -170,6 +170,11 @@ GEO 面向国内 AI 搜索：
 - `docs/PAGE_SYSTEM.md`
 - `docs/METADATA_SCHEMA.md`
 - `docs/SEO_SCHEMA_LAYER.md`
+- `docs/ENTITY_SYSTEM.md`
+- `docs/PRODUCT_SYSTEM.md`
+- `docs/PRODUCT_CONTENT_MODEL.md`
+- `docs/PRODUCT_SCHEMA.md`
+- `docs/PRODUCT_SEO_TEMPLATE.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/PARTNER_CONTENT_MODEL.md`
 - `docs/PARTNER_SEO_TEMPLATE.md`
@@ -186,6 +191,11 @@ GEO 面向国内 AI 搜索：
 - `docs/PAGE_SYSTEM.md` 是页面级目标、CTA、内链、Schema 和 Lead 入口来源。
 - `docs/METADATA_SCHEMA.md` 是 title、description、keywords、canonical、og、schema 和 breadcrumb 来源。
 - `docs/SEO_SCHEMA_LAYER.md` 是 Organization、Product、Article、FAQPage、BreadcrumbList、WebPage、ContactPoint 与后台维护字段来源。
+- `docs/ENTITY_SYSTEM.md` 是所有长期业务模块进入 Rendering Layer 前的统一五层门禁来源。
+- `docs/PRODUCT_SYSTEM.md` 是 Product Entity、生命周期、关系和阶段边界来源。
+- `docs/PRODUCT_CONTENT_MODEL.md` 是 Product 内容模块、FAQ、资料和入口结构来源。
+- `docs/PRODUCT_SCHEMA.md` 是 Product JSON-LD 类型、字段来源和合规边界来源。
+- `docs/PRODUCT_SEO_TEMPLATE.md` 是 Product URL、Metadata、内链、Topic Cluster 和 GEO 模板来源。
 - `docs/PARTNER_FUNNEL.md` 是渠道增长漏斗来源。
 - `docs/PARTNER_CONTENT_MODEL.md` 是 Partner 页面内容模块、FAQ、CTA 与内链模型来源。
 - `docs/PARTNER_SEO_TEMPLATE.md` 是 Partner 页面 SEO/GEO、Schema 和 Topic Cluster 模板来源。

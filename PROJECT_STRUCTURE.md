@@ -88,6 +88,11 @@ Version: V1.2
 - `docs/PAGE_SYSTEM.md`
 - `docs/METADATA_SCHEMA.md`
 - `docs/SEO_SCHEMA_LAYER.md`
+- `docs/ENTITY_SYSTEM.md`
+- `docs/PRODUCT_SYSTEM.md`
+- `docs/PRODUCT_CONTENT_MODEL.md`
+- `docs/PRODUCT_SCHEMA.md`
+- `docs/PRODUCT_SEO_TEMPLATE.md`
 - `docs/PARTNER_FUNNEL.md`
 - `docs/PARTNER_CONTENT_MODEL.md`
 - `docs/PARTNER_SEO_TEMPLATE.md`
@@ -108,18 +113,18 @@ Version: V1.2
 
 M2 Channel Growth Foundation 已启动。当前已建立页面级输入标准、Metadata System、SEO Schema Layer 和 `/partner/` 商业入口。
 
-当前执行顺序：
+当前及后续 Entity 模块统一执行顺序：
 
 ```text
-PAGE_SYSTEM.md
-↓
-METADATA_SCHEMA.md
-↓
-SEO_SCHEMA_LAYER.md
-↓
-Next.js 页面开发
-↓
-Lead Capture / CRM / 后台维护 / 批量导出
+Entity
+-> Content Model
+-> Metadata
+-> Schema
+-> SEO Template
+-> Rendering Layer
+-> CMS / CRM / Database / Batch Export
 ```
 
-下一步进入 `/products/` 产品实体页面开发，仍不得编造产品参数、客户案例、收益结果、授权政策或市场排名。
+M2.4 Product System Foundation 已完成。下一步为 M2.4.5 Product Rendering Layer，按 Product Listing、Product Category、Product Detail、Related Product 顺序验证 Metadata、Schema、Breadcrumb、FAQ、Internal Link、SEO 与 GEO。
+
+CMS 继续后置到 M2.7，Database 在 Product、Industry、Case、Knowledge 等 Entity 关系稳定后再冻结。任何阶段仍不得编造产品参数、客户案例、收益结果、授权政策或市场排名。

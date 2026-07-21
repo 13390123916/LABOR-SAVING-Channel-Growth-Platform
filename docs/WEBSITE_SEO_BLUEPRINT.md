@@ -25,11 +25,12 @@
 | 加盟申请兼容路径 | `/join/` |
 | 产品中心 | `/products/` |
 | 气动助力机械臂 | `/products/pneumatic-manipulator-arm/` |
-| LS40 气动助力机械臂 | `/products/ls40-pneumatic-arm/` |
-| LS60 气动助力机械臂 | `/products/ls60-pneumatic-arm/` |
-| LS70 气动助力机械臂 | `/products/ls70-pneumatic-arm/` |
+| LS40 助力机械臂 | `/products/pneumatic-manipulator-arm/ls40/` |
+| L60 助力机械臂 | `/products/pneumatic-manipulator-arm/l60/` |
+| LS70 产品详情验证占位（资料确认后发布） | `/products/pneumatic-manipulator-arm/ls70/` |
 | 气动平衡器 | `/products/pneumatic-balancer/` |
-| 液压扭矩工具集成方案 | `/products/hydraulic-torque-wrench-integration/` |
+| SQ35 气动平衡器 | `/products/pneumatic-balancer/sq35/` |
+| SQ50 气动平衡器 | `/products/pneumatic-balancer/sq50/` |
 | 行业应用 | `/applications/` |
 | 风电 | `/applications/wind-power/` |
 | 石油化工 | `/applications/petrochemical/` |

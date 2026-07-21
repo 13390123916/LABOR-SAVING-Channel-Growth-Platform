@@ -46,7 +46,7 @@ SEO Schema Layer 解决平台级结构化实体表达。
 | --- | --- | --- | --- | --- |
 | 加盟合作 | `/partner/` | Organization, WebPage | BreadcrumbList, FAQPage, ContactPoint | Partner Lead |
 | 产品中心 | `/products/` | Product, CollectionPage | BreadcrumbList, FAQPage | Customer Lead 或 Partner Lead |
-| 产品型号 | `/products/{slug}/` | Product | BreadcrumbList, FAQPage | Customer Lead |
+| 产品型号 | `/products/{category-slug}/{product-slug}/` | Product | BreadcrumbList, FAQPage | Customer Lead |
 | 行业应用 | `/applications/` | CollectionPage, Article | BreadcrumbList, FAQPage | Customer Lead |
 | 行业详情 | `/applications/{slug}/` | Article | BreadcrumbList, FAQPage | Customer Lead |
 | 知识中心 | `/knowledge/` | CollectionPage | BreadcrumbList | Customer Lead 或 Partner Lead |

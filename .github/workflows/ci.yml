@@ -53,6 +53,11 @@ jobs:
           test -f docs/PAGE_SYSTEM.md
           test -f docs/METADATA_SCHEMA.md
           test -f docs/SEO_SCHEMA_LAYER.md
+          test -f docs/ENTITY_SYSTEM.md
+          test -f docs/PRODUCT_SYSTEM.md
+          test -f docs/PRODUCT_CONTENT_MODEL.md
+          test -f docs/PRODUCT_SCHEMA.md
+          test -f docs/PRODUCT_SEO_TEMPLATE.md
           test -f docs/PARTNER_FUNNEL.md
           test -f docs/PARTNER_CONTENT_MODEL.md
           test -f docs/PARTNER_SEO_TEMPLATE.md
