@@ -4,7 +4,7 @@
 
 文档职责：项目长期需求主文档
 
-当前阶段：M1.5 Channel Growth Strategy Layer 已完成，下一阶段为 M2 Channel Growth Foundation
+当前阶段：M2 Channel Growth Foundation 进行中
 
 ## 1. 项目定位
 

@@ -142,5 +142,19 @@
 ### Notes
 
 - 本次优先完成 `/partner/` 商业入口，不开发 `/products/`、`/applications/` 和 `/knowledge/`。
-- 本次不接入 CRM 后端；Lead Capture Integration 留到 M2.5。
+- 本次不接入 CRM 后端；Lead Capture Integration 留到 M2.6。
 - 本次不新增产品参数、客户案例、收益结果、授权政策、区域独家或市场排名。
+
+## [0.2.1] - 2026-07-21
+
+### Changed
+
+- 执行 M2 Repository Audit，重写 `REPOSITORY_AUDIT_REPORT.md` 为当前 M2 状态。
+- 修正 `.ai/AI_CONTEXT.md`、`.ai/AI_MEMORY.md`、`.ai/AI_PROJECT_OPERATING_SYSTEM.md` 当前阶段口径，从 M1.5 更新为 M2 Channel Growth Foundation。
+- 修正 README 与 PRD 当前阶段说明。
+- 更新 GitHub Actions 文档存在性检查，显式纳入 Page System、Metadata Schema、SEO Schema Layer、Partner Content Model 和 Partner SEO Template。
+
+### Notes
+
+- 本次审计不新增业务页面。
+- 本次确认 M2.4 是否调整为 Product System Foundation 仍需用户确认。

@@ -38,7 +38,9 @@
 - M0.1 Repository Governance Fix 已完成
 - M1 Website Foundation 已完成
 - M1.5 Channel Growth Strategy Layer 已完成
-- 下一阶段：M2 Channel Growth Foundation
+- M2 Channel Growth Foundation 进行中
+- 已完成 Page System、Metadata System、SEO Schema Layer、Partner Page v1 和 Partner System Hardening
+- 下一步：确认 Product System Foundation 后再进入产品页面开发
 
 ## 文档入口
 

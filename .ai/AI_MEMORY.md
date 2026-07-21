@@ -31,4 +31,4 @@
 
 ## 当前任务
 
-M1.5 Channel Growth Strategy Layer 已完成。后续任务优先从 M2 Channel Growth Foundation 开始，顺序为 Partner Funnel、Lead Schema、Website Page Development。
+M2 Channel Growth Foundation 已启动。已完成 Page System、Metadata System、SEO Schema Layer、Partner Page v1 和 Partner System Hardening。后续任务优先确认 Product System Foundation，再进入 `/products/`、产品分类页和产品型号页开发。
