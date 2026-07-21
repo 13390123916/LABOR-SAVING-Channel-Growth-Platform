@@ -35,12 +35,43 @@ Entity
 | Download | 样册、说明书、资料包、白皮书 | 后续 Knowledge |
 | FAQ | 产品、行业、合作和服务问答 | 后续全站复用 |
 
-## 3. Entity 基础字段
+## 3. Entity ID 规范
+
+所有 Entity 使用稳定、不可变的业务标识，不依赖名称、slug、URL 或数据库自增主键。
+
+格式：
+
+```text
+{TYPE_PREFIX}-{4位序号}
+```
+
+类型前缀：
+
+| Entity Type | Prefix | 示例 |
+| --- | --- | --- |
+| Partner | `PRT` | `PRT-0001` |
+| Product | `PRD` | `PRD-0001` |
+| Industry | `IND` | `IND-0001` |
+| Case | `CAS` | `CAS-0001` |
+| Article | `ART` | `ART-0001` |
+| Video | `VID` | `VID-0001` |
+| Download | `DLD` | `DLD-0001` |
+| FAQ | `FAQ` | `FAQ-0001` |
+
+约束：
+
+- Entity ID 创建后永久不变，不随改名、改 slug、URL 调整或归档而变化。
+- 同一 ID 不得复用；已归档 Entity 继续保留原 ID。
+- CMS、CRM、Analytics、Database 和 Entity 关系只关联 Entity ID，不以名称或页面文案作为主关联键。
+- 数据库实现后，可另设内部主键，但 `entity_id` 必须保留为全系统唯一业务键。
+- 序号只用于唯一识别，不表达排序、版本、权重或发布时间。
+
+## 4. Entity 基础字段
 
 所有 Entity 至少预留以下语义字段，数据库实现后置：
 
 ```text
-id
+entity_id
 entity_type
 slug
 name
@@ -57,12 +88,13 @@ published_at
 
 字段说明：
 
+- `entity_id` 是跨 CMS、CRM、Analytics、Database 和 Frontend 的稳定业务标识。
 - `entity_type` 用于区分 Partner、Product、Industry、Case、Article、Video、Download、FAQ。
 - `source_status` 用于标记资料是否已确认，不允许资料不足时补写参数、案例、认证、收益或政策。
 - `related_entities` 用于维护产品、行业、案例、文章、视频、下载和 FAQ 之间的内链关系。
 - `metadata_id` 与 `schema_id` 连接统一 Metadata 和 Schema 层。
 
-## 4. 分层边界
+## 5. 分层边界
 
 | 层级 | 解决的问题 | 禁止事项 |
 | --- | --- | --- |
@@ -74,7 +106,7 @@ published_at
 | SEO | URL、标题、描述、内链和 Topic Cluster | 不为抢流量创建低质量页面 |
 | GEO | 面向 AI Search 的问答与事实摘要 | 不写不可核验或夸大承诺 |
 
-## 5. 新模块进入条件
+## 6. 新模块进入条件
 
 新增任何模块前，必须先完成：
 
@@ -109,7 +141,7 @@ CMS Model
 -> Batch Export
 ```
 
-## 6. 数据库后置原则
+## 7. 数据库后置原则
 
 当前阶段不冻结数据库表结构。
 
@@ -130,7 +162,7 @@ Entity
 - 先统一实体、内容和 Schema，后续数据库可一次冻结。
 - Product、Industry、Case、Article、Video、Download、FAQ 可共用 Entity Layer。
 
-## 7. 合规边界
+## 8. 合规边界
 
 Entity Layer 不得记录或衍生以下内容，除非已有真实可核验资料：
 

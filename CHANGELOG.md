@@ -211,3 +211,21 @@
 
 - 本次审计未开发产品页面、CMS、CRM 或数据库。
 - Website governance、TypeScript、ESLint 与 Next.js production build 均通过。
+
+## [0.2.5] - 2026-07-21
+
+### Added
+
+- 建立统一 Entity ID 规范，采用 `{TYPE_PREFIX}-{4位序号}`，供未来 CMS、CRM、Analytics、Database 和实体关系使用。
+- 为当前产品分配 `PRD-0001` LS40、`PRD-0002` L60、`PRD-0003` SQ35、`PRD-0004` SQ50。
+
+### Changed
+
+- 正式进入 M2.4.5 Product Rendering Layer，并明确以模板和渲染能力验证为目标，不以页面数量为目标。
+- 将开发顺序固定为 Product Listing、Product Category、首个真实 Product Detail、Related Product，前一层验收后才进入下一层。
+- 将 Canonical 与 Open Graph 纳入每个渲染层的强制验收项。
+- 明确首个 Product Detail 必须使用资料已确认的真实 Product Entity；LS70 未确认前保持非收录占位。
+
+### Notes
+
+- 本次只固化阶段入口与 Entity ID 治理规则，不开发产品页面、CMS、CRM 或数据库。

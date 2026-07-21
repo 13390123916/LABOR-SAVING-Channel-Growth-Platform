@@ -13,6 +13,8 @@ Product 内容必须同时服务：
 - 后续 CMS 可维护
 - 后续 Schema 可自动生成
 
+所有 Product 内容记录必须携带 `entity_id`。页面 URL、标题或型号名称发生变化时，内容、关联资源、Lead、Analytics 和后续 CMS 仍通过 Entity ID 识别同一产品。
+
 ## 2. ProductTemplate
 
 所有产品页面后续统一使用以下结构：
@@ -159,6 +161,8 @@ related_product_ids
 implementation_conditions
 display_order
 ```
+
+`related_product_ids` 只保存符合 `PRD-0001` 格式的 Product Entity ID，不保存产品名称或 URL。
 
 应用表达必须写明：
 

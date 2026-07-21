@@ -1,6 +1,6 @@
 # Product System
 
-文档职责：定义 LABOR-SAVING Product Entity 的基础层，明确产品实体、生命周期、与行业、案例、文章、视频、下载和 FAQ 的关联关系。当前阶段只完成产品系统基础，不开发 `/products/` 页面、不开发后台 CMS、不开发 CRM、不冻结数据库。
+文档职责：定义 LABOR-SAVING Product Entity 的基础层，明确产品实体、生命周期、与行业、案例、文章、视频、下载和 FAQ 的关联关系。M2.4 Product System Foundation 已通过验收，当前进入 M2.4.5 Product Rendering Layer；仍不批量开发页面、不开发后台 CMS、不开发 CRM、不冻结数据库。
 
 ## 1. 定位
 
@@ -42,12 +42,12 @@ M2.4 Product System Foundation
 
 当前仅允许表达已确认产品实体：
 
-| Product Entity | Category | Slug 建议 | Source Status |
-| --- | --- | --- | --- |
-| LS40 助力机械臂 | pneumatic manipulator arm | `ls40-pneumatic-arm` | confirmed basic entity |
-| L60 助力机械臂 | pneumatic manipulator arm | `l60-pneumatic-arm` | confirmed basic entity |
-| SQ35 气动平衡器 | pneumatic balancer | `sq35-pneumatic-balancer` | confirmed basic entity |
-| SQ50 气动平衡器 | pneumatic balancer | `sq50-pneumatic-balancer` | confirmed basic entity |
+| Entity ID | Product Entity | Category Slug | Product Slug | Source Status |
+| --- | --- | --- | --- | --- |
+| `PRD-0001` | LS40 助力机械臂 | `pneumatic-manipulator-arm` | `ls40` | confirmed basic entity |
+| `PRD-0002` | L60 助力机械臂 | `pneumatic-manipulator-arm` | `l60` | confirmed basic entity |
+| `PRD-0003` | SQ35 气动平衡器 | `pneumatic-balancer` | `sq35` | confirmed basic entity |
+| `PRD-0004` | SQ50 气动平衡器 | `pneumatic-balancer` | `sq50` | confirmed basic entity |
 
 当前不允许新增未确认型号作为 Product Entity。
 
@@ -58,7 +58,7 @@ M2.4 Product System Foundation
 Product Entity 当前只定义语义字段，不定义数据库表：
 
 ```text
-id
+entity_id
 slug
 name
 category
@@ -124,6 +124,8 @@ Product Entity 生命周期：
 
 Product 必须与其他 Entity 通过关系维护，而不是在页面中手写散落链接。
 
+所有关系字段保存 Entity ID，例如 `PRD-0001`、`IND-0001`，不得以产品名称或锚文本作为关联键。
+
 | 关联对象 | 用途 |
 | --- | --- |
 | Industry | 产品适用行业、工况入口和应用页内链 |
@@ -186,17 +188,23 @@ M2.4.5 Product Rendering Layer
 | --- | --- | --- | --- |
 | M2.4.5.1 | Product Listing | `/products/` | 产品中心列表、Metadata、Schema、Breadcrumb、FAQ、Internal Link、SEO/GEO |
 | M2.4.5.2 | Product Category | `/products/pneumatic-manipulator-arm/` | 分类实体渲染、型号入口、分类 FAQ、内链 |
-| M2.4.5.3 | Product Detail | `/products/pneumatic-manipulator-arm/ls70/` | 产品详情渲染、Product Schema、Breadcrumb、FAQ、咨询入口 |
-| M2.4.5.4 | Related Product | LS70 关联 LS50、LS40、SQ 系列 | Related Product、Topic Cluster、内部链接 |
+| M2.4.5.3 | Product Detail | 首个资料已确认的真实 Product Entity | 产品详情渲染、Product Schema、Breadcrumb、FAQ、咨询入口 |
+| M2.4.5.4 | Related Product | 通过 Entity ID 建立关系 | Related Product、Topic Cluster、内部链接 |
 
 每一层必须验证：
 
 - Metadata
-- Schema
+- JSON-LD Schema
 - Breadcrumb
 - FAQ
 - Internal Link
+- Canonical
+- Open Graph
 - SEO
 - GEO
+
+本阶段以模板和渲染能力验证为目标，不以页面数量为目标。每一层验收通过后，才允许进入下一层；模板成熟后才允许批量扩展。
+
+LS70 继续作为路由验证占位，不分配正式 Product Entity ID，不进入 sitemap、正式 Product Schema、可索引页面或 Related Product 关系。首个正式 Product Detail 必须使用已确认且具备可公开发布资料的 Product Entity。
 
 CMS 仍放在 M2.7。Database 继续保持规划，等待 Product、Industry、Case、Knowledge 等 Entity 关系稳定后再一次冻结。

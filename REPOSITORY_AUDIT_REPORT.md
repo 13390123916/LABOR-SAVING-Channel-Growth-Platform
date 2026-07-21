@@ -80,6 +80,8 @@ GitHub remote branch:              9a551d8b6f3a01270b1a60d7906c848b856d0fe0
 
 M2.4 Product System Foundation 通过验收。
 
+审计后决策：已批准正式进入 M2.4.5 Product Rendering Layer，以模板和渲染能力验证为目标，不以页面数量为目标。
+
 已完成：
 
 - 全站 Entity Layer 定义
@@ -300,8 +302,8 @@ codex/entity-layer-foundation
 ```text
 M2.4 Product System Foundation：通过。
 Entity Layer：通过。
-Product Rendering Layer：尚未开始。
+Product Rendering Layer：已批准进入，页面实现尚未开始。
 CMS / CRM / Database：继续后置。
 ```
 
-进入 M2.4.5 前的唯一业务资料门禁：确认首个 Product Detail 使用的真实 Product Entity 及其可发布资料。其余仓库、治理、SEO/GEO 和技术前置条件已经满足。
+进入 M2.4.5.3 Product Detail 前的唯一业务资料门禁：确认首个详情页使用的真实 Product Entity 及其可发布资料。Product Listing 与 Product Category 的仓库、治理、SEO/GEO 和技术前置条件已经满足。

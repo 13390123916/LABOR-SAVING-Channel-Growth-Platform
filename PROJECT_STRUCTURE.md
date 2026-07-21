@@ -125,6 +125,6 @@ Entity
 -> CMS / CRM / Database / Batch Export
 ```
 
-M2.4 Product System Foundation 已完成。下一步为 M2.4.5 Product Rendering Layer，按 Product Listing、Product Category、Product Detail、Related Product 顺序验证 Metadata、Schema、Breadcrumb、FAQ、Internal Link、SEO 与 GEO。
+M2.4 Product System Foundation 已完成，当前进入 M2.4.5 Product Rendering Layer，从 Product Listing 开始，按 Product Category、首个真实 Product Detail、Related Product 顺序逐层验证 Metadata、JSON-LD、Breadcrumb、FAQ、Internal Link、Canonical、Open Graph、SEO 与 GEO。
 
 CMS 继续后置到 M2.7，Database 在 Product、Industry、Case、Knowledge 等 Entity 关系稳定后再冻结。任何阶段仍不得编造产品参数、客户案例、收益结果、授权政策或市场排名。

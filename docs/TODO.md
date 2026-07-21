@@ -71,11 +71,11 @@
 - [x] M2.4.3 Product Schema：新增 `docs/PRODUCT_SCHEMA.md`
 - [x] M2.4.4 Product CMS Model：完成文档边界定义，后台开发后置
 - [x] 执行 M2.4 Repository Audit，更新 `REPOSITORY_AUDIT_REPORT.md` 并修复治理入口漂移
-- [ ] M2.4.5 Product Rendering Layer：产品列表、分类、详情、FAQ、Schema、Metadata、Breadcrumb、Related Product、Internal Link 与 SEO/GEO 落地
+- [ ] M2.4.5 Product Rendering Layer：已批准进入；以模板验证为目标，逐层验收 Metadata、JSON-LD、Breadcrumb、FAQ、Internal Link、Canonical、Open Graph 与 SEO/GEO
 - [ ] M2.4.5.1 Product Listing：开发 `/products/`
 - [ ] M2.4.5.2 Product Category：开发 `/products/pneumatic-manipulator-arm/`
-- [ ] M2.4.5.3 Product Detail：开发 `/products/pneumatic-manipulator-arm/ls70/`
-- [ ] M2.4.5.4 Related Product：建立产品关联与 Topic Cluster 渲染
+- [ ] M2.4.5.3 Product Detail：使用资料已确认的真实 Product Entity；LS70 未确认前不得正式收录
+- [ ] M2.4.5.4 Related Product：通过 Entity ID 建立产品关联与 Topic Cluster 渲染
 - [ ] M2.5 Industry Page Development：开发 `/applications/`
 - [ ] M2.6 Lead Capture Integration
 - [ ] M2.7 Admin Maintainability

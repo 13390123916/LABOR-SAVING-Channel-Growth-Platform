@@ -203,12 +203,12 @@ for (const token of ["/partner/", "Organization", "WebPage", "ContactPoint", "FA
 }
 
 const entitySystem = readRequired("docs/ENTITY_SYSTEM.md");
-for (const token of ["Entity System", "Entity", "Content Model", "Metadata", "Schema", "SEO Template", "CMS", "Frontend", "Rendering Layer", "SEO", "GEO", "Partner", "Product", "Industry", "Case", "Article", "Video", "Download", "FAQ"]) {
+for (const token of ["Entity System", "Entity ID 规范", "entity_id", "PRT-0001", "PRD-0001", "IND-0001", "CAS-0001", "ART-0001", "VID-0001", "DLD-0001", "FAQ-0001", "Content Model", "Metadata", "Schema", "SEO Template", "CMS", "CRM", "Analytics", "Database", "Frontend", "Rendering Layer", "SEO", "GEO", "Partner", "Product", "Industry", "Case", "Article", "Video", "Download", "FAQ"]) {
   assertIncludes(entitySystem, token, "docs/ENTITY_SYSTEM.md");
 }
 
 const productSystem = readRequired("docs/PRODUCT_SYSTEM.md");
-for (const token of ["Product System", "Product System Foundation", "Product Entity", "Product Content Model", "Product Metadata", "Product Schema", "Product CMS Model", "Product Rendering Layer", "Product Listing", "Product Category", "Product Detail", "Related Product", "LS40", "L60", "SQ35", "SQ50"]) {
+for (const token of ["Product System", "Product System Foundation", "Product Entity", "Product Content Model", "Product Metadata", "Product Schema", "Product CMS Model", "Product Rendering Layer", "Product Listing", "Product Category", "Product Detail", "Related Product", "PRD-0001", "PRD-0002", "PRD-0003", "PRD-0004", "LS40", "L60", "SQ35", "SQ50", "Canonical", "Open Graph", "不以页面数量为目标", "不进入 sitemap"]) {
   assertIncludes(productSystem, token, "docs/PRODUCT_SYSTEM.md");
 }
 
@@ -223,7 +223,7 @@ for (const token of ["Product Schema", "Product", "CollectionPage", "BreadcrumbL
 }
 
 const productSeoTemplate = readRequired("docs/PRODUCT_SEO_TEMPLATE.md");
-for (const token of ["Product SEO Template", "/products/", "Product Rendering Layer", "Product Listing", "Product Category", "Product Detail", "Related Product", "Topic Cluster", "GEO", "Product", "FAQPage", "/partner/"]) {
+for (const token of ["Product SEO Template", "/products/", "Product Rendering Layer", "Product Listing", "Product Category", "Product Detail", "Related Product", "Topic Cluster", "GEO", "Product", "FAQPage", "Canonical", "Open Graph", "PRD-0001", "PRD-0002", "PRD-0003", "PRD-0004", "不以页面数量为目标", "不进入 sitemap", "/partner/"]) {
   assertIncludes(productSeoTemplate, token, "docs/PRODUCT_SEO_TEMPLATE.md");
 }
 

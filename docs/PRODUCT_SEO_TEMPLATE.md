@@ -1,6 +1,6 @@
 # Product SEO Template
 
-文档职责：定义 Product URL、Title、Description、内链策略、Topic Cluster 和 GEO 问答模板。当前阶段只冻结 SEO/GEO 模型，不批量开发产品页面。
+文档职责：定义 Product URL、Title、Description、内链策略、Topic Cluster 和 GEO 问答模板。当前进入 M2.4.5，以模板和渲染能力验证为目标，不以页面数量为目标。
 
 ## 1. 页面类型
 
@@ -10,10 +10,10 @@ Product Rendering Layer 分四层：
 | --- | --- | --- |
 | M2.4.5.1 Product Listing | `/products/` | 展示已确认产品范围，承接产品咨询和渠道扩品 |
 | M2.4.5.2 Product Category | `/products/pneumatic-manipulator-arm/` | 承接产品类别搜索和型号入口 |
-| M2.4.5.3 Product Detail | `/products/pneumatic-manipulator-arm/ls70/` | 承接具体型号理解、选型咨询和资料确认 |
+| M2.4.5.3 Product Detail | 首个资料已确认的真实 Product Entity | 承接具体型号理解、选型咨询和资料确认 |
 | M2.4.5.4 Related Product | 产品详情页内关联产品 | 自动形成 Product Topic Cluster |
 
-当前阶段不开发页面，只定义模板。
+四层必须按顺序逐层验收。前一层未通过，不进入下一层；模板成熟后才允许批量扩展。
 
 ## 2. URL 规则
 
@@ -29,10 +29,12 @@ Product Rendering Layer 分四层：
 
 | Product Entity | URL |
 | --- | --- |
-| LS40 助力机械臂 | `/products/pneumatic-manipulator-arm/ls40/` |
-| L60 助力机械臂 | `/products/pneumatic-manipulator-arm/l60/` |
-| SQ35 气动平衡器 | `/products/pneumatic-balancer/sq35/` |
-| SQ50 气动平衡器 | `/products/pneumatic-balancer/sq50/` |
+| `PRD-0001` LS40 助力机械臂 | `/products/pneumatic-manipulator-arm/ls40/` |
+| `PRD-0002` L60 助力机械臂 | `/products/pneumatic-manipulator-arm/l60/` |
+| `PRD-0003` SQ35 气动平衡器 | `/products/pneumatic-balancer/sq35/` |
+| `PRD-0004` SQ50 气动平衡器 | `/products/pneumatic-balancer/sq50/` |
+
+LS70 仅保留 `/products/pneumatic-manipulator-arm/ls70/` 路由验证占位。资料未确认前不分配正式 Entity ID，不进入 sitemap、canonical 集合、Product Schema 或正式收录体系。
 
 ## 3. 产品中心 SEO 模板
 
@@ -149,7 +151,6 @@ Product Topic Cluster：
 ```text
 /products/
 |- /products/pneumatic-manipulator-arm/
-|  |- /products/pneumatic-manipulator-arm/ls70/
 |  |- /products/pneumatic-manipulator-arm/l60/
 |  |- /products/pneumatic-manipulator-arm/ls40/
 |- /products/pneumatic-balancer/
@@ -171,9 +172,9 @@ Product Topic Cluster：
 
 Related Product 规则：
 
-- 同分类产品优先关联，例如 LS70 关联 L60、LS40。
+- 同分类产品优先关联，例如 `PRD-0001` LS40 与 `PRD-0002` L60。
 - 跨分类产品按应用场景关联，例如助力机械臂可关联 SQ 系列气动平衡器。
-- Related Product 来源必须来自 Product Entity 的 `related_entities`，不得在页面中临时硬写。
+- Related Product 来源必须来自 Product Entity 的 `related_entities`，并保存 Entity ID，不得在页面中临时硬写名称或 URL。
 - 未确认产品只能作为规划占位，不得进入已发布页面、Schema 或 sitemap。
 
 ## 7. GEO 问答模板
@@ -224,6 +225,8 @@ M2.4.5.1 到 M2.4.5.4 每个阶段均必须验证：
 - Breadcrumb 层级正确
 - FAQ 可见且可进入 FAQPage Schema
 - Internal Link 指向已开发或已规划页面
+- Canonical 与当前层级规范 URL 完全一致
+- Open Graph URL、Title、Description 与 Metadata 一致
 - SEO Title、Description、H1、H2 符合模板
 - GEO 问答结构可被 AI Search 摘取
 - Related Product 来自 Entity 关系

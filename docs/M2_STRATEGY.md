@@ -248,21 +248,27 @@ M2.4.5.2 Product Category
 -> /products/pneumatic-manipulator-arm/
 
 M2.4.5.3 Product Detail
--> /products/pneumatic-manipulator-arm/ls70/
+-> 首个资料已确认的真实 Product Entity
 
 M2.4.5.4 Related Product
--> LS70 关联 LS50、LS40、SQ 系列
+-> 通过 Entity ID 建立产品关联
 ```
 
 每个渲染层交付必须验证：
 
 - Metadata
-- Schema
+- JSON-LD Schema
 - Breadcrumb
 - FAQ
 - Internal Link
+- Canonical
+- Open Graph
 - SEO
 - GEO
+
+M2.4.5 以模板和渲染能力验证为目标，不以页面数量为目标。Product Listing、Product Category、Product Detail、Related Product 必须逐层验收，模板成熟后才允许批量扩展。
+
+首个 Product Detail 必须使用具备真实、可公开发布资料的 Product Entity。LS70 在资料未确认前只保留为路由验证占位，不分配正式 Entity ID，不进入 sitemap、Product Schema 或正式收录体系。
 
 CMS 仍放在 M2.7。Database 继续保持规划，等待 Product、Industry、Case、Knowledge 等 Entity 关系稳定后再一次冻结。
 

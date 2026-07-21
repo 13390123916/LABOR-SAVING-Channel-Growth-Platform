@@ -172,7 +172,7 @@ M2 顺序：
 3. M2.2 SEO Schema Layer：建立 `docs/SEO_SCHEMA_LAYER.md`
 4. M2.3 Partner Page Development & Partner System Hardening：优先开发 `/partner/`，并补齐 Partner Program Entity、Partner Content Model、Partner SEO Template 与 Partner Lead / CRM / CMS / Export 内容说明
 5. M2.4 Product System Foundation：先完成 Product Entity、Content Model、Metadata、Schema、CMS Model 和 SEO/GEO 模板，不直接开发 `/products/`
-6. M2.4.5 Product Rendering Layer：在 Product Foundation 完成后落地 Product Listing、Category、Detail、FAQ、Schema、Metadata、Breadcrumb、Related Product、Internal Link 和 SEO/GEO
+6. M2.4.5 Product Rendering Layer：已批准进入；按 Product Listing、Category、首个真实 Detail、Related Product 逐层验证模板，并检查 Metadata、JSON-LD、Breadcrumb、FAQ、Internal Link、Canonical、Open Graph 和 SEO/GEO
 7. M2.5 Industry Page Development：开发 `/applications/`
 8. M2.6 Lead Capture Integration：接入线索提交、来源追踪和 CRM 字段映射
 9. M2.7 Admin Maintainability：后台维护页面、Metadata、Schema、FAQ 与 Lead 配置

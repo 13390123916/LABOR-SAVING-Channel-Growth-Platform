@@ -45,6 +45,8 @@ Product Schema 只表达真实、已确认、页面可见的产品事实。
 | `description` | `description` | 必须与页面可见内容一致 |
 | `url` | `slug` / metadata canonical | 规范 URL |
 
+`entity_id` 不作为 Schema.org `Product` 的虚构字段输出。它用于系统内部追溯 Schema 来源；后续如需稳定公开标识，必须另行确认采用标准字段或 URL 标识策略。
+
 暂不映射：
 
 | Schema Field | 后置原因 |
@@ -61,10 +63,10 @@ Product Schema 只表达真实、已确认、页面可见的产品事实。
 当前允许进入 Product Schema 的实体：
 
 ```text
-LS40 助力机械臂
-L60 助力机械臂
-SQ35 气动平衡器
-SQ50 气动平衡器
+PRD-0001  LS40 助力机械臂
+PRD-0002  L60 助力机械臂
+PRD-0003  SQ35 气动平衡器
+PRD-0004  SQ50 气动平衡器
 ```
 
 每个 Product Schema 只允许包含：
