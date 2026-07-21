@@ -267,7 +267,7 @@ for (const token of ["ADR-0001", "ADR-0007", "ADR-0008", "ADR-0009", "ADR-0010",
 }
 
 const platformArchitecture = readRequired("docs/PLATFORM_ARCHITECTURE.md");
-for (const token of ["Platform Architecture", "Database", "Authentication", "CMS", "Media", "Lead Center", "Platform Assets", "SEO Runtime", "GEO Runtime", "Audit", "Backup", "Deployment & Analytics", "模块职责", "模块依赖", "平台生命周期", "M3 阶段边界", "ADR 治理规则", "Media Management Architecture", "Lead Center Architecture", "Platform Assets Architecture", "M4 Platform Runtime", "README.md", "docs/ROADMAP.md", "docs/adr/README.md"]) {
+for (const token of ["Platform Architecture", "Single Source of Truth", "Platform Module Intake Gate", "Platform Capability", "Platform Module 归属", "PLATFORM_ARCHITECTURE.md 统一管理", "Database", "Authentication", "CMS", "Media", "Lead Center", "Platform Assets", "SEO Runtime", "GEO Runtime", "Audit", "Backup", "Deployment & Analytics", "模块职责", "模块依赖", "平台生命周期", "M3 阶段边界", "ADR 治理规则", "Media Management Architecture", "Lead Center Architecture", "Platform Assets Architecture", "M4 Platform Runtime", "README.md", "docs/ROADMAP.md", "docs/adr/README.md"]) {
   assertIncludes(platformArchitecture, token, "docs/PLATFORM_ARCHITECTURE.md");
 }
 
@@ -318,7 +318,7 @@ for (const token of ["Organization", "Product", "Article", "FAQPage", "Breadcrum
 
 for (const file of syncFiles) {
   const content = readRequired(file);
-  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "PLATFORM_ARCHITECTURE.md", "AUTH_SYSTEM.md", "CMS_SYSTEM.md", "MEDIA_SYSTEM.md", "LEAD_CENTER.md", "PLATFORM_ASSETS.md", "adr/README.md", "ADR-0007", "ADR-0009", "ADR-0010", "ADR-0011", "ADR-0012", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
+  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "PLATFORM_ARCHITECTURE.md", "Platform Module Intake Gate", "AUTH_SYSTEM.md", "CMS_SYSTEM.md", "MEDIA_SYSTEM.md", "LEAD_CENTER.md", "PLATFORM_ASSETS.md", "adr/README.md", "ADR-0007", "ADR-0009", "ADR-0010", "ADR-0011", "ADR-0012", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
     assertIncludes(content, token, file);
   }
 }

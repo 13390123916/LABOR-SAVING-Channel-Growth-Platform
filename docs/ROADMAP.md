@@ -22,6 +22,8 @@
 
 Platform 阅读顺序：`README.md` -> `docs/PLATFORM_ARCHITECTURE.md` -> `docs/ROADMAP.md` -> `docs/adr/README.md`。
 
+Platform Module Intake Gate：后续所有 Platform Module 必须先在 `docs/PLATFORM_ARCHITECTURE.md` 判断是否属于 Platform Capability、应归属哪个 Platform Module、是否纳入统一管理，再更新专项文档、ADR、Roadmap、TODO、Memory 和 Changelog。
+
 M4 Platform Runtime 建议顺序：
 
 ```text

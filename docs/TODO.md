@@ -21,6 +21,7 @@
 - [x] 建立 ADR-0011 与 `docs/LEAD_CENTER.md`：冻结 M3.4 Lead Center Architecture，不直接写表单提交、CRM 后台、ORM、迁移、通知、导出或 Admin UI
 - [x] 建立 ADR-0012 与 `docs/PLATFORM_ASSETS.md`：冻结 M3.5 Platform Assets Architecture，不直接写 API、Database Migration、后台、CMS、Runtime 或 M4 实现
 - [x] 建立 `docs/MILESTONE_MAPPING.md`：保留 M2.6-M2.8 历史编号并映射至 M3
+- [x] 固化 Platform Module Intake Gate：后续所有 Platform Module 先判断 Platform Capability、Platform Module 归属和是否纳入 `docs/PLATFORM_ARCHITECTURE.md` 统一管理，避免模块重复定义和文档漂移
 
 ## M2.4.5.3 Product Detail
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.8] - 2026-07-22
+
+### Changed
+
+- 将 `docs/PLATFORM_ARCHITECTURE.md` 明确为整个仓库唯一的平台结构入口和 Single Source of Truth。
+- 固化 Platform Module Intake Gate：后续所有 Platform Module 必须先判断 Platform Capability、Platform Module 归属和是否纳入 Platform Architecture 统一管理。
+- 同步更新 `.ai` 规则、Roadmap、TODO、Memory 和治理校验清单，避免模块重复定义和文档漂移。
+
 ## [0.3.7] - 2026-07-21
 
 ### Added

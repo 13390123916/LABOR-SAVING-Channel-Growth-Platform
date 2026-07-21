@@ -137,6 +137,18 @@ GEO 面向国内 AI 搜索：
 
 不得为了当前任务提前制造无业务支撑的目录或抽象。
 
+## 6.1 Platform Module 归属门禁
+
+后续所有 Platform Module 必须优先读取并遵守 `docs/PLATFORM_ARCHITECTURE.md`。该文档是整个仓库唯一的平台结构入口和 Single Source of Truth。
+
+任何新增或扩展 Platform Module 前，必须先回答：
+
+1. 是否属于平台级能力（Platform Capability）？
+2. 应归属哪个 Platform Module？
+3. 是否应纳入 `docs/PLATFORM_ARCHITECTURE.md` 统一管理？
+
+如果答案涉及模块关系、模块职责、模块依赖、生命周期、M3 / M4 边界、权限、审计、隐私、SEO/GEO Runtime、备份、部署或分析，必须先更新 `docs/PLATFORM_ARCHITECTURE.md`，再更新专项文档。不得绕过 Platform Architecture 单独新建模块、目录、运行时代码或重复定义边界。
+
 ## 7. 固定工作流
 
 每次任务必须按以下顺序执行：
@@ -145,7 +157,7 @@ GEO 面向国内 AI 搜索：
 2. 理解商业模式。
 3. 分析需求。
 4. 输出实施方案。
-5. 涉及架构、SEO、GEO、商业模式或长期维护时等待确认。
+5. 涉及架构、SEO、GEO、商业模式、Platform Module 归属或长期维护时等待确认。
 6. 开发或执行文档治理。
 7. Build。
 8. Lint。
