@@ -6,7 +6,7 @@
 
 文档职责：项目长期需求主文档
 
-当前阶段：M3 Website Platform Foundation 进行中；`docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的唯一平台结构入口和 Single Source of Truth。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M3.2 CMS Architecture 已完成架构冻结，见 ADR-0007 与 `docs/CMS_SYSTEM.md`；M3.3 Media Management Architecture 已完成架构冻结，见 ADR-0010 与 `docs/MEDIA_SYSTEM.md`；M3.4 Lead Center Architecture 已完成架构冻结，见 ADR-0011 与 `docs/LEAD_CENTER.md`；M3.5 Platform Assets Architecture 已完成架构冻结，见 ADR-0012 与 `docs/PLATFORM_ASSETS.md`。M2 Channel Growth Foundation 已冻结为 v1.0，未执行的 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射至 M3。M3.6-M3.9 继续保持架构冻结，真正运行时代码统一进入 M4 Platform Runtime。后续所有 Platform Module 必须先判断 Platform Capability、Platform Module 归属和是否纳入 Platform Architecture 统一管理。
+当前阶段：M3 Website Platform Foundation 进行中；`docs/PLATFORM_ARCHITECTURE.md` 是整个 Platform 的唯一平台结构入口和 Single Source of Truth。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M3.2 CMS Architecture 已完成架构冻结，见 ADR-0007 与 `docs/CMS_SYSTEM.md`；M3.3 Media Management Architecture 已完成架构冻结，见 ADR-0010 与 `docs/MEDIA_SYSTEM.md`；M3.4 Lead Center Architecture 已完成架构冻结，见 ADR-0011 与 `docs/LEAD_CENTER.md`；M3.5 Platform Assets Architecture 已完成架构冻结，见 ADR-0012 与 `docs/PLATFORM_ASSETS.md`；M3 Governance Enhancement 已完成 Platform Module Intake Gate。M2 Channel Growth Foundation 已冻结为 v1.0，未执行的 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射至 M3。后续路线为 M3.6 Dealer Center、M3.7 Analytics、M3.8 Security / Permission、M3.9 Platform Freeze Review，真正运行时代码统一进入 M4 Platform Runtime。后续所有 Platform Module 必须先判断 Platform Capability、Platform Module 归属和是否纳入 Platform Architecture 统一管理。
 
 ## 1. 项目定位
 

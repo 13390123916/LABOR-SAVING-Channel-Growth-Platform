@@ -257,7 +257,7 @@ for (const token of ["Product Content Readiness", "PRD-0002", "L60", "Internal R
 }
 
 const milestoneMapping = readRequired("docs/MILESTONE_MAPPING.md");
-for (const token of ["M2 Channel Growth Foundation", "Frozen v1.0", "M2.6", "M2.7", "M2.8", "M3 Website Platform Foundation", "M3.0 Database Architecture", "M3.2 CMS Architecture", "M3.3 Media Management", "M3.4 Lead Center Architecture", "M3.5 Platform Assets Architecture", "M3.6 SEO Runtime Architecture", "M3.7 GEO Runtime Architecture", "M4 Platform Runtime"]) {
+for (const token of ["M2 Channel Growth Foundation", "Frozen v1.0", "M2.6", "M2.7", "M2.8", "M3 Website Platform Foundation", "M3.0 Database Architecture", "M3.2 CMS Architecture", "M3.3 Media Management", "M3.4 Lead Center Architecture", "M3.5 Platform Assets Architecture", "M3 Governance Enhancement", "M3.6 Dealer Center Architecture", "M3.7 Analytics Architecture", "M3.8 Security / Permission Architecture", "M3.9 Platform Freeze Review", "M4 Platform Runtime"]) {
   assertIncludes(milestoneMapping, token, "docs/MILESTONE_MAPPING.md");
 }
 
@@ -267,7 +267,7 @@ for (const token of ["ADR-0001", "ADR-0007", "ADR-0008", "ADR-0009", "ADR-0010",
 }
 
 const platformArchitecture = readRequired("docs/PLATFORM_ARCHITECTURE.md");
-for (const token of ["Platform Architecture", "Single Source of Truth", "Platform Module Intake Gate", "Platform Capability", "Platform Module 归属", "PLATFORM_ARCHITECTURE.md 统一管理", "Database", "Authentication", "CMS", "Media", "Lead Center", "Platform Assets", "SEO Runtime", "GEO Runtime", "Audit", "Backup", "Deployment & Analytics", "模块职责", "模块依赖", "平台生命周期", "M3 阶段边界", "ADR 治理规则", "Media Management Architecture", "Lead Center Architecture", "Platform Assets Architecture", "M4 Platform Runtime", "README.md", "docs/ROADMAP.md", "docs/adr/README.md"]) {
+for (const token of ["Platform Architecture", "Single Source of Truth", "Platform Module Intake Gate", "Platform Capability", "Platform Module 归属", "PLATFORM_ARCHITECTURE.md 统一管理", "Governance Note", "不属于新的 Platform Capability", "不允许重新排列 Milestone", "Website", "Content", "SEO / GEO", "Dealer Center", "Analytics", "Security / Permission", "Platform Freeze Review", "Platform Runtime", "Database", "Authentication", "CMS", "Media", "Lead Center", "Platform Assets", "模块职责", "模块依赖", "平台生命周期", "M3 阶段边界", "ADR 治理规则", "Media Management Architecture", "Lead Center Architecture", "Platform Assets Architecture", "Dealer 是渠道增长核心对象", "Analytics 是归因与转化复盘层", "Organization Schema", "Brand Entity", "ContactPoint", "Download Resource", "M4 Platform Runtime", "README.md", "docs/ROADMAP.md", "docs/adr/README.md"]) {
   assertIncludes(platformArchitecture, token, "docs/PLATFORM_ARCHITECTURE.md");
 }
 
@@ -318,7 +318,7 @@ for (const token of ["Organization", "Product", "Article", "FAQPage", "Breadcrum
 
 for (const file of syncFiles) {
   const content = readRequired(file);
-  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "PLATFORM_ARCHITECTURE.md", "Platform Module Intake Gate", "AUTH_SYSTEM.md", "CMS_SYSTEM.md", "MEDIA_SYSTEM.md", "LEAD_CENTER.md", "PLATFORM_ASSETS.md", "adr/README.md", "ADR-0007", "ADR-0009", "ADR-0010", "ADR-0011", "ADR-0012", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
+  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "PLATFORM_ARCHITECTURE.md", "Platform Module Intake Gate", "Governance Note", "不允许重新排列 Milestone", "Dealer Center", "Analytics", "Security / Permission", "Platform Freeze Review", "Platform Runtime", "AUTH_SYSTEM.md", "CMS_SYSTEM.md", "MEDIA_SYSTEM.md", "LEAD_CENTER.md", "PLATFORM_ASSETS.md", "adr/README.md", "ADR-0007", "ADR-0009", "ADR-0010", "ADR-0011", "ADR-0012", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
     assertIncludes(content, token, file);
   }
 }

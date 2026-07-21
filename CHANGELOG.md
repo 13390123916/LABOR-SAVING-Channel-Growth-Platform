@@ -6,6 +6,10 @@
 
 - 将 `docs/PLATFORM_ARCHITECTURE.md` 明确为整个仓库唯一的平台结构入口和 Single Source of Truth。
 - 固化 Platform Module Intake Gate：后续所有 Platform Module 必须先判断 Platform Capability、Platform Module 归属和是否纳入 Platform Architecture 统一管理。
+- 调整 M3 后半段路线为 M3.6 Dealer Center、M3.7 Analytics、M3.8 Security / Permission、M3.9 Platform Freeze Review；M3 Governance Enhancement 作为治理增强，不单独开 Milestone。
+- 明确 Platform Module Registry 延后到 M3.9 收尾复核，不在当前阶段新增独立文档或 Root Docs。
+- 补充 Governance Note，固定 M3 最终路线，并明确后续只允许增加 Governance，不允许重新排列 Milestone。
+- 明确 M4 统一命名为 Platform Runtime，不拆成 CMS Runtime 或 Website Runtime。
 - 同步更新 `.ai` 规则、Roadmap、TODO、Memory 和治理校验清单，避免模块重复定义和文档漂移。
 
 ## [0.3.7] - 2026-07-21

@@ -8,10 +8,12 @@
 - [x] M3.3 Media Management Architecture：冻结 Media Entity、Media Metadata、Asset 生命周期、图片版本、ALT 来源、WebP / AVIF 预留、Thumbnail Strategy、Storage Adapter、CDN Boundary、Watermark Strategy 和引用关系
 - [x] M3.4 Lead Center Architecture：冻结 Lead Entity、Lead Type、字段分层、来源归因、生命周期、分配、去重、隐私、导出边界、CRM 输入、权限和审计
 - [x] M3.5 Platform Assets Architecture：冻结 Company Profile、Brand Assets、Social Media Hub、Download Center、Friend Links、Contact Center、System Settings，并确认 Platform Assets 属于 Platform Layer，不是 CMS Content、Lead Data、Dealer Data 或 Runtime
-- [ ] M3.6 SEO Runtime Architecture：冻结 sitemap、robots、RSS、canonical、redirect、IndexNow 与站长平台接入边界
-- [ ] M3.7 GEO Runtime Architecture：冻结 AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产边界
-- [ ] M3.8 Audit Center / Backup & Restore Architecture：冻结操作日志、审计查询、归档、合规导出、数据备份、恢复、版本回滚、灾备和批量归档边界
-- [ ] M3.9 Deployment & Analytics Architecture：冻结部署运行、监控、流量、转化、渠道、活动来源和 CRM 集成边界
+- [x] M3 Governance Enhancement：固化 Platform Module Intake Gate、Platform Architecture Single Source of Truth 和 Platform Module 归属门禁
+- [x] 固化 Governance Note：M3 Governance Enhancement 属于治理演进，不属于新的 Platform Capability，不改变已冻结 Milestone 编号；M3 最终路线固定后不允许重新排列 Milestone
+- [ ] M3.6 Dealer Center Architecture：冻结 Dealer Entity、Dealer Type、区域关系、招商流程、Lead 分配、CRM 流转、权限边界和生命周期
+- [ ] M3.7 Analytics Architecture：冻结 Lead Attribution、Source、UTM、SEO Attribution、Dealer Attribution、Conversion Event 和 CN First 分析边界
+- [ ] M3.8 Security / Permission Architecture：冻结 RBAC 复核、Resource / Action / Permission、Audit、隐私、导出、高风险动作和运行时安全边界
+- [ ] M3.9 Platform Freeze Review：复核 Platform Module Registry、模块边界、ADR、Runtime 边界、文档漂移和 M4 Readiness
 - [ ] M4 Platform Runtime：统一实现 Prisma、Migration、Database、RBAC、CMS、Media、Lead、SEO Runtime、API 和 Admin UI
 - [x] 建立 `docs/adr/README.md` 与 ADR-0001：记录 M2 冻结和 M3 平台迁移决定
 - [x] 建立 ADR-0008 与 `docs/DATABASE.md`：冻结 M3.0 Database Model，不直接写数据库代码

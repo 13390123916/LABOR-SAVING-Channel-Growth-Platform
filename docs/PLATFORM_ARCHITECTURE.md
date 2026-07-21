@@ -61,15 +61,13 @@ Lead Center
         |
 Platform Assets
         |
-SEO Runtime
+Dealer Center
         |
-GEO Runtime
+Analytics
         |
-Audit
+Security / Permission
         |
-Backup
-        |
-Deployment & Analytics
+Platform Freeze Review
 ```
 
 横向支撑关系：
@@ -107,11 +105,10 @@ Runtime
 | Media | 管理媒体实体、元数据、授权、图片版本、缩略图、WebP / AVIF 预留、存储适配、CDN 边界和引用关系 | 不直接编辑页面内容，不承担 Lead、SEO 提交或备份归档 |
 | Lead Center | 管理 Partner Lead、Customer Lead、状态、分配、筛选、导出和 CRM 输入 | 不替代 CMS 内容审核或营销承诺 |
 | Platform Assets | 管理 Company Profile、Brand Assets、Social Media Hub、Download Center、Friend Links、Contact Center 和 System Settings | 不替代 CMS Content、Lead Data、Dealer Data 或 Runtime |
-| SEO Runtime | 管理 sitemap、robots、RSS、canonical、redirect、IndexNow 和站长平台提交 | 不生成未经审核的 Metadata 或 Schema |
-| GEO Runtime | 管理 AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产 | 不编造产品参数、案例、收益或授权政策 |
-| Audit Center | 查询、归档、导出操作日志和高风险动作追踪 | 不允许编辑或软删除 Audit Log |
-| Backup & Restore | 数据备份、恢复、版本回滚、灾备和批量归档 | 不绕过权限、审计和发布门禁 |
-| Deployment & Analytics | 部署运行、监控、流量、转化、渠道、活动来源和 CRM 集成 | 不改变内容事实来源 |
+| Dealer Center | 冻结 Dealer 作为渠道招商核心对象的职责、边界、生命周期、区域关系、Lead 分配、CRM 流转和权限边界 | 不承诺收益、区域独家、自动授权、价格政策或合同结果 |
+| Analytics | 冻结 Lead Attribution、Source、UTM、SEO Attribution、Dealer Attribution 和 Conversion Event | 不替代业务事实来源，不直接采集未经授权的个人敏感信息 |
+| Security / Permission | 复核 RBAC、Resource、Action、Permission、Audit、隐私、数据导出和高风险动作边界 | 不重写已冻结 Auth 架构，不提前实现登录、SSO 或运行时权限代码 |
+| Platform Freeze Review | 统一审查 Platform Modules、ADR、Roadmap、TODO、Memory、Changelog、Runtime 边界和文档漂移 | 不新增业务功能，不进入 M4 Runtime |
 
 ## 4. 模块依赖
 
@@ -131,11 +128,21 @@ CMS 负责可审核内容和字段分层。CMS 只能引用已审核或处于明
 
 Media 为 Product、Industry、Article、Partner、FAQ、Download、SEO Metadata、Schema Metadata 和 Open Graph 提供可追溯资产。公开页面只能引用授权通过且使用范围匹配的媒体资产。
 
-### 4.5 Runtime 是公开输出层
+### 4.5 Dealer 是渠道增长核心对象
+
+Dealer Center 承接 Lead Center 的渠道线索和 Platform Assets 的品牌 / 联系 / 下载资料输入，定义代理商、经销商、区域合作、Lead 分配、权限边界和 CRM 流转关系。Dealer 先于 Analytics 冻结，确保分析体系围绕已定义业务对象设计。
+
+### 4.6 Analytics 是归因与转化复盘层
+
+Analytics 消费 Lead、Dealer、CMS、Platform Assets、SEO / GEO 输出和 Campaign 来源，不改变内容事实来源。Lead Attribution、Source、UTM、SEO Attribution、Dealer Attribution 和 Conversion Event 必须围绕 Dealer 与 Lead 的已冻结边界设计。
+
+### 4.7 Runtime 是公开输出层
 
 Platform Assets 为全站公共事实、品牌资产、社媒入口、下载中心、友情链接、联系方式和系统设置提供统一输入。SEO Runtime 和 GEO Runtime 只消费已审核内容、Metadata、Schema、Media、Platform Assets 和发布状态，不直接生成未经审核的事实内容。
 
-### 4.6 Audit 与 Backup 是治理底座
+Company、Brand、Contact、Download、Logo、Social Profile 和 ContactPoint 等 Platform Assets 后续映射 Organization Schema、WebSite Schema、Brand Entity、ContactPoint、Logo、Social Profile 和 Download Resource 时，必须继续遵守 CN First、事实审核和国内 GEO 可引用规则。
+
+### 4.8 Security、Audit 与 Backup 是治理底座
 
 Audit 记录后台写操作和高风险动作。Backup & Restore 负责恢复能力，但恢复不得绕过权限、审计、软删除、Redirect 和 Search Runtime 检查。
 
@@ -190,6 +197,28 @@ Configured
 
 ## 6. M3 阶段边界
 
+Governance Note:
+
+M3 Governance Enhancement 用于持续完善 Platform Governance，属于治理演进，不属于新的 Platform Capability。因此它不会改变已冻结 Milestone 编号，也不会改变已冻结模块的历史顺序。
+
+M3 最终路线冻结为：
+
+```text
+Website
+-> Content
+-> SEO / GEO
+-> CMS
+-> Lead
+-> Platform Assets
+-> Dealer Center
+-> Analytics
+-> Security / Permission
+-> Platform Freeze Review
+-> M4 Platform Runtime
+```
+
+M3.6 之后只允许增加 Governance，不允许重新排列 Milestone。
+
 | Stage | 状态 | 边界 |
 | --- | --- | --- |
 | M3.0 Database Architecture | 已冻结 | 数据模型、ER、索引、生命周期、版本、软删除、多语言和审计字段 |
@@ -198,10 +227,11 @@ Configured
 | M3.3 Media Management Architecture | 已冻结 | Media Entity、Media Metadata、Asset 生命周期、图片版本、ALT 来源、WebP / AVIF 预留、Thumbnail Strategy、Storage Adapter、CDN Boundary、Watermark Strategy、引用关系 |
 | M3.4 Lead Center Architecture | 已冻结 | Lead Entity、Lead Type、字段分层、来源归因、生命周期、分配、去重、隐私、导出边界、CRM 输入、权限、审计 |
 | M3.5 Platform Assets Architecture | 本轮冻结 | Company Profile、Brand Assets、Social Media Hub、Download Center、Friend Links、Contact Center、System Settings |
-| M3.6 SEO Runtime Architecture | 待启动 | sitemap、robots、RSS、canonical、redirect、IndexNow、站长平台接入 |
-| M3.7 GEO Runtime Architecture | 待启动 | AI Search Feed、FAQ 摘要、实体知识包和国内 AI 搜索引用资产 |
-| M3.8 Audit Center / Backup & Restore Architecture | 待启动 | 操作日志、审计查询、归档、合规导出、数据备份、恢复、版本回滚、灾备和批量归档 |
-| M3.9 Deployment & Analytics Architecture | 待启动 | 部署运行、监控、流量、转化、渠道、活动来源和 CRM 集成 |
+| M3 Governance Enhancement | 已完成 | Platform Module Intake Gate、Single Source of Truth 和 Platform Module 归属门禁 |
+| M3.6 Dealer Center Architecture | 待启动 | Dealer Entity、Dealer Type、区域关系、招商流程、Lead 分配、CRM 流转、权限边界和生命周期 |
+| M3.7 Analytics Architecture | 待启动 | Lead Attribution、Source、UTM、SEO Attribution、Dealer Attribution、Conversion Event 和 CN First 分析边界 |
+| M3.8 Security / Permission Architecture | 待启动 | RBAC 复核、Resource / Action / Permission、Audit、隐私、导出、高风险动作和运行时安全边界 |
+| M3.9 Platform Freeze Review | 待启动 | Platform Module Registry、模块边界复核、ADR 复核、Runtime 边界、文档漂移和 M4 Readiness |
 
 ## 7. ADR 治理规则
 
@@ -236,6 +266,8 @@ ADR 数量必须克制，避免把 ADR 变成重复的治理文档。
 
 M3 只做 Architecture Freeze。真正运行时代码统一进入 M4 Platform Runtime。
 
+M4 统一命名为 Platform Runtime，不拆成 CMS Runtime 或 Website Runtime。M4 运行的是 Website、CMS、Lead、Dealer、Platform Assets、Analytics、SEO Runtime 和 Admin UI 等完整平台能力。
+
 M4 建议顺序：
 
 ```text
@@ -246,6 +278,9 @@ Prisma
 -> CMS
 -> Media
 -> Lead
+-> Platform Assets
+-> Dealer
+-> Analytics
 -> SEO Runtime
 -> API
 -> Admin UI

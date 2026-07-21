@@ -4,7 +4,7 @@
 
 状态：已启动。M2 Channel Growth Foundation 已冻结为 v1.0；迁移规则见 `docs/MILESTONE_MAPPING.md`，架构决策见 `docs/adr/README.md`。
 
-目标：完成 Database、Authentication、CMS、Media、Lead、Platform Assets、SEO Runtime、GEO Runtime、Audit、Backup、Deployment & Analytics 的架构冻结，为 M4 Platform Runtime 的集中实现做准备。
+目标：完成 Database、Authentication、CMS、Media、Lead、Platform Assets、Dealer Center、Analytics、Security / Permission 和 Platform Freeze Review 的架构冻结，为 M4 Platform Runtime 的集中实现做准备。
 
 - M3.0 Database Architecture（已完成设计冻结：ADR-0008 与 `docs/DATABASE.md`）
 - M3.1 Authentication & Authorization（已完成架构冻结：ADR-0009 与 `docs/AUTH_SYSTEM.md`）
@@ -12,17 +12,22 @@
 - M3.3 Media Management Architecture（已完成架构冻结：ADR-0010 与 `docs/MEDIA_SYSTEM.md`）
 - M3.4 Lead Center Architecture（已完成架构冻结：ADR-0011 与 `docs/LEAD_CENTER.md`）
 - M3.5 Platform Assets Architecture（已完成架构冻结：ADR-0012 与 `docs/PLATFORM_ASSETS.md`）
-- M3.6 SEO Runtime Architecture
-- M3.7 GEO Runtime Architecture
-- M3.8 Audit Center / Backup & Restore Architecture
-- M3.9 Deployment & Analytics Architecture
+- M3 Governance Enhancement（已完成：Platform Module Intake Gate 与 Platform Architecture Single Source of Truth）
+- M3.6 Dealer Center Architecture
+- M3.7 Analytics Architecture
+- M3.8 Security / Permission Architecture
+- M3.9 Platform Freeze Review
 - M4 Platform Runtime
 
-当前推进：M3.5 Platform Assets Architecture 已完成架构冻结，不直接写 API、Database Migration、后台、CMS、Runtime 或 M4 实现；下一步进入 M3.6 SEO Runtime Architecture，继续保持架构与实现隔离。
+当前推进：M3.5 Platform Assets Architecture 已完成架构冻结，M3 Governance Enhancement 已固化 Platform Module Intake Gate；下一步进入 M3.6 Dealer Center Architecture，继续保持架构与实现隔离。
 
 Platform 阅读顺序：`README.md` -> `docs/PLATFORM_ARCHITECTURE.md` -> `docs/ROADMAP.md` -> `docs/adr/README.md`。
 
 Platform Module Intake Gate：后续所有 Platform Module 必须先在 `docs/PLATFORM_ARCHITECTURE.md` 判断是否属于 Platform Capability、应归属哪个 Platform Module、是否纳入统一管理，再更新专项文档、ADR、Roadmap、TODO、Memory 和 Changelog。
+
+Governance Note：M3 Governance Enhancement 用于持续完善 Platform Governance，属于治理演进，不属于新的 Platform Capability，因此不会改变已冻结 Milestone 编号。M3 最终路线冻结为 Website -> Content -> SEO / GEO -> CMS -> Lead -> Platform Assets -> Dealer Center -> Analytics -> Security / Permission -> Platform Freeze Review -> M4 Platform Runtime；后续只允许增加 Governance，不允许重新排列 Milestone。
+
+M4 统一命名为 Platform Runtime，不拆成 CMS Runtime 或 Website Runtime，因为 M4 运行的是 Website、CMS、Lead、Dealer、Assets、Analytics、SEO Runtime 等完整 Platform。
 
 M4 Platform Runtime 建议顺序：
 
@@ -34,6 +39,9 @@ Prisma
 -> CMS
 -> Media
 -> Lead
+-> Platform Assets
+-> Dealer
+-> Analytics
 -> SEO Runtime
 -> API
 -> Admin UI
@@ -52,11 +60,11 @@ CMS Architecture             100%
 Media Management Architecture 100%
 Lead Center Architecture      100%
 Platform Assets Architecture  100%
-SEO Runtime                    0%
-GEO Runtime                    0%
-Audit Center                   0%
-Backup & Restore               0%
-Deployment & Analytics         0%
+Platform Governance Enhancement 100%
+Dealer Center Architecture     0%
+Analytics Architecture         0%
+Security / Permission Architecture 0%
+Platform Freeze Review         0%
 M4 Platform Runtime            0%
 ```
 
