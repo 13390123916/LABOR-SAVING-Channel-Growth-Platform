@@ -7,6 +7,7 @@
 - 建立 `docs/adr/README.md`，ADR-0001 记录 M2 冻结与 M3 迁移决定。后续 ADR 仅在 M3 技术选型需要具体决策时创建。
 - 2026-07-21 完成 M3.0 Database Architecture 设计冻结：新增 ADR-0008 Database Model，主业务数据库采用 MySQL，数据库实现前先冻结 Entity、Category、Product、Industry、Partner、Lead、Media、Article、FAQ、Download、Navigation、SEO Metadata、Schema Metadata、Tag、Redirect 和 Audit Log；采用内部自增 ID 加稳定 `entity_id`，不默认 UUID；公开内容默认软删除，保留 `version`、`locale`、`created_at`、`updated_at`、`published_at`、`created_by`、`updated_by`、`published_by` 等字段。
 - 2026-07-21 完成 M3.1 Authentication & Authorization 架构冻结：新增 `docs/AUTH_SYSTEM.md` 与 ADR-0009，首期后台采用服务端 Session，不采用纯 JWT 作为 Admin 默认登录态；权限采用 RBAC，统一 User、Role、Permission、Resource、UserRole、RolePermission；首期角色为 Super Admin、Admin、Editor、SEO、Sales、Partner Manager；后台资源统一为 Product、Industry、Article、Partner、Lead、Media、Download、FAQ、Navigation、SEO Metadata、Schema Metadata、Redirect、Setting、User、Role、Permission、Audit Log、Search Runtime；写操作和高风险动作必须进入 Audit Log。
+- 2026-07-21 完成 M3.2 CMS Architecture 架构冻结：新增 `docs/CMS_SYSTEM.md` 与 ADR-0007，CMS 采用 Entity-first 内容管理模型，首期 Resource 为 Product、Industry、Article、Partner、FAQ、Download、Navigation、SEO Metadata、Schema Metadata、Redirect、Setting；CMS 只做内容管理，不吞并 Media Management、Lead Center、SEO Runtime、GEO Runtime、Audit Center、Backup & Restore；工作流沿用 Draft -> Internal Review -> Content Approved -> SEO Approved -> Release Approved -> Published -> Indexed -> Archived；后续 M3 拆分为 M3.3 Media Management、M3.4 Lead Center、M3.5 SEO Runtime、M3.6 GEO Runtime、M3.7 Audit Center、M3.8 Backup & Restore、M3.9 Deployment & Analytics。
 
 ## M2.4.5.3 Product Detail 决策
 

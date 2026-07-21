@@ -31,4 +31,4 @@
 
 ## 当前任务
 
-M2 Channel Growth Foundation 已冻结为 v1.0，核心 Collection Rendering 机制已验证。M3.0 Database Architecture 已完成设计冻结，数据库优先采用 MySQL，采用内部自增 ID + 稳定 `entity_id`，公开内容默认软删除并保留版本、审计和 `locale` 扩展字段。M3.1 Authentication & Authorization 已完成架构冻结，首期后台采用服务端 Session 和 RBAC，不直接写登录或后台代码。M2.4.5.3.5 的首个产品发布验收作为跨阶段质量门禁保留；后续平台实现进入 M3.2 CMS Foundation，并继续复用 Product Entity JSON、URL、Metadata、Schema、Breadcrumb、FAQ 与 ProductCard Builder。
+M2 Channel Growth Foundation 已冻结为 v1.0，核心 Collection Rendering 机制已验证。M3.0 Database Architecture 已完成设计冻结，数据库优先采用 MySQL，采用内部自增 ID + 稳定 `entity_id`，公开内容默认软删除并保留版本、审计和 `locale` 扩展字段。M3.1 Authentication & Authorization 已完成架构冻结，首期后台采用服务端 Session 和 RBAC，不直接写登录或后台代码。M3.2 CMS Architecture 已完成架构冻结，CMS 采用 Entity-first 内容管理模型，不直接写 CRUD 或后台 UI。M2.4.5.3.5 的首个产品发布验收作为跨阶段质量门禁保留；后续平台实现进入 M3.3 Media Management，并继续复用 Product Entity JSON、URL、Metadata、Schema、Breadcrumb、FAQ 与 ProductCard Builder。

@@ -10,7 +10,7 @@
 | ADR-0004 | Planned | Schema Builder |
 | ADR-0005 | Planned | Publishing Gate |
 | ADR-0006 | Planned | Search Runtime |
-| ADR-0007 | Planned | CMS Architecture |
+| ADR-0007 | Accepted | CMS Architecture |
 | ADR-0008 | Accepted | Database Model |
 | ADR-0009 | Accepted | Authentication & Authorization |
 
@@ -19,5 +19,6 @@
 ## Accepted ADR
 
 - `ADR-0001-m2-freeze-and-m3-platform-foundation.md`
+- `ADR-0007-cms-architecture.md`
 - `ADR-0008-database-model.md`
 - `ADR-0009-authentication-and-authorization.md`

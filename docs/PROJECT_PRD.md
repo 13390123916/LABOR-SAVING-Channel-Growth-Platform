@@ -6,7 +6,7 @@
 
 文档职责：项目长期需求主文档
 
-当前阶段：M3 Website Platform Foundation 进行中；M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`。M2 Channel Growth Foundation 已冻结为 v1.0，未执行的 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射至 M3。
+当前阶段：M3 Website Platform Foundation 进行中；M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M3.2 CMS Architecture 已完成架构冻结，见 ADR-0007 与 `docs/CMS_SYSTEM.md`。M2 Channel Growth Foundation 已冻结为 v1.0，未执行的 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射至 M3。
 
 ## 1. 项目定位
 
@@ -128,6 +128,19 @@ M3.1 不直接写登录或后台代码，先冻结认证授权设计。
 - 所有后台资源统一登记为 Resource，不允许把权限写死在页面或接口中。
 - Publish、Approve、Export、Import、Assign、Manage 属于高风险动作，必须单独授权并审计。
 - M3.1 不实现 SSO、OAuth2、OIDC、SAML、企业微信或飞书登录，但保留扩展边界。
+
+## 7.3 M3.2 CMS Architecture
+
+M3.2 不直接写 CMS 页面、CRUD、富文本、ORM 或迁移，先冻结内容管理架构。
+
+已确认：
+
+- CMS 采用 Entity-first 内容管理模型。
+- CMS 必须复用 M3.0 的 `entity_id`、soft delete、version、locale 和 audit fields。
+- CMS 必须复用 M3.1 的 RBAC、Resource、Action、Permission 和 Audit。
+- 首期 CMS Resource 为 Product、Industry、Article、Partner、FAQ、Download、Navigation、SEO Metadata、Schema Metadata、Redirect、Setting。
+- CMS 不吞并 Media Management、Lead Center、SEO Runtime、GEO Runtime、Audit Center、Backup & Restore。
+- CMS 工作流沿用 Draft -> Internal Review -> Content Approved -> SEO Approved -> Release Approved -> Published -> Indexed -> Archived。
 
 ## 8. M1 阶段范围
 

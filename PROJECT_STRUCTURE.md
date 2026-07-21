@@ -97,7 +97,9 @@ Version: V1.2
 - `docs/PRODUCT_CONTENT_READINESS.md`
 - `docs/MILESTONE_MAPPING.md`
 - `docs/AUTH_SYSTEM.md`
+- `docs/CMS_SYSTEM.md`
 - `docs/adr/`
+- `docs/adr/ADR-0007-cms-architecture.md`
 - `docs/adr/ADR-0008-database-model.md`
 - `docs/adr/ADR-0009-authentication-and-authorization.md`
 - `docs/PARTNER_FUNNEL.md`
@@ -118,7 +120,7 @@ Version: V1.2
 
 ## 当前策略
 
-M2 Channel Growth Foundation 已冻结为 v1.0。当前平台进入 M3 Website Platform Foundation，已完成 M3.0 Database Architecture 与 M3.1 Authentication & Authorization 架构冻结。
+M2 Channel Growth Foundation 已冻结为 v1.0。当前平台进入 M3 Website Platform Foundation，已完成 M3.0 Database Architecture、M3.1 Authentication & Authorization 与 M3.2 CMS Architecture 架构冻结。
 
 当前及后续 Entity 模块统一执行顺序：
 
@@ -134,4 +136,4 @@ Entity
 
 M2.4.5.1 Product Listing 与 M2.4.5.2 Product Category 已完成，Collection Rendering 机制已验证。M2 已冻结为 v1.0；M2.4.5.3.5 Product Detail 首次发布验收作为跨阶段质量门禁保留，继续复用同一 Entity、URL、Metadata、Schema、Breadcrumb、FAQ、Internal Link、Canonical、Open Graph、SEO 与 GEO 机制。
 
-CMS、Database、CRM、媒体与导出能力由 M3 Website Platform Foundation 承接，具体映射见 `docs/MILESTONE_MAPPING.md`。M3.0 Database Architecture 已通过 ADR-0008 与 `docs/DATABASE.md` 完成设计冻结；M3.1 Authentication & Authorization 已通过 ADR-0009 与 `docs/AUTH_SYSTEM.md` 完成架构冻结。后续不得绕过 Entity、Metadata、Schema、Publishing Workflow、RBAC 和 Audit 直接建表或开发后台。任何阶段仍不得编造产品参数、客户案例、收益结果、授权政策或市场排名。
+CMS、Database、CRM、媒体与导出能力由 M3 Website Platform Foundation 承接，具体映射见 `docs/MILESTONE_MAPPING.md`。M3.0 Database Architecture 已通过 ADR-0008 与 `docs/DATABASE.md` 完成设计冻结；M3.1 Authentication & Authorization 已通过 ADR-0009 与 `docs/AUTH_SYSTEM.md` 完成架构冻结；M3.2 CMS Architecture 已通过 ADR-0007 与 `docs/CMS_SYSTEM.md` 完成架构冻结。后续不得绕过 Entity、Metadata、Schema、Publishing Workflow、RBAC、Audit 和 CMS Workflow 直接建表或开发后台。任何阶段仍不得编造产品参数、客户案例、收益结果、授权政策或市场排名。

@@ -2,11 +2,11 @@
 
 项目：LABOR-SAVING Channel Growth Platform（雷普赛维渠道增长平台）
 
-审计阶段：M3.1 Authentication & Authorization Architecture Freeze Audit
+审计阶段：M3.2 CMS Architecture Freeze Audit
 
 审计日期：2026-07-21
 
-审计基线：`69f2c2d [M3.0] Freeze database architecture`，分支 `main`。
+审计基线：`358147f [M2] Align strategy documentation after platform freeze`，分支 `main`。
 
 ## 1. 结论
 
@@ -20,12 +20,15 @@
 
 本轮继续完成 M3.1 Authentication & Authorization 架构冻结：新增 ADR-0009 Authentication & Authorization，并建立 `docs/AUTH_SYSTEM.md` 作为后台认证授权最高层文档，覆盖 Authentication、Authorization、RBAC、Permission、Role、Resource、Audit、Login Flow、Session 和 Future SSO。未创建登录页、JWT、Session 代码、认证 API、ORM、迁移或后台 UI。
 
+本轮继续完成 M3.2 CMS Architecture 架构冻结：新增 ADR-0007 CMS Architecture，并建立 `docs/CMS_SYSTEM.md` 作为内容管理最高层文档，覆盖 CMS Resource、Content Type、Field Group、Workflow、Permission Integration、Audit Integration、Import / Export 和 Future Platform Split。未创建 CMS 页面、CRUD、富文本、ORM、迁移、文件上传或后台 UI。
+
 ## 2. 审计范围
 
 - AI 治理与必读入口：`.ai/`、`README.md`、`PROJECT_STRUCTURE.md`
 - 阶段迁移：`docs/MILESTONE_MAPPING.md`、`docs/adr/ADR-0001-m2-freeze-and-m3-platform-foundation.md`
 - 数据库架构：`docs/adr/ADR-0008-database-model.md`、`docs/DATABASE.md`
 - 认证授权架构：`docs/adr/ADR-0009-authentication-and-authorization.md`、`docs/AUTH_SYSTEM.md`
+- CMS 架构：`docs/adr/ADR-0007-cms-architecture.md`、`docs/CMS_SYSTEM.md`
 - 产品发布边界：Product Entity、Detail Renderer、Metadata、Schema、Publishing Checklist、Content Readiness
 - CI 与治理校验：`.github/workflows/ci.yml`、`scripts/validate-website-governance.mjs`、`scripts/validate-product-rendering.mjs`
 - Git 基线、工作区和生产构建
@@ -37,6 +40,7 @@
 | M2 冻结与 M3 映射 | 通过 | Mapping、ADR-0001、Roadmap、TODO、Memory、Changelog 一致 |
 | M3.0 Database Architecture | 通过 | ADR-0008、Database、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
 | M3.1 Authentication & Authorization | 通过 | ADR-0009、Auth System、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
+| M3.2 CMS Architecture | 通过 | ADR-0007、CMS System、Roadmap、TODO、Memory、PRD、README、Changelog 一致 |
 | 产品实体与分类渲染 | 通过 | Entity 4、Listing 4、Category Total 4、Category Routes 2 |
 | 未发布详情保护 | 通过 | Published Detail Routes 0，LS70 不在 Entity 数据源 |
 | 发布门禁 | 通过 | `published + schemaEligible + contentValidated + releaseApproved` |
@@ -61,6 +65,6 @@ cd website && npm run build
 ## 5. 风险与下一步
 
 - L60 仍缺公开范围、真实图片与授权、市场上线批准、sitemap/robots 和外部收录证据，不能改变发布状态。
-- M3.0 与 M3.1 均为架构冻结，尚未实现数据库迁移、ORM、认证、CMS、媒体、线索或 Search Runtime；这些仍是下一阶段的真实运行能力缺口。
-- 工作区仍保留 `docs/M2_STRATEGY.md` 与 `docs/PRODUCT_SYSTEM.md` 两个未提交文档修改，应作为单独 M2 冻结口径修正处理，不混入 M3.1 提交。
-- 下一步应进入 M3.2 CMS Foundation，先确认 Product、Industry、Article、Partner、Lead、Media、Download、FAQ、Navigation、SEO Metadata 和 Schema Metadata 的后台维护边界，再开始后台代码实现。
+- M3.0、M3.1 与 M3.2 均为架构冻结，尚未实现数据库迁移、ORM、认证、CMS、媒体、线索或 Search Runtime；这些仍是下一阶段的真实运行能力缺口。
+- M2 冻结口径修正已通过 `358147f [M2] Align strategy documentation after platform freeze` 单独提交，工作区应保持干净再进入 M3.3。
+- 下一步应进入 M3.3 Media Management，先确认媒体上传、授权、裁切、版本、公开资产和 Open Graph 资产管理边界，再开始媒体运行时实现。

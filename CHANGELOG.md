@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.4] - 2026-07-21
+
+### Added
+
+- 新增 `docs/CMS_SYSTEM.md`，冻结 M3.2 CMS Architecture 的 CMS Resource、Content Type、Field Group、Workflow、Permission Integration、Audit Integration、Import / Export 和 Future Platform Split。
+- 新增 ADR-0007 CMS Architecture，确认 CMS 采用 Entity-first 内容管理模型，并复用 Database、Auth、Metadata、Schema 与 Publishing Workflow。
+
+### Changed
+
+- 将 M3.2 定位为 CMS 架构冻结阶段，不直接创建 CMS 页面、CRUD、富文本、ORM、迁移、文件上传或后台 UI。
+- 将后续 M3 平台能力拆分为 Media Management、Lead Center、SEO Runtime、GEO Runtime、Audit Center、Backup & Restore、Deployment & Analytics。
+- 同步更新 Roadmap、TODO、Memory、PRD、README、Milestone Mapping 与治理校验清单。
+
 ## [0.3.3] - 2026-07-21
 
 ### Added

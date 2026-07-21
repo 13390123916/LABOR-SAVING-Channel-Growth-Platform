@@ -2,7 +2,7 @@
 
 当前已进入 M2.4.5.3.5 First Published Product Acceptance：详情模板与发布门禁已建立；未满足 `published + schemaEligible + contentValidated + releaseApproved` 的实体不生成详情 URL、Product Schema 或 sitemap，LS70 保持非实体占位。
 
-当前平台阶段：M3 Website Platform Foundation。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M2 Channel Growth Foundation 已冻结为 v1.0，历史 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3，后续重点转向 CMS、运行平台、Search Runtime 与 Analytics/CRM。
+当前平台阶段：M3 Website Platform Foundation。M3.0 Database Architecture 已完成设计冻结，见 ADR-0008 与 `docs/DATABASE.md`；M3.1 Authentication & Authorization 已完成架构冻结，见 ADR-0009 与 `docs/AUTH_SYSTEM.md`；M3.2 CMS Architecture 已完成架构冻结，见 ADR-0007 与 `docs/CMS_SYSTEM.md`；M2 Channel Growth Foundation 已冻结为 v1.0，历史 M2.6-M2.8 通过 `docs/MILESTONE_MAPPING.md` 映射到 M3，后续重点转向媒体、线索、SEO/GEO Runtime、审计、备份、部署与分析。
 
 雷普赛维渠道增长平台是面向工业装备渠道合作、终端客户询盘、中国 SEO 与国内 AI 搜索优化的长期增长平台，不是普通企业官网。
 
@@ -51,6 +51,7 @@
 - 已完成 M2.4.5.2 Product Category：分类路由和 SEO/Schema 层由 Entity 自动生成；M2.4.5.3.5 作为首个真实产品发布验收质量门禁保留
 - 已完成 M3.0 Database Architecture：ADR-0008 与 `docs/DATABASE.md` 已冻结数据库架构
 - 已完成 M3.1 Authentication & Authorization Architecture：ADR-0009 与 `docs/AUTH_SYSTEM.md` 已冻结认证授权架构
+- 已完成 M3.2 CMS Architecture：ADR-0007 与 `docs/CMS_SYSTEM.md` 已冻结内容管理架构
 
 ## 平台成熟度
 
@@ -61,9 +62,14 @@ Entity Layer                 100%
 Product Foundation           100%
 Database Architecture        100%
 Authentication Architecture  100%
-CMS Foundation                 0%
-Runtime Platform               0%
-Analytics                      0%
+CMS Architecture             100%
+Media Management               0%
+Lead Center                    0%
+SEO Runtime                    0%
+GEO Runtime                    0%
+Audit Center                   0%
+Backup & Restore               0%
+Deployment & Analytics         0%
 ```
 
 ## 文档入口
@@ -85,7 +91,9 @@ Analytics                      0%
 - `docs/PRODUCT_CONTENT_READINESS.md`
 - `docs/MILESTONE_MAPPING.md`
 - `docs/AUTH_SYSTEM.md`
+- `docs/CMS_SYSTEM.md`
 - `docs/adr/README.md`
+- `docs/adr/ADR-0007-cms-architecture.md`
 - `docs/adr/ADR-0008-database-model.md`
 - `docs/adr/ADR-0009-authentication-and-authorization.md`
 - `docs/PARTNER_FUNNEL.md`

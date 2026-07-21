@@ -20,8 +20,10 @@ const requiredDocs = [
   "docs/PRODUCT_CONTENT_READINESS.md",
   "docs/MILESTONE_MAPPING.md",
   "docs/AUTH_SYSTEM.md",
+  "docs/CMS_SYSTEM.md",
   "docs/adr/README.md",
   "docs/adr/ADR-0001-m2-freeze-and-m3-platform-foundation.md",
+  "docs/adr/ADR-0007-cms-architecture.md",
   "docs/adr/ADR-0008-database-model.md",
   "docs/adr/ADR-0009-authentication-and-authorization.md",
   "docs/PARTNER_FUNNEL.md",
@@ -248,13 +250,18 @@ for (const token of ["Product Content Readiness", "PRD-0002", "L60", "Internal R
 }
 
 const milestoneMapping = readRequired("docs/MILESTONE_MAPPING.md");
-for (const token of ["M2 Channel Growth Foundation", "Frozen v1.0", "M2.6", "M2.7", "M2.8", "M3 Website Platform Foundation", "M3.0 Database Architecture", "M3.4 Search Runtime"]) {
+for (const token of ["M2 Channel Growth Foundation", "Frozen v1.0", "M2.6", "M2.7", "M2.8", "M3 Website Platform Foundation", "M3.0 Database Architecture", "M3.2 CMS Architecture", "M3.3 Media Management", "M3.5 SEO Runtime", "M3.6 GEO Runtime"]) {
   assertIncludes(milestoneMapping, token, "docs/MILESTONE_MAPPING.md");
 }
 
 const adrIndex = readRequired("docs/adr/README.md");
-for (const token of ["ADR-0001", "ADR-0008", "ADR-0009", "M3 Website Platform Foundation"]) {
+for (const token of ["ADR-0001", "ADR-0007", "ADR-0008", "ADR-0009", "M3 Website Platform Foundation"]) {
   assertIncludes(adrIndex, token, "docs/adr/README.md");
+}
+
+const cmsSystem = readRequired("docs/CMS_SYSTEM.md");
+for (const token of ["CMS System", "CMS Resource", "Content Type", "Field Group", "Workflow", "Permission Integration", "Audit Integration", "Import / Export", "Future Platform Split", "Product", "Industry", "Article", "Partner", "FAQ", "Download", "Navigation", "SEO Metadata", "Schema Metadata", "Redirect", "Setting", "Draft", "Internal Review", "Content Approved", "SEO Approved", "Release Approved", "Published", "Indexed", "Archived", "Media Management", "Lead Center", "SEO Runtime", "GEO Runtime", "Audit Center", "Backup & Restore"]) {
+  assertIncludes(cmsSystem, token, "docs/CMS_SYSTEM.md");
 }
 
 const authSystem = readRequired("docs/AUTH_SYSTEM.md");
@@ -284,7 +291,7 @@ for (const token of ["Organization", "Product", "Article", "FAQPage", "Breadcrum
 
 for (const file of syncFiles) {
   const content = readRequired(file);
-  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "AUTH_SYSTEM.md", "adr/README.md", "ADR-0009", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
+  for (const token of ["WEBSITE_ARCHITECTURE.md", "WEBSITE_SEO_BLUEPRINT.md", "CONTENT_SYSTEM.md", "M2_STRATEGY.md", "PAGE_SYSTEM.md", "METADATA_SCHEMA.md", "SEO_SCHEMA_LAYER.md", "ENTITY_SYSTEM.md", "PRODUCT_SYSTEM.md", "PRODUCT_CONTENT_MODEL.md", "PRODUCT_SCHEMA.md", "PRODUCT_SEO_TEMPLATE.md", "PRODUCT_PUBLISHING_CHECKLIST.md", "PRODUCT_CONTENT_READINESS.md", "MILESTONE_MAPPING.md", "AUTH_SYSTEM.md", "CMS_SYSTEM.md", "adr/README.md", "ADR-0007", "ADR-0009", "PARTNER_FUNNEL.md", "PARTNER_CONTENT_MODEL.md", "PARTNER_SEO_TEMPLATE.md", "LEAD_SCHEMA.md"]) {
     assertIncludes(content, token, file);
   }
 }

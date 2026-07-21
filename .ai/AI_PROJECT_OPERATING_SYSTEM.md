@@ -178,7 +178,9 @@ GEO 面向国内 AI 搜索：
 - `docs/PRODUCT_PUBLISHING_CHECKLIST.md`
 - `docs/PRODUCT_CONTENT_READINESS.md`
 - `docs/MILESTONE_MAPPING.md`
+- `docs/CMS_SYSTEM.md`
 - `docs/adr/README.md`
+- `docs/adr/ADR-0007-cms-architecture.md`
 - `docs/adr/ADR-0008-database-model.md`
 - `docs/adr/ADR-0009-authentication-and-authorization.md`
 - `docs/DATABASE.md`
@@ -207,7 +209,9 @@ GEO 面向国内 AI 搜索：
 - `docs/PRODUCT_PUBLISHING_CHECKLIST.md` 是首个 Product Detail 公开发布、SEO/GEO 验收和后续索引状态机来源。
 - `docs/PRODUCT_CONTENT_READINESS.md` 是首个真实 Product Entity 的内容资产准备、资料确认与图片授权来源。
 - `docs/MILESTONE_MAPPING.md` 是冻结 M2 历史与 M3 运行能力迁移边界来源。
+- `docs/CMS_SYSTEM.md` 是 M3.2 CMS Architecture 的内容管理资源、字段分层、工作流、权限接入、审计接入和导入导出边界来源。
 - `docs/adr/README.md` 是长期架构决策记录入口。
+- `docs/adr/ADR-0007-cms-architecture.md` 是 M3.2 CMS Architecture 的已接受架构决策来源。
 - `docs/adr/ADR-0008-database-model.md` 是 M3.0 Database Model 的已接受架构决策来源。
 - `docs/adr/ADR-0009-authentication-and-authorization.md` 是 M3.1 Authentication & Authorization 的已接受架构决策来源。
 - `docs/DATABASE.md` 是 M3.0 Database Architecture 的数据模型、ER 图、约束、生命周期、版本、软删除、多语言和审计字段来源。
@@ -259,6 +263,7 @@ GEO 面向国内 AI 搜索：
 - `docs/API.md`
 - `docs/DATABASE.md`
 - `docs/AUTH_SYSTEM.md`
+- `docs/CMS_SYSTEM.md`
 - `docs/CONTENT.md`
 - `docs/CONTENT_SYSTEM.md`
 - `docs/WEBSITE_ARCHITECTURE.md`
@@ -338,4 +343,4 @@ AI 不仅负责开发，还负责长期维护 GitHub Repository。
 
 当前阶段：M3 Website Platform Foundation。M2 Channel Growth Foundation 已冻结为 v1.0；除架构缺陷或严重 Bug 外，不再新增治理规则或 Publishing 子阶段。
 
-当前目标：推进 M3 Website Platform Foundation。M3.0 Database Architecture 与 M3.1 Authentication & Authorization 已完成设计冻结，后续转向 M3.2 CMS Foundation。M2.4.5.3.5 First Published Product Acceptance 作为首个真实产品的跨阶段发布质量门禁保留，但不再扩展 M2 治理或 Publishing 子阶段。M3 实现继续沿用 Entity -> Metadata -> Schema -> CMS -> Frontend -> SEO -> GEO 的统一模型。
+当前目标：推进 M3 Website Platform Foundation。M3.0 Database Architecture、M3.1 Authentication & Authorization 与 M3.2 CMS Architecture 已完成设计冻结，后续转向 M3.3 Media Management。M2.4.5.3.5 First Published Product Acceptance 作为首个真实产品的跨阶段发布质量门禁保留，但不再扩展 M2 治理或 Publishing 子阶段。M3 实现继续沿用 Entity -> Metadata -> Schema -> CMS -> Frontend -> SEO -> GEO 的统一模型。
