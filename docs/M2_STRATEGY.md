@@ -1,5 +1,7 @@
 # M2 Strategy
 
+历史状态：本文件记录 M2 Channel Growth Foundation 的已完成策略。M2 已冻结为 v1.0；后续运行能力迁移至 M3 Website Platform Foundation，见 `docs/MILESTONE_MAPPING.md`。不改写本文件中保留的历史阶段编号。
+
 当前 Product Detail 执行顺序：Detail Renderer Template -> Metadata / Schema Integration -> First Published Product Entity -> SEO/GEO Validation -> Related Product。LS70 不属于 Product Entity，不能用于详情页面验证。
 
 文档职责：定义 M2 阶段方向，避免直接进入普通网站页面开发。
