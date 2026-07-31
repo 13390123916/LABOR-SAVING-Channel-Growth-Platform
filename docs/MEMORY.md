@@ -1,5 +1,11 @@
 # Memory
 
+## M4 Platform Runtime Decisions
+
+- 2026-07-31 completed M4.0.4.4 Runtime Execution Governance Documentation for the blocked Database Migration Execution recovery chain: reports now cover M4.0.4.4 through M4.0.4.4.5. Decision: M4.0.4.4 Database Migration Execution remains BLOCKED because the target database `labor_saving_channel_growth` is not provisioned in the active MySQL instance, the authorized `labor_saving` login path is unavailable, and a verified backup artifact cannot be generated. No migration execution, database changes, Prisma schema change, migration SQL change, ADR change, or frozen architecture change was performed.
+- 2026-07-29 completed M4.0.4.3 Database Migration Execution Readiness Re-Review: approved order remains `0002_database_core_materialization -> 0003_auth_persistence_materialization`; validation gate, backup governance, rollback governance, failure handling, permission boundary, DATABASE_URL safety, environment separation, and migration operator checklist all passed. Decision: READY for controlled execution approval, with no migration execution performed.
+- 2026-07-29 completed M4.0.4.3.1 Database Migration Execution Governance Fix: `database-runtime-validation.mjs` is now stage-aware for M4.0.1 bootstrap, 0002 database core materialization, and 0003 auth persistence materialization; migration execution requires explicit `DATABASE_URL`; fallback database URL loading is forbidden for acceptance; backup, rollback, permission boundary, and environment safety governance are recorded in `docs/runtime/M4.0.4.3.1_DATABASE_MIGRATION_EXECUTION_GOVERNANCE_FIX.md` and `docs/DEVELOPMENT_ENVIRONMENT.md`. No migration execution, reset, seed, ADR change, or frozen architecture change was performed.
+
 ## M3 Website Platform Foundation 决策
 
 - 2026-07-21 冻结 M2 Channel Growth Foundation v1.0：Entity、Product、Metadata、SEO Schema、Product Rendering 与 Publishing Workflow 后续复用，不再新增治理规则或 Publishing 子阶段，除非发现架构缺陷或严重 Bug。

@@ -11,11 +11,17 @@
 - [x] M3 Governance Enhancement：固化 Platform Module Intake Gate、Platform Architecture Single Source of Truth 和 Platform Module 归属门禁
 - [x] 固化 Governance Note：M3 Governance Enhancement 属于治理演进，不属于新的 Platform Capability，不改变已冻结 Milestone 编号；M3 最终路线固定后不允许重新排列 Milestone
 - [x] 固化 Platform Evolution Principle 与 Platform Stability Rules：Freeze First, Runtime Later；Runtime Follows Architecture；No Runtime-Driven Architecture Changes；M4 统一命名为 Platform Runtime
-- [ ] M3.6 Dealer Center Architecture：冻结 Dealer Entity、Dealer Type、区域关系、招商流程、Lead 分配、CRM 流转、权限边界和生命周期
-- [ ] M3.7 Analytics Architecture：冻结 Lead Attribution、Source、UTM、SEO Attribution、Dealer Attribution、Conversion Event 和 CN First 分析边界
-- [ ] M3.8 Security / Permission Architecture：冻结 RBAC 复核、Resource / Action / Permission、Audit、隐私、导出、高风险动作和运行时安全边界
-- [ ] M3.9 Platform Freeze Review：复核 Platform Module Registry、模块边界、ADR、Runtime 边界、文档漂移和 M4 Readiness
-- [ ] M4 Platform Runtime：统一实现 Prisma、Migration、Database、RBAC、CMS、Media、Lead、SEO Runtime、API 和 Admin UI
+- [x] M3.6 Dealer Center Architecture：冻结 Dealer Entity、Dealer Type、区域关系、招商流程、Lead 分配、CRM 流转、权限边界和生命周期
+- [x] M3.7 Analytics Architecture：冻结 Lead Attribution、Source、UTM、SEO Attribution、Dealer Attribution、Conversion Event 和 CN First 分析边界
+- [x] M3.8 Security / Permission Architecture：冻结 RBAC 复核、Resource / Action / Permission、Audit、隐私、导出、高风险动作和运行时安全边界
+- [x] M3.9 Platform Freeze Review：复核 Platform Module Registry、模块边界、ADR、Runtime 边界、文档漂移和 M4 Readiness
+- [ ] M4 Platform Runtime：进行中；统一实现 Prisma、Migration、Database、RBAC、CMS、Media、Lead、Platform Assets、Dealer、Analytics、SEO Runtime、API 和 Admin UI
+- [x] M4.0 Database Runtime Foundation：完成 Database Runtime Bootstrap、Database Repository Runtime Foundation、Database Runtime Acceptance 和 Development Environment Foundation
+- [x] M4.0.4.3.1 Database Migration Execution Governance Fix: stage-aware validation gate, backup governance, rollback governance, permission boundary, and explicit DATABASE_URL execution safety completed.
+- [x] M4.0.4.3 Database Migration Execution Readiness Re-Review: READY for controlled execution approval; no migration execution performed.
+- [x] M4.0.4.4 Database Migration Execution Governance Documentation: BLOCKED evidence chain completed through M4.0.4.4.5; target database is not provisioned, authorized login is unavailable, and backup artifact is unavailable. No migration execution or database changes performed.
+- [x] M4.1.0 Authentication Runtime Intake Gate：建立 Authentication Runtime 实施入口基线，不实现 Login、Session、RBAC、Permission Middleware、Admin UI、API 或 Prisma Schema 变更
+- [ ] M4.1.1 Auth Repository Runtime：READY，等待进入下一阶段执行
 - [x] 建立 `docs/adr/README.md` 与 ADR-0001：记录 M2 冻结和 M3 平台迁移决定
 - [x] 建立 ADR-0008 与 `docs/DATABASE.md`：冻结 M3.0 Database Model，不直接写数据库代码
 - [x] 建立 ADR-0009 与 `docs/AUTH_SYSTEM.md`：冻结 M3.1 Authentication & Authorization，不直接写登录或后台代码
@@ -23,6 +29,9 @@
 - [x] 建立 ADR-0010、`docs/MEDIA_SYSTEM.md` 与 `docs/PLATFORM_ARCHITECTURE.md`：冻结 M3.3 Media Domain，并补齐平台能力总览
 - [x] 建立 ADR-0011 与 `docs/LEAD_CENTER.md`：冻结 M3.4 Lead Center Architecture，不直接写表单提交、CRM 后台、ORM、迁移、通知、导出或 Admin UI
 - [x] 建立 ADR-0012 与 `docs/PLATFORM_ASSETS.md`：冻结 M3.5 Platform Assets Architecture，不直接写 API、Database Migration、后台、CMS、Runtime 或 M4 实现
+- [x] 建立 ADR-0013 与 `docs/DEALER_CENTER.md`：冻结 M3.6 Dealer Center Architecture，不直接写 API、Database Migration、ORM、后台 UI、CRM、Analytics Runtime、Dealer Runtime 或 M4 实现
+- [x] 建立 ADR-0014 与 `docs/ANALYTICS.md`：冻结 M3.7 Analytics Architecture，不直接写 API、ORM、Migration、Database、Runtime Event、Dashboard、BI、Reporting、Chart、Admin UI、Analytics Runtime 或 Runtime Code
+- [x] 建立 ADR-0015 与 `docs/SECURITY_PERMISSION.md`：冻结 M3.8 Security / Permission Architecture，不直接写 API、ORM、Migration、Database、Permission Table、Login、Session、JWT、OAuth 或 Runtime Code
 - [x] 建立 `docs/MILESTONE_MAPPING.md`：保留 M2.6-M2.8 历史编号并映射至 M3
 - [x] 固化 Platform Module Intake Gate：后续所有 Platform Module 先判断 Platform Capability、Platform Module 归属和是否纳入 `docs/PLATFORM_ARCHITECTURE.md` 统一管理，避免模块重复定义和文档漂移
 
@@ -113,9 +122,9 @@
 - [ ] M2.4.5.3 Product Detail：待完成首个已发布实体与 SEO/GEO 验证；LS70 不得正式收录
 - [ ] M2.4.5.4 Related Product：通过 Entity ID 建立产品关联与 Topic Cluster 渲染
 - [ ] M2.5 Industry Page Development：开发 `/applications/`
-- [ ] M2.6 Lead Capture Integration：历史规划，已映射至 M3.4 Lead Center 与 M3.9 Deployment & Analytics
+- [ ] M2.6 Lead Capture Integration：历史规划，已映射至 M3.4 Lead Center、M3.6 Dealer Center 与 M3.7 Analytics
 - [ ] M2.7 Admin Maintainability：历史规划，已映射至 M3.1、M3.2 与 M3.3
-- [ ] M2.8 Batch Export：历史规划，已映射至 M3.7 Audit Center 与 M3.8 Backup & Restore
+- [ ] M2.8 Batch Export：历史规划，已映射至 M3.7 Analytics、M3.8 Security / Permission 与 M3.9 Platform Freeze Review
 - [ ] M2 Website Page Development 后续页面扩展
 - [ ] 规划线索表单字段
 - [ ] 规划输入校验与风控

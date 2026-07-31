@@ -1,5 +1,135 @@
 # Changelog
 
+## [0.3.17] - 2026-07-31
+
+### Added
+
+- Added `docs/runtime/M4.0.4.4_DATABASE_MIGRATION_EXECUTION.md` as the controlled migration execution stop report.
+- Added `docs/runtime/M4.0.4.4.1_DATABASE_MIGRATION_EXECUTION_ENVIRONMENT_PREPARATION.md` for execution environment preparation evidence.
+- Added `docs/runtime/M4.0.4.4.2_DATABASE_RUNTIME_ENVIRONMENT_RECOVERY.md` for database runtime recovery evidence.
+- Added `docs/runtime/M4.0.4.4.3_MYSQL_RUNTIME_SERVICE_RECOVERY.md` for MySQL service recovery evidence.
+- Added `docs/runtime/M4.0.4.4.4_MYSQL_INSTANCE_IDENTITY_AUTHENTICATION_RECOVERY.md` for instance identity and authentication recovery evidence.
+- Added `docs/runtime/M4.0.4.4.5_MYSQL_RUNTIME_DATABASE_PROVISIONING_ACCESS_RECOVERY.md` for target database provisioning and access recovery evidence.
+
+### Notes
+
+- M4.0.4.4 Database Migration Execution remains BLOCKED because the target database is not provisioned, the authorized login path is unavailable, and no verified backup artifact can be generated.
+- No Prisma migration execution, migrate dev, database reset, seed, database permission change, Prisma schema change, migration SQL change, ADR change, or frozen architecture change was performed.
+
+## [0.3.16] - 2026-07-29
+
+### Added
+
+- Added `docs/runtime/M4.0.4.3_DATABASE_MIGRATION_EXECUTION_READINESS_RE_REVIEW.md` for the Database Migration Execution Readiness re-review.
+
+### Changed
+
+- Added the re-review report to the non-executing database runtime validation gate.
+- Tightened the local operator bootstrap path to set explicit `DATABASE_URL` before `npm run db:acceptance`.
+
+### Notes
+
+- M4.0.4.3 Database Migration Execution Readiness is READY for controlled approval; no migration execution was performed.
+
+## [0.3.15] - 2026-07-29
+
+### Added
+
+- Added `docs/runtime/M4.0.4.3.1_DATABASE_MIGRATION_EXECUTION_GOVERNANCE_FIX.md` as the migration execution governance acceptance artifact.
+
+### Changed
+
+- Upgraded `website/scripts/database-runtime-validation.mjs` to a stage-aware Database Migration Validation Gate for M4.0.1, 0002, and 0003.
+- Removed fallback `DATABASE_URL` behavior from migration execution configuration and acceptance.
+- Documented backup governance, rollback governance, permission boundaries, and explicit environment safety in `docs/DEVELOPMENT_ENVIRONMENT.md`.
+
+### Notes
+
+- No Prisma migration execution, migrate dev, database reset, seed, ADR change, frozen architecture change, API, Admin UI, or runtime repository was introduced.
+
+## [0.3.14] - 2026-07-22
+
+### Changed
+
+- 同步 Repository Manifest、Roadmap、TODO 与 M4.1 Intake 状态文档，标记 M3 Platform Foundation 完成、M4 Platform Runtime 进行中、M4.0 Database Runtime Foundation 完成 / PASS。
+- 标记 M4.1 Authentication Runtime 进行中、M4.1.0 Authentication Runtime Intake Gate 完成 / PASS，并将 M4.1.1 Auth Repository Runtime 标记为 READY。
+
+### Notes
+
+- 本次仅做 M4.0 Runtime Status Synchronization，不修改 Architecture、ADR、Module Boundary、Prisma Schema、API、Admin UI 或 Authentication Runtime 代码。
+
+## [0.3.13] - 2026-07-22
+
+### Changed
+
+- 同步 Repository Manifest、AI Operating System、Platform Architecture、Roadmap、TODO 与 Auth System 的阶段状态和历史引用，标记 M3.9 Platform Freeze Review 完成。
+
+### Notes
+
+- 本次仅做 Repository Governance Synchronization，不新增 Architecture、Module、ADR 或 Runtime。
+
+## [0.3.12] - 2026-07-22
+
+### Added
+
+- 新增 `docs/SECURITY_PERMISSION.md`，冻结 M3.8 Security / Permission Architecture 的 Position、Responsibility、Security Objects、Security Flow、Permission Boundary、Governance Boundary 和 References。
+- 新增 ADR-0015 Security / Permission Architecture，确认 Security / Permission 是平台级 Governance Capability，不是 Authentication、Login 或 Runtime Security。
+
+### Changed
+
+- 同步 Platform Architecture、Roadmap、TODO、ADR Index 与治理校验清单，标记 M3.8 Security / Permission Architecture 进入 Documentation Freeze。
+
+### Notes
+
+- 本次仍属于 Architecture Freeze，不新增 API、ORM、Migration、Database、RBAC 数据模型、Permission Table、Login、Session、JWT、OAuth 或 Runtime Code。
+
+## [0.3.11] - 2026-07-22
+
+### Added
+
+- 新增 `docs/ANALYTICS.md`，冻结 M3.7 Analytics Architecture 的 Position、Responsibility、Measurement Objects、Measurement Flow、Business Metrics、Governance Boundary、Runtime Boundary 和 References。
+- 新增 ADR-0014 Analytics Architecture，确认 Analytics 是平台级 Measurement Capability，不是 BI、Dashboard、Reporting、Chart 或 Runtime Event System。
+
+### Changed
+
+- 同步 Platform Architecture、Roadmap、TODO、ADR Index 与治理校验清单，标记 M3.7 Analytics Architecture 进入 Documentation Freeze。
+
+### Notes
+
+- 本次仍属于 Architecture Freeze，不新增 API、ORM、Migration、Database、Runtime Event、Dashboard、BI、Reporting、Chart、Admin UI、Analytics Runtime 或 Runtime Code。
+
+## [0.3.10] - 2026-07-22
+
+### Added
+
+- 新增 `docs/DEALER_CENTER.md`，冻结 M3.6 Dealer Center Architecture 的 Dealer Position、Dealer Responsibility、Dealer Lifecycle、Dealer Relationship、Dealer Governance Boundary、Compliance 和 Runtime Boundary。
+- 新增 ADR-0013 Dealer Center Architecture，确认 Dealer 是渠道招商核心 Business Object，不是 Customer、User、Lead 或 CRM Record。
+
+### Changed
+
+- 同步 Platform Architecture、Roadmap、TODO、ADR Index 与治理校验清单，标记 M3.6 Dealer Center Architecture 进入 Documentation Freeze。
+
+### Notes
+
+- 本次仍属于 Architecture Freeze，不新增 API、Database Migration、ORM、后台 UI、CRM、Analytics Runtime、Dealer Runtime 或 M4 实现。
+- Dealer Center 不承诺收益、独家代理、区域授权、价格政策、自动签约或合同结果。
+
+## [0.3.9] - 2026-07-22
+
+### Added
+
+- 新增 `.ai/REPOSITORY_MANIFEST.md`，作为 AI 唯一 Repository Context Entry。
+- 建立 RCA v1 Context Ownership 与 Repository Context Loading Rule。
+
+### Changed
+
+- 更新 `.ai/AI_RULES.md` 与 `.ai/AI_PROJECT_OPERATING_SYSTEM.md`，要求 AI 先读 Repository Manifest，再按任务增量读取对应文档。
+- 将 RCA v1 纳入 `scripts/validate-website-governance.mjs` 校验，防止 Manifest-first 规则漂移。
+
+### Notes
+
+- 本次属于 Repository Governance Enhancement，不新增 Milestone，不修改已冻结 Platform Architecture，不新增 Runtime、API 或 Database。
+
 ## [0.3.8] - 2026-07-22
 
 ### Changed
