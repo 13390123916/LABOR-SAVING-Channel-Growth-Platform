@@ -4,6 +4,7 @@ import path from "node:path";
 const root = process.cwd();
 const governancePath = "docs/runtime/M4.0.5_RUNTIME_ENVIRONMENT_GOVERNANCE.md";
 const recordPath = "docs/runtime/M4.0.5_RUNTIME_AUTHORIZATION_RECORD_TEMPLATE.md";
+const schemaPath = "docs/runtime/M4.0.5_RUNTIME_AUTHORIZATION_RECORD.schema.json";
 const preflightPath = "website/scripts/runtime-execution-preflight.mjs";
 const packagePath = "website/package.json";
 const localBoundaryPaths = [
@@ -38,6 +39,7 @@ function requireTokens(content, tokens, label) {
 
 const governance = readRequired(governancePath);
 const record = readRequired(recordPath);
+const schema = readRequired(schemaPath);
 const preflight = readRequired(preflightPath);
 const packageJson = readRequired(packagePath);
 
@@ -59,6 +61,22 @@ requireTokens(
     "Structural validation PASS is not execution authorization"
   ],
   governancePath
+);
+
+requireTokens(
+  schema,
+  [
+    '"$schema": "https://json-schema.org/draft/2020-12/schema"',
+    '"record_id"',
+    '"approval_timestamp"',
+    '"approval_expiry"',
+    '"backup_verification"',
+    '"rollback_reference"',
+    '"validation_evidence"',
+    '"decision"',
+    "READY_FOR_CONTROLLED_EXECUTION"
+  ],
+  schemaPath
 );
 
 requireTokens(

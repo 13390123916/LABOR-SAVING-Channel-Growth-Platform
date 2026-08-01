@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const websiteRoot = path.resolve(scriptDir, "..");
 const repositoryRoot = path.resolve(websiteRoot, "..");
+const authorizationSchemaPath = path.join(repositoryRoot, "docs/runtime/M4.0.5_RUNTIME_AUTHORIZATION_RECORD.schema.json");
 const allowedModes = new Set(["structural", "live-validation", "controlled-execution"]);
 const allowedEnvironments = new Set(["local", "staging", "production"]);
 const allowedSources = new Set(["local-env", "process", "secret-store"]);
@@ -40,6 +41,36 @@ function requireEvidenceValue(record, name) {
     fail(`authorization evidence field ${name} is required.`);
   }
   return value;
+}
+
+function requireTimestamp(record, name, { future = false } = {}) {
+  const value = requireEvidenceValue(record, name);
+  const timestamp = Date.parse(String(value));
+  if (!Number.isFinite(timestamp)) {
+    fail(`authorization evidence field ${name} must be an ISO-8601 date-time.`);
+  }
+  if (future && timestamp <= Date.now()) {
+    fail(`authorization evidence field ${name} must be in the future.`);
+  }
+  return timestamp;
+}
+
+function requireNonEmptyArray(record, name) {
+  const value = record[name];
+  if (!Array.isArray(value) || value.length === 0) {
+    fail(`authorization evidence field ${name} must be a non-empty array.`);
+  }
+  return value;
+}
+
+function validateValidationEvidence(record) {
+  const validationEvidence = requireNonEmptyArray(record, "validation_evidence");
+  for (const item of validationEvidence) {
+    if (typeof item !== "object" || item === null || !item.check || !item.reference || !["PASS", "BLOCKED"].includes(item.status)) {
+      fail("each validation_evidence item requires check, reference, and PASS/BLOCKED status.");
+    }
+    requireTimestamp(item, "recorded_at");
+  }
 }
 
 function validateSecretSafety(content, label) {
@@ -117,6 +148,10 @@ function validateDatabaseUrl(binding, runtimeEnvironment) {
 }
 
 function loadAuthorizationEvidence(mode, runtimeEnvironment, binding) {
+  if (!existsSync(authorizationSchemaPath)) {
+    fail("authorization record schema is missing.");
+  }
+
   const recordPath = requireValue("RUNTIME_AUTHORIZATION_RECORD");
   const absolutePath = path.resolve(repositoryRoot, recordPath);
   if (!existsSync(absolutePath)) {
@@ -133,8 +168,18 @@ function loadAuthorizationEvidence(mode, runtimeEnvironment, binding) {
     fail("authorization evidence must be valid JSON.");
   }
 
-  for (const field of ["execution_scope", "runtime_environment", "target_id", "target_host", "target_port", "target_database", "database_url_source", "operator", "approval_reference", "decision"]) {
+  for (const field of ["record_id", "milestone", "execution_scope", "runtime_environment", "target_id", "target_host", "target_port", "target_database", "database_url_source", "operator", "approval_reference", "decision"]) {
     requireEvidenceValue(record, field);
+  }
+
+  if (record.milestone !== "M4.0.5") {
+    fail("authorization evidence milestone must be M4.0.5.");
+  }
+  requireTimestamp(record, "approval_timestamp");
+  const approvalExpiry = requireTimestamp(record, "approval_expiry", { future: true });
+  requireTimestamp(record, "decision_timestamp");
+  if (Date.parse(String(record.approval_timestamp)) >= approvalExpiry) {
+    fail("authorization evidence approval_expiry must be later than approval_timestamp.");
   }
 
   const expected = {
@@ -155,6 +200,7 @@ function loadAuthorizationEvidence(mode, runtimeEnvironment, binding) {
     if (record.execution_scope !== "live-readonly-validation" && record.execution_scope !== "controlled-migration") {
       fail("live validation requires live-readonly-validation or controlled-migration evidence scope.");
     }
+    validateValidationEvidence(record);
     return;
   }
 
@@ -166,6 +212,42 @@ function loadAuthorizationEvidence(mode, runtimeEnvironment, binding) {
   }
   for (const field of ["migration_set", "authorized_release_owner", "backup_artifact_name", "backup_storage_location", "backup_verification", "rollback_authority", "rollback_reference", "validation_evidence", "failure_stop_conditions"]) {
     requireEvidenceValue(record, field);
+  }
+  if (!Array.isArray(record.migration_set) || record.migration_set.length === 0) {
+    fail("authorization evidence migration_set must be a non-empty array.");
+  }
+
+  const backup = record.backup_verification;
+  if (typeof backup !== "object" || backup === null) {
+    fail("backup_verification must be an object.");
+  }
+  for (const field of ["status", "verified_at", "artifact_size_bytes", "artifact_sha256", "target_id"]) {
+    if (backup[field] === undefined || backup[field] === null || backup[field] === "") {
+      fail(`backup_verification.${field} is required.`);
+    }
+  }
+  if (backup.status !== "VERIFIED" || !Number.isInteger(backup.artifact_size_bytes) || backup.artifact_size_bytes < 1 || !/^[a-fA-F0-9]{64}$/.test(String(backup.artifact_sha256))) {
+    fail("backup_verification must contain VERIFIED status, non-zero size, and a SHA-256 digest.");
+  }
+  if (String(backup.target_id) !== binding.targetId) {
+    fail("backup_verification.target_id does not match the approved target binding.");
+  }
+  requireTimestamp(backup, "verified_at");
+
+  const rollback = record.rollback_reference;
+  if (typeof rollback !== "object" || rollback === null) {
+    fail("rollback_reference must be an object.");
+  }
+  for (const field of ["runbook_id", "partial_failure_plan", "restore_validation_reference"]) {
+    if (typeof rollback[field] !== "string" || rollback[field].trim() === "") {
+      fail(`rollback_reference.${field} is required.`);
+    }
+  }
+
+  validateValidationEvidence(record);
+  const stopConditions = requireNonEmptyArray(record, "failure_stop_conditions");
+  if (stopConditions.some((item) => typeof item !== "string" || item.trim() === "")) {
+    fail("failure_stop_conditions must contain non-empty strings.");
   }
 }
 

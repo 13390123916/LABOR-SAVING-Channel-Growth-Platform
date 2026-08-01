@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.labor-saving.cn/schemas/m4.0.5-runtime-authorization-record.schema.json",
+  "title": "M4.0.5 Runtime Authorization Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "milestone",
+    "execution_scope",
+    "runtime_environment",
+    "target_id",
+    "target_host",
+    "target_port",
+    "target_database",
+    "database_url_source",
+    "database_url_fingerprint",
+    "operator",
+    "approval_reference",
+    "approval_timestamp",
+    "approval_expiry",
+    "decision",
+    "decision_timestamp"
+  ],
+  "properties": {
+    "record_id": { "type": "string", "minLength": 1 },
+    "milestone": { "const": "M4.0.5" },
+    "execution_scope": {
+      "enum": ["structural-validation", "live-readonly-validation", "controlled-migration"]
+    },
+    "runtime_environment": { "enum": ["local", "staging", "production"] },
+    "target_id": { "type": "string", "minLength": 1 },
+    "target_host": { "type": "string", "minLength": 1 },
+    "target_port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+    "target_database": { "type": "string", "pattern": "^[A-Za-z0-9_$-]+$" },
+    "database_url_source": { "enum": ["local-env", "process", "secret-store"] },
+    "database_url_fingerprint": {
+      "type": "string",
+      "minLength": 1,
+      "not": { "pattern": "mysql://|://[^:]+:[^@]+@" }
+    },
+    "migration_set": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "operator": { "type": "string", "minLength": 1 },
+    "approval_reference": { "type": "string", "minLength": 1 },
+    "authorized_release_owner": { "type": "string", "minLength": 1 },
+    "approval_timestamp": { "type": "string", "format": "date-time" },
+    "approval_expiry": { "type": "string", "format": "date-time" },
+    "backup_artifact_name": { "type": "string", "minLength": 1 },
+    "backup_storage_location": { "type": "string", "minLength": 1 },
+    "backup_verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "verified_at", "artifact_size_bytes", "artifact_sha256", "target_id"],
+      "properties": {
+        "status": { "const": "VERIFIED" },
+        "verified_at": { "type": "string", "format": "date-time" },
+        "artifact_size_bytes": { "type": "integer", "minimum": 1 },
+        "artifact_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "target_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "rollback_authority": { "type": "string", "minLength": 1 },
+    "rollback_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runbook_id", "partial_failure_plan", "restore_validation_reference"],
+      "properties": {
+        "runbook_id": { "type": "string", "minLength": 1 },
+        "partial_failure_plan": { "type": "string", "minLength": 1 },
+        "restore_validation_reference": { "type": "string", "minLength": 1 }
+      }
+    },
+    "validation_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check", "reference", "status", "recorded_at"],
+        "properties": {
+          "check": { "type": "string", "minLength": 1 },
+          "reference": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["PASS", "BLOCKED"] },
+          "recorded_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "failure_stop_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "decision": { "enum": ["BLOCKED", "READY_FOR_CONTROLLED_EXECUTION", "EXECUTED"] },
+    "decision_timestamp": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "execution_scope": { "const": "controlled-migration" } }
+      },
+      "then": {
+        "required": [
+          "migration_set",
+          "authorized_release_owner",
+          "backup_artifact_name",
+          "backup_storage_location",
+          "backup_verification",
+          "rollback_authority",
+          "rollback_reference",
+          "validation_evidence",
+          "failure_stop_conditions"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "execution_scope": {
+            "enum": ["live-readonly-validation", "controlled-migration"]
+          }
+        }
+      },
+      "then": {
+        "required": ["validation_evidence"]
+      }
+    }
+  ]
+}
