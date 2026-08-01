@@ -1,0 +1,695 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Entity {
+  id           BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId     String    @unique @map("entity_id") @db.VarChar(32)
+  entityType   String    @map("entity_type") @db.VarChar(64)
+  slug         String    @db.VarChar(191)
+  name         String    @db.VarChar(191)
+  summary      String?   @db.Text
+  status       String    @db.VarChar(64)
+  sourceStatus String?   @map("source_status") @db.VarChar(64)
+  version      Int       @default(1)
+  locale       String    @default("zh-CN") @db.VarChar(16)
+  metadataId   BigInt?   @map("metadata_id") @db.UnsignedBigInt
+  schemaId     BigInt?   @map("schema_id") @db.UnsignedBigInt
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  publishedAt  DateTime? @map("published_at")
+  deletedAt    DateTime? @map("deleted_at")
+  createdBy    BigInt?   @map("created_by") @db.UnsignedBigInt
+  updatedBy    BigInt?   @map("updated_by") @db.UnsignedBigInt
+  publishedBy  BigInt?   @map("published_by") @db.UnsignedBigInt
+
+  product              Product?
+  industry             Industry?
+  partner              Partner?
+  article              Article?
+  faq                  Faq?
+  download             Download?
+  media                Media?
+  navigationItems      Navigation[]
+  seoMetadata          SeoMetadata[]
+  schemaMetadata       SchemaMetadata[]
+  sourceRelations      EntityRelation[] @relation("EntityRelationSource")
+  targetRelations      EntityRelation[] @relation("EntityRelationTarget")
+  sourceMediaRelations EntityMedia[]    @relation("EntityMediaSource")
+  targetMediaRelations EntityMedia[]    @relation("EntityMediaTarget")
+  sourceFaqRelations   EntityFaq[]      @relation("EntityFaqSource")
+  targetFaqRelations   EntityFaq[]      @relation("EntityFaqTarget")
+  tagRelations         EntityTag[]
+  auditLogs            AuditLog[]
+
+  @@unique([entityType, slug, locale])
+  @@index([status, deletedAt])
+  @@map("entities")
+}
+
+model Category {
+  id           BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  categoryType String    @map("category_type") @db.VarChar(64)
+  parentId     BigInt?   @map("parent_id") @db.UnsignedBigInt
+  slug         String    @db.VarChar(191)
+  name         String    @db.VarChar(191)
+  description  String?   @db.Text
+  locale       String    @default("zh-CN") @db.VarChar(16)
+  displayOrder Int       @default(0) @map("display_order")
+  status       String    @db.VarChar(64)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  deletedAt    DateTime? @map("deleted_at")
+
+  parent    Category?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children  Category[] @relation("CategoryTree")
+  products  Product[]
+  articles  Article[]
+  downloads Download[]
+
+  @@unique([categoryType, slug, locale])
+  @@index([parentId])
+  @@index([status, deletedAt])
+  @@map("categories")
+}
+
+model Product {
+  id                 BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId           String    @unique @map("entity_id") @db.VarChar(32)
+  categoryId         BigInt    @map("category_id") @db.UnsignedBigInt
+  productSlug        String    @map("product_slug") @db.VarChar(191)
+  productName        String    @map("product_name") @db.VarChar(191)
+  brand              String?   @db.VarChar(191)
+  shortDescription   String?   @map("short_description") @db.Text
+  targetUsers        Json?     @map("target_users")
+  applicationSummary String?   @map("application_summary") @db.Text
+  leadType           String?   @map("lead_type") @db.VarChar(64)
+  cta                String?   @db.VarChar(191)
+  detailStatus       String    @map("detail_status") @db.VarChar(64)
+  schemaEligible     Boolean   @default(false) @map("schema_eligible")
+  contentValidated   Boolean   @default(false) @map("content_validated")
+  releaseApproved    Boolean   @default(false) @map("release_approved")
+  status             String    @db.VarChar(64)
+  version            Int       @default(1)
+  locale             String    @default("zh-CN") @db.VarChar(16)
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+  publishedAt        DateTime? @map("published_at")
+  deletedAt          DateTime? @map("deleted_at")
+
+  entity            Entity            @relation(fields: [entityId], references: [entityId])
+  category          Category          @relation(fields: [categoryId], references: [id])
+  industryRelations ProductIndustry[] @relation("ProductIndustrySource")
+
+  @@unique([categoryId, productSlug, locale])
+  @@index([status, detailStatus, deletedAt])
+  @@map("products")
+}
+
+model Industry {
+  id                       BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId                 String    @unique @map("entity_id") @db.VarChar(32)
+  slug                     String    @db.VarChar(191)
+  name                     String    @db.VarChar(191)
+  scenarioSummary          String?   @map("scenario_summary") @db.Text
+  commonProblems           Json?     @map("common_problems")
+  implementationConditions String?   @map("implementation_conditions") @db.Text
+  leadType                 String?   @map("lead_type") @db.VarChar(64)
+  status                   String    @db.VarChar(64)
+  version                  Int       @default(1)
+  locale                   String    @default("zh-CN") @db.VarChar(16)
+  createdAt                DateTime  @default(now()) @map("created_at")
+  updatedAt                DateTime  @updatedAt @map("updated_at")
+  publishedAt              DateTime? @map("published_at")
+  deletedAt                DateTime? @map("deleted_at")
+
+  entity           Entity            @relation(fields: [entityId], references: [entityId])
+  productRelations ProductIndustry[] @relation("ProductIndustryTarget")
+
+  @@unique([slug, locale])
+  @@index([status, deletedAt])
+  @@map("industries")
+}
+
+model Partner {
+  id          BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId    String    @unique @map("entity_id") @db.VarChar(32)
+  slug        String    @db.VarChar(191)
+  programName String    @map("program_name") @db.VarChar(191)
+  positioning String?   @db.Text
+  targetRoles Json?     @map("target_roles")
+  leadType    String?   @map("lead_type") @db.VarChar(64)
+  cta         String?   @db.VarChar(191)
+  status      String    @db.VarChar(64)
+  version     Int       @default(1)
+  locale      String    @default("zh-CN") @db.VarChar(16)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  publishedAt DateTime? @map("published_at")
+  deletedAt   DateTime? @map("deleted_at")
+
+  entity Entity @relation(fields: [entityId], references: [entityId])
+
+  @@unique([slug, locale])
+  @@index([status, deletedAt])
+  @@map("partners")
+}
+
+model Lead {
+  id                  BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  leadNo              String    @unique @map("lead_no") @db.VarChar(64)
+  leadType            String    @map("lead_type") @db.VarChar(64)
+  companyName         String?   @map("company_name") @db.VarChar(191)
+  contactName         String?   @map("contact_name") @db.VarChar(191)
+  phone               String?   @db.VarChar(64)
+  region              String?   @db.VarChar(191)
+  industry            String?   @db.VarChar(191)
+  mainProducts        String?   @map("main_products") @db.Text
+  customerResources   String?   @map("customer_resources") @db.Text
+  cooperationIntent   String?   @map("cooperation_intent") @db.Text
+  interestedProduct   String?   @map("interested_product") @db.VarChar(191)
+  applicationScenario String?   @map("application_scenario") @db.Text
+  projectStage        String?   @map("project_stage") @db.VarChar(64)
+  sourceChannel       String?   @map("source_channel") @db.VarChar(64)
+  sourcePage          String?   @map("source_page") @db.VarChar(191)
+  sourceCampaign      String?   @map("source_campaign") @db.VarChar(191)
+  status              String    @db.VarChar(64)
+  assignedTo          BigInt?   @map("assigned_to") @db.UnsignedBigInt
+  contactedAt         DateTime? @map("contacted_at")
+  qualifiedAt         DateTime? @map("qualified_at")
+  closedAt            DateTime? @map("closed_at")
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+
+  assignee User? @relation("LeadAssignee", fields: [assignedTo], references: [id])
+
+  @@index([leadType, status])
+  @@index([assignedTo])
+  @@map("leads")
+}
+
+model Media {
+  id               BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId         String    @unique @map("entity_id") @db.VarChar(32)
+  assetType        String    @map("asset_type") @db.VarChar(64)
+  assetPath        String    @unique @map("asset_path") @db.VarChar(512)
+  originalFilename String?   @map("original_filename") @db.VarChar(255)
+  mimeType         String?   @map("mime_type") @db.VarChar(128)
+  fileSize         BigInt?   @map("file_size") @db.UnsignedBigInt
+  altText          String?   @map("alt_text") @db.VarChar(255)
+  caption          String?   @db.Text
+  sourceStatus     String?   @map("source_status") @db.VarChar(64)
+  licenseStatus    String?   @map("license_status") @db.VarChar(64)
+  usageScope       String?   @map("usage_scope") @db.VarChar(191)
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+  deletedAt        DateTime? @map("deleted_at")
+
+  entity              Entity        @relation(fields: [entityId], references: [entityId])
+  downloads           Download[]
+  seoMetadataOgImages SeoMetadata[]
+
+  @@index([licenseStatus, deletedAt])
+  @@map("media")
+}
+
+model Article {
+  id             BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId       String    @unique @map("entity_id") @db.VarChar(32)
+  categoryId     BigInt?   @map("category_id") @db.UnsignedBigInt
+  slug           String    @db.VarChar(191)
+  title          String    @db.VarChar(191)
+  summary        String?   @db.Text
+  content        String?   @db.LongText
+  contentType    String?   @map("content_type") @db.VarChar(64)
+  targetAudience String?   @map("target_audience") @db.VarChar(191)
+  locale         String    @default("zh-CN") @db.VarChar(16)
+  status         String    @db.VarChar(64)
+  version        Int       @default(1)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  publishedAt    DateTime? @map("published_at")
+  deletedAt      DateTime? @map("deleted_at")
+
+  entity       Entity       @relation(fields: [entityId], references: [entityId])
+  category     Category?    @relation(fields: [categoryId], references: [id])
+  tagRelations ArticleTag[]
+
+  @@unique([slug, locale])
+  @@index([categoryId])
+  @@index([status, deletedAt])
+  @@map("articles")
+}
+
+model Faq {
+  id           BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId     String    @unique @map("entity_id") @db.VarChar(32)
+  question     String    @db.Text
+  answer       String    @db.Text
+  questionHash String    @map("question_hash") @db.VarChar(128)
+  locale       String    @default("zh-CN") @db.VarChar(16)
+  status       String    @db.VarChar(64)
+  version      Int       @default(1)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  publishedAt  DateTime? @map("published_at")
+  deletedAt    DateTime? @map("deleted_at")
+
+  entity Entity @relation(fields: [entityId], references: [entityId])
+
+  @@unique([entityId, questionHash, locale])
+  @@index([status, deletedAt])
+  @@map("faqs")
+}
+
+model Download {
+  id            BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId      String    @unique @map("entity_id") @db.VarChar(32)
+  categoryId    BigInt?   @map("category_id") @db.UnsignedBigInt
+  slug          String    @db.VarChar(191)
+  title         String    @db.VarChar(191)
+  summary       String?   @db.Text
+  mediaId       BigInt?   @map("media_id") @db.UnsignedBigInt
+  publicAccess  Boolean   @default(false) @map("public_access")
+  licenseStatus String?   @map("license_status") @db.VarChar(64)
+  status        String    @db.VarChar(64)
+  version       Int       @default(1)
+  locale        String    @default("zh-CN") @db.VarChar(16)
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  publishedAt   DateTime? @map("published_at")
+  deletedAt     DateTime? @map("deleted_at")
+
+  entity   Entity    @relation(fields: [entityId], references: [entityId])
+  category Category? @relation(fields: [categoryId], references: [id])
+  media    Media?    @relation(fields: [mediaId], references: [id])
+
+  @@unique([slug, locale])
+  @@index([categoryId])
+  @@index([mediaId])
+  @@index([status, deletedAt])
+  @@map("downloads")
+}
+
+model Navigation {
+  id           BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  navGroup     String    @map("nav_group") @db.VarChar(64)
+  parentId     BigInt?   @map("parent_id") @db.UnsignedBigInt
+  slug         String    @db.VarChar(191)
+  label        String    @db.VarChar(191)
+  url          String?   @db.VarChar(512)
+  entityId     String?   @map("entity_id") @db.VarChar(32)
+  displayOrder Int       @default(0) @map("display_order")
+  isExternal   Boolean   @default(false) @map("is_external")
+  status       String    @db.VarChar(64)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  deletedAt    DateTime? @map("deleted_at")
+
+  parent   Navigation?  @relation("NavigationTree", fields: [parentId], references: [id])
+  children Navigation[] @relation("NavigationTree")
+  entity   Entity?      @relation(fields: [entityId], references: [entityId])
+
+  @@unique([navGroup, parentId, slug])
+  @@index([entityId])
+  @@index([status, deletedAt])
+  @@map("navigation")
+}
+
+model SeoMetadata {
+  id              BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId        String    @map("entity_id") @db.VarChar(32)
+  pageUrl         String    @map("page_url") @db.VarChar(512)
+  title           String    @db.VarChar(255)
+  description     String?   @db.Text
+  keywords        String?   @db.Text
+  canonicalUrl    String?   @map("canonical_url") @db.VarChar(512)
+  ogTitle         String?   @map("og_title") @db.VarChar(255)
+  ogDescription   String?   @map("og_description") @db.Text
+  ogImageId       BigInt?   @map("og_image_id") @db.UnsignedBigInt
+  breadcrumbJson  Json?     @map("breadcrumb_json")
+  locale          String    @default("zh-CN") @db.VarChar(16)
+  status          String    @db.VarChar(64)
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+  publishedAt     DateTime? @map("published_at")
+  deletedAt       DateTime? @map("deleted_at")
+  indexedAt       DateTime? @map("indexed_at")
+  lastSubmittedAt DateTime? @map("last_submitted_at")
+
+  entity  Entity @relation(fields: [entityId], references: [entityId])
+  ogImage Media? @relation(fields: [ogImageId], references: [id])
+
+  @@unique([entityId, pageUrl, locale])
+  @@index([ogImageId])
+  @@index([status, deletedAt])
+  @@map("seo_metadata")
+}
+
+model SchemaMetadata {
+  id              BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId        String    @map("entity_id") @db.VarChar(32)
+  pageUrl         String?   @map("page_url") @db.VarChar(512)
+  schemaType      String    @map("schema_type") @db.VarChar(64)
+  schemaJson      Json      @map("schema_json")
+  sourceDoc       String?   @map("source_doc") @db.VarChar(191)
+  sourceStatus    String?   @map("source_status") @db.VarChar(64)
+  locale          String    @default("zh-CN") @db.VarChar(16)
+  status          String    @db.VarChar(64)
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+  publishedAt     DateTime? @map("published_at")
+  deletedAt       DateTime? @map("deleted_at")
+  indexedAt       DateTime? @map("indexed_at")
+  lastSubmittedAt DateTime? @map("last_submitted_at")
+
+  entity Entity @relation(fields: [entityId], references: [entityId])
+
+  @@unique([entityId, schemaType, locale])
+  @@index([status, deletedAt])
+  @@map("schema_metadata")
+}
+
+model Tag {
+  id        BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  slug      String    @db.VarChar(191)
+  name      String    @db.VarChar(191)
+  tagType   String    @map("tag_type") @db.VarChar(64)
+  locale    String    @default("zh-CN") @db.VarChar(16)
+  status    String    @db.VarChar(64)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  entityRelations  EntityTag[]
+  articleRelations ArticleTag[]
+
+  @@unique([tagType, slug, locale])
+  @@index([status, deletedAt])
+  @@map("tags")
+}
+
+model Redirect {
+  id         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  sourceUrl  String    @unique @map("source_url") @db.VarChar(512)
+  targetUrl  String    @map("target_url") @db.VarChar(512)
+  statusCode Int       @map("status_code")
+  reason     String?   @db.Text
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  deletedAt  DateTime? @map("deleted_at")
+
+  @@map("redirects")
+}
+
+model EntityRelation {
+  id             BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  sourceEntityId String    @map("source_entity_id") @db.VarChar(32)
+  targetEntityId String    @map("target_entity_id") @db.VarChar(32)
+  relationType   String    @map("relation_type") @db.VarChar(64)
+  displayOrder   Int       @default(0) @map("display_order")
+  status         String    @db.VarChar(64)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  deletedAt      DateTime? @map("deleted_at")
+
+  sourceEntity Entity @relation("EntityRelationSource", fields: [sourceEntityId], references: [entityId])
+  targetEntity Entity @relation("EntityRelationTarget", fields: [targetEntityId], references: [entityId])
+
+  @@unique([sourceEntityId, targetEntityId, relationType])
+  @@index([targetEntityId])
+  @@index([status, deletedAt])
+  @@map("entity_relations")
+}
+
+model EntityMedia {
+  id             BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  sourceEntityId String    @map("source_entity_id") @db.VarChar(32)
+  targetEntityId String    @map("target_entity_id") @db.VarChar(32)
+  relationType   String    @map("relation_type") @db.VarChar(64)
+  displayOrder   Int       @default(0) @map("display_order")
+  status         String    @db.VarChar(64)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  deletedAt      DateTime? @map("deleted_at")
+
+  sourceEntity Entity @relation("EntityMediaSource", fields: [sourceEntityId], references: [entityId])
+  targetEntity Entity @relation("EntityMediaTarget", fields: [targetEntityId], references: [entityId])
+
+  @@unique([sourceEntityId, targetEntityId, relationType])
+  @@index([targetEntityId])
+  @@index([status, deletedAt])
+  @@map("entity_media")
+}
+
+model EntityFaq {
+  id             BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  sourceEntityId String    @map("source_entity_id") @db.VarChar(32)
+  targetEntityId String    @map("target_entity_id") @db.VarChar(32)
+  relationType   String    @map("relation_type") @db.VarChar(64)
+  displayOrder   Int       @default(0) @map("display_order")
+  status         String    @db.VarChar(64)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  deletedAt      DateTime? @map("deleted_at")
+
+  sourceEntity Entity @relation("EntityFaqSource", fields: [sourceEntityId], references: [entityId])
+  targetEntity Entity @relation("EntityFaqTarget", fields: [targetEntityId], references: [entityId])
+
+  @@unique([sourceEntityId, targetEntityId, relationType])
+  @@index([targetEntityId])
+  @@index([status, deletedAt])
+  @@map("entity_faqs")
+}
+
+model EntityTag {
+  id           BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  entityId     String    @map("entity_id") @db.VarChar(32)
+  tagId        BigInt    @map("tag_id") @db.UnsignedBigInt
+  relationType String    @map("relation_type") @db.VarChar(64)
+  displayOrder Int       @default(0) @map("display_order")
+  status       String    @db.VarChar(64)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  deletedAt    DateTime? @map("deleted_at")
+
+  entity Entity @relation(fields: [entityId], references: [entityId])
+  tag    Tag    @relation(fields: [tagId], references: [id])
+
+  @@unique([entityId, tagId, relationType])
+  @@index([tagId])
+  @@index([status, deletedAt])
+  @@map("entity_tags")
+}
+
+model ProductIndustry {
+  id             BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  sourceEntityId String    @map("source_entity_id") @db.VarChar(32)
+  targetEntityId String    @map("target_entity_id") @db.VarChar(32)
+  relationType   String    @map("relation_type") @db.VarChar(64)
+  displayOrder   Int       @default(0) @map("display_order")
+  status         String    @db.VarChar(64)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  deletedAt      DateTime? @map("deleted_at")
+
+  product  Product  @relation("ProductIndustrySource", fields: [sourceEntityId], references: [entityId])
+  industry Industry @relation("ProductIndustryTarget", fields: [targetEntityId], references: [entityId])
+
+  @@unique([sourceEntityId, targetEntityId, relationType])
+  @@index([targetEntityId])
+  @@index([status, deletedAt])
+  @@map("product_industries")
+}
+
+model ArticleTag {
+  id           BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  articleId    String    @map("article_entity_id") @db.VarChar(32)
+  tagId        BigInt    @map("tag_id") @db.UnsignedBigInt
+  relationType String    @map("relation_type") @db.VarChar(64)
+  displayOrder Int       @default(0) @map("display_order")
+  status       String    @db.VarChar(64)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  deletedAt    DateTime? @map("deleted_at")
+
+  article Article @relation(fields: [articleId], references: [entityId])
+  tag     Tag     @relation(fields: [tagId], references: [id])
+
+  @@unique([articleId, tagId, relationType])
+  @@index([tagId])
+  @@index([status, deletedAt])
+  @@map("article_tags")
+}
+
+model User {
+  id                BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  email             String    @unique @db.VarChar(191)
+  phone             String?   @unique @db.VarChar(64)
+  displayName       String?   @map("display_name") @db.VarChar(191)
+  passwordHash      String    @map("password_hash") @db.VarChar(255)
+  passwordChangedAt DateTime? @map("password_changed_at")
+  mfaEnabled        Boolean   @default(false) @map("mfa_enabled")
+  status            String    @db.VarChar(64)
+  lastLoginAt       DateTime? @map("last_login_at")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+  deletedAt         DateTime? @map("deleted_at")
+
+  userRoles     UserRole[]
+  sessions      Session[]
+  loginEvents   LoginEvent[]
+  auditLogs     AuditLog[]
+  assignedLeads Lead[]       @relation("LeadAssignee")
+
+  @@index([status, deletedAt])
+  @@map("users")
+}
+
+model Role {
+  id        BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  name      String    @unique @db.VarChar(64)
+  status    String    @db.VarChar(64)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  userRoles       UserRole[]
+  rolePermissions RolePermission[]
+
+  @@index([status, deletedAt])
+  @@map("roles")
+}
+
+model Resource {
+  id        BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  name      String    @unique @db.VarChar(128)
+  status    String    @db.VarChar(64)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  permissions Permission[]
+
+  @@index([status, deletedAt])
+  @@map("resources")
+}
+
+model Permission {
+  id         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  resourceId BigInt    @map("resource_id") @db.UnsignedBigInt
+  action     String    @db.VarChar(64)
+  scope      String    @default("global") @db.VarChar(64)
+  status     String    @db.VarChar(64)
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  deletedAt  DateTime? @map("deleted_at")
+
+  resource        Resource         @relation(fields: [resourceId], references: [id])
+  rolePermissions RolePermission[]
+
+  @@unique([resourceId, action, scope])
+  @@index([status, deletedAt])
+  @@map("permissions")
+}
+
+model UserRole {
+  id        BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  userId    BigInt    @map("user_id") @db.UnsignedBigInt
+  roleId    BigInt    @map("role_id") @db.UnsignedBigInt
+  status    String    @db.VarChar(64)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  user User @relation(fields: [userId], references: [id])
+  role Role @relation(fields: [roleId], references: [id])
+
+  @@unique([userId, roleId])
+  @@index([roleId])
+  @@index([status, deletedAt])
+  @@map("user_roles")
+}
+
+model RolePermission {
+  id           BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  roleId       BigInt    @map("role_id") @db.UnsignedBigInt
+  permissionId BigInt    @map("permission_id") @db.UnsignedBigInt
+  status       String    @db.VarChar(64)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+  deletedAt    DateTime? @map("deleted_at")
+
+  role       Role       @relation(fields: [roleId], references: [id])
+  permission Permission @relation(fields: [permissionId], references: [id])
+
+  @@unique([roleId, permissionId])
+  @@index([permissionId])
+  @@index([status, deletedAt])
+  @@map("role_permissions")
+}
+
+model Session {
+  id            BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  userId        BigInt    @map("user_id") @db.UnsignedBigInt
+  sessionToken  String    @unique @map("session_token") @db.VarChar(255)
+  idleExpiresAt DateTime  @map("idle_expires_at")
+  expiresAt     DateTime  @map("expires_at")
+  revokedAt     DateTime? @map("revoked_at")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId, expiresAt])
+  @@index([revokedAt])
+  @@map("sessions")
+}
+
+model LoginEvent {
+  id              BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  userId          BigInt?  @map("user_id") @db.UnsignedBigInt
+  loginIdentifier String?  @map("login_identifier") @db.VarChar(191)
+  success         Boolean
+  failureReason   String?  @map("failure_reason") @db.VarChar(191)
+  ipAddress       String?  @map("ip_address") @db.VarChar(64)
+  userAgent       String?  @map("user_agent") @db.Text
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
+  @@index([loginIdentifier, createdAt])
+  @@map("login_events")
+}
+
+model AuditLog {
+  id           BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  actorId      BigInt?  @map("actor_id") @db.UnsignedBigInt
+  actorRoleIds Json?    @map("actor_role_ids")
+  action       String   @db.VarChar(64)
+  resource     String?  @db.VarChar(128)
+  resourceId   String?  @map("resource_id") @db.VarChar(128)
+  entityId     String?  @map("entity_id") @db.VarChar(32)
+  targetTable  String?  @map("target_table") @db.VarChar(128)
+  targetId     String?  @map("target_id") @db.VarChar(128)
+  beforeJson   Json?    @map("before_json")
+  afterJson    Json?    @map("after_json")
+  ipAddress    String?  @map("ip_address") @db.VarChar(64)
+  userAgent    String?  @map("user_agent") @db.Text
+  requestId    String?  @map("request_id") @db.VarChar(128)
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  actor  User?   @relation(fields: [actorId], references: [id])
+  entity Entity? @relation(fields: [entityId], references: [entityId])
+
+  @@index([actorId, createdAt])
+  @@index([entityId, createdAt])
+  @@index([resource, action])
+  @@map("audit_logs")
+}
