@@ -13,14 +13,15 @@
     "created_at",
     "target_binding",
     "components",
+    "component_set_sha256",
     "package_decision",
     "decision_timestamp"
   ],
   "properties": {
     "package_id": { "type": "string", "minLength": 1 },
-    "package_version": { "const": 1 },
+    "package_version": { "const": 2 },
     "operation_id": { "type": "string", "minLength": 1 },
-    "milestone": { "const": "M4.0.5.6" },
+    "milestone": { "const": "M4.0.5.7" },
     "purpose": { "enum": ["live-readonly-validation", "controlled-migration"] },
     "created_at": { "type": "string", "format": "date-time" },
     "target_binding": { "$ref": "#/definitions/targetBinding" },
@@ -35,6 +36,7 @@
         "live_validation": { "$ref": "#/definitions/liveValidationComponent" }
       }
     },
+    "component_set_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
     "package_decision": {
       "enum": ["BLOCKED", "READY_FOR_LIVE_VALIDATION", "READY_FOR_CONTROLLED_EXECUTION", "EXECUTED"]
     },
@@ -72,102 +74,88 @@
         "target_port": { "type": "integer", "minimum": 1, "maximum": 65535 },
         "target_database": { "type": "string", "pattern": "^[A-Za-z0-9_$-]+$" },
         "database_url_source": { "enum": ["local-env", "process", "secret-store"] },
-        "database_url_fingerprint": {
-          "type": "string",
-          "minLength": 1,
-          "not": { "pattern": "mysql://|://[^:]+:[^@]+@" }
-        }
+        "database_url_fingerprint": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" }
       }
     },
     "authorizationComponent": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["component_id", "component_type", "gate_id", "status"],
+      "required": ["component_id", "component_type", "gate_id", "status", "operation_id", "target_id"],
       "properties": {
         "component_id": { "type": "string", "minLength": 1 },
         "component_type": { "const": "authorization" },
         "gate_id": { "const": "M4.0.5" },
         "status": { "enum": ["AUTHORIZED", "BLOCKED"] },
+        "operation_id": { "type": "string", "minLength": 1 },
+        "target_id": { "type": "string", "minLength": 1 },
+        "record_id": { "type": "string", "minLength": 1 },
         "reference": { "type": "string", "minLength": 1 },
         "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
         "recorded_at": { "type": "string", "format": "date-time" },
         "valid_until": { "type": "string", "format": "date-time" },
         "blockers": { "$ref": "#/definitions/blockers" }
       },
-      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+      "allOf": [{ "$ref": "#/definitions/authorizationStateRule" }]
     },
     "provisioningComponent": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["component_id", "component_type", "gate_id", "status"],
-      "properties": {
-        "component_id": { "type": "string", "minLength": 1 },
-        "component_type": { "const": "migration-user-provisioning" },
-        "gate_id": { "const": "M4.0.4.4.6.10" },
-        "status": { "enum": ["COMPLETED", "BLOCKED"] },
-        "reference": { "type": "string", "minLength": 1 },
-        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
-        "recorded_at": { "type": "string", "format": "date-time" },
-        "valid_until": { "type": "string", "format": "date-time" },
-        "blockers": { "$ref": "#/definitions/blockers" }
-      },
-      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+      "allOf": [
+        { "$ref": "#/definitions/descriptorComponent" },
+        {
+          "properties": {
+            "component_type": { "const": "migration-user-provisioning" },
+            "gate_id": { "const": "M4.0.4.4.6.10" },
+            "status": { "enum": ["COMPLETED", "BLOCKED"] }
+          }
+        }
+      ]
     },
     "backupComponent": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["component_id", "component_type", "gate_id", "status"],
-      "properties": {
-        "component_id": { "type": "string", "minLength": 1 },
-        "component_type": { "const": "backup" },
-        "gate_id": { "type": "string", "minLength": 1 },
-        "status": { "enum": ["VERIFIED", "BLOCKED"] },
-        "reference": { "type": "string", "minLength": 1 },
-        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
-        "recorded_at": { "type": "string", "format": "date-time" },
-        "valid_until": { "type": "string", "format": "date-time" },
-        "blockers": { "$ref": "#/definitions/blockers" }
-      },
-      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+      "allOf": [
+        { "$ref": "#/definitions/descriptorComponent" },
+        { "properties": { "component_type": { "const": "backup" }, "status": { "enum": ["VERIFIED", "BLOCKED"] } } }
+      ]
     },
     "rollbackComponent": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["component_id", "component_type", "gate_id", "status"],
-      "properties": {
-        "component_id": { "type": "string", "minLength": 1 },
-        "component_type": { "const": "rollback" },
-        "gate_id": { "type": "string", "minLength": 1 },
-        "status": { "enum": ["VERIFIED", "BLOCKED"] },
-        "reference": { "type": "string", "minLength": 1 },
-        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
-        "recorded_at": { "type": "string", "format": "date-time" },
-        "valid_until": { "type": "string", "format": "date-time" },
-        "blockers": { "$ref": "#/definitions/blockers" }
-      },
-      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+      "allOf": [
+        { "$ref": "#/definitions/descriptorComponent" },
+        { "properties": { "component_type": { "const": "rollback" }, "status": { "enum": ["VERIFIED", "BLOCKED"] } } }
+      ]
     },
     "liveValidationComponent": {
+      "allOf": [
+        { "$ref": "#/definitions/descriptorComponent" },
+        { "properties": { "component_type": { "const": "live-validation" }, "status": { "enum": ["PASS", "BLOCKED"] } } }
+      ]
+    },
+    "descriptorComponent": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["component_id", "component_type", "gate_id", "status"],
+      "required": ["component_id", "component_type", "gate_id", "status", "operation_id", "target_id"],
       "properties": {
         "component_id": { "type": "string", "minLength": 1 },
-        "component_type": { "const": "live-validation" },
+        "component_type": { "enum": ["migration-user-provisioning", "backup", "rollback", "live-validation"] },
         "gate_id": { "type": "string", "minLength": 1 },
-        "status": { "enum": ["PASS", "BLOCKED"] },
+        "status": { "enum": ["COMPLETED", "VERIFIED", "PASS", "BLOCKED"] },
+        "operation_id": { "type": "string", "minLength": 1 },
+        "target_id": { "type": "string", "minLength": 1 },
+        "descriptor_id": { "type": "string", "minLength": 1 },
         "reference": { "type": "string", "minLength": 1 },
         "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
         "recorded_at": { "type": "string", "format": "date-time" },
         "valid_until": { "type": "string", "format": "date-time" },
         "blockers": { "$ref": "#/definitions/blockers" }
       },
-      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+      "allOf": [{ "$ref": "#/definitions/descriptorStateRule" }]
     },
-    "referenceStateRule": {
+    "authorizationStateRule": {
       "if": { "properties": { "status": { "const": "BLOCKED" } } },
       "then": { "required": ["blockers"] },
-      "else": { "required": ["reference", "sha256", "recorded_at", "valid_until"] }
+      "else": { "required": ["record_id", "reference", "sha256", "recorded_at", "valid_until"] }
+    },
+    "descriptorStateRule": {
+      "if": { "properties": { "status": { "const": "BLOCKED" } } },
+      "then": { "required": ["blockers"] },
+      "else": { "required": ["descriptor_id", "reference", "sha256", "recorded_at", "valid_until"] }
     },
     "blockers": {
       "type": "array",

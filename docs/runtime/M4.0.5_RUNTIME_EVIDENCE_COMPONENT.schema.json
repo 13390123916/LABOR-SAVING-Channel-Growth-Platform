@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.labor-saving.cn/schemas/m4.0.5-runtime-evidence-component.schema.json",
+  "title": "M4.0.5 Runtime Evidence Component Descriptor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "descriptor_id",
+    "descriptor_version",
+    "package_id",
+    "operation_id",
+    "component_id",
+    "component_type",
+    "gate_id",
+    "status",
+    "target_binding",
+    "recorded_at",
+    "valid_until",
+    "transition",
+    "evidence"
+  ],
+  "properties": {
+    "descriptor_id": { "type": "string", "minLength": 1 },
+    "descriptor_version": { "const": 1 },
+    "package_id": { "type": "string", "minLength": 1 },
+    "operation_id": { "type": "string", "minLength": 1 },
+    "component_id": { "type": "string", "minLength": 1 },
+    "component_type": { "enum": ["migration-user-provisioning", "backup", "rollback", "live-validation"] },
+    "gate_id": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["COMPLETED", "VERIFIED", "PASS"] },
+    "target_binding": { "$ref": "#/definitions/targetBinding" },
+    "recorded_at": { "type": "string", "format": "date-time" },
+    "valid_until": { "type": "string", "format": "date-time" },
+    "transition": { "$ref": "#/definitions/transition" },
+    "evidence": { "type": "object" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "component_type": { "const": "migration-user-provisioning" } } },
+      "then": {
+        "properties": {
+          "gate_id": { "const": "M4.0.4.4.6.10" },
+          "status": { "const": "COMPLETED" },
+          "evidence": { "$ref": "#/definitions/provisioningEvidence" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "component_type": { "const": "backup" } } },
+      "then": {
+        "properties": {
+          "status": { "const": "VERIFIED" },
+          "evidence": { "$ref": "#/definitions/backupEvidence" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "component_type": { "const": "rollback" } } },
+      "then": {
+        "properties": {
+          "status": { "const": "VERIFIED" },
+          "evidence": { "$ref": "#/definitions/rollbackEvidence" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "component_type": { "const": "live-validation" } } },
+      "then": {
+        "properties": {
+          "status": { "const": "PASS" },
+          "evidence": { "$ref": "#/definitions/liveValidationEvidence" }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "targetBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime_environment", "target_id", "target_host", "target_port", "target_database", "database_url_source", "database_url_fingerprint"],
+      "properties": {
+        "runtime_environment": { "enum": ["local", "staging", "production"] },
+        "target_id": { "type": "string", "minLength": 1 },
+        "target_host": { "type": "string", "minLength": 1 },
+        "target_port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+        "target_database": { "type": "string", "pattern": "^[A-Za-z0-9_$-]+$" },
+        "database_url_source": { "enum": ["local-env", "process", "secret-store"] },
+        "database_url_fingerprint": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" }
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_status", "to_status", "transitioned_at", "approver", "reference"],
+      "properties": {
+        "from_status": { "const": "BLOCKED" },
+        "to_status": { "enum": ["COMPLETED", "VERIFIED", "PASS"] },
+        "transitioned_at": { "type": "string", "format": "date-time" },
+        "approver": { "type": "string", "minLength": 1 },
+        "reference": { "type": "string", "minLength": 1 }
+      }
+    },
+    "provisioningEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "host_authorization", "plugin_compatibility", "privilege_manifest", "secret_readiness", "approver", "post_validation_reference"],
+      "properties": {
+        "identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["username", "purpose"],
+          "properties": {
+            "username": { "type": "string", "minLength": 1 },
+            "purpose": { "const": "migration" }
+          }
+        },
+        "host_authorization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["approved_account_rows", "approval_reference"],
+          "properties": {
+            "approved_account_rows": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+            "approval_reference": { "type": "string", "minLength": 1 }
+          }
+        },
+        "plugin_compatibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["plugin", "status", "reference"],
+          "properties": {
+            "plugin": { "type": "string", "minLength": 1 },
+            "status": { "const": "VERIFIED" },
+            "reference": { "type": "string", "minLength": 1 }
+          }
+        },
+        "privilege_manifest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["target_database", "privileges", "approval_reference"],
+          "properties": {
+            "target_database": { "type": "string", "minLength": 1 },
+            "privileges": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+            "approval_reference": { "type": "string", "minLength": 1 }
+          }
+        },
+        "secret_readiness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "source", "reference"],
+          "properties": {
+            "status": { "const": "READY" },
+            "source": { "enum": ["local-env", "process", "secret-store"] },
+            "reference": { "type": "string", "minLength": 1 }
+          }
+        },
+        "approver": { "type": "string", "minLength": 1 },
+        "post_validation_reference": { "type": "string", "minLength": 1 }
+      }
+    },
+    "backupEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "storage_reference", "retention_reference", "artifact_size_bytes", "artifact_sha256", "verified_at", "owner"],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "storage_reference": { "type": "string", "minLength": 1 },
+        "retention_reference": { "type": "string", "minLength": 1 },
+        "artifact_size_bytes": { "type": "integer", "minimum": 1 },
+        "artifact_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "verified_at": { "type": "string", "format": "date-time" },
+        "owner": { "type": "string", "minLength": 1 }
+      }
+    },
+    "rollbackEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority", "runbook_reference", "partial_failure_reference", "restore_validation_reference", "stop_conditions", "owner"],
+      "properties": {
+        "authority": { "type": "string", "minLength": 1 },
+        "runbook_reference": { "type": "string", "minLength": 1 },
+        "partial_failure_reference": { "type": "string", "minLength": 1 },
+        "restore_validation_reference": { "type": "string", "minLength": 1 },
+        "stop_conditions": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "owner": { "type": "string", "minLength": 1 }
+      }
+    },
+    "liveValidationEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["validation_scope", "migration_user_component_id", "checks", "result_reference"],
+      "properties": {
+        "validation_scope": { "enum": ["entry-conditions", "controlled-migration-prerequisite"] },
+        "migration_user_component_id": { "type": "string", "minLength": 1 },
+        "checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["check", "status", "reference"],
+            "properties": {
+              "check": { "type": "string", "minLength": 1 },
+              "status": { "const": "PASS" },
+              "reference": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "result_reference": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

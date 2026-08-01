@@ -6,11 +6,13 @@
   "additionalProperties": false,
   "required": [
     "record_id",
+    "record_version",
     "evidence_package_id",
     "operation_id",
     "milestone",
     "execution_scope",
     "approved_commands",
+    "approved_command_binding",
     "runtime_environment",
     "target_id",
     "target_host",
@@ -24,11 +26,16 @@
     "approval_timestamp",
     "approval_expiry",
     "maintenance_window",
+    "component_set_sha256",
+    "component_digest_references",
+    "transition_reference",
+    "superseded_package_reference",
     "decision",
     "decision_timestamp"
   ],
   "properties": {
     "record_id": { "type": "string", "minLength": 1 },
+    "record_version": { "const": 2 },
     "evidence_package_id": { "type": "string", "minLength": 1 },
     "operation_id": { "type": "string", "minLength": 1 },
     "milestone": { "const": "M4.0.5" },
@@ -37,8 +44,16 @@
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": {
-        "enum": ["db:migrate:status", "db:health", "db:tx-smoke", "db:migrate", "db:acceptance"]
+      "items": { "enum": ["db:migrate:status", "db:health", "db:tx-smoke", "db:migrate", "db:acceptance"] }
+    },
+    "approved_command_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "command_set_sha256", "reference"],
+      "properties": {
+        "mode": { "enum": ["live-validation", "controlled-execution"] },
+        "command_set_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "reference": { "type": "string", "minLength": 1 }
       }
     },
     "runtime_environment": { "enum": ["local", "staging", "production"] },
@@ -47,11 +62,7 @@
     "target_port": { "type": "integer", "minimum": 1, "maximum": 65535 },
     "target_database": { "type": "string", "pattern": "^[A-Za-z0-9_$-]+$" },
     "database_url_source": { "enum": ["local-env", "process", "secret-store"] },
-    "database_url_fingerprint": {
-      "type": "string",
-      "minLength": 1,
-      "not": { "pattern": "mysql://|://[^:]+:[^@]+@" }
-    },
+    "database_url_fingerprint": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
     "migration_set": {
       "type": "array",
       "minItems": 1,
@@ -77,14 +88,45 @@
     "backup_component_id": { "type": "string", "minLength": 1 },
     "rollback_component_id": { "type": "string", "minLength": 1 },
     "live_validation_component_id": { "type": "string", "minLength": 1 },
+    "component_set_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "component_digest_references": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "migration_user_provisioning": { "$ref": "#/definitions/componentDigestReference" },
+        "backup": { "$ref": "#/definitions/componentDigestReference" },
+        "rollback": { "$ref": "#/definitions/componentDigestReference" },
+        "live_validation": { "$ref": "#/definitions/componentDigestReference" }
+      }
+    },
+    "transition_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_decision", "to_decision", "transitioned_at", "approver", "reference"],
+      "properties": {
+        "from_decision": { "const": "BLOCKED" },
+        "to_decision": { "enum": ["READY_FOR_LIVE_VALIDATION", "READY_FOR_CONTROLLED_EXECUTION"] },
+        "transitioned_at": { "type": "string", "format": "date-time" },
+        "approver": { "type": "string", "minLength": 1 },
+        "reference": { "type": "string", "minLength": 1 }
+      }
+    },
+    "superseded_package_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["package_id", "reference", "sha256"],
+      "properties": {
+        "package_id": { "type": "string", "minLength": 1 },
+        "reference": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" }
+      }
+    },
     "failure_stop_conditions": {
       "type": "array",
       "minItems": 1,
       "items": { "type": "string", "minLength": 1 }
     },
-    "decision": {
-      "enum": ["BLOCKED", "READY_FOR_LIVE_VALIDATION", "READY_FOR_CONTROLLED_EXECUTION", "EXECUTED"]
-    },
+    "decision": { "enum": ["BLOCKED", "READY_FOR_LIVE_VALIDATION", "READY_FOR_CONTROLLED_EXECUTION", "EXECUTED"] },
     "decision_timestamp": { "type": "string", "format": "date-time" }
   },
   "allOf": [
@@ -93,9 +135,10 @@
       "then": {
         "required": ["migration_user_provisioning_component_id", "live_validation_component_id", "failure_stop_conditions"],
         "properties": {
-          "approved_commands": {
-            "items": { "enum": ["db:migrate:status", "db:health", "db:tx-smoke"] }
-          },
+          "approved_commands": { "items": { "enum": ["db:migrate:status", "db:health", "db:tx-smoke"] } },
+          "approved_command_binding": { "properties": { "mode": { "const": "live-validation" } } },
+          "component_digest_references": { "required": ["migration_user_provisioning", "live_validation"] },
+          "transition_reference": { "properties": { "to_decision": { "const": "READY_FOR_LIVE_VALIDATION" } } },
           "decision": { "enum": ["BLOCKED", "READY_FOR_LIVE_VALIDATION", "EXECUTED"] }
         }
       }
@@ -103,20 +146,27 @@
     {
       "if": { "properties": { "execution_scope": { "const": "controlled-migration" } } },
       "then": {
-        "required": [
-          "migration_set",
-          "authorized_release_owner",
-          "migration_user_provisioning_component_id",
-          "backup_component_id",
-          "rollback_component_id",
-          "live_validation_component_id",
-          "failure_stop_conditions"
-        ],
+        "required": ["migration_set", "authorized_release_owner", "migration_user_provisioning_component_id", "backup_component_id", "rollback_component_id", "live_validation_component_id", "failure_stop_conditions"],
         "properties": {
           "approved_commands": { "items": { "enum": ["db:migrate", "db:acceptance"] } },
+          "approved_command_binding": { "properties": { "mode": { "const": "controlled-execution" } } },
+          "component_digest_references": { "required": ["migration_user_provisioning", "backup", "rollback", "live_validation"] },
+          "transition_reference": { "properties": { "to_decision": { "const": "READY_FOR_CONTROLLED_EXECUTION" } } },
           "decision": { "enum": ["BLOCKED", "READY_FOR_CONTROLLED_EXECUTION", "EXECUTED"] }
         }
       }
     }
-  ]
+  ],
+  "definitions": {
+    "componentDigestReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_id", "descriptor_id", "sha256"],
+      "properties": {
+        "component_id": { "type": "string", "minLength": 1 },
+        "descriptor_id": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" }
+      }
+    }
+  }
 }
