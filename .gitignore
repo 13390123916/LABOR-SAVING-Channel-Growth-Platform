@@ -10,6 +10,9 @@ dist/
 build/
 coverage/
 
+# Generated Prisma client (generated locally, never committed)
+website/generated/prisma/**
+
 # Environment
 .env
 .env.*
