@@ -1,0 +1,2 @@
+-- M4.0.1 Database Runtime Bootstrap
+-- This baseline migration intentionally creates no business tables.
