@@ -4,6 +4,13 @@ import path from "node:path";
 const root = process.cwd();
 const governancePath = "docs/runtime/M4.0.5_RUNTIME_ENVIRONMENT_GOVERNANCE.md";
 const recordPath = "docs/runtime/M4.0.5_RUNTIME_AUTHORIZATION_RECORD_TEMPLATE.md";
+const preflightPath = "website/scripts/runtime-execution-preflight.mjs";
+const packagePath = "website/package.json";
+const localBoundaryPaths = [
+  "website/scripts/database-health-check.ts",
+  "website/scripts/database-transaction-smoke-test.ts",
+  "website/lib/prisma.ts"
+];
 let failed = false;
 
 function fail(message) {
@@ -31,6 +38,8 @@ function requireTokens(content, tokens, label) {
 
 const governance = readRequired(governancePath);
 const record = readRequired(recordPath);
+const preflight = readRequired(preflightPath);
+const packageJson = readRequired(packagePath);
 
 requireTokens(
   governance,
@@ -51,6 +60,45 @@ requireTokens(
   ],
   governancePath
 );
+
+requireTokens(
+  preflight,
+  [
+    "structural",
+    "live-validation",
+    "controlled-execution",
+    "RUNTIME_ENV",
+    "TARGET_ID",
+    "TARGET_HOST",
+    "TARGET_PORT",
+    "TARGET_DATABASE",
+    "DATABASE_URL_SOURCE",
+    "RUNTIME_AUTHORIZATION_RECORD",
+    "READY_FOR_CONTROLLED_EXECUTION",
+    "override: false",
+    "allowedCommandsByMode"
+  ],
+  preflightPath
+);
+
+for (const command of ["db:migrate", "db:migrate:status", "db:health", "db:tx-smoke", "db:acceptance"]) {
+  const routePattern = new RegExp(`"${command.replaceAll(":", "\\:")}"\\s*:\\s*"[^"]*runtime-execution-preflight\\.mjs`);
+  if (!routePattern.test(packageJson)) {
+    fail(`${packagePath} command ${command} must route through runtime-execution-preflight.mjs`);
+  }
+}
+
+for (const relativePath of localBoundaryPaths) {
+  const content = readRequired(relativePath);
+  if (content.includes('import "dotenv/config"')) {
+    fail(`${relativePath} must not load dotenv/config unconditionally`);
+  }
+}
+
+for (const relativePath of localBoundaryPaths.slice(0, 2)) {
+  const content = readRequired(relativePath);
+  requireTokens(content, ["RUNTIME_ENV", "DATABASE_URL_SOURCE", "local-env", "override: false"], relativePath);
+}
 
 requireTokens(
   record,
