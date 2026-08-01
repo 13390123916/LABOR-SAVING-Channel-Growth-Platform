@@ -1,0 +1,178 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.labor-saving.cn/schemas/m4.0.5-runtime-evidence-package.schema.json",
+  "title": "M4.0.5 Runtime Evidence Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "package_id",
+    "package_version",
+    "operation_id",
+    "milestone",
+    "purpose",
+    "created_at",
+    "target_binding",
+    "components",
+    "package_decision",
+    "decision_timestamp"
+  ],
+  "properties": {
+    "package_id": { "type": "string", "minLength": 1 },
+    "package_version": { "const": 1 },
+    "operation_id": { "type": "string", "minLength": 1 },
+    "milestone": { "const": "M4.0.5.6" },
+    "purpose": { "enum": ["live-readonly-validation", "controlled-migration"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "target_binding": { "$ref": "#/definitions/targetBinding" },
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "authorization": { "$ref": "#/definitions/authorizationComponent" },
+        "migration_user_provisioning": { "$ref": "#/definitions/provisioningComponent" },
+        "backup": { "$ref": "#/definitions/backupComponent" },
+        "rollback": { "$ref": "#/definitions/rollbackComponent" },
+        "live_validation": { "$ref": "#/definitions/liveValidationComponent" }
+      }
+    },
+    "package_decision": {
+      "enum": ["BLOCKED", "READY_FOR_LIVE_VALIDATION", "READY_FOR_CONTROLLED_EXECUTION", "EXECUTED"]
+    },
+    "decision_timestamp": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "purpose": { "const": "live-readonly-validation" } } },
+      "then": {
+        "properties": {
+          "components": { "required": ["authorization", "migration_user_provisioning", "live_validation"] },
+          "package_decision": { "enum": ["BLOCKED", "READY_FOR_LIVE_VALIDATION", "EXECUTED"] }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "purpose": { "const": "controlled-migration" } } },
+      "then": {
+        "properties": {
+          "components": { "required": ["authorization", "migration_user_provisioning", "backup", "rollback", "live_validation"] },
+          "package_decision": { "enum": ["BLOCKED", "READY_FOR_CONTROLLED_EXECUTION", "EXECUTED"] }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "targetBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime_environment", "target_id", "target_host", "target_port", "target_database", "database_url_source", "database_url_fingerprint"],
+      "properties": {
+        "runtime_environment": { "enum": ["local", "staging", "production"] },
+        "target_id": { "type": "string", "minLength": 1 },
+        "target_host": { "type": "string", "minLength": 1 },
+        "target_port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+        "target_database": { "type": "string", "pattern": "^[A-Za-z0-9_$-]+$" },
+        "database_url_source": { "enum": ["local-env", "process", "secret-store"] },
+        "database_url_fingerprint": {
+          "type": "string",
+          "minLength": 1,
+          "not": { "pattern": "mysql://|://[^:]+:[^@]+@" }
+        }
+      }
+    },
+    "authorizationComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_id", "component_type", "gate_id", "status"],
+      "properties": {
+        "component_id": { "type": "string", "minLength": 1 },
+        "component_type": { "const": "authorization" },
+        "gate_id": { "const": "M4.0.5" },
+        "status": { "enum": ["AUTHORIZED", "BLOCKED"] },
+        "reference": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "valid_until": { "type": "string", "format": "date-time" },
+        "blockers": { "$ref": "#/definitions/blockers" }
+      },
+      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+    },
+    "provisioningComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_id", "component_type", "gate_id", "status"],
+      "properties": {
+        "component_id": { "type": "string", "minLength": 1 },
+        "component_type": { "const": "migration-user-provisioning" },
+        "gate_id": { "const": "M4.0.4.4.6.10" },
+        "status": { "enum": ["COMPLETED", "BLOCKED"] },
+        "reference": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "valid_until": { "type": "string", "format": "date-time" },
+        "blockers": { "$ref": "#/definitions/blockers" }
+      },
+      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+    },
+    "backupComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_id", "component_type", "gate_id", "status"],
+      "properties": {
+        "component_id": { "type": "string", "minLength": 1 },
+        "component_type": { "const": "backup" },
+        "gate_id": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["VERIFIED", "BLOCKED"] },
+        "reference": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "valid_until": { "type": "string", "format": "date-time" },
+        "blockers": { "$ref": "#/definitions/blockers" }
+      },
+      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+    },
+    "rollbackComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_id", "component_type", "gate_id", "status"],
+      "properties": {
+        "component_id": { "type": "string", "minLength": 1 },
+        "component_type": { "const": "rollback" },
+        "gate_id": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["VERIFIED", "BLOCKED"] },
+        "reference": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "valid_until": { "type": "string", "format": "date-time" },
+        "blockers": { "$ref": "#/definitions/blockers" }
+      },
+      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+    },
+    "liveValidationComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_id", "component_type", "gate_id", "status"],
+      "properties": {
+        "component_id": { "type": "string", "minLength": 1 },
+        "component_type": { "const": "live-validation" },
+        "gate_id": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["PASS", "BLOCKED"] },
+        "reference": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "valid_until": { "type": "string", "format": "date-time" },
+        "blockers": { "$ref": "#/definitions/blockers" }
+      },
+      "allOf": [{ "$ref": "#/definitions/referenceStateRule" }]
+    },
+    "referenceStateRule": {
+      "if": { "properties": { "status": { "const": "BLOCKED" } } },
+      "then": { "required": ["blockers"] },
+      "else": { "required": ["reference", "sha256", "recorded_at", "valid_until"] }
+    },
+    "blockers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}
