@@ -2,7 +2,7 @@
 
 ## M3 Website Platform Foundation
 
-状态：已启动。M2 Channel Growth Foundation 已冻结为 v1.0；迁移规则见 `docs/MILESTONE_MAPPING.md`，架构决策见 `docs/adr/README.md`。
+状态：已完成。M2 Channel Growth Foundation 已冻结为 v1.0；迁移规则见 `docs/MILESTONE_MAPPING.md`，架构决策见 `docs/adr/README.md`。
 
 目标：完成 Database、Authentication、CMS、Media、Lead、Platform Assets、Dealer Center、Analytics、Security / Permission 和 Platform Freeze Review 的架构冻结，为 M4 Platform Runtime 的集中实现做准备。
 
@@ -13,13 +13,13 @@
 - M3.4 Lead Center Architecture（已完成架构冻结：ADR-0011 与 `docs/LEAD_CENTER.md`）
 - M3.5 Platform Assets Architecture（已完成架构冻结：ADR-0012 与 `docs/PLATFORM_ASSETS.md`）
 - M3 Governance Enhancement（已完成：Platform Module Intake Gate 与 Platform Architecture Single Source of Truth）
-- M3.6 Dealer Center Architecture
-- M3.7 Analytics Architecture
-- M3.8 Security / Permission Architecture
-- M3.9 Platform Freeze Review
-- M4 Platform Runtime
+- M3.6 Dealer Center Architecture（已完成架构冻结：ADR-0013 与 `docs/DEALER_CENTER.md`）
+- M3.7 Analytics Architecture（已完成架构冻结：ADR-0014 与 `docs/ANALYTICS.md`）
+- M3.8 Security / Permission Architecture（已完成架构冻结：ADR-0015 与 `docs/SECURITY_PERMISSION.md`）
+- M3.9 Platform Freeze Review（已完成架构冻结）
+- M4 Platform Runtime（进行中）
 
-当前推进：M3.5 Platform Assets Architecture 已完成架构冻结，M3 Governance Enhancement 已固化 Platform Module Intake Gate；下一步进入 M3.6 Dealer Center Architecture，继续保持架构与实现隔离。
+当前推进：M3 Website Platform Foundation 已完成；M4 Platform Runtime 已启动。M4.0 Database Runtime Foundation 已完成并通过 Review；当前恢复入口为 M4.0.4.4.6.10 Migration User Provisioning Execution，但因缺少明确人工授权与完整执行证据保持 BLOCKED，未执行数据库写操作。M4.1.0 Authentication Runtime Intake Gate 已完成 / PASS；M4.1.1 Auth Repository Runtime 保持 READY，不因本次恢复工作越过阶段边界。
 
 Platform 阅读顺序：`README.md` -> `docs/PLATFORM_ARCHITECTURE.md` -> `docs/ROADMAP.md` -> `docs/adr/README.md`。
 
@@ -51,6 +51,22 @@ Prisma
 -> Admin UI
 ```
 
+M4 Platform Runtime 当前状态：
+
+```text
+M4 Platform Runtime                           IN PROGRESS
+M4.0 Database Runtime Foundation              COMPLETED / PASS
+M4.0.1 Database Runtime Bootstrap             COMPLETED / PASS
+M4.0.2 Database Repository Runtime Foundation COMPLETED / PASS
+M4.0.3 Database Runtime Acceptance            COMPLETED / PASS
+Development Environment Foundation            COMPLETED / PASS
+M4.0.4.4 Database Migration Execution          BLOCKED
+M4.0.4.4.6.10 Migration User Provisioning      BLOCKED / NOT AUTHORIZED
+M4.1 Authentication Runtime                   IN PROGRESS
+M4.1.0 Authentication Runtime Intake Gate     COMPLETED / PASS
+M4.1.1 Auth Repository Runtime                READY
+```
+
 当前平台成熟度：
 
 ```text
@@ -65,11 +81,11 @@ Media Management Architecture 100%
 Lead Center Architecture      100%
 Platform Assets Architecture  100%
 Platform Governance Enhancement 100%
-Dealer Center Architecture     0%
-Analytics Architecture         0%
-Security / Permission Architecture 0%
-Platform Freeze Review         0%
-M4 Platform Runtime            0%
+Dealer Center Architecture     100%
+Analytics Architecture         100%
+Security / Permission Architecture 100%
+Platform Freeze Review         100%
+M4 Platform Runtime            IN PROGRESS
 ```
 
 产品发布质量门禁：M2.4.5.3 Product Detail 已进入首次发布验收阶段。只有 `published + schemaEligible + contentValidated + releaseApproved` 的真实 Product Entity 才生成详情 URL、Product Schema、sitemap 和 Related Product；LS70 继续保持非实体占位。
