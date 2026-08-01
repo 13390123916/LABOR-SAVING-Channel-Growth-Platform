@@ -1,5 +1,82 @@
 # Changelog
 
+## [0.3.24] - 2026-07-31
+
+### Added
+
+- Added `docs/runtime/M4.0.4.4.6.10_MIGRATION_USER_PROVISIONING_EXECUTION.md` as the controlled pre-write execution stop report.
+
+### Notes
+
+- M4.0.4.4.6.10 remains BLOCKED: Approved Operator, target database, process-level `DATABASE_URL`, identity/host/plugin/privilege approvals, backup artifact, rollback evidence, and explicit human authorization are incomplete.
+- No account or privilege mutation, database creation/deletion, migration, seed, reset, service change, Prisma change, ADR change, or frozen architecture change was performed.
+
+## [0.3.23] - 2026-07-31
+
+### Added
+
+- Added `docs/runtime/M4.0.4.4_RUNTIME_RECOVERY_HANDOFF_CLOSURE.md` to close the current Runtime Recovery handoff and preserve the M4.0.4.4.6.1-M4.0.4.4.6.9 evidence chain.
+
+### Notes
+
+- M4.0.4.4 remains BLOCKED. M4.0.4.4.6.10 Migration User Provisioning Execution is only a pending next-stage entry and requires explicit human authorization.
+- No `CREATE USER`, `ALTER USER`, `GRANT`, `REVOKE`, database creation/deletion, migration, seed, reset, service change, Prisma change, ADR change, or frozen architecture change was performed.
+
+## [0.3.22] - 2026-07-31
+
+### Added
+
+- Added `docs/runtime/M4.0.4.4.6.9_MIGRATION_USER_PROVISIONING_EXECUTION_PREPARATION_CHECKLIST.md` as the final non-executing preparation checklist before migration-user provisioning writes.
+
+### Notes
+
+- M4.0.4.4.6.9 remains BLOCKED: the checklist is complete, but operator/authority, target/DATABASE_URL, identity/host/plugin/privilege, secret, backup, and rollback evidence are not prepared.
+- No account or privilege mutation, database creation/deletion, migration, seed, reset, service restart, Prisma change, ADR change, or frozen architecture change was performed.
+
+## [0.3.21] - 2026-07-31
+
+### Added
+
+- Added `docs/runtime/M4.0.4.4.6.8_MIGRATION_USER_PROVISIONING_EXECUTION_AUTHORIZATION_GATE_REVIEW.md` for the final pre-write authorization gate.
+
+### Notes
+
+- M4.0.4.4.6.8 remains BLOCKED: only instance identity and the documented validation procedure pass; operator authority, target, `DATABASE_URL`, identity, host/plugin/privilege approvals, secret, backup, and rollback evidence are incomplete.
+- No account or privilege mutation, database creation/deletion, migration, seed, reset, service restart, Prisma change, ADR change, or frozen architecture change was performed.
+
+## [0.3.20] - 2026-07-31
+
+### Added
+
+- Added `docs/runtime/M4.0.4.4.6.7_MIGRATION_USER_PROVISIONING_EXECUTION_PLAN_REVIEW.md` as the non-executing migration-user provisioning plan for human approval review.
+
+### Notes
+
+- M4.0.4.4.6.7 remains BLOCKED: the execution plan is documented, but operator authority, target confirmation, secret management, host/plugin/privilege approvals, backup evidence, and rollback evidence are incomplete.
+- No account or privilege mutation, database creation/deletion, migration, seed, reset, service restart, Prisma change, ADR change, or frozen architecture change was performed.
+
+## [0.3.19] - 2026-07-31
+
+### Added
+
+- Added `docs/runtime/M4.0.4.4.6.6_MIGRATION_USER_PROVISIONING_AUTHORIZATION_READINESS_REVIEW.md` for the migration-user provisioning authorization gate and approval matrix.
+
+### Notes
+
+- M4.0.4.4.6.6 remains BLOCKED: runtime identity and administrator access are available, but operator approval, explicit target confirmation, secret management, host/plugin/privilege approvals, backup evidence, and rollback evidence are absent.
+- No database permission change, account mutation, database creation/deletion, migration, seed, reset, service restart, Prisma change, ADR change, or frozen architecture change was performed.
+
+## [0.3.18] - 2026-07-31
+
+### Added
+
+- Added `docs/runtime/M4.0.4.4.6.5_MIGRATION_USER_PROVISIONING_DESIGN_REVIEW.md` as the migration-user identity, host, plugin, privilege, database-scope, security, rollback, and readiness design package.
+
+### Notes
+
+- M4.0.4.4.6.5 provisioning remains BLOCKED: design is complete, but Approved Operator authority, explicit target `DATABASE_URL`/database confirmation, host/plugin approval, external secret injection, backup evidence, and rollback evidence are absent.
+- No `CREATE USER`, `ALTER USER`, `GRANT`, `REVOKE`, database creation, migration, seed, reset, service change, Prisma schema change, migration SQL change, ADR change, or frozen architecture change was performed.
+
 ## [0.3.17] - 2026-07-31
 
 ### Added
@@ -10,11 +87,15 @@
 - Added `docs/runtime/M4.0.4.4.3_MYSQL_RUNTIME_SERVICE_RECOVERY.md` for MySQL service recovery evidence.
 - Added `docs/runtime/M4.0.4.4.4_MYSQL_INSTANCE_IDENTITY_AUTHENTICATION_RECOVERY.md` for instance identity and authentication recovery evidence.
 - Added `docs/runtime/M4.0.4.4.5_MYSQL_RUNTIME_DATABASE_PROVISIONING_ACCESS_RECOVERY.md` for target database provisioning and access recovery evidence.
+- Added `docs/runtime/M4.0.4.4.6.3_MYSQL_ADMINISTRATOR_ACCESS_RECOVERY_ASSESSMENT.md` for read-only MySQL administrator access, account, plugin, and host-matching evidence.
+- Added `docs/runtime/M4.0.4.4.6.4_MYSQL_MIGRATION_USER_PROVISIONING_ACCESS_RECOVERY.md` for the controlled migration-user provisioning gate.
 
 ### Notes
 
 - M4.0.4.4 Database Migration Execution remains BLOCKED because the target database is not provisioned, the authorized login path is unavailable, and no verified backup artifact can be generated.
 - No Prisma migration execution, migrate dev, database reset, seed, database permission change, Prisma schema change, migration SQL change, ADR change, or frozen architecture change was performed.
+- M4.0.4.4.6.3 confirms `ACCESS_AVAILABLE` for the active MySQL administrator credential; the configured `labor_saving` migration-user path remains unavailable and no permission recovery was executed.
+- M4.0.4.4.6.4 remains `NOT READY`: explicit operator approval, target `DATABASE_URL`, migration-user secret/host/plugin decisions, target database confirmation, and backup/rollback evidence are absent. No account or privilege mutation was executed.
 
 ## [0.3.16] - 2026-07-29
 
