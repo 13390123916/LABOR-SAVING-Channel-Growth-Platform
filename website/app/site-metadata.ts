@@ -25,7 +25,7 @@ export type PageMetadataDefinition = {
   breadcrumb: BreadcrumbItem[];
 };
 
-export const siteBaseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.labor-saving.cn";
+export const siteBaseUrl = "https://laborsaving-arm.cn";
 export const siteName = "雷普赛维渠道增长平台";
 
 export const pageMetadata = {

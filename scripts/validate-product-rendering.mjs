@@ -14,6 +14,10 @@ const detailRendererFile = "website/app/products/product-detail-renderer.tsx";
 const contentFile = "website/app/products/product-content.ts";
 const metadataFile = "website/app/site-metadata.ts";
 const schemaFile = "website/app/site-schema.ts";
+const robotsFile = "website/app/robots.ts";
+const sitemapFile = "website/app/sitemap.ts";
+const notFoundFile = "website/app/not-found.tsx";
+const partnerPageFile = "website/app/partner/page.tsx";
 
 function fail(message) {
   console.error(`Product rendering validation failed: ${message}`);
@@ -120,6 +124,10 @@ const detailRenderer = readRequired(detailRendererFile);
 const content = readRequired(contentFile);
 const metadata = readRequired(metadataFile);
 const schema = readRequired(schemaFile);
+const robots = readRequired(robotsFile);
+const sitemap = readRequired(sitemapFile);
+const notFound = readRequired(notFoundFile);
+const partnerPage = readRequired(partnerPageFile);
 
 for (const token of [
   "productEntities",
@@ -164,8 +172,15 @@ for (const forbiddenProductName of entities.map((entity) => entity.name)) {
   }
 }
 
-for (const token of ["buildProductUrl(entity)", "data-entity-id", "detailStatus"]) {
+for (const token of [
+  "buildProductUrl(entity)",
+  "data-entity-id",
+  "isProductDetailPublishable(entity)"
+]) {
   assertIncludes(card, token, cardFile);
+}
+if (card.includes('entity.detailStatus === "published"')) {
+  fail(`${cardFile} must reuse the complete Product detail publication gate`);
 }
 
 for (const token of [
@@ -199,8 +214,11 @@ for (const token of [
 ]) {
   assertIncludes(metadata, token, metadataFile);
 }
-if (metadata.includes("https://example.com")) {
-  fail(`${metadataFile} must not use example.com as the canonical base URL`);
+assertIncludes(metadata, 'siteBaseUrl = "https://laborsaving-arm.cn"', metadataFile);
+for (const forbiddenOrigin of ["https://example.com", "https://www.labor-saving.cn"]) {
+  if (metadata.includes(forbiddenOrigin)) {
+    fail(`${metadataFile} must not use ${forbiddenOrigin} as the canonical base URL`);
+  }
 }
 
 for (const token of [
@@ -215,6 +233,38 @@ for (const token of [
   "buildFaqSchema(faqs)"
 ]) {
   assertIncludes(schema, token, schemaFile);
+}
+
+for (const token of ["MetadataRoute.Robots", "siteBaseUrl", 'disallow: "/api/"', '"/sitemap.xml"']) {
+  assertIncludes(robots, token, robotsFile);
+}
+
+for (const token of [
+  "MetadataRoute.Sitemap",
+  "publicRouteAllowlist",
+  '"/partner/"',
+  '"/products/pneumatic-manipulator-arm/"',
+  '"/products/pneumatic-balancer/"',
+  ".filter(isProductDetailPublishable)",
+  ".map(buildProductUrl)",
+  "siteBaseUrl"
+]) {
+  assertIncludes(sitemap, token, sitemapFile);
+}
+for (const invalidRoute of ["/applications/", "/about/contact/", "/solutions/"]) {
+  if (sitemap.includes(invalidRoute)) {
+    fail(`${sitemapFile} must not include unavailable route ${invalidRoute}`);
+  }
+}
+
+for (const token of ["页面未找到", "index: false", "follow: false", 'href="/products/"']) {
+  assertIncludes(notFound, token, notFoundFile);
+}
+
+for (const invalidLink of ['href="/applications/"', 'href="/about/contact/"']) {
+  if (partnerPage.includes(invalidLink)) {
+    fail(`${partnerPageFile} contains unavailable internal link ${invalidLink}`);
+  }
 }
 
 if (process.exitCode) {
