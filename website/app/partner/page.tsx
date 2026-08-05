@@ -170,10 +170,6 @@ export default function PartnerPage() {
               表单字段依据 Lead Schema 设计，用于初步判断合作意向、区域资源、主营产品和客户行业。
               提交申请不代表自动授权或合作通过。
             </p>
-            <div className="mt-8 grid gap-3 text-sm text-[var(--steel)]">
-              <Link href="/applications/">查看行业应用</Link>
-              <Link href="/about/contact/">查看联系方式</Link>
-            </div>
           </div>
 
           <form className="lead-form" method="post">

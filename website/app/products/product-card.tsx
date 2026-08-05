@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { buildProductUrl, type ProductEntity } from "./product-entities";
+import {
+  buildProductUrl,
+  isProductDetailPublishable,
+  type ProductEntity
+} from "./product-entities";
 
 type ProductCardProps = {
   entity: ProductEntity;
@@ -7,7 +11,7 @@ type ProductCardProps = {
 
 export function ProductCard({ entity }: ProductCardProps) {
   const productUrl = buildProductUrl(entity);
-  const isPublished = entity.detailStatus === "published";
+  const isPublished = isProductDetailPublishable(entity);
 
   return (
     <article className="product-card" data-entity-id={entity.entityId}>
