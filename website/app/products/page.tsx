@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { siteIdentity } from "../site-identity";
 import { buildPageMetadata, pageMetadata } from "../site-metadata";
 import { buildProductListingSchemas } from "../site-schema";
 import { ProductBreadcrumbs } from "./product-breadcrumbs";
@@ -96,8 +97,11 @@ export default function ProductsPage() {
             产品是否适用，需要结合工件、载荷、作业空间、节拍、能源条件和安全要求综合评估。
           </p>
         </div>
-        <Link className="products-cta" href="/partner/">
-          了解渠道合作
+        <a className="products-cta" href={siteIdentity.contacts.public.phoneHref}>
+          产品咨询：{siteIdentity.contacts.public.phoneDisplay}
+        </a>
+        <Link className="button-secondary-dark" href="/partner/#partner-lead">
+          渠道合作
         </Link>
       </section>
 

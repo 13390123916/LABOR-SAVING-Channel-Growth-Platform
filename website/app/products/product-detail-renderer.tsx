@@ -4,6 +4,7 @@ import { buildProductCategoryUrl, type ProductEntity } from "./product-entities"
 import { ProductBreadcrumbs } from "./product-breadcrumbs";
 import { ProductHeader } from "./product-header";
 import type { PageMetadataDefinition } from "../site-metadata";
+import { siteIdentity } from "../site-identity";
 
 type ProductDetailRendererProps = {
   entity: ProductEntity;
@@ -69,8 +70,11 @@ export function ProductDetailRenderer({ entity, metadata }: ProductDetailRendere
           <h2>结合真实工况确认选型</h2>
           <p>请结合工件、载荷、作业空间、节拍、能源条件和安全要求进行项目确认。</p>
         </div>
-        <Link className="products-cta" href="/partner/">
-          了解渠道合作
+        <a className="products-cta" href={siteIdentity.contacts.public.phoneHref}>
+          产品咨询：{siteIdentity.contacts.public.phoneDisplay}
+        </a>
+        <Link className="button-secondary-dark" href="/partner/#partner-lead">
+          渠道合作
         </Link>
       </section>
 
