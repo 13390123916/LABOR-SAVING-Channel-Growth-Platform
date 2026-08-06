@@ -8,6 +8,7 @@ import {
 
 const publicRouteAllowlist = [
   "/",
+  "/about/",
   "/partner/",
   "/products/",
   "/products/pneumatic-manipulator-arm/",

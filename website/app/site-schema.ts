@@ -11,6 +11,7 @@ import {
   type ProductCategoryGroup,
   type ProductEntity
 } from "./products/product-entities";
+import { approvedSameAs, siteIdentity } from "./site-identity";
 
 type QuestionAnswer = {
   question: string;
@@ -19,9 +20,18 @@ type QuestionAnswer = {
 
 type SchemaNode = Record<string, unknown>;
 
-function absoluteUrl(path: string) {
+export function absoluteUrl(path: string) {
   return new URL(path, siteBaseUrl).toString();
 }
+
+export const siteSchemaIds = {
+  organization: absoluteUrl("/#organization"),
+  website: absoluteUrl("/#website"),
+  brand: absoluteUrl("/#brand"),
+  publicContact: absoluteUrl("/#contact-public"),
+  partnerContact: absoluteUrl("/#contact-partner"),
+  technicalContact: absoluteUrl("/#contact-technical")
+} as const;
 
 export function buildBreadcrumbSchema(items: { name: string; url: string }[]) {
   return {
@@ -40,21 +50,90 @@ export function buildOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": absoluteUrl("/#organization"),
-    name: "LABOR-SAVING",
+    "@id": siteSchemaIds.organization,
+    name: siteIdentity.organization.legalName,
+    legalName: siteIdentity.organization.legalName,
+    alternateName: [siteIdentity.brand.alternateName, siteIdentity.brand.name],
     url: siteBaseUrl,
-    description: "面向工业智能搬运、重载装配和工业渠道合作的渠道增长平台。"
+    description: siteIdentity.organization.description,
+    logo: absoluteUrl(siteIdentity.logo.src),
+    brand: {
+      "@id": siteSchemaIds.brand
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: siteIdentity.address.country,
+      addressRegion: siteIdentity.address.region,
+      addressLocality: siteIdentity.address.locality,
+      streetAddress: siteIdentity.address.streetAddress
+    },
+    contactPoint: buildContactPointSchemas(),
+    sameAs: approvedSameAs
   };
 }
 
-export function buildPartnerContactPointSchema() {
+export function buildBrandSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "ContactPoint",
-    contactType: "Partner Lead",
-    areaServed: "CN",
-    availableLanguage: "zh-CN"
+    "@type": "Brand",
+    "@id": siteSchemaIds.brand,
+    name: siteIdentity.brand.name,
+    alternateName: siteIdentity.brand.alternateName,
+    url: siteBaseUrl,
+    logo: absoluteUrl(siteIdentity.logo.src)
   };
+}
+
+export function buildWebSiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": siteSchemaIds.website,
+    name: siteIdentity.websiteName,
+    alternateName: siteIdentity.brand.name,
+    url: siteBaseUrl,
+    inLanguage: "zh-CN",
+    publisher: {
+      "@id": siteSchemaIds.organization
+    }
+  };
+}
+
+export function buildContactPointSchemas() {
+  return [
+    {
+      "@type": "ContactPoint",
+      "@id": siteSchemaIds.publicContact,
+      contactType: siteIdentity.contacts.public.contactType,
+      telephone: siteIdentity.contacts.public.phoneDisplay,
+      areaServed: "CN",
+      availableLanguage: "zh-CN"
+    },
+    {
+      "@type": "ContactPoint",
+      "@id": siteSchemaIds.partnerContact,
+      contactType: siteIdentity.contacts.partner.contactType,
+      email: siteIdentity.contacts.partner.email,
+      areaServed: "CN",
+      availableLanguage: "zh-CN"
+    },
+    {
+      "@type": "ContactPoint",
+      "@id": siteSchemaIds.technicalContact,
+      contactType: siteIdentity.contacts.technical.contactType,
+      email: siteIdentity.contacts.technical.email,
+      areaServed: "CN",
+      availableLanguage: "zh-CN"
+    }
+  ];
+}
+
+export function buildSiteIdentitySchemas(): SchemaNode[] {
+  return [buildOrganizationSchema(), buildWebSiteSchema(), buildBrandSchema()];
+}
+
+export function buildPartnerContactPointSchema() {
+  return { "@context": "https://schema.org", ...buildContactPointSchemas()[1] };
 }
 
 export function buildPartnerWebPageSchema() {
@@ -66,7 +145,7 @@ export function buildPartnerWebPageSchema() {
     url: absoluteUrl("/partner/"),
     description: pageMetadata.partner.description,
     isPartOf: {
-      "@id": absoluteUrl("/#organization")
+      "@id": siteSchemaIds.website
     },
     about: ["渠道合作", "工业智能搬运", "重载装配"],
     potentialAction: {
@@ -104,7 +183,7 @@ export function buildProductListingSchema(products: ProductEntity[]) {
     url: absoluteUrl("/products/"),
     description: pageMetadata.products.description,
     isPartOf: {
-      "@id": absoluteUrl("/#organization")
+      "@id": siteSchemaIds.website
     },
     about: categories,
     ...(eligibleProducts.length > 0
@@ -116,8 +195,7 @@ export function buildProductListingSchema(products: ProductEntity[]) {
             description: product.summary,
             url: absoluteUrl(buildProductUrl(product)),
             brand: {
-              "@type": "Brand",
-              name: "LABOR-SAVING"
+              "@id": siteSchemaIds.brand
             }
           }))
         }
@@ -149,8 +227,7 @@ export function buildProductCategorySchema(category: ProductCategoryGroup) {
             description: product.summary,
             url: absoluteUrl(buildProductUrl(product)),
             brand: {
-              "@type": "Brand",
-              name: "LABOR-SAVING"
+              "@id": siteSchemaIds.brand
             }
           }))
         }
@@ -160,7 +237,6 @@ export function buildProductCategorySchema(category: ProductCategoryGroup) {
 
 export function buildPartnerPageSchemas(faqs: QuestionAnswer[]): SchemaNode[] {
   return [
-    buildOrganizationSchema(),
     buildPartnerWebPageSchema(),
     buildPartnerContactPointSchema(),
     buildBreadcrumbSchema(pageMetadata.partner.breadcrumb),
@@ -173,7 +249,6 @@ export function buildProductListingSchemas(
   faqs: QuestionAnswer[]
 ): SchemaNode[] {
   return [
-    buildOrganizationSchema(),
     buildProductListingSchema(products),
     buildBreadcrumbSchema(pageMetadata.products.breadcrumb),
     buildFaqSchema(faqs)
@@ -187,7 +262,6 @@ export function buildProductCategorySchemas(
   const metadata = buildProductCategoryMetadata(category);
 
   return [
-    buildOrganizationSchema(),
     buildProductCategorySchema(category),
     buildBreadcrumbSchema(metadata.breadcrumb),
     buildFaqSchema(faqs)
@@ -206,8 +280,7 @@ export function buildProductDetailSchema(entity: ProductEntity) {
     description: entity.summary,
     url: absoluteUrl(metadata.canonical),
     brand: {
-      "@type": "Brand",
-      name: "LABOR-SAVING"
+      "@id": siteSchemaIds.brand
     }
   };
 }
@@ -219,9 +292,29 @@ export function buildProductDetailSchemas(
   const metadata = buildProductDetailMetadata(entity);
 
   return [
-    buildOrganizationSchema(),
     buildProductDetailSchema(entity),
     buildBreadcrumbSchema(metadata.breadcrumb),
     buildFaqSchema(faqs)
+  ];
+}
+
+export function buildAboutPageSchemas(): SchemaNode[] {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": absoluteUrl("/about/#webpage"),
+      name: pageMetadata.about.title,
+      url: absoluteUrl(pageMetadata.about.canonical),
+      description: pageMetadata.about.description,
+      inLanguage: "zh-CN",
+      isPartOf: {
+        "@id": siteSchemaIds.website
+      },
+      about: {
+        "@id": siteSchemaIds.organization
+      }
+    },
+    buildBreadcrumbSchema(pageMetadata.about.breadcrumb)
   ];
 }

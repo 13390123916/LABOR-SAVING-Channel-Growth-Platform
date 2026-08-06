@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteIdentity } from "./site-identity";
 import {
   buildProductCategoryUrl,
   buildProductUrl,
@@ -26,9 +27,31 @@ export type PageMetadataDefinition = {
 };
 
 export const siteBaseUrl = "https://laborsaving-arm.cn";
-export const siteName = "雷普赛维渠道增长平台";
+export const siteName = siteIdentity.websiteName;
 
 export const pageMetadata = {
+  about: {
+    title: "关于雷普赛维 | 企业、品牌与联系方式",
+    description: siteIdentity.organization.description,
+    keywords: [
+      "雷普赛维",
+      "LABOR-SAVING",
+      "助力机械臂厂家",
+      "气动机械手厂家",
+      "工业省力装备"
+    ],
+    canonical: "/about/",
+    openGraph: {
+      title: "关于雷普赛维 LABOR-SAVING",
+      description: siteIdentity.organization.description,
+      url: "/about/",
+      type: "website"
+    },
+    breadcrumb: [
+      { name: "首页", url: "/" },
+      { name: "关于雷普赛维", url: "/about/" }
+    ]
+  },
   products: {
     title: "工业助力机械臂与气动平衡器产品中心",
     description:

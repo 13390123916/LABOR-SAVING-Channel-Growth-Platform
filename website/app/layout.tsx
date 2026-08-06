@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
+import { SiteShell } from "../components/layout/site-shell";
 import { siteBaseUrl, siteName } from "./site-metadata";
+import { buildSiteIdentitySchemas } from "./site-schema";
+import { siteIdentity } from "./site-identity";
 
-const siteDescription = "雷普赛维官网技术骨架，后续承接渠道合作、产品中心、行业应用、解决方案和知识中心。";
+const siteDescription = siteIdentity.organization.description;
 
 export const metadata: Metadata = {
   title: {
@@ -18,6 +21,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true
+  },
+  openGraph: {
+    title: siteName,
+    description: siteDescription,
+    url: "/",
+    type: "website",
+    siteName
   }
 };
 
@@ -26,9 +36,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const schemas = buildSiteIdentitySchemas();
+
   return (
     <html lang="zh-CN">
-      <body>{children}</body>
+      <body>
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+          type="application/ld+json"
+        />
+        <SiteShell>{children}</SiteShell>
+      </body>
     </html>
   );
 }
