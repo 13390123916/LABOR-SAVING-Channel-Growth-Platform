@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buildPageMetadata, pageMetadata } from "../site-metadata";
 import { buildPartnerPageSchemas } from "../site-schema";
+import { siteIdentity } from "../site-identity";
 
 const metadataDefinition = pageMetadata.partner;
 
@@ -50,8 +51,8 @@ const faqs = [
       "适合工业工具经销商、MRO 服务商、自动化集成商、工业机器人集成商、设备贸易商，以及有工业客户资源的项目合作伙伴。"
   },
   {
-    question: "提交 Partner Lead 后是否代表已经获得授权？",
-    answer: "不是。提交后仅代表进入线索评估流程，后续需由工作人员沟通并结合区域、行业和资源情况评估。"
+    question: "联系渠道合作团队后是否代表已经获得授权？",
+    answer: "不是。邮件联系仅用于建立初步沟通，后续需由工作人员结合区域、行业和资源情况进行评估。"
   },
   {
     question: "页面是否承诺收益、回本周期或区域独家？",
@@ -93,7 +94,7 @@ export default function PartnerPage() {
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a className="button-primary" href="#partner-lead">
-                申请成为区域合作伙伴
+                联系渠道合作
               </a>
               <Link className="button-secondary-dark" href="/products/">
                 了解产品中心
@@ -165,57 +166,30 @@ export default function PartnerPage() {
         <div className="lead-layout">
           <div>
             <p className="eyebrow">Partner Lead</p>
-            <h2>申请成为区域合作伙伴</h2>
+            <h2>联系渠道合作团队</h2>
             <p>
-              表单字段依据 Lead Schema 设计，用于初步判断合作意向、区域资源、主营产品和客户行业。
-              提交申请不代表自动授权或合作通过。
+              当前页面不提供在线申请或数据留存。请通过已核验的渠道合作邮箱联系，
+              后续由工作人员进行人工沟通与合作适配评估。
             </p>
           </div>
 
-          <form className="lead-form" method="post">
-            <label>
-              公司名称
-              <input name="companyName" required />
-            </label>
-            <label>
-              联系人
-              <input name="contactName" required />
-            </label>
-            <label>
-              联系电话
-              <input name="phone" required />
-            </label>
-            <label>
-              所在地区
-              <input name="region" required />
-            </label>
-            <label>
-              主营产品
-              <input name="mainProducts" required />
-            </label>
-            <label>
-              客户行业
-              <input name="industry" required />
-            </label>
-            <label>
-              合作意向
-              <select name="cooperationIntent" required defaultValue="">
-                <option value="" disabled>
-                  请选择
-                </option>
-                <option>区域代理</option>
-                <option>行业代理</option>
-                <option>渠道经销商</option>
-                <option>项目合作伙伴</option>
-              </select>
-            </label>
-            <label>
-              已有客户资源
-              <textarea name="customerResources" required rows={4} />
-            </label>
-            <input name="source" type="hidden" value="/partner/" />
-            <button type="submit">提交合作申请</button>
-          </form>
+          <div aria-label="渠道合作联系方式" className="lead-form">
+            <div className="info-panel">
+              <p className="eyebrow">渠道合作邮箱</p>
+              <h3>{siteIdentity.contacts.partner.email}</h3>
+              <a
+                className="button-primary"
+                href={`mailto:${siteIdentity.contacts.partner.email}`}
+              >
+                邮件联系渠道合作
+              </a>
+            </div>
+            <div className="info-panel">
+              <h3>联系时建议说明</h3>
+              <p>公司名称、所在地区、主营产品、客户行业、合作方向与现有渠道资源。</p>
+              <p>邮件联系不代表自动授权或合作通过，具体合作范围以人工评估为准。</p>
+            </div>
+          </div>
         </div>
       </section>
 

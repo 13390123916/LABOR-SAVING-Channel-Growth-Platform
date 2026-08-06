@@ -18,6 +18,7 @@ const robotsFile = "website/app/robots.ts";
 const sitemapFile = "website/app/sitemap.ts";
 const notFoundFile = "website/app/not-found.tsx";
 const partnerPageFile = "website/app/partner/page.tsx";
+const siteIdentityFile = "website/app/site-identity.ts";
 
 function fail(message) {
   console.error(`Product rendering validation failed: ${message}`);
@@ -38,6 +39,12 @@ function readRequired(relativePath) {
 function assertIncludes(content, token, file) {
   if (!content.includes(token)) {
     fail(`${file} missing "${token}"`);
+  }
+}
+
+function assertExcludes(content, token, file) {
+  if (content.includes(token)) {
+    fail(`${file} must not contain "${token}"`);
   }
 }
 
@@ -128,6 +135,7 @@ const robots = readRequired(robotsFile);
 const sitemap = readRequired(sitemapFile);
 const notFound = readRequired(notFoundFile);
 const partnerPage = readRequired(partnerPageFile);
+const siteIdentity = readRequired(siteIdentityFile);
 
 for (const token of [
   "productEntities",
@@ -197,10 +205,49 @@ for (const token of [
   "buildProductDetailContent(entity)",
   "buildProductDetailFaqs(entity)",
   "ProductBreadcrumbs",
-  "buildProductCategoryUrl(entity.category)",
-  "href=\"/partner/\""
+  "buildProductCategoryUrl(entity.category)"
 ]) {
   assertIncludes(detailRenderer, token, detailRendererFile);
+}
+
+for (const token of ["contacts:", "public:", "phoneHref:", "phoneDisplay:", "partner:", "email:"]) {
+  assertIncludes(siteIdentity, token, siteIdentityFile);
+}
+
+for (const [file, page] of [
+  [listingPageFile, listingPage],
+  [categoryPageFile, categoryPage],
+  [detailRendererFile, detailRenderer]
+]) {
+  for (const token of [
+    "siteIdentity.contacts.public.phoneHref",
+    "siteIdentity.contacts.public.phoneDisplay",
+    "产品咨询",
+    'href="/partner/#partner-lead"',
+    "渠道合作"
+  ]) {
+    assertIncludes(page, token, file);
+  }
+}
+
+for (const token of [
+  'id="partner-lead"',
+  "siteIdentity.contacts.partner.email",
+  "mailto:${siteIdentity.contacts.partner.email}",
+  "联系渠道合作"
+]) {
+  assertIncludes(partnerPage, token, partnerPageFile);
+}
+
+for (const token of [
+  "<form",
+  'method="post"',
+  'type="submit"',
+  "提交合作申请",
+  "提交 Partner Lead",
+  "已收到申请"
+]) {
+  assertExcludes(partnerPage, token, partnerPageFile);
 }
 
 for (const token of [

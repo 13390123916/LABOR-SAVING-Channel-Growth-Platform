@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { siteIdentity } from "../../site-identity";
 import { buildPageMetadata, buildProductCategoryMetadata } from "../../site-metadata";
 import { buildProductCategorySchemas } from "../../site-schema";
 import { ProductBreadcrumbs } from "../product-breadcrumbs";
@@ -116,8 +117,11 @@ export default async function ProductCategoryPage({ params }: ProductCategoryPag
           <h2>型号范围不等于选型结论</h2>
           <p>进入具体型号前，仍需确认真实产品资料与工况条件，不根据分类名称推断产品参数。</p>
         </div>
-        <Link className="products-cta" href="/partner/">
-          了解渠道合作
+        <a className="products-cta" href={siteIdentity.contacts.public.phoneHref}>
+          产品咨询：{siteIdentity.contacts.public.phoneDisplay}
+        </a>
+        <Link className="button-secondary-dark" href="/partner/#partner-lead">
+          渠道合作
         </Link>
       </section>
 
